@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using ASL;
 
 public class CameraManipulation : MonoBehaviour
 {
@@ -23,12 +24,16 @@ public class CameraManipulation : MonoBehaviour
     Vector3 delta = Vector3.zero;
     Vector3 mouseDownPos = Vector3.zero;
     //bool uistart = true;
+    //public GameObject PlayerPiece;
 
     void Start()
     {
         Debug.Assert(LookAt != null);
+        //Debug.Assert(PlayerPiece != null);
         LookAtPosition = LookAt.transform;
         LookAt.GetComponent<Renderer>().enabled = false;
+        //Vector3 pos = new Vector3 (Random.Range(-10f, 10f), Random.Range(.5f, 2f), Random.Range(-10f, 10f));
+        //ASL.ASLHelper.InstantiateASLObject("PlayerPiece", pos, Quaternion.identity);
     }
 
     void Update()
