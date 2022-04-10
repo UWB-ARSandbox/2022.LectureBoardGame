@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using ASL;
+using UnityEngine.UI;
 
 public class CameraManipulation : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CameraManipulation : MonoBehaviour
     Vector3 delta = Vector3.zero;
     Vector3 mouseDownPos = Vector3.zero;
     //bool uistart = true;
+    public Button first;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class CameraManipulation : MonoBehaviour
         //Vector3 pos = new Vector3 (Random.Range(-5f, 5f), 0.025f, Random.Range(-5f, 5f));
         Vector3 pos = new Vector3 (4.5f, 0.025f, -4.5f);
         ASL.ASLHelper.InstantiateASLObject("PlayerPiece", pos, Quaternion.identity);
+        first.GetComponentInChildren<Text>().text = "Enter the word \"Yes\"";
     }
 
     void Update()
