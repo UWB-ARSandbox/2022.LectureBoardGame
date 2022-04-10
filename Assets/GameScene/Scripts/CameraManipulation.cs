@@ -32,8 +32,8 @@ public class CameraManipulation : MonoBehaviour
         //Debug.Assert(PlayerPiece != null);
         LookAtPosition = LookAt.transform;
         LookAt.GetComponent<Renderer>().enabled = false;
-        //Vector3 pos = new Vector3 (Random.Range(-10f, 10f), Random.Range(.5f, 2f), Random.Range(-10f, 10f));
-        //ASL.ASLHelper.InstantiateASLObject("PlayerPiece", pos, Quaternion.identity);
+        Vector3 pos = new Vector3 (Random.Range(-5f, 5f), 0.025f, Random.Range(-5f, 5f));
+        ASL.ASLHelper.InstantiateASLObject("PlayerPiece", pos, Quaternion.identity);
     }
 
     void Update()
