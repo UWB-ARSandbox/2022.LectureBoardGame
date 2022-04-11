@@ -23,7 +23,6 @@ public class ManageCSV : MonoBehaviour
     static int yLength = 0;
 
     private bool isHost = false;
-    private static int hostID = -1;
 
     private ASLObject aSLObject;
 
@@ -43,8 +42,7 @@ public class ManageCSV : MonoBehaviour
 
         aSLObject = gameObject.GetComponent<ASLObject>();
 
-        hostID = glm.GetHighestPeerId();
-        isHost = glm.AmHighestPeer();
+        isHost = GameLiftManager.GetInstance().AmHighestPeer();
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
 
