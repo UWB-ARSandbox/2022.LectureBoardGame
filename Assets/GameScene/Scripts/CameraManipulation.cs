@@ -32,9 +32,6 @@ public class CameraManipulation : MonoBehaviour
         Debug.Assert(LookAt != null);
         LookAtPosition = LookAt.transform;
         LookAt.GetComponent<Renderer>().enabled = false;
-        //Vector3 pos = new Vector3 (Random.Range(-5f, 5f), 0.025f, Random.Range(-5f, 5f));
-        Vector3 pos = new Vector3 (4.5f, 0.025f, -4.5f);
-        ASL.ASLHelper.InstantiateASLObject("PlayerPiece", pos, Quaternion.identity);
         //first.GetComponentInChildren<Text>().text = "Enter the word \"Yes\"";
         first.setQA("Enter the word \"Yes\"", "Yes");
     }
