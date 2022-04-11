@@ -44,29 +44,29 @@ public class BoardTiles : MonoBehaviour
         map[4.13f] = new List<GameObject>();
 
         map[5.01f] = new List<GameObject>();
-        map[5.04f] = new List<GameObject>();
-        map[5.10f] = new List<GameObject>();
+        /*map[5.04f] = new List<GameObject>();
+        map[5.10f] = new List<GameObject>();*/
         map[5.13f] = new List<GameObject>();
 
         map[6.01f] = new List<GameObject>();
-        map[6.04f] = new List<GameObject>();
-        map[6.10f] = new List<GameObject>();
+        /*map[6.04f] = new List<GameObject>();
+        map[6.10f] = new List<GameObject>();*/
         map[6.13f] = new List<GameObject>();
 
 
         map[7.01f] = new List<GameObject>();
-        map[7.04f] = new List<GameObject>();
-        map[7.10f] = new List<GameObject>();
+        /*map[7.04f] = new List<GameObject>();
+        map[7.10f] = new List<GameObject>();*/
         map[7.13f] = new List<GameObject>();
 
         map[8.01f] = new List<GameObject>();
-        map[8.04f] = new List<GameObject>();
-        map[8.10f] = new List<GameObject>();
+        /*map[8.04f] = new List<GameObject>();
+        map[8.10f] = new List<GameObject>();*/
         map[8.13f] = new List<GameObject>();
 
         map[9.01f] = new List<GameObject>();
-        map[9.04f] = new List<GameObject>();
-        map[9.10f] = new List<GameObject>();
+        /*map[9.04f] = new List<GameObject>();
+        map[9.10f] = new List<GameObject>();*/
         map[9.13f] = new List<GameObject>();
 
         map[10.01f] = new List<GameObject>();
