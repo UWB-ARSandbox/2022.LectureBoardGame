@@ -17,7 +17,7 @@ public class ManageCSV : MonoBehaviour
     /// <summary>
     /// The grid in which the CSV File would be parsed.
     /// </summary>
-    static string[,] grid;
+    public string[,] grid;
 
     static int xLength = 0;
     static int yLength = 0;

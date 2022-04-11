@@ -18,7 +18,7 @@ public class ButtonBehavior : MonoBehaviour
         buttontxt = "Question: " + this.GetComponentInChildren<Text>().text;
         //questionPanel = GameObject.Find("Question");
         questionPanel = GameObject.Find("Canvas").transform.Find("Question").gameObject;
-        question = GameObject.Find("QuestionText").GetComponent<Text>();
+        question = GameObject.Find("Canvas").transform.Find("Question").Find("QuestionText").GetComponent<Text>();
     }
 
     // Update is called once per frame
