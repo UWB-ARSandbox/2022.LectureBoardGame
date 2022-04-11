@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ButtonBehavior : MonoBehaviour
 {
     public GameObject questionPanel;
+    //Question on the question panel
     public Text question;
+    //Button's question text
     private string buttontxt;
+    private string answer;
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -24,7 +27,14 @@ public class ButtonBehavior : MonoBehaviour
         
     }
 
+    public void setQA(string q, string a){
+        this.GetComponentInChildren<Text>().text = q;
+        answer = a;
+        buttontxt = "Question: " + q; 
+    }
+
     void OpenQ(){
+        questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
         if (questionPanel != null) {  
             bool isActive = questionPanel.activeSelf;  
             if(isActive){
