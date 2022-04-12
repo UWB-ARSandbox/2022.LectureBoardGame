@@ -11,6 +11,10 @@ public class ButtonBehavior : MonoBehaviour
     //Button's question text
     private string buttontxt;
     private string answer;
+    //Selfgrade
+    public Text question2;
+    public Text answerTxt;
+    public Selfgrader sg;
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -19,6 +23,9 @@ public class ButtonBehavior : MonoBehaviour
         //questionPanel = GameObject.Find("Question");
         questionPanel = GameObject.Find("Canvas").transform.Find("Question").gameObject;
         question = GameObject.Find("Canvas").transform.Find("Question").Find("QuestionText").GetComponent<Text>();
+        question2 = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("QuestionText").GetComponent<Text>();
+        answerTxt = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("TeacherAnswer").GetComponent<Text>();
+        sg = GameObject.Find("Canvas").transform.Find("Selfgrade").GetComponent<Selfgrader>();
     }
 
     // Update is called once per frame
@@ -36,7 +43,9 @@ public class ButtonBehavior : MonoBehaviour
     void OpenQ(){
         questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
         if (questionPanel != null) {  
-            bool isActive = questionPanel.activeSelf;  
+            bool isActive = questionPanel.activeSelf;
+            sg.qButton = GetComponent<Button>();
+            sg.setText(buttontxt, "Answer: "+answer);  
             if(isActive){
                 string q = question.text;
                 if (buttontxt == q){
@@ -49,5 +58,9 @@ public class ButtonBehavior : MonoBehaviour
                 question.text = buttontxt;
             }             
         } 
+    }
+
+    public void setColor(){
+
     }
 }

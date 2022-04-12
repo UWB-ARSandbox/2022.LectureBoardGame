@@ -8,11 +8,14 @@ public class QuestionPanel : MonoBehaviour
     private string answer;
     public InputField userInput;
     public Button submitButton;
+    public GameObject selfgrade;
+
     // Start is called before the first frame update
     void Start()
     {
         Button btn = submitButton.GetComponent<Button>();
         btn.onClick.AddListener(checkAnswer);
+        selfgrade = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
     }
 
     // Update is called once per frame
@@ -27,8 +30,11 @@ public class QuestionPanel : MonoBehaviour
     }
 
     void checkAnswer(){
-        if(userInput.text == answer){
-            Debug.Log("correct");
+        if (selfgrade != null) {
+            bool isActive = selfgrade.activeSelf;
+            selfgrade.SetActive(!isActive);
+            selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);
+            gameObject.SetActive(false);
         }
     }
 }
