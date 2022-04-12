@@ -116,6 +116,7 @@
      <Compile Include="Assets\Demo\Scripts\ASL_PhysicsMaster.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\PCPlayerCameraController.cs" />
      <Compile Include="Assets\Scripts\PlayerListManager.cs" />
+     <Compile Include="Assets\GameScene\Scripts\Selfgrader.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\TransformObjectViaWorldSpace\Scripts\TransformObjectViaWorldSpace_Example.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\GameLift\GameLiftManager_SceneLoader.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\ASLObject_LocalFunctions.cs" />

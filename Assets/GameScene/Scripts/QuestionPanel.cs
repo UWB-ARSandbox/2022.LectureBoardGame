@@ -26,7 +26,6 @@ public class QuestionPanel : MonoBehaviour
 
     public void setAnswer(string a){
         answer = a;
-        Debug.Log("Got answer: " + a);
     }
 
     void checkAnswer(){
@@ -34,6 +33,7 @@ public class QuestionPanel : MonoBehaviour
             bool isActive = selfgrade.activeSelf;
             selfgrade.SetActive(!isActive);
             selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);
+            userInput.text = "";
             gameObject.SetActive(false);
         }
     }

@@ -48,14 +48,11 @@ public class Selfgrader : MonoBehaviour
     }
 
     void markCorrect(){
-        Debug.Log("correct");
         qButton.GetComponent<Image>().color = correct.image.color;
         gameObject.SetActive(false);
     }
 
     void markIncorrect(){
-        Debug.Log("correct");
-        Vector4 myButtonsColor = incorrect.image.color;
         qButton.GetComponent<Image>().color = incorrect.image.color;
         gameObject.SetActive(false);
     }
