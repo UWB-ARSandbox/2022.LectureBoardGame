@@ -49,11 +49,13 @@ public class Selfgrader : MonoBehaviour
 
     void markCorrect(){
         qButton.GetComponent<Image>().color = correct.image.color;
+        qButton.GetComponent<ButtonBehavior>().answered = true;
         gameObject.SetActive(false);
     }
 
     void markIncorrect(){
         qButton.GetComponent<Image>().color = incorrect.image.color;
+        qButton.GetComponent<ButtonBehavior>().answered = true;
         gameObject.SetActive(false);
     }
 }

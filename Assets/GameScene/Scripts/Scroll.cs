@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using ASL;
 
 public class Scroll : MonoBehaviour
 {
@@ -9,22 +11,23 @@ public class Scroll : MonoBehaviour
     public GameObject button;
     public ManageCSV qa;
     private int number = 1;
+    ASLpanel m_ASLObject;
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        Debug.Log("Start scroll");
+        m_ASLObject = gameObject.GetComponent<ASLpanel>();
         yield return new WaitForSeconds(1);
-        string q = qa.grid[0,number];
-        string a = qa.grid[1,number];
-        Debug.Log(q);
-        while(q!=""){
-            createButton(q, a);
-            q = qa.grid[0,number];
-            a = qa.grid[1,number];
-            Debug.Log("made question");
+        try{
+        if(qa!=null){
+            string q = qa.grid[0,number];
+            string a = qa.grid[1,number];
+            while(q!=""){
+                createButton(q, a);
+                q = qa.grid[0,number];
+                a = qa.grid[1,number];
+            } 
         }
-        Debug.Log("End scroll");
-        
+        } catch (NullReferenceException err){}
     }
 
     // Update is called once per frame
@@ -68,7 +71,10 @@ public class Scroll : MonoBehaviour
         //Change size of "content"
         rectTransform = go.GetComponent<RectTransform>();
         rectTransform.sizeDelta += new Vector2(0, size.y);
+        //m_ASLObject.increaseScale(new Vector2(0,size.y));
         pos -= new Vector3(0,size.y, 0); 
+        //size += new Vector2(0,size.y);
+        //m_ASLObject.SendAndSetLocalScale(new Vector3(size.x, size.y,0));
         //create new button
         GameObject newButton = Instantiate(button) as GameObject;
         newButton.transform.SetParent(rectTransform.transform, false);

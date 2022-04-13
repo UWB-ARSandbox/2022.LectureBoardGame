@@ -49,8 +49,10 @@ public class ManageCSV : MonoBehaviour
         // grid = getCSVGrid(csvFile.text);
         if (isHost)
         {
-            grid = getCSVGrid(csvFile.text);
+            Debug.Log("Host");
+            //grid = getCSVGrid(csvFile.text);
         }
+        grid = getCSVGrid(csvFile.text);
 
         /*// simluating teacher's data being updated by the students' sent data
         // sendVal(question#, correct/incorrect)

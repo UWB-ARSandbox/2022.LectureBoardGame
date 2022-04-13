@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 431922397654964145}
   - component: {fileID: 431922397654964110}
   - component: {fileID: 9145387676103607130}
+  - component: {fileID: 3639467481786430269}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -215,3 +216,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionPanel: {fileID: 0}
   question: {fileID: 0}
+  question2: {fileID: 0}
+  answerTxt: {fileID: 0}
+  sg: {fileID: 0}
+--- !u!114 &3639467481786430269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431922397654964108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c58412da33e154692db87cbf8c6ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

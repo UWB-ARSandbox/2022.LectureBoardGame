@@ -33,7 +33,7 @@ public class CameraManipulation : MonoBehaviour
         LookAtPosition = LookAt.transform;
         LookAt.GetComponent<Renderer>().enabled = false;
         //first.GetComponentInChildren<Text>().text = "Enter the word \"Yes\"";
-        first.setQA("Enter the word \"Yes\"", "Yes");
+        //first.setQA("Enter the word \"Yes\"", "Yes");
     }
 
     void Update()
