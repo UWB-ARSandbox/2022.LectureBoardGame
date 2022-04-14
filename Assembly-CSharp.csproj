@@ -149,6 +149,7 @@
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ColorObject\Scripts\ColorObject_Example.cs" />
      <Compile Include="Assets\GameScene\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\Visualization\Frustum\StretchCylinder.cs" />
+     <Compile Include="Assets\GameScene\Scripts\MinMax.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_CreateDelete_Controller.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\ARSupport\ARCanvasController.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARCloudAnchors\Scripts\ARCloudAnchor_Example.cs" />

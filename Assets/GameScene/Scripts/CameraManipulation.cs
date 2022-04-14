@@ -82,9 +82,11 @@ public class CameraManipulation : MonoBehaviour
             {
                 Vector3 d = delta.x * movespeed * transform.right + delta.y * movespeed * transform.up;
                 transform.localPosition += d;
-                transform.localPosition = new Vector3(transform.localPosition.x, cameraY, transform.localPosition.z);
+                transform.localPosition = new Vector3(
+                    Mathf.Clamp(transform.localPosition.x, -5f, 5f), cameraY, Mathf.Clamp(transform.localPosition.z, -5f, 5f));
                 LookAtPosition.localPosition += d;
-                LookAtPosition.transform.localPosition = new Vector3(LookAtPosition.transform.localPosition.x, 0, LookAtPosition.transform.localPosition.z);
+                LookAtPosition.transform.localPosition = new Vector3(
+                    Mathf.Clamp(LookAtPosition.transform.localPosition.x, -5f, 5f), 0, Mathf.Clamp(LookAtPosition.transform.localPosition.z, -5f, 5f));
             }
         }
 
@@ -92,7 +94,10 @@ public class CameraManipulation : MonoBehaviour
         // Won't work if mouse is over a UI element
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
-            transform.position += transform.forward * zoomspeed * Input.GetAxis("Mouse ScrollWheel");
+            var input = Input.GetAxis("Mouse ScrollWheel");
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x + (transform.forward.x * zoomspeed * input), -5f, 5f),
+                Mathf.Clamp(transform.position.y + (transform.forward.y * zoomspeed * input), 1f, 20f),
+                Mathf.Clamp(transform.position.z + + (transform.forward.z * zoomspeed * input), -5f, 5f));
         }
 
 
@@ -113,7 +118,8 @@ public class CameraManipulation : MonoBehaviour
         invP = Matrix4x4.TRS(-LookAtPosition.localPosition, Quaternion.identity, Vector3.one);
         r = invP.inverse * r * invP;
         newCameraPos = r.MultiplyPoint(transform.localPosition);
-        transform.localPosition = newCameraPos;
+        if(newCameraPos.y>0)
+            transform.localPosition = newCameraPos;
 
         transform.LookAt(LookAtPosition);
     }
