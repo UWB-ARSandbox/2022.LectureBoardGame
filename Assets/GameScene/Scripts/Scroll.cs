@@ -8,26 +8,39 @@ using ASL;
 public class Scroll : MonoBehaviour
 {
     //public Text txt;
-    public GameObject button;
+    public static GameObject button;
     public ManageCSV qa;
-    private int number = 1;
+    private static int number = 1;
     ASLpanel m_ASLObject;
     // Start is called before the first frame update
     IEnumerator Start()
     {
         m_ASLObject = gameObject.GetComponent<ASLpanel>();
+        button = GameObject.Find("Button");
         yield return new WaitForSeconds(1);
-        try{
+        /*try{
         if(qa!=null){
-            string q = qa.grid[0,number];
-            string a = qa.grid[1,number];
+            string q = ManageCSV.grid[0,number];
+            string a = ManageCSV.grid[1,number];
             while(q!=""){
                 createButton(q, a);
-                q = qa.grid[0,number];
-                a = qa.grid[1,number];
+                q = ManageCSV.grid[0,number];
+                a = ManageCSV.grid[1,number];
             } 
         }
-        } catch (NullReferenceException err){}
+        } catch (NullReferenceException err){}*/
+    }
+
+    public static void buttonSetup()
+    {
+        string q = ManageCSV.grid[0, number];
+        string a = ManageCSV.grid[1, number];
+        while (q != "")
+        {
+            createButton(q, a);
+            q = ManageCSV.grid[0, number];
+            a = ManageCSV.grid[1, number];
+        }
     }
 
     // Update is called once per frame
@@ -35,9 +48,10 @@ public class Scroll : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            string q = qa.grid[0,number];
-            string a = qa.grid[1,number];
-            if (q!=""){
+            string q = ManageCSV.grid[0, number];
+            string a = ManageCSV.grid[1, number];
+            if (q != "")
+            {
                 /*
                 GameObject go = GameObject.Find("Content");
                 //Get pos of last button and size of button
@@ -58,13 +72,14 @@ public class Scroll : MonoBehaviour
                 createButton(q, a);
             }
 
-        } 
+        }
     }
 
-    void createButton(string q, string a){
+    static void createButton(string q, string a)
+    {
         GameObject go = GameObject.Find("Content");
         //Get pos of last button and size of button
-        int i = go.transform.childCount-1;
+        int i = go.transform.childCount - 1;
         var rectTransform = go.transform.GetChild(i).GetComponent<RectTransform>();
         Vector3 pos = rectTransform.position;
         Vector2 size = rectTransform.sizeDelta;
@@ -72,7 +87,7 @@ public class Scroll : MonoBehaviour
         rectTransform = go.GetComponent<RectTransform>();
         rectTransform.sizeDelta += new Vector2(0, size.y);
         //m_ASLObject.increaseScale(new Vector2(0,size.y));
-        pos -= new Vector3(0,size.y, 0); 
+        pos -= new Vector3(0, size.y, 0);
         //size += new Vector2(0,size.y);
         //m_ASLObject.SendAndSetLocalScale(new Vector3(size.x, size.y,0));
         //create new button

@@ -10,14 +10,14 @@ public class ManageCSV : MonoBehaviour
     /// <summary>
     /// The csv file can be dragged throughthe inspector.
     /// </summary>
-    public TextAsset csvFile;
+    public static string csvFile;
 
     GameLiftManager glm = new GameLiftManager();
 
     /// <summary>
     /// The grid in which the CSV File would be parsed.
     /// </summary>
-    public string[,] grid;
+    public static string[,] grid;
 
     static int xLength = 0;
     static int yLength = 0;
@@ -52,7 +52,7 @@ public class ManageCSV : MonoBehaviour
             Debug.Log("Host");
             //grid = getCSVGrid(csvFile.text);
         }
-        grid = getCSVGrid(csvFile.text);
+        //grid = getCSVGrid(csvFile);
 
         /*// simluating teacher's data being updated by the students' sent data
         // sendVal(question#, correct/incorrect)
@@ -93,7 +93,7 @@ public class ManageCSV : MonoBehaviour
     /// </summary>
     /// <returns> 2 day array of the csv file.</returns>
     /// <param name="csvText">the CSV data as string</param>
-    private static string[,] getCSVGrid(string csvText)
+    public static string[,] getCSVGrid(string csvText)
     {
         //split the data on split line character
         string[] lines = csvText.Split("\n"[0]);
