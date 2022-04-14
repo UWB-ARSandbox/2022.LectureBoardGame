@@ -11,6 +11,7 @@ public class ManageCSV : MonoBehaviour
     /// The csv file can be dragged throughthe inspector.
     /// </summary>
     public static string csvFile;
+    public TextAsset csvFile2;
 
     GameLiftManager glm = new GameLiftManager();
 
@@ -52,7 +53,7 @@ public class ManageCSV : MonoBehaviour
             Debug.Log("Host");
             //grid = getCSVGrid(csvFile.text);
         }
-        //grid = getCSVGrid(csvFile);
+        grid = getCSVGrid(csvFile2.text);
 
         /*// simluating teacher's data being updated by the students' sent data
         // sendVal(question#, correct/incorrect)
