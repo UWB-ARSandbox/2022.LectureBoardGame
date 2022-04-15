@@ -53,7 +53,7 @@ public class ManageCSV : MonoBehaviour
             Debug.Log("Host");
             //grid = getCSVGrid(csvFile.text);
         }
-        grid = getCSVGrid(csvFile2.text);
+        //grid = getCSVGrid(csvFile2.text);
 
         /*// simluating teacher's data being updated by the students' sent data
         // sendVal(question#, correct/incorrect)
