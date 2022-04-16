@@ -39,6 +39,12 @@ namespace ASL
             {
                 StartButton.SetActive(true);
                 UploadButton.SetActive(true);
+            } else
+            {
+                GameObject.Find("CancelButton").SetActive(true);
+                GameObject.Find("AddBlankButton").SetActive(false);
+                GameObject.Find("UploadButton").SetActive(false);
+                GameObject.Find("StartButton").SetActive(false);
             }
         }
 
