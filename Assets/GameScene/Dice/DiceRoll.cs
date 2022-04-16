@@ -11,6 +11,7 @@ public class DiceRoll : MonoBehaviour
     public static bool canRoll;
     public static GameObject DiceDetector;
     private PlayerMovement pm;
+    public static int movePoints;
 
     private Vector3 originalPos;
 
@@ -25,6 +26,7 @@ public class DiceRoll : MonoBehaviour
         DiceDetector = GameObject.Find("DiceDetector");
         DiceDetector.SetActive(false);
         Invoke("findPlayer", 1);
+        movePoints = 0;
 
         originalPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
@@ -37,9 +39,10 @@ public class DiceRoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
+        if (Input.GetKeyDown(KeyCode.Space) && canRoll && movePoints > 0)
         {
             canRoll = false;
+            movePoints--;
             Invoke("tempMethodEnableRoll", 5);
             DiceView.SetActive(true);
             DiceDetector.SetActive(true);

@@ -50,6 +50,7 @@ public class Selfgrader : MonoBehaviour
     void markCorrect(){
         qButton.GetComponent<Image>().color = correct.image.color;
         qButton.GetComponent<ButtonBehavior>().answered = true;
+        DiceRoll.movePoints++;
         gameObject.SetActive(false);
     }
 
