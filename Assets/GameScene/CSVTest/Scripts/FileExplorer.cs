@@ -29,11 +29,12 @@ public class FileExplorer : MonoBehaviour
         {
             ManageCSV.csvFile = File.ReadAllText(fileExplorer.fileName);
             ManageCSV.grid = ManageCSV.getCSVGrid(ManageCSV.csvFile);
-            if (setOnce)
+            Scroll.imported = true;
+            /*if (setOnce)
             {
                 setOnce = false;
                 Scroll.buttonSetup();
-            }
+            }*/
         }
     }
 

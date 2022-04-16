@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using ASL;
 
 public class Scroll : MonoBehaviour
@@ -12,6 +11,8 @@ public class Scroll : MonoBehaviour
     public ManageCSV qa;
     private static int number = 1;
     ASLpanel m_ASLObject;
+    public static bool imported;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -26,6 +27,10 @@ public class Scroll : MonoBehaviour
                 q = ManageCSV.grid[0,number];
                 a = ManageCSV.grid[1,number];
             } 
+        }
+        if (imported)
+        {
+            buttonSetup();
         }
     }
 
