@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GameScene/GroupingLobby/Scenes/PlayerGrouping.unity
-    guid: e34d81073816e8948bedaa53d6b7caa5
-  - enabled: 1
     path: Assets/ASL/ASL_Scenes/ASL_LobbyScene.unity
     guid: 31f3bf0f357b60c4981e20725877fd45
   - enabled: 1
     path: Assets/ASL/ASL_Scenes/ASL_SceneLoader.unity
     guid: 6026d53651e499849a1420efc6833ec7
-  - enabled: 0
+  - enabled: 1
+    path: Assets/GameScene/BoardGame.unity
+    guid: 56832b02bf158aa4fb6a7650f6845530
+  - enabled: 1
+    path: Assets/GameScene/GroupingLobby/Scenes/PlayerGrouping.unity
+    guid: e34d81073816e8948bedaa53d6b7caa5
+  - enabled: 1
     path: Assets/GameScene/studentgame.unity
     guid: 43767d99c7f037b4f88bff741a038b96
   - enabled: 0
@@ -80,6 +83,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/ASL/ASL_Tutorials/Simple/SetTag/SetTag_Example.unity
+    guid: c81b0e5d6f53cd54287068721195a908
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: bf557935255407f40b56b5c173577bf9, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: b653963d314ffaf409a6357156cf5de6, type: 2}

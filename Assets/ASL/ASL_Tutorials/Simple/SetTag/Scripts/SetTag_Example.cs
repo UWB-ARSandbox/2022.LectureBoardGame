@@ -31,6 +31,11 @@ namespace SimpleDemos
             }
 
             Debug.Log("MyObjectToTag current tag: " + m_MyObjectToTag.tag);
+
+            if (m_MyObjectToTag.tag == "Respawn")
+            {
+                m_MyObjectToTag.transform.localScale = new Vector3(2, 1, 1);
+            }
         }
     }
 }
