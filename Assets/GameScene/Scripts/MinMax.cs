@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ASL;
 
 public class MinMax : MonoBehaviour
 {
     public Button min;
     public Button max;
+    public GameObject newQ;
+    public GameObject endGame;
+    public GameObject teacherPanel;
+    private bool isHost = false;
 
     Vector2 minScale;
     Vector2 maxScale;
@@ -33,6 +38,16 @@ public class MinMax : MonoBehaviour
         posDif = new Vector3 (350-80,0,0);
         sizeDif = new Vector2 (400,0);
         childDif = new Vector2 (360,0);
+        isHost = GameLiftManager.GetInstance().AmHighestPeer();
+        if (isHost)
+        {
+            Debug.Log("Host");
+            min.gameObject.SetActive(false);
+            max.gameObject.SetActive(false);
+            newQ.SetActive(true);
+            endGame.SetActive(true);
+            teacherPanel.SetActive(true);
+        }
     }
 
     // Update is called once per frame
