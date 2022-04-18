@@ -980,8 +980,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 723893227}
   m_HandleRect: {fileID: 1192939527}
   m_Direction: 2
-  m_Value: 1.0000019
-  m_Size: 0.8406783
+  m_Value: 1.0000015
+  m_Size: 0.8406784
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3399,6 +3399,8 @@ MonoBehaviour:
     - m_Text: PlayerGrouping
       m_Image: {fileID: 0}
     - m_Text: BoardGame
+      m_Image: {fileID: 0}
+    - m_Text: BoardGame2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

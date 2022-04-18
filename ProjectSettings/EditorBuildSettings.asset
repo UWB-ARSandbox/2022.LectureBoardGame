@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/GameScene/BoardGame2.unity
+    guid: 1f9385e0845910246a7611f5ca722249
+  - enabled: 1
     path: Assets/GameScene/BoardGame.unity
     guid: 56832b02bf158aa4fb6a7650f6845530
   - enabled: 1
