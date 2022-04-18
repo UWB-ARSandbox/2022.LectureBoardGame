@@ -6,20 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/GameScene/BoardGame.unity
+    guid: 56832b02bf158aa4fb6a7650f6845530
+  - enabled: 1
+    path: Assets/GameScene/studentgame.unity
+    guid: 43767d99c7f037b4f88bff741a038b96
+  - enabled: 1
     path: Assets/ASL/ASL_Scenes/ASL_LobbyScene.unity
     guid: 31f3bf0f357b60c4981e20725877fd45
   - enabled: 1
     path: Assets/ASL/ASL_Scenes/ASL_SceneLoader.unity
     guid: 6026d53651e499849a1420efc6833ec7
-  - enabled: 1
-    path: Assets/GameScene/BoardGame.unity
-    guid: 56832b02bf158aa4fb6a7650f6845530
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScene/GroupingLobby/Scenes/PlayerGrouping.unity
     guid: e34d81073816e8948bedaa53d6b7caa5
-  - enabled: 1
-    path: Assets/GameScene/studentgame.unity
-    guid: 43767d99c7f037b4f88bff741a038b96
   - enabled: 0
     path: Assets/ASL/ASL_Tutorials/Simple/ARObjectSync/ARObjectSync_Example.unity
     guid: dec3da4aa6f351a44a44a15799c0ece4

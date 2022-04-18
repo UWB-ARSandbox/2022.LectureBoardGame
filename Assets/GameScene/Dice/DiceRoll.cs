@@ -33,7 +33,10 @@ public class DiceRoll : MonoBehaviour
 
     void findPlayer()
     {
-        pm = GameObject.Find("Player" + GameLiftManager.GetInstance().m_PeerId + "Piece(Clone)").GetComponent<PlayerMovement>();
+        if (GameLiftManager.GetInstance().m_PeerId != 1)
+        {
+            pm = GameObject.Find("Player" + GameLiftManager.GetInstance().m_PeerId + "Piece(Clone)").GetComponent<PlayerMovement>();
+        }
     }
 
     // Update is called once per frame

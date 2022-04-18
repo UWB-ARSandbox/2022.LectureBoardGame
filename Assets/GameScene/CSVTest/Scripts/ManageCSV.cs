@@ -13,8 +13,6 @@ public class ManageCSV : MonoBehaviour
     public static string csvFile;
     public TextAsset csvFile2;
 
-    GameLiftManager glm = new GameLiftManager();
-
     /// <summary>
     /// The grid in which the CSV File would be parsed.
     /// </summary>
@@ -45,7 +43,7 @@ public class ManageCSV : MonoBehaviour
 
         isHost = GameLiftManager.GetInstance().AmHighestPeer();
 
-        gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
+        //gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
 
         // grid = getCSVGrid(csvFile.text);
         if (isHost)

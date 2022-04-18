@@ -19,7 +19,7 @@ public class Scroll : MonoBehaviour
         m_ASLObject = gameObject.GetComponent<ASLpanel>();
         button = GameObject.Find("Button");
         yield return new WaitForSeconds(1);
-        if(qa!=null){
+        /*if(qa!=null){
             string q = ManageCSV.grid[0,number];
             string a = ManageCSV.grid[1,number];
             while(q!=""){
@@ -27,7 +27,7 @@ public class Scroll : MonoBehaviour
                 q = ManageCSV.grid[0,number];
                 a = ManageCSV.grid[1,number];
             } 
-        }
+        }*/
         if (imported)
         {
             buttonSetup();
