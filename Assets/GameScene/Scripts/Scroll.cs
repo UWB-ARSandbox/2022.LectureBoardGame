@@ -28,7 +28,7 @@ public class Scroll : MonoBehaviour
                 a = ManageCSV.grid[1,number];
             } 
         }*/
-        if (imported)
+        if (true/*imported*/)
         {
             buttonSetup();
         }

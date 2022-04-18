@@ -330,6 +330,9 @@
  <Reference Include="log4net">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/log4net.dll</HintPath>
  </Reference>
+ <Reference Include="SmartExplorer">
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/Plugins/SmartExplorer.dll</HintPath>
+ </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1649683371334/Editor/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>

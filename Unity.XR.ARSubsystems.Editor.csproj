@@ -301,6 +301,9 @@
  <Reference Include="log4net">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/log4net.dll</HintPath>
  </Reference>
+ <Reference Include="SmartExplorer">
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/Plugins/SmartExplorer.dll</HintPath>
+ </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1649683371334/Editor/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
@@ -706,14 +709,14 @@
       <Name>Unity.InternalAPIEditorBridge.005</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{6936590E-784F-1B7A-099F-BB8A81D01F22}</Project>
-      <Name>UnityEditor.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{AC8343E7-220A-F59C-0274-AA497D5F5B7D}</Project>
       <Name>UnityEngine.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{6936590E-784F-1B7A-099F-BB8A81D01F22}</Project>
+      <Name>UnityEditor.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">

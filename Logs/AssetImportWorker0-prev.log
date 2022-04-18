@@ -15,12 +15,12 @@ C:/Users/younk/Documents/2022.LectureBoardGame
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63478
+62415
 Successfully changed project path to: C:/Users/younk/Documents/2022.LectureBoardGame
 C:/Users/younk/Documents/2022.LectureBoardGame
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 131.09 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 2.79 ms.
+Refreshing native plugins compatible for Editor in 498.16 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 5.04 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/younk/Documents/2022.LectureBoardGame/Assets
@@ -35,149 +35,43 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56492
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56520
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002421 seconds.
+Registered in 0.011489 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 180.88 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.29 ms.
+Refreshing native plugins compatible for Editor in 312.55 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.32 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.519 seconds
+- Completed reload, in 14.482 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2519ms)
-		BeginReloadAssembly (114ms)
+	ReloadAssembly (14483ms)
+		BeginReloadAssembly (194ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1041ms)
-			LoadAssemblies (107ms)
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (1796ms)
+			LoadAssemblies (182ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (297ms)
+			SetupTypeCache (526ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (73ms)
-			SetupLoadedEditorAssemblies (495ms)
+			RebuildScriptCaches (118ms)
+			SetupLoadedEditorAssemblies (842ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
+				InitializePlatformSupportModulesInManaged (20ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (182ms)
-				BeforeProcessingInitializeOnLoad (38ms)
-				ProcessInitializeOnLoadAttributes (196ms)
-				ProcessInitializeOnLoadMethodAttributes (66ms)
+				RefreshPlugins (313ms)
+				BeforeProcessingInitializeOnLoad (74ms)
+				ProcessInitializeOnLoadAttributes (330ms)
+				ProcessInitializeOnLoadMethodAttributes (104ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.027784 seconds.
+Registered in 0.113958 seconds.
 Begin MonoManager ReloadAssembly
-OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
-This message has been deprecated and will be removed in a later version of Unity.
-Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 218.24 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.26 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  6.168 seconds
-Domain Reload Profiling:
-	ReloadAssembly (6169ms)
-		BeginReloadAssembly (331ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (40ms)
-		EndReloadAssembly (5679ms)
-			LoadAssemblies (294ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (860ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (166ms)
-			SetupLoadedEditorAssemblies (3947ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (10ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (219ms)
-				BeforeProcessingInitializeOnLoad (270ms)
-				ProcessInitializeOnLoadAttributes (1590ms)
-				ProcessInitializeOnLoadMethodAttributes (1838ms)
-				AfterProcessingInitializeOnLoad (19ms)
-				EditorAssembliesLoaded (1ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (16ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 2.39 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.36 ms.
-Unloading 4372 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 213.7 MB.
-System memory in use after: 212.3 MB.
-
-Unloading 2483 unused Assets to reduce memory usage. Loaded Objects now: 4456.
-Total: 14.195500 ms (FindLiveObjects: 0.576300 ms CreateObjectMapping: 0.425300 ms MarkObjects: 7.140000 ms  DeleteObjects: 6.051900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/GameScene/Dice/dice.png
-  artifactKey: Guid(15f14debe962a6a4aaee72da93816c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Dice/dice.png using Guid(15f14debe962a6a4aaee72da93816c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39418d4536a097c34b47052b2f31642a') in 0.176984 seconds 
-  Import took 0.186558 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000458 seconds.
-  path: Assets/GameScene/Dice/DiceFloorMaterial.mat
-  artifactKey: Guid(dacff0e3d75486141991866539731b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Dice/DiceFloorMaterial.mat using Guid(dacff0e3d75486141991866539731b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a60e97a8a24d5e0a49eec9c988aa2de') in 0.120448 seconds 
-  Import took 0.130980 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000758 seconds.
-  path: Assets/GameScene/Dice/DiceWallMaterial.mat
-  artifactKey: Guid(1676e5b997ba0c045bcd459a1eb8b413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Dice/DiceWallMaterial.mat using Guid(1676e5b997ba0c045bcd459a1eb8b413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4021783a7ec0635fa55c72bc0c2f89f') in 0.048482 seconds 
-  Import took 0.062179 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000865 seconds.
-  path: Assets/GameScene/Dice/dice.obj
-  artifactKey: Guid(b6c6e58ec5b13cb4e9e4c4307c9123fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Dice/dice.obj using Guid(b6c6e58ec5b13cb4e9e4c4307c9123fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '097f00891c082b3aacd0fb3b68438928') in 0.118026 seconds 
-  Import took 0.128636 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000285 seconds.
-  path: Assets/GameScene/CSVTest/Files
-  artifactKey: Guid(15c4cb610db6d764f8fe80f05d474c43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/CSVTest/Files using Guid(15c4cb610db6d764f8fe80f05d474c43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd70b66b2b3420bb3a3577d57679c4900') in 0.013722 seconds 
-  Import took 0.022845 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.486820 seconds.
-  path: Assets/GameScene/CSVTest/Scripts/ManageCSV.cs
-  artifactKey: Guid(6f921d7fb158d694c90731683e5db291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/CSVTest/Scripts/ManageCSV.cs using Guid(6f921d7fb158d694c90731683e5db291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '308d2239cd78b353be537ea9a9c9c464') in 0.020256 seconds 
-  Import took 0.035234 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file

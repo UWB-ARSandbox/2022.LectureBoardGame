@@ -675,6 +675,9 @@
  <Reference Include="log4net">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/log4net.dll</HintPath>
  </Reference>
+ <Reference Include="SmartExplorer">
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/Plugins/SmartExplorer.dll</HintPath>
+ </Reference>
  <Reference Include="WebSocket4Net">
  <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/WebSocket4Net.dll</HintPath>
  </Reference>

@@ -27,17 +27,6 @@ public class ManageCSV : MonoBehaviour
 
     void Start()
     {
-        /// create an invisible ASL Object like on the demo with the ManageCSV script attached
-        /// this object should only be generated for the host, not the players. The players will
-        /// have another object (script) that will call the host's ASL object's static setCSVCounts()
-        /// method in order to send their data
-        /// (maybe they will need to have a universally shared object with a script with a fucntion
-        /// that first checks if the CSVManager ASL Object exists in the scene, if it does exist,
-        /// it will signify that it is the host's scene. Once host's scnene is verified, call the
-        /// static setCSVCounts() method through the shared object. Perhaps I don't even need to
-        /// "set and send" because that method is for proper synchronization of object statuses
-        /// between the multiple users applications, but in this case, we don't need to synchronize,
-        /// only calling the static method)
 
         aSLObject = gameObject.GetComponent<ASLObject>();
 
@@ -46,24 +35,12 @@ public class ManageCSV : MonoBehaviour
         //gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
 
         // grid = getCSVGrid(csvFile.text);
+        grid = getCSVGrid(csvFile2.text);
         if (isHost)
         {
             Debug.Log("Host");
             //grid = getCSVGrid(csvFile.text);
         }
-        //grid = getCSVGrid(csvFile2.text);
-
-        /*// simluating teacher's data being updated by the students' sent data
-        // sendVal(question#, correct/incorrect)
-        sendVal(1, true);
-        sendVal(1, false);
-        sendVal(2, false);
-        sendVal(2, true);
-
-        // simulating teacher adding new questions
-        addCSVRow("NewQuestion1", "NewAnswer1");
-
-        updateCSV();*/
     }
 
     /// <summary>
@@ -78,13 +55,6 @@ public class ManageCSV : MonoBehaviour
                 Debug.Log("grid[" + j + ", " + i + "] = " + grid[j, i]);
             }
         }
-    }
-
-
-
-    private static void createCSV()
-    {
-        // make new CSV file with proper formatting but with no values yet
     }
 
     /// <summary>
@@ -158,17 +128,6 @@ public class ManageCSV : MonoBehaviour
         grid[5, yLength] = "0";
         yLength++;
     }
-
-    /*public void sendVal(int qNum, bool correct)
-    {
-        if (correct)
-        {
-            grid[4, qNum] = (Int32.Parse(grid[4, qNum]) + 1).ToString();
-        } else
-        {
-            grid[5, qNum] = (Int32.Parse(grid[5, qNum]) + 1).ToString();
-        }
-    }*/
 
     public void updateCSV()
     {
