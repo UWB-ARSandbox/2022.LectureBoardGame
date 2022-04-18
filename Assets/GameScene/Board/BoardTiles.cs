@@ -119,7 +119,7 @@ public class BoardTiles : MonoBehaviour
 
             // spawn in player
             Vector3 pos = getCoordinate(row + col);
-            ASLHelper.InstantiateASLObject("Player" + GameLiftManager.GetInstance().m_PeerId + "Piece", pos, Quaternion.identity);
+            ASLHelper.InstantiateASLObject("Player" + (GameLiftManager.GetInstance().m_PeerId - 1) + "Piece", pos, Quaternion.identity);
             // map[row + col] = "CREATED PLAYER PIECE";
         } else
         {

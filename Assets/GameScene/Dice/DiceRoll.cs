@@ -35,7 +35,7 @@ public class DiceRoll : MonoBehaviour
     {
         if (GameLiftManager.GetInstance().m_PeerId != 1)
         {
-            pm = GameObject.Find("Player" + GameLiftManager.GetInstance().m_PeerId + "Piece(Clone)").GetComponent<PlayerMovement>();
+            pm = GameObject.Find("Player" + (GameLiftManager.GetInstance().m_PeerId + 1) + "Piece(Clone)").GetComponent<PlayerMovement>();
         }
     }
 
