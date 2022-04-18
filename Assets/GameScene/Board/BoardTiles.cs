@@ -106,7 +106,7 @@ public class BoardTiles : MonoBehaviour
         // if not the host, spawn in player model
         if (GameLiftManager.GetInstance().m_PeerId != 1)
         {
-            GameObject.Find("TeacherUI").SetActive(false);
+            // GameObject.Find("TeacherUI").SetActive(false);
             float row = 0;
             float col = 0;
 

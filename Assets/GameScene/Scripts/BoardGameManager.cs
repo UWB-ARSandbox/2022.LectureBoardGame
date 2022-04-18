@@ -34,7 +34,7 @@ public class BoardGameManager : MonoBehaviour
         teacherUI = GameObject.Find("TeacherUI");
         playerGrouping = this.gameObject.GetComponent<PlayerGrouping>();
         studentUI.SetActive(false);
-        teacherUI.SetActive(false);
+        // teacherUI.SetActive(false);
         currId = GameLiftManager.GetInstance().m_PeerId;
 
     }

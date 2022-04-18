@@ -30,8 +30,6 @@ public class ManageCSV : MonoBehaviour
 
         aSLObject = gameObject.GetComponent<ASLObject>();
 
-        isHost = GameLiftManager.GetInstance().AmHighestPeer();
-
         //gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
 
         // grid = getCSVGrid(csvFile.text);

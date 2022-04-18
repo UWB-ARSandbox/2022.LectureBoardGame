@@ -38,7 +38,7 @@ public class MinMax : MonoBehaviour
         posDif = new Vector3 (350-80,0,0);
         sizeDif = new Vector2 (400,0);
         childDif = new Vector2 (360,0);
-        isHost = GameLiftManager.GetInstance().AmHighestPeer();
+        isHost = GameLiftManager.GetInstance().m_PeerId == 1;
         if (isHost)
         {
             Debug.Log("Host");

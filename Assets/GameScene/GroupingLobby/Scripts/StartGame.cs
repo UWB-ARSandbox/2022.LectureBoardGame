@@ -16,7 +16,7 @@ public class StartGame : MonoBehaviour
         started = false;
         groupLobby = GameObject.Find("GroupingLobby");
         groupLobbyCanvas = groupLobby.transform.Find("Canvas").gameObject;
-        teacherUI = GameObject.Find("TeacherUI");
+        // teacherUI = GameObject.Find("TeacherUI");
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(temp);
     }
 
@@ -29,12 +29,12 @@ public class StartGame : MonoBehaviour
             if (GameLiftManager.GetInstance().m_PeerId == 1)
             {
                 SceneManager.LoadScene("studentgame");
-                teacherUI.SetActive(true);
+                // teacherUI.SetActive(false);
             }
             else
             {
                 SceneManager.LoadScene("studentgame");
-                teacherUI.SetActive(false);
+                // teacherUI.SetActive(false);
             }
         }
     }
