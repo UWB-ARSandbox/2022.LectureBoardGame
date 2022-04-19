@@ -8,10 +8,12 @@ public class MinMax : MonoBehaviour
 {
     public Button min;
     public Button max;
-    public GameObject newQ;
-    public GameObject endGame;
+    public Button newQ;
+    public Button endGame;
     public GameObject teacherPanel;
     private bool isHost = false;
+    public GameObject addQ;
+    public Button exitQ;
 
     Vector2 minScale;
     Vector2 maxScale;
@@ -44,9 +46,12 @@ public class MinMax : MonoBehaviour
             Debug.Log("Host");
             min.gameObject.SetActive(false);
             max.gameObject.SetActive(false);
-            newQ.SetActive(true);
-            endGame.SetActive(true);
+            newQ.gameObject.SetActive(true);
+            endGame.gameObject.SetActive(true);
             teacherPanel.SetActive(true);
+            newQ.onClick.AddListener(newQuestion);
+            endGame.onClick.AddListener(quit);
+            exitQ.onClick.AddListener(closeq);
         }
     }
 
@@ -82,5 +87,17 @@ public class MinMax : MonoBehaviour
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(450,30);
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().position += new Vector3(180,0,0);
         }
+    }
+
+    void quit(){
+
+    }
+
+    void newQuestion(){
+        addQ.SetActive(true);
+    }
+
+    void closeq(){
+        addQ.SetActive(false);
     }
 }
