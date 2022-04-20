@@ -54,6 +54,7 @@
      <Compile Include="Assets\GameScene\Scripts\ASLpanel.cs" />
      <Compile Include="Assets\GameScene\Dice\DetectSide.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\VideoStream\Scripts\UI_Controls\DesktopCanvasController.cs" />
+     <Compile Include="Assets\GameScene\GroupingLobby\Scripts\TestSceneBehavior.cs" />
      <Compile Include="Assets\Demo\Scripts\Demo_PlayerCube.cs" />
      <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_MovingPlatform.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\SetTag\Scripts\SetTag_Example.cs" />
@@ -131,6 +132,7 @@
      <Compile Include="Assets\Demo\OnTriggerStay\Scripts\Demo_OnTriggerStayCountDown.cs" />
      <Compile Include="Assets\Demo\Scripts\ASL_AutonomousObjectHandler.cs" />
      <Compile Include="Assets\Demo\StressTest\Scripts\MovingObject.cs" />
+     <Compile Include="Assets\GameScene\Scripts\PlayerPanel.cs" />
      <Compile Include="Assets\Demo\ColliderTests\Scripts\TimerText.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARWorldOrigin\Scripts\ARWorldOriginExampleController.cs" />
      <Compile Include="Assets\Demo\AutonomousObjectDemo\Scripts\TestPrefab.cs" />

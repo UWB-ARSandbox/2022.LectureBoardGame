@@ -8,12 +8,6 @@ public class MinMax : MonoBehaviour
 {
     public Button min;
     public Button max;
-    public Button newQ;
-    public Button endGame;
-    public GameObject teacherPanel;
-    private bool isHost = false;
-    public GameObject addQ;
-    public Button exitQ;
 
     Vector2 minScale;
     Vector2 maxScale;
@@ -40,19 +34,6 @@ public class MinMax : MonoBehaviour
         posDif = new Vector3 (350-80,0,0);
         sizeDif = new Vector2 (400,0);
         childDif = new Vector2 (360,0);
-        isHost = GameLiftManager.GetInstance().m_PeerId == 1;
-        if (isHost)
-        {
-            Debug.Log("Host");
-            min.gameObject.SetActive(false);
-            max.gameObject.SetActive(false);
-            newQ.gameObject.SetActive(true);
-            endGame.gameObject.SetActive(true);
-            teacherPanel.SetActive(true);
-            newQ.onClick.AddListener(newQuestion);
-            endGame.onClick.AddListener(quit);
-            exitQ.onClick.AddListener(closeq);
-        }
     }
 
     // Update is called once per frame
@@ -87,17 +68,5 @@ public class MinMax : MonoBehaviour
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(450,30);
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().position += new Vector3(180,0,0);
         }
-    }
-
-    void quit(){
-
-    }
-
-    void newQuestion(){
-        addQ.SetActive(true);
-    }
-
-    void closeq(){
-        addQ.SetActive(false);
     }
 }
