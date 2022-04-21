@@ -88,6 +88,7 @@
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_FightOverFiveObjectsGUIController.cs" />
      <Compile Include="Assets\GameScene\Scripts\CamLineSegment.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ClaimObject\Scripts\ObjectToClaim_Example.cs" />
+     <Compile Include="Assets\GameScene\Scripts\teacherUI.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\Visualization\Frustum\ARFrustumController.cs" />
      <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_Player.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\FilterSphereTouchController.cs" />

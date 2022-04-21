@@ -15,12 +15,12 @@ C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54720
+49600
 Successfully changed project path to: C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame
 C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 98.04 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 1.13 ms.
+Refreshing native plugins compatible for Editor in 84.33 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 1.24 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets
@@ -35,76 +35,76 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56664
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56628
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002091 seconds.
+Registered in 0.002420 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 72.29 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
+Refreshing native plugins compatible for Editor in 73.02 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.12 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.061 seconds
+- Completed reload, in  1.074 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1061ms)
+	ReloadAssembly (1074ms)
 		BeginReloadAssembly (50ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (398ms)
-			LoadAssemblies (47ms)
+		EndReloadAssembly (404ms)
+			LoadAssemblies (48ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (128ms)
+			SetupTypeCache (130ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (181ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (183ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (72ms)
+				RefreshPlugins (73ms)
 				BeforeProcessingInitializeOnLoad (7ms)
 				ProcessInitializeOnLoadAttributes (72ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				ProcessInitializeOnLoadMethodAttributes (27ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.015919 seconds.
+Registered in 0.018943 seconds.
 Begin MonoManager ReloadAssembly
 OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 101.99 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.13 ms.
+Refreshing native plugins compatible for Editor in 73.29 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.11 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.608 seconds
+- Completed reload, in  2.589 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2609ms)
-		BeginReloadAssembly (133ms)
+	ReloadAssembly (2590ms)
+		BeginReloadAssembly (134ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (2413ms)
-			LoadAssemblies (116ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (2391ms)
+			LoadAssemblies (113ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (342ms)
+			SetupTypeCache (360ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (74ms)
-			SetupLoadedEditorAssemblies (1709ms)
+			RebuildScriptCaches (73ms)
+			SetupLoadedEditorAssemblies (1668ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (102ms)
-				BeforeProcessingInitializeOnLoad (111ms)
-				ProcessInitializeOnLoadAttributes (733ms)
-				ProcessInitializeOnLoadMethodAttributes (751ms)
+				RefreshPlugins (73ms)
+				BeforeProcessingInitializeOnLoad (105ms)
+				ProcessInitializeOnLoadAttributes (725ms)
+				ProcessInitializeOnLoadMethodAttributes (754ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -113,14 +113,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 1.18 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.12 ms.
-Unloading 4374 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 213.7 MB.
+Refreshing native plugins compatible for Editor in 0.97 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4375 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 213.8 MB.
 System memory in use after: 212.4 MB.
 
-Unloading 2483 unused Assets to reduce memory usage. Loaded Objects now: 4458.
-Total: 6.967600 ms (FindLiveObjects: 0.544800 ms CreateObjectMapping: 0.311300 ms MarkObjects: 3.495200 ms  DeleteObjects: 2.615400 ms)
+Unloading 2483 unused Assets to reduce memory usage. Loaded Objects now: 4459.
+Total: 7.014700 ms (FindLiveObjects: 0.767200 ms CreateObjectMapping: 0.373400 ms MarkObjects: 3.453000 ms  DeleteObjects: 2.420100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -137,16 +137,105 @@ AssetImportParameters requested are different than current active one (requested
 Received Import Request.
   path: Assets/GameScene/studentgame.unity
   artifactKey: Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/studentgame.unity using Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee41e49090e2a0fd4a91869a5f849aab') in 0.013414 seconds 
-  Import took 0.018769 seconds .
+Start importing Assets/GameScene/studentgame.unity using Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12c619178d09d3d450b82da9a4cb445c') in 0.013508 seconds 
+  Import took 0.018888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 98.055602 seconds.
+  path: Assets/GameScene/Scripts
+  artifactKey: Guid(7ae347944f0d74346a422a5f5c7222f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/Scripts using Guid(7ae347944f0d74346a422a5f5c7222f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02d240c8c6e5cfb02b7c4a328ba70864') in 0.005605 seconds 
+  Import took 0.011915 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.703521 seconds.
+  path: Assets/GameScene/Scripts/Teacher.cs
+  artifactKey: Guid(f8d458f006ed2064384bc3746db86445) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/Scripts/Teacher.cs using Guid(f8d458f006ed2064384bc3746db86445) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ac0246e26618e758f055902100b3ab5') in 0.016942 seconds 
+  Import took 0.022538 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.015212 seconds.
+Registered in 0.022903 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.19 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 1.17 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.11 ms.
+Error when attempting to update scene info fields. Scene info data may be stale.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:RefreshSceneInfoFieldsInScriptableObjects () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:313)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:InitializeOnLoad () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:231)
+System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
+
+(Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.067 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2067ms)
+		BeginReloadAssembly (145ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (45ms)
+		EndReloadAssembly (1858ms)
+			LoadAssemblies (126ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (359ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (1215ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (97ms)
+				ProcessInitializeOnLoadAttributes (495ms)
+				ProcessInitializeOnLoadMethodAttributes (609ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
+This message has been deprecated and will be removed in a later version of Unity.
+Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
+Refreshing native plugins compatible for Editor in 1.01 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.7 MB.
+System memory in use after: 202.6 MB.
+
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4463.
+Total: 6.528900 ms (FindLiveObjects: 0.570800 ms CreateObjectMapping: 0.297400 ms MarkObjects: 3.337900 ms  DeleteObjects: 2.322200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015390 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 9 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Error when attempting to update scene info fields. Scene info data may be stale.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -162,45 +251,45 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 (Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.974 seconds
+- Completed reload, in  2.004 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1974ms)
-		BeginReloadAssembly (137ms)
+	ReloadAssembly (2004ms)
+		BeginReloadAssembly (120ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (45ms)
-		EndReloadAssembly (1778ms)
-			LoadAssemblies (111ms)
+			CreateAndSetChildDomain (41ms)
+		EndReloadAssembly (1823ms)
+			LoadAssemblies (117ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (328ms)
+			SetupTypeCache (348ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (1188ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (1199ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (90ms)
-				ProcessInitializeOnLoadAttributes (488ms)
-				ProcessInitializeOnLoadMethodAttributes (597ms)
+				BeforeProcessingInitializeOnLoad (89ms)
+				ProcessInitializeOnLoadAttributes (494ms)
+				ProcessInitializeOnLoadMethodAttributes (603ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.33 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
-Unloading 4245 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.6 MB.
-System memory in use after: 202.5 MB.
+Refreshing native plugins compatible for Editor in 1.04 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.8 MB.
+System memory in use after: 202.7 MB.
 
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4461.
-Total: 6.361900 ms (FindLiveObjects: 0.532700 ms CreateObjectMapping: 0.295400 ms MarkObjects: 3.232700 ms  DeleteObjects: 2.300200 ms)
+Unloading 2350 unused Assets to reduce memory usage. Loaded Objects now: 4465.
+Total: 7.177000 ms (FindLiveObjects: 0.544100 ms CreateObjectMapping: 0.397700 ms MarkObjects: 3.530800 ms  DeleteObjects: 2.703300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -215,20 +304,206 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 260.635010 seconds.
-  path: Assets/GameScene/studentgame.unity
-  artifactKey: Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/studentgame.unity using Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95fe2c6335ef699c3c1ca7ffe47a7db4') in 0.018010 seconds 
-  Import took 0.025438 seconds .
+  Time since last request: 327.272869 seconds.
+  path: Assets/GameScene/Scripts/QuestionInfo.cs
+  artifactKey: Guid(0442ca8579adeaa46aff8880725f613c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/Scripts/QuestionInfo.cs using Guid(0442ca8579adeaa46aff8880725f613c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fecce48ee3212d2e0a267cc5f8ffab7') in 0.012918 seconds 
+  Import took 0.022059 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.017441 seconds.
+Registered in 0.020309 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 1.03 ms, found 9 plugins.
 Preloading 1 native plugins for Editor in 0.09 ms.
+Error when attempting to update scene info fields. Scene info data may be stale.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:RefreshSceneInfoFieldsInScriptableObjects () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:313)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:InitializeOnLoad () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:231)
+System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
+
+(Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.006 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2006ms)
+		BeginReloadAssembly (138ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (46ms)
+		EndReloadAssembly (1808ms)
+			LoadAssemblies (111ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (337ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (1190ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (89ms)
+				ProcessInitializeOnLoadAttributes (492ms)
+				ProcessInitializeOnLoadMethodAttributes (596ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
+This message has been deprecated and will be removed in a later version of Unity.
+Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
+Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.9 MB.
+System memory in use after: 202.9 MB.
+
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4469.
+Total: 6.944900 ms (FindLiveObjects: 0.542900 ms CreateObjectMapping: 0.505600 ms MarkObjects: 3.498600 ms  DeleteObjects: 2.397100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016411 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
+Error when attempting to update scene info fields. Scene info data may be stale.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:RefreshSceneInfoFieldsInScriptableObjects () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:313)
+Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:InitializeOnLoad () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:231)
+System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
+
+(Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.105 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2105ms)
+		BeginReloadAssembly (135ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (44ms)
+		EndReloadAssembly (1894ms)
+			LoadAssemblies (112ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (369ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (1240ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (100ms)
+				ProcessInitializeOnLoadAttributes (501ms)
+				ProcessInitializeOnLoadMethodAttributes (627ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
+This message has been deprecated and will be removed in a later version of Unity.
+Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
+Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.9 MB.
+System memory in use after: 202.9 MB.
+
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4472.
+Total: 7.461100 ms (FindLiveObjects: 0.615000 ms CreateObjectMapping: 0.369400 ms MarkObjects: 3.219600 ms  DeleteObjects: 3.235700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 105.613538 seconds.
+  path: Assets/GameScene/Scripts/QuestionInfo.cs
+  artifactKey: Guid(0442ca8579adeaa46aff8880725f613c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/Scripts/QuestionInfo.cs using Guid(0442ca8579adeaa46aff8880725f613c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '320ae93275862f7134bdf7bcc4e49e1a') in 0.005897 seconds 
+  Import took 0.012562 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.969269 seconds.
+  path: Assets/GameScene/CSVTest
+  artifactKey: Guid(071e4c3b4169c5546b900db43bc67cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/CSVTest using Guid(071e4c3b4169c5546b900db43bc67cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bd804b39c33cab09070cf2ee94f078a') in 0.002476 seconds 
+  Import took 0.008402 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.931540 seconds.
+  path: Assets/GameScene/CSVTest/Scripts
+  artifactKey: Guid(5d6a2a106342fb74a8fd17f76acf77fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/CSVTest/Scripts using Guid(5d6a2a106342fb74a8fd17f76acf77fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e558b205ec6055a6df32fa6dc90e178') in 0.005643 seconds 
+  Import took 0.011324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.863119 seconds.
+  path: Assets/GameScene/CSVTest/Scripts/FileExplorer.cs
+  artifactKey: Guid(17e91d98d038ee04782b7f6ed7136fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/CSVTest/Scripts/FileExplorer.cs using Guid(17e91d98d038ee04782b7f6ed7136fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '142894b09eb9049a462272065f8acdce') in 0.005850 seconds 
+  Import took 0.011672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.628956 seconds.
+  path: Assets/GameScene/CSVTest/Scripts/ManageCSV.cs
+  artifactKey: Guid(6f921d7fb158d694c90731683e5db291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameScene/CSVTest/Scripts/ManageCSV.cs using Guid(6f921d7fb158d694c90731683e5db291) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5178eae3e143d738939d0a71d10c1c5b') in 0.002175 seconds 
+  Import took 0.007638 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015333 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 Error when attempting to update scene info fields. Scene info data may be stale.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
@@ -245,100 +520,27 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 Mono: successfully reloaded assembly
 - Completed reload, in  1.982 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1983ms)
-		BeginReloadAssembly (134ms)
+	ReloadAssembly (1982ms)
+		BeginReloadAssembly (131ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (43ms)
-		EndReloadAssembly (1785ms)
-			LoadAssemblies (118ms)
+			CreateAndSetChildDomain (42ms)
+		EndReloadAssembly (1791ms)
+			LoadAssemblies (110ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (332ms)
+			SetupTypeCache (337ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (44ms)
-			SetupLoadedEditorAssemblies (1185ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (86ms)
-				ProcessInitializeOnLoadAttributes (496ms)
-				ProcessInitializeOnLoadMethodAttributes (590ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
-OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
-This message has been deprecated and will be removed in a later version of Unity.
-Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.19 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.8 MB.
-System memory in use after: 202.6 MB.
-
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4465.
-Total: 6.741800 ms (FindLiveObjects: 0.587100 ms CreateObjectMapping: 0.299600 ms MarkObjects: 3.270900 ms  DeleteObjects: 2.582800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016292 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.05 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-Error when attempting to update scene info fields. Scene info data may be stale.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:RefreshSceneInfoFieldsInScriptableObjects () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:313)
-Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:InitializeOnLoad () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:231)
-System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
-System.Reflection.MethodBase:Invoke (object,object[])
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
-
-(Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  2.013 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2013ms)
-		BeginReloadAssembly (126ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (43ms)
-		EndReloadAssembly (1826ms)
-			LoadAssemblies (117ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (352ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (44ms)
-			SetupLoadedEditorAssemblies (1207ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (1187ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (91ms)
-				ProcessInitializeOnLoadAttributes (501ms)
-				ProcessInitializeOnLoadMethodAttributes (603ms)
+				ProcessInitializeOnLoadAttributes (487ms)
+				ProcessInitializeOnLoadMethodAttributes (597ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -347,14 +549,14 @@ Platform modules already initialized, skipping
 OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.09 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
-Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.8 MB.
-System memory in use after: 202.7 MB.
+Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.9 MB.
+System memory in use after: 202.9 MB.
 
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4468.
-Total: 6.901900 ms (FindLiveObjects: 0.519700 ms CreateObjectMapping: 0.283200 ms MarkObjects: 3.463400 ms  DeleteObjects: 2.634500 ms)
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4475.
+Total: 8.324000 ms (FindLiveObjects: 0.779300 ms CreateObjectMapping: 0.379300 ms MarkObjects: 3.641700 ms  DeleteObjects: 3.522600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -368,29 +570,13 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  Time since last request: 59.260429 seconds.
-  path: Assets/GameScene/Scripts/teacherUI.cs
-  artifactKey: Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Scripts/teacherUI.cs using Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2aed99998295bdcab2f4e191b015582a') in 0.021974 seconds 
-  Import took 0.028451 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 142.475998 seconds.
-  path: Assets/GameScene/Scripts/teacherUI.cs
-  artifactKey: Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Scripts/teacherUI.cs using Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e76411ffe98ce87c359c97657bebdc78') in 0.002005 seconds 
-  Import took 0.008293 seconds .
-
-========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014470 seconds.
+Registered in 0.015588 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
+Refreshing native plugins compatible for Editor in 1.08 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 Error when attempting to update scene info fields. Scene info data may be stale.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
@@ -405,110 +591,29 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 (Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.988 seconds
+- Completed reload, in  2.053 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1988ms)
-		BeginReloadAssembly (134ms)
+	ReloadAssembly (2054ms)
+		BeginReloadAssembly (139ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (46ms)
-		EndReloadAssembly (1793ms)
-			LoadAssemblies (111ms)
+			CreateAndSetChildDomain (42ms)
+		EndReloadAssembly (1850ms)
+			LoadAssemblies (120ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (340ms)
+			SetupTypeCache (349ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (1179ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (1211ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (90ms)
-				ProcessInitializeOnLoadAttributes (490ms)
-				ProcessInitializeOnLoadMethodAttributes (588ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
-OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
-This message has been deprecated and will be removed in a later version of Unity.
-Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.9 MB.
-System memory in use after: 202.9 MB.
-
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4471.
-Total: 6.417200 ms (FindLiveObjects: 0.532800 ms CreateObjectMapping: 0.308200 ms MarkObjects: 3.237300 ms  DeleteObjects: 2.338000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 52.296273 seconds.
-  path: Assets/GameScene/Scripts/teacherUI.cs
-  artifactKey: Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/Scripts/teacherUI.cs using Guid(b8b53debbee652a4594a929c4556bef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a5219e3c439b97be74c4627152b5d8a') in 0.005667 seconds 
-  Import took 0.012026 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015138 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.10 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-Error when attempting to update scene info fields. Scene info data may be stale.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:RefreshSceneInfoFieldsInScriptableObjects () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:313)
-Microsoft.MixedReality.Toolkit.Editor.SceneInfoUtils:InitializeOnLoad () (at Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs:231)
-System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
-System.Reflection.MethodBase:Invoke (object,object[])
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
-
-(Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  2.039 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2039ms)
-		BeginReloadAssembly (137ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (43ms)
-		EndReloadAssembly (1838ms)
-			LoadAssemblies (112ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (333ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (40ms)
-			SetupLoadedEditorAssemblies (1241ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (97ms)
-				ProcessInitializeOnLoadAttributes (503ms)
-				ProcessInitializeOnLoadMethodAttributes (626ms)
+				ProcessInitializeOnLoadAttributes (488ms)
+				ProcessInitializeOnLoadMethodAttributes (619ms)
 				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -517,14 +622,14 @@ Platform modules already initialized, skipping
 OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.14 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 204.0 MB.
-System memory in use after: 202.9 MB.
+System memory in use after: 203.0 MB.
 
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4474.
-Total: 6.583500 ms (FindLiveObjects: 0.529000 ms CreateObjectMapping: 0.301200 ms MarkObjects: 3.268600 ms  DeleteObjects: 2.482900 ms)
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4478.
+Total: 7.200900 ms (FindLiveObjects: 0.596600 ms CreateObjectMapping: 0.374800 ms MarkObjects: 3.338300 ms  DeleteObjects: 2.890000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -539,20 +644,108 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 129.801568 seconds.
-  path: Assets/GameScene
-  artifactKey: Guid(f721b645fe0fc944e924032c2467e5d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene using Guid(f721b645fe0fc944e924032c2467e5d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfcfa2c37d128629bb0313f9da8d245a') in 0.007209 seconds 
-  Import took 0.014036 seconds .
+  Time since last request: 505.933306 seconds.
+  path: Assets/Sprites
+  artifactKey: Guid(0f1656db3a1e69f4695debccaed69c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites using Guid(0f1656db3a1e69f4695debccaed69c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb4176cdc1ad3ee1a20a865a0bbfdea') in 0.007339 seconds 
+  Import took 0.018958 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.050580 seconds.
+  path: Assets/Sprites/board(1).png
+  artifactKey: Guid(24ad2824fe3ec0147b094e78199e93f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/board(1).png using Guid(24ad2824fe3ec0147b094e78199e93f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d7064387933ca08f20914bb7f8da8b7') in 0.082021 seconds 
+  Import took 0.090559 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/Sprites/questionFace.png
+  artifactKey: Guid(389fe17589dc02e40a78f930b6e498fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/questionFace.png using Guid(389fe17589dc02e40a78f930b6e498fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62dbae42949390347843001e7e1bea77') in 0.020592 seconds 
+  Import took 0.025778 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/Sprites/questionPanel.mat
+  artifactKey: Guid(50c32b9755a27cc44a74c53c634a6a27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/questionPanel.mat using Guid(50c32b9755a27cc44a74c53c634a6a27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc1b2799bc8dddad6362f3b2367832da') in 0.060861 seconds 
+  Import took 0.066118 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Sprites/starFace.png
+  artifactKey: Guid(ee8ae82a5de144648a00774b2e2acba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/starFace.png using Guid(ee8ae82a5de144648a00774b2e2acba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8f5ee94a49303eb35245b2c098d7bc5') in 0.014677 seconds 
+  Import took 0.020700 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Sprites/fightPanel.mat
+  artifactKey: Guid(2f3b0944c3f65534cb11ad4a8ce913a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/fightPanel.mat using Guid(2f3b0944c3f65534cb11ad4a8ce913a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8887c0e21452c5024cc45e4966e0c7b') in 0.033348 seconds 
+  Import took 0.038653 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Sprites/dropPanel.mat
+  artifactKey: Guid(a8c6d5d48fd1add499b865b14c56a9ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/dropPanel.mat using Guid(a8c6d5d48fd1add499b865b14c56a9ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ded090db1f30a13ac573979d28f8455a') in 0.012516 seconds 
+  Import took 0.018860 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Sprites/fightFace.png
+  artifactKey: Guid(5e7e570f6e1fea54283da7119c479c9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/fightFace.png using Guid(5e7e570f6e1fea54283da7119c479c9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5013e3a0abad4a485adb9b3b5f262e55') in 0.019882 seconds 
+  Import took 0.025474 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Sprites/starPanel.mat
+  artifactKey: Guid(c061ede0705c64240905b9b7fb03876e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/starPanel.mat using Guid(c061ede0705c64240905b9b7fb03876e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21883dc6841a99387bc9d7920921b8bb') in 0.040167 seconds 
+  Import took 0.046777 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Sprites/dropFace.png
+  artifactKey: Guid(8ab0a08caab8ec447ae146deb3403273) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/dropFace.png using Guid(8ab0a08caab8ec447ae146deb3403273) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdcb19f8a829244e4c2a9eb996583155') in 0.016977 seconds 
+  Import took 0.023442 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 125.858685 seconds.
+  path: Assets/ASL/ASL_Tutorials/Simple/SliderBar
+  artifactKey: Guid(fcbd4e7f411c498428e13fa43a9b3727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ASL/ASL_Tutorials/Simple/SliderBar using Guid(fcbd4e7f411c498428e13fa43a9b3727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77fe83c2de252d61809d7512404b4b59') in 0.002473 seconds 
+  Import took 0.009347 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.073198 seconds.
+  path: Assets/ASL/ASL_Tutorials/Simple/SliderBar/SliderBar_Example.unity
+  artifactKey: Guid(c4d6193d264f90e458fd36f1ce9d3d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ASL/ASL_Tutorials/Simple/SliderBar/SliderBar_Example.unity using Guid(c4d6193d264f90e458fd36f1ce9d3d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0aacbc570502d80f37606f47d4c14731') in 0.003031 seconds 
+  Import took 0.008723 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.015820 seconds.
+Registered in 0.015923 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.02 ms, found 9 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
+Refreshing native plugins compatible for Editor in 1.12 ms, found 9 plugins.
+Preloading 1 native plugins for Editor in 0.16 ms.
 Error when attempting to update scene info fields. Scene info data may be stale.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
@@ -567,45 +760,45 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 (Filename: Assets/ASL/MRTK/Core/Inspectors/PropertyDrawers/SceneInfoUtils.cs Line: 313)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.990 seconds
+- Completed reload, in  2.035 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1990ms)
-		BeginReloadAssembly (137ms)
+	ReloadAssembly (2035ms)
+		BeginReloadAssembly (141ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (46ms)
-		EndReloadAssembly (1791ms)
-			LoadAssemblies (109ms)
+			CreateAndSetChildDomain (47ms)
+		EndReloadAssembly (1832ms)
+			LoadAssemblies (120ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (332ms)
+			SetupTypeCache (334ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (1201ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (1216ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (489ms)
-				ProcessInitializeOnLoadMethodAttributes (612ms)
+				BeforeProcessingInitializeOnLoad (106ms)
+				ProcessInitializeOnLoadAttributes (503ms)
+				ProcessInitializeOnLoadMethodAttributes (593ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 OnLevelWasLoaded was found on ASL_AutonomousObjectHandler
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
-Refreshing native plugins compatible for Editor in 1.03 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 1.04 ms, found 9 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 4246 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.0 MB.
-System memory in use after: 202.9 MB.
+Unloading 4247 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.5 MB.
+System memory in use after: 206.5 MB.
 
-Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4477.
-Total: 7.176800 ms (FindLiveObjects: 0.696300 ms CreateObjectMapping: 0.372300 ms MarkObjects: 3.419700 ms  DeleteObjects: 2.687600 ms)
+Unloading 2349 unused Assets to reduce memory usage. Loaded Objects now: 4521.
+Total: 6.796400 ms (FindLiveObjects: 0.565100 ms CreateObjectMapping: 0.304100 ms MarkObjects: 3.397400 ms  DeleteObjects: 2.528400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -620,10 +813,18 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 43.828817 seconds.
+  Time since last request: 451.366441 seconds.
+  path: Assets/Plugins
+  artifactKey: Guid(b106b0e04d56db7479aad2d28bd9ec2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins using Guid(b106b0e04d56db7479aad2d28bd9ec2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a098ed1894a1be3b0a6173bff980b0c1') in 0.006182 seconds 
+  Import took 0.012590 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.490263 seconds.
   path: Assets/GameScene/studentgame.unity
   artifactKey: Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameScene/studentgame.unity using Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce547903e50e8a0a39037e469128d074') in 0.035154 seconds 
-  Import took 0.042757 seconds .
+Start importing Assets/GameScene/studentgame.unity using Guid(43767d99c7f037b4f88bff741a038b96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77e8e533e387849a60732433281237b0') in 0.014075 seconds 
+  Import took 0.020071 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

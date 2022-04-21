@@ -20,6 +20,8 @@ public class teacherUI : MonoBehaviour
             newQ.onClick.AddListener(newQuestion);
             endGame.onClick.AddListener(quit);
             exitQ.onClick.AddListener(closeq);
+        } else {
+            gameObject.SetActive(false);
         }
         
     }
