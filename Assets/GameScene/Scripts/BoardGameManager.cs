@@ -15,10 +15,6 @@ public class BoardGameManager : MonoBehaviour
 {
     // The singleton instance for this class
     private static BoardGameManager m_Instance;
-    /// <summary>
-    /// Dictionary containing the all players where key=peerid, value=group#
-    /// </summary>
-    public Dictionary<int, int> m_Players = new Dictionary<int, int>();
 
     private GameObject groupLobby;
     private GameObject groupLobbyCanvas;
@@ -28,6 +24,7 @@ public class BoardGameManager : MonoBehaviour
     private GameObject camLight;
     [SerializeField] private int currId;
     [SerializeField] private int m_groupWorldSpacing = 75;
+    public bool m_SendFloat = false;
 
 
     // Start is called before the first frame update
@@ -43,18 +40,41 @@ public class BoardGameManager : MonoBehaviour
         studentUI.SetActive(false);
         teacherUI.SetActive(false);
         currId = GameLiftManager.GetInstance().m_PeerId;
+        studentUI.GetComponent<ASLObject>()._LocallySetFloatCallback(studentFloatFunction);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (m_SendFloat && (studentUI.transform.childCount == playerGrouping.m_playerGroups.Count))
+        {
+            ASLObject thisASL = studentUI.GetComponent<ASLObject>();
+            float[] m_MyFloats = new float[4];
+            m_MyFloats[0] = 1;
+            m_MyFloats[1] = 1;
+            thisASL.SendAndSetClaim(() =>
+            {
+                string floats = "BoardGameManager Floats sent: ";
+                for (int i = 0; i < m_MyFloats.Length; i++)
+                {
+                    floats += m_MyFloats[i].ToString();
+                    if (m_MyFloats.Length - 1 != i)
+                    {
+                        floats += ", ";
+                    }
+                }
+                Debug.Log(floats);
+                thisASL.SendFloatArray(m_MyFloats);
+            });
+            m_SendFloat = false;
+        }
     }
     //Called by host
     public void startGame()
     {
         Debug.Log("host startGame");
+        playerGrouping.updatePlayerGroups();
         studentUI.SetActive(true);
         setupGroupWorlds();
         //Claim the object
@@ -67,17 +87,27 @@ public class BoardGameManager : MonoBehaviour
         groupLobbyCanvas.SetActive(false);
         teacherUI.SetActive(true);
     }
-
     private int getPlayerGroup()
     {
-        int disableOffset = 2;
-        for (int i = disableOffset; i < playerGrouping.playersGrid.transform.childCount; i++)
-        {
-            GameObject player = playerGrouping.playersGrid.transform.GetChild(i).gameObject;
-            if (Int16.Parse(player.name) == GameLiftManager.GetInstance().m_PeerId)
-                return (i - disableOffset) / playerGrouping.groupLimit + 1;
-        }
-        return -1;
+        //for (int i = 0; i < playerGrouping.playersGrid.transform.childCount; i++)
+        //{
+        //    GameObject player = playerGrouping.playersGrid.transform.GetChild(i).gameObject;
+        //    if (Int16.Parse(player.name) == GameLiftManager.GetInstance().m_PeerId)
+        //        return i / playerGrouping.groupLimit + 1;
+        //}
+        //return -1;
+        return playerGrouping.getPlayerGroup(GameLiftManager.GetInstance().m_PeerId);
+    }
+    private int getPlayerGroup(int id)
+    {
+        //for (int i = 0; i < playerGrouping.playersGrid.transform.childCount; i++)
+        //{
+        //    GameObject player = playerGrouping.playersGrid.transform.GetChild(i).gameObject;
+        //    if (Int16.Parse(player.name) == GameLiftManager.GetInstance().m_PeerId)
+        //        return i / playerGrouping.groupLimit + 1;
+        //}
+        //return -1;
+        return playerGrouping.getPlayerGroup(id);
     }
 
     public void playerStartGame()
@@ -91,7 +121,6 @@ public class BoardGameManager : MonoBehaviour
             int groupNum = getPlayerGroup();
             for (int i = 0; i < studentUI.transform.childCount; i++)
             {
-                //if (i == m_Players[id] - 1) //group player is in
                 if (i == groupNum - 1)
                 {
                     studentUI.transform.GetChild(i).gameObject.SetActive(true);
@@ -110,28 +139,12 @@ public class BoardGameManager : MonoBehaviour
     private void setupGroupWorlds()
     {
         Debug.Log("setupGroupWorlds");
-        int disableOffset = 2;
-        int numOfGroups = (playerGrouping.playersGrid.transform.childCount - disableOffset) / playerGrouping.groupLimit + 1;
+        int numOfGroups = (playerGrouping.playersGrid.transform.childCount) / playerGrouping.groupLimit + 1;
         for (int i = 1; i <= numOfGroups; i++)
         {
             createGroupWorld(i);
         }
-
-        //for (int i = disableOffset; i < playerGrouping.playersGrid.transform.childCount; i++)
-        //{
-        //    GameObject player = playerGrouping.playersGrid.transform.GetChild(i).gameObject;
-        //    int groupNum = (i - disableOffset) / playerGrouping.groupLimit + 1;
-        //    int playerNum = (i - disableOffset) % playerGrouping.groupLimit; //0-3
-        //    Debug.Log("sutdentUI childCount: " + studentUI.transform.childCount + "/ngroupNum: " + groupNum);
-        //    if (studentUI.transform.childCount < groupNum)
-        //    {
-        //        createGroupWorld(groupNum);
-        //    }
-        //    else
-        //    {
-        //        setupPlayerPanel(groupNum, playerNum, player);
-        //    }
-        //}
+        m_SendFloat = true;
     }
 
     public GameObject getGroupWorld(int groupNum)
@@ -153,8 +166,7 @@ public class BoardGameManager : MonoBehaviour
     {
         Debug.Log("createGroupWorld");
         ASLHelper.InstantiateASLObject("GroupWorld", new Vector3(studentUI.transform.position.x + m_groupWorldSpacing * (groupNum - 1), studentUI.transform.position.y,
-            studentUI.transform.position.z), Quaternion.identity, studentUI.GetComponent<ASLObject>().m_Id, "", WhatToDoWithMyOtherGameObjectNowThatItIsCreated,
-            ClaimRecoveryFunction, MyFloatsFunction);
+            studentUI.transform.position.z), Quaternion.identity, studentUI.GetComponent<ASLObject>().m_Id);
     }
 
     private void setupPlayerPanel(int groupNum, int playerNum, GameObject player)
@@ -167,69 +179,50 @@ public class BoardGameManager : MonoBehaviour
         }
         else
         {
-            playerPanels.transform.GetChild(playerNum).gameObject.GetComponent<PlayerPanel>().setPlayer(player.transform.GetChild(0).gameObject.GetComponent<Text>().text, Int16.Parse(player.name));
-            m_Players.Add(Int16.Parse(player.name), groupNum);
+            playerPanels.transform.GetChild(playerNum).gameObject.GetComponent<PlayerPanel>().setPlayer(Int16.Parse(player.name));
         }
     }
 
-    /// <summary>
-    /// A function that is called right after an ASL game object is created if that object was passed in the class name and function name of this function.
-    /// This is called immediately upon creation, allowing the user a way to access their newly created object after the server has spawned it
-    /// </summary>
-    /// <param name="_gameObject">The gameobject that was created</param>
-    public static void WhatToDoWithMyOtherGameObjectNowThatItIsCreated(GameObject _gameObject)
+    public static void studentFloatFunction(string _id, float[] _myFloats)
     {
-        BoardGameManager bgManager= BoardGameManager.GetInstance();
-        int groupNum = _gameObject.transform.GetSiblingIndex() + 1;
-        int player1 = bgManager.playerGrouping.groupLimit * (groupNum - 1) + 2;
-        //GameObject player = bgManager.playerGrouping.playersGrid.transform.GetChild(player1).gameObject;
-        //bgManager.setupPlayerPanel(groupNum, player1, player);
-        int j = 0;
-        for (int i = player1; (i < player1 + 4) && (i < bgManager.playerGrouping.playersGrid.transform.childCount); i++)
+        switch(_myFloats[0])
         {
-            GameObject player = bgManager.playerGrouping.playersGrid.transform.GetChild(i).gameObject;
-            //bgManager.setupPlayerPanel(groupNum, i, player);
-            GameObject playerPanels = _gameObject.transform.Find("Canvas").Find("PlayerPanels").gameObject;
-            Debug.Assert(playerPanels != null);
-            if (player.name[0] == 'b')
-            {
-                playerPanels.transform.GetChild(j++).gameObject.SetActive(false);
-            }
-            else
-            {
-                playerPanels.transform.GetChild(j++).gameObject.GetComponent<PlayerPanel>().setPlayer(player.transform.GetChild(0).gameObject.GetComponent<Text>().text, Int16.Parse(player.name));
-                bgManager.m_Players.Add(Int16.Parse(player.name), groupNum);
-            }
-
+            case 1:
+                Debug.Log("BoardGameManager studentFloatFunction case 1");
+                BoardGameManager bgManager = BoardGameManager.GetInstance();
+                int index1 = 0;
+                for (int i = 0; i < bgManager.playerGrouping.m_playerGroups.Count; i++)
+                //foreach (List<int> subList in bgManager.playerGrouping.m_playerGroups)
+                {
+                    GameObject gameWorld = bgManager.studentUI.transform.GetChild(index1++).gameObject;
+                    GameObject playerPanels = gameWorld.transform.Find("Canvas").Find("PlayerPanels").gameObject;
+                    int index2 = 0;
+                    foreach (int playerID in bgManager.playerGrouping.m_playerGroups[i])
+                    {
+                        if (index2 == 4)
+                        {
+                            Debug.Log("BoardGameManager studentFloatFunction index 4; playerID: " + playerID);
+                            break;
+                        }
+                        if (playerID == 0)
+                        {
+                            playerPanels.transform.GetChild(index2++).gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            playerPanels.transform.GetChild(index2++).gameObject.GetComponent<PlayerPanel>().setPlayer(playerID);
+                        }
+                    }
+                    while (index2 < 4)
+                    {
+                        playerPanels.transform.GetChild(index2++).gameObject.SetActive(false);
+                    }
+                }
+                break;
+            default:
+                Debug.Log("BoardGameManager studentFloatFunction default case");
+                break;
         }
-    }
-
-    /// <summary>
-    /// A function that is called when an ASL object's claim is rejected. This function can be set to be called upon object creation.
-    /// </summary>
-    /// <param name="_id">The id of the object who's claim was rejected</param>
-    /// <param name="_cancelledCallbacks">The amount of claim callbacks that were cancelled</param>
-    public static void ClaimRecoveryFunction(string _id, int _cancelledCallbacks)
-    {
-        Debug.Log("Aw man. My claim got rejected for my object with id: " + _id + " it had " + _cancelledCallbacks + " claim callbacks to execute.");
-        //If I can't have this object, no one can. (An example of how to get the object we were unable to claim based on its ID and then perform an action). Obviously,
-        //deleting the object wouldn't be very nice to whoever prevented your claim
-        if (ASL.ASLHelper.m_ASLObjects.TryGetValue(_id, out ASL.ASLObject _myObject))
-        {
-            _myObject.GetComponent<ASL.ASLObject>().DeleteObject();
-        }
-
-    }
-
-    /// <summary>
-    /// A function that is called whenever an ASL object calls <see cref="ASL.ASLObject.SendFloatArray(float[])"/>.
-    /// This function can be assigned to an ASL object upon creation.
-    /// </summary>
-    /// <param name="_id"></param>
-    /// <param name="_myFloats"></param>
-    public static void MyFloatsFunction(string _id, float[] _myFloats)
-    {
-
     }
 
     public static BoardGameManager GetInstance()

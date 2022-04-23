@@ -10,7 +10,6 @@ public class GroupColoring : MonoBehaviour
     private int currentIndex;
     private Color32 color1;
     private Color32 color2;
-    private int disableOffset = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,7 @@ public class GroupColoring : MonoBehaviour
 
     private void setColor()
     {
-        if (((transform.GetSiblingIndex() - disableOffset) / groupLimit) % 2 == 0)
+        if (((transform.GetSiblingIndex()) / groupLimit) % 2 == 0)
         {
             image.color = color1;
         } else

@@ -9,17 +9,22 @@ public class PlayerPanel : MonoBehaviour
     public int ownerID;
     public int stars = 0;
     public int movePts = 0;
-    ASLObject m_ASLObject;
+    public ASLObject m_ASLObject;
     private Text playerName;
     private Text playerPoints;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        m_ASLObject = GetComponent<ASLObject>();
+        m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
         playerName = gameObject.transform.Find("playerName").GetComponent<Text>();
         playerPoints = gameObject.transform.Find("playerPoints").GetComponent<Text>();
+        m_ASLObject._LocallySetFloatCallback(floatFunction);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+       
     }
 
     // Update is called once per frame
@@ -28,11 +33,47 @@ public class PlayerPanel : MonoBehaviour
 
     }
 
-    public void setPlayer(string name, int id)
+    public void setPlayer(int id)
     {
-        playerName.text = name;
-        ownerID = id;
-        m_ASLObject._LocallySetFloatCallback(floatFunction);
+        float[] m_MyFloats = new float[4];
+        m_MyFloats[0] = 1;
+        m_MyFloats[1] = id;
+        m_ASLObject.SendAndSetClaim(() =>
+        {
+            string floats = "PlayerGrouping Floats sent: ";
+            for (int i = 0; i < m_MyFloats.Length; i++)
+            {
+                floats += m_MyFloats[i].ToString();
+                if (m_MyFloats.Length - 1 != i)
+                {
+                    floats += ", ";
+                }
+            }
+            Debug.Log(floats);
+            m_ASLObject.SendFloatArray(m_MyFloats);
+        });
+    }
+
+    public void updatePoints(int addedStars, int addedMovePts)
+    {
+        float[] m_MyFloats = new float[4];
+        m_MyFloats[0] = 2;
+        m_MyFloats[1] = addedStars;
+        m_MyFloats[2] = addedMovePts;
+        m_ASLObject.SendAndSetClaim(() =>
+        {
+            string floats = "PlayerGrouping Floats sent: ";
+            for (int i = 0; i < m_MyFloats.Length; i++)
+            {
+                floats += m_MyFloats[i].ToString();
+                if (m_MyFloats.Length - 1 != i)
+                {
+                    floats += ", ";
+                }
+            }
+            Debug.Log(floats);
+            m_ASLObject.SendFloatArray(m_MyFloats);
+        });
     }
 
     private void updatePointsText()
@@ -52,6 +93,7 @@ public class PlayerPanel : MonoBehaviour
         if (_f[0] == 1)
         {
             ownerID = (int)_f[1];
+            playerName.text = GameLiftManager.GetInstance().m_Players[(int)_f[1]] + "";
         }
         else if (_f[0] == 2)
         {
