@@ -35,47 +35,47 @@ public class BoardTiles : MonoBehaviour
         map[3.13f] = new List<GameObject>();
 
         map[4.01f] = new List<GameObject>();
-        /*map[4.02f] = new List<GameObject>();
+        map[4.02f] = new List<GameObject>();
         map[4.03f] = new List<GameObject>();
         map[4.04f] = new List<GameObject>();
         map[4.10f] = new List<GameObject>();
         map[4.11f] = new List<GameObject>();
-        map[4.12f] = new List<GameObject>();*/
+        map[4.12f] = new List<GameObject>();
         map[4.13f] = new List<GameObject>();
 
         map[5.01f] = new List<GameObject>();
-        /*map[5.04f] = new List<GameObject>();
-        map[5.10f] = new List<GameObject>();*/
+        map[5.04f] = new List<GameObject>();
+        map[5.10f] = new List<GameObject>();
         map[5.13f] = new List<GameObject>();
 
         map[6.01f] = new List<GameObject>();
-        /*map[6.04f] = new List<GameObject>();
-        map[6.10f] = new List<GameObject>();*/
+        map[6.04f] = new List<GameObject>();
+        map[6.10f] = new List<GameObject>();
         map[6.13f] = new List<GameObject>();
 
 
         map[7.01f] = new List<GameObject>();
-        /*map[7.04f] = new List<GameObject>();
-        map[7.10f] = new List<GameObject>();*/
+        map[7.04f] = new List<GameObject>();
+        map[7.10f] = new List<GameObject>();
         map[7.13f] = new List<GameObject>();
 
         map[8.01f] = new List<GameObject>();
-        /*map[8.04f] = new List<GameObject>();
-        map[8.10f] = new List<GameObject>();*/
+        map[8.04f] = new List<GameObject>();
+        map[8.10f] = new List<GameObject>();
         map[8.13f] = new List<GameObject>();
 
         map[9.01f] = new List<GameObject>();
-        /*map[9.04f] = new List<GameObject>();
-        map[9.10f] = new List<GameObject>();*/
+        map[9.04f] = new List<GameObject>();
+        map[9.10f] = new List<GameObject>();
         map[9.13f] = new List<GameObject>();
 
         map[10.01f] = new List<GameObject>();
-        /*map[10.02f] = new List<GameObject>();
+        map[10.02f] = new List<GameObject>();
         map[10.03f] = new List<GameObject>();
         map[10.04f] = new List<GameObject>();
         map[10.10f] = new List<GameObject>();
         map[10.11f] = new List<GameObject>();
-        map[10.12f] = new List<GameObject>();*/
+        map[10.12f] = new List<GameObject>();
         map[10.13f] = new List<GameObject>();
 
         map[11.01f] = new List<GameObject>();
@@ -119,6 +119,7 @@ public class BoardTiles : MonoBehaviour
 
             // spawn in player
             Vector3 pos = getCoordinate(row + col);
+            // pos = new Vector3(3.04f, 0, 2.07f);
             ASLHelper.InstantiateASLObject("Player" + (GameLiftManager.GetInstance().m_PeerId - 1) + "Piece", pos, Quaternion.identity);
             // map[row + col] = "CREATED PLAYER PIECE";
         } else

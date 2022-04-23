@@ -389,64 +389,64 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="AWSSDK.CognitoIdentity">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.CognitoIdentity.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.CognitoIdentity.dll</HintPath>
  </Reference>
  <Reference Include="Google.Protobuf">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/Plugins/Google.Protobuf.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/Google.Protobuf.dll</HintPath>
  </Reference>
  <Reference Include="AWSSDK.Lambda">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.Lambda.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.Lambda.dll</HintPath>
  </Reference>
  <Reference Include="AWSSDK.SecurityToken">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.SecurityToken.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.SecurityToken.dll</HintPath>
  </Reference>
  <Reference Include="log4net">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/Plugins/log4net.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/log4net.dll</HintPath>
  </Reference>
  <Reference Include="SmartExplorer">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/Plugins/SmartExplorer.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/Plugins/SmartExplorer.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandler">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@e6e69d3e5e30-1649550244377/Editor/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1650682215722/Editor/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
  <Reference Include="log4netPlastic">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="Google.PackageManagerResolver_v1.2.162">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@e6e69d3e5e30-1649550244377/Editor/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.162.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1650682215722/Editor/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Google.JarResolver_v1.2.162">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@e6e69d3e5e30-1649550244377/Editor/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.162.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1650682215722/Editor/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="WebSocket4Net">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/Plugins/WebSocket4Net.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/WebSocket4Net.dll</HintPath>
  </Reference>
  <Reference Include="AWSSDK.Core">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.Core.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/AWSSDK/AWSSDK.Core.dll</HintPath>
  </Reference>
  <Reference Include="SuperSocket.ClientEngine">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/Plugins/SuperSocket.ClientEngine.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/SuperSocket.ClientEngine.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="Google.IOSResolver_v1.2.162">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@e6e69d3e5e30-1649550244377/Editor/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.162.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1650682215722/Editor/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="GameLiftRealtimeClientSdkNet45">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Assets/ASL/Plugins/GameLiftRealtimeClientSdkNet45.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Assets/ASL/Plugins/GameLiftRealtimeClientSdkNet45.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandlerImpl_v1.2.162">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@e6e69d3e5e30-1649550244377/Editor/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
+ <HintPath>C:/Users/younk/Documents/2022.LectureBoardGame/Library/PackageCache/com.google.ar.core.arfoundation.extensions@06923bd95e81-1650682215722/Editor/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -796,15 +796,6 @@
  <Reference Include="System.Xml.XPath.XDocument">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
  </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/uzuma/Documents/GitHub/2022.LectureBoardGame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Microsoft.MixedReality.Toolkit.csproj">
@@ -830,6 +821,21 @@
     <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputSystem.csproj">
       <Project>{27E185D1-BBFF-8383-7808-35DB6A016214}</Project>
       <Name>Microsoft.MixedReality.Toolkit.Services.InputSystem</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{3BB42D30-D7DD-D399-7007-304A6B75E6E8}</Project>
+      <Name>Unity.TextMeshPro</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{6936590E-784F-1B7A-099F-BB8A81D01F22}</Project>
+      <Name>UnityEditor.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{AC8343E7-220A-F59C-0274-AA497D5F5B7D}</Project>
+      <Name>UnityEngine.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
