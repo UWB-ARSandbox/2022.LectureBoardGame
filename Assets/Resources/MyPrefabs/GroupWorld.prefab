@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3339622, b: 0.3339622, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -297,6 +297,7 @@ MonoBehaviour:
   ownerID: 0
   stars: 0
   movePts: 0
+  m_ASLObject: {fileID: 0}
 --- !u!114 &8615412271264457072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3339622, g: 0.6488457, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1011,6 +1012,7 @@ MonoBehaviour:
   ownerID: 0
   stars: 0
   movePts: 0
+  m_ASLObject: {fileID: 0}
 --- !u!114 &770010277720884420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6052318, g: 1, b: 0.40943396, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2263,6 +2265,7 @@ MonoBehaviour:
   ownerID: 0
   stars: 0
   movePts: 0
+  m_ASLObject: {fileID: 0}
 --- !u!114 &7693454343680848745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2859,7 +2862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9759897, g: 1, b: 0.3622641, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2917,6 +2920,7 @@ MonoBehaviour:
   ownerID: 0
   stars: 0
   movePts: 0
+  m_ASLObject: {fileID: 0}
 --- !u!114 &8818274716763871269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4868,9 +4872,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: {fileID: 4260672190681330898}
   max: {fileID: 4890723793527552073}
-  newQ: {fileID: 0}
-  endGame: {fileID: 0}
-  teacherPanel: {fileID: 0}
   child: {fileID: 8677007167380740094}
   grandchild: {fileID: 9184271475315383137}
 --- !u!1 &8708336272794504302
