@@ -16,6 +16,7 @@ public class ButtonBehavior : MonoBehaviour
     public Text answerTxt;
     public GameObject sg;
     public bool answered = false;
+    private bool prevAnswered = false;
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -45,6 +46,9 @@ public class ButtonBehavior : MonoBehaviour
         if(answered && sg!=null){
             GameObject correct = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Correct").gameObject;
             GameObject incorrect = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Incorrect").gameObject;
+            if(questionPanel!=null){
+                questionPanel.SetActive(false);
+            }
             if(!sg.activeSelf){
                 sg.SetActive(true);
                 correct.SetActive(false);

@@ -21,7 +21,7 @@ public class teacherUI : MonoBehaviour
             endGame.onClick.AddListener(quit);
             exitQ.onClick.AddListener(closeq);
         } else {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         
     }
@@ -37,6 +37,7 @@ public class teacherUI : MonoBehaviour
     }
 
     void newQuestion(){
+        addQ.GetComponent<AddQPanel>().button=null;
         addQ.SetActive(true);
     }
 

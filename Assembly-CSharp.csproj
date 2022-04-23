@@ -121,6 +121,7 @@
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_150_ASLObjects_Support.cs" />
      <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_PatrolPoint.cs" />
      <Compile Include="Assets\Demo\Scripts\ASL_PhysicsMaster.cs" />
+     <Compile Include="Assets\GameScene\Scripts\QuestionInfo.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\PCPlayerCameraController.cs" />
      <Compile Include="Assets\GameScene\GroupingLobby\Scripts\PlayerListManager.cs" />
      <Compile Include="Assets\GameScene\Scripts\Selfgrader.cs" />
