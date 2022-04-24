@@ -12,6 +12,8 @@ public class DiceRoll : MonoBehaviour
     public static GameObject DiceDetector;
     private PlayerMovement pm;
     public static int movePoints;
+    private BoardGameManager bgm;
+    private PlayerGrouping pGroup;
 
     private Vector3 originalPos;
 
@@ -27,6 +29,8 @@ public class DiceRoll : MonoBehaviour
         DiceDetector.SetActive(false);
         Invoke("findPlayer", 1);
         movePoints = 0;
+        pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
+        bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
 
         originalPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
@@ -35,7 +39,15 @@ public class DiceRoll : MonoBehaviour
     {
         if (GameLiftManager.GetInstance().m_PeerId != 1)
         {
-            pm = GameObject.Find("Player" + (GameLiftManager.GetInstance().m_PeerId - 1) + "Piece(Clone)").GetComponent<PlayerMovement>();
+            int playerNumber = 0;
+            for (int i = 1; i <= pGroup.m_playerGroups[bgm.getPlayerGroup() - 1].Count; i++)
+            {
+                if (pGroup.m_playerGroups[bgm.getPlayerGroup() - 1][i - 1] == GameLiftManager.GetInstance().m_PeerId)
+                {
+                    playerNumber = i;
+                }
+            }
+            pm = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Player" + playerNumber + "Piece(Clone)").GetComponent<PlayerMovement>();
         }
     }
 

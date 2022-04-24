@@ -1,5 +1,9 @@
 sceneSetups:
-- path: Assets/GameScene/BoardGame.unity
+- path: Assets/GameScene/BoardGame2.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
+- path: Assets/GameScene/studentgame.unity
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0

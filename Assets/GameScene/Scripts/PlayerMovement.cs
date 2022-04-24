@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     ASLObject m_ASLObject;
     public string currDirection;
     private bool split = false;
+    private BoardGameManager bgm;
+    public static Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -17,17 +19,21 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
+        bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
     }
 
     public void diceMove()
     {
-        Vector3 temp = gameObject.transform.position;
+        Vector3 temp = gameObject.transform.localPosition;
+        temp -= offset;
         for (int i = 0; i < DiceRoll.DiceNumber; i++)
         {
             // Debug.Log(temp.x + "   " + temp.z + "     " + split);
 
             // if landed exactly on the split, player will split off
-            if ((i == 0 && temp.x == -4.26f && temp.z == -2.31f) || (i == 0 && temp.x == 4.5f && temp.z == 2.07f))
+            Debug.Log(temp);
+            if ((i == 0 && temp.x == -4.26f && temp.z == -2.31f) || (i == 0 && temp.x == 4.5f && temp.z == 2.07f) ||
+                (i == 0 && temp.x == -4.3f && temp.z == -2.3f) || (i == 0 && temp.x == 4.5f && temp.z == 2.1f))
             {
                 split = true;
             }
@@ -37,42 +43,42 @@ public class PlayerMovement : MonoBehaviour
                 currDirection = "right";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x <= -2.06f && temp.z >= -2.31f && temp.z < 2.07f)
+            else if ((split || i == 0) && ((temp.x <= -2.06f && temp.z >= -2.31f && temp.z < 2.07f) || (temp.x == -2.1f && temp.z == -2.3f)))
             {
                 currDirection = "up";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x > -4.26f && temp.x <= -2.07f && temp.z <= 2.08f)
+            else if ((split || i == 0) && ((temp.x > -4.26f && temp.x <= -2.07f && temp.z <= 2.08f) || (temp.x == -2.1f && (temp.z == (float)2.07 || temp.z == (float)2.1))))
             {
                 currDirection = "left";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x == -4.26f && temp.z == 2.07f)
+            else if ((split || i == 0) && ((temp.x == -4.26f && temp.z == 2.07f) || (temp.x == -4.3f && temp.z == 2.1f)))
             {
                 currDirection = "up";
                 split = false;
             }
-            else if ((split || i == 0) && temp.x <= 4.5f && temp.x > 2.31f && temp.z == 2.07f)
+            else if ((split || i == 0) && ((temp.x <= 4.5f && temp.x > 2.31f && temp.z == 2.07f) || (temp.x == 4.5f && temp.z == 2.1f)))
             {
                 currDirection = "left";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x == 2.31f && temp.z <= 2.07f && temp.z > -2.31f)
+            else if ((split || i == 0) && ((temp.x == 2.31f && temp.z <= 2.07f && temp.z > -2.31f) || (temp.x == 2.3f && temp.z == 2.1f)))
             {
                 currDirection = "down";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x < 4.5f && temp.x >= 2.31f && temp.z >= -2.32f)
+            else if ((split || i == 0) && ((temp.x < 4.5f && temp.x >= 2.31f && temp.z == -2.31f) || (temp.x == 2.3f && temp.z == -2.3f)))
             {
                 currDirection = "right";
                 split = true;
             }
-            else if ((split || i == 0) && temp.x == 4.5f && temp.z == -2.31f)
+            else if ((split || i == 0) && ((temp.x == 4.5f && temp.z == -2.31f) || (temp.x == 4.5f && temp.z == -2.3f)))
             {
                 currDirection = "down";
                 split = false;
             }
-            else if (temp.x >= -4.26f && temp.x < 4.5f && temp.z == 4.26f)
+            else if ((temp.x >= -4.26f && temp.x < 4.5f && temp.z == 4.26f) || (temp.x == -4.3f && temp.z == 4.3f))
             {
                 currDirection = "right";
                 split = false;
@@ -82,12 +88,12 @@ public class PlayerMovement : MonoBehaviour
                 currDirection = "down";
                 split = false;
             }
-            else if (temp.x <= 4.5f && temp.x > -4.26f && temp.z == -4.5f)
+            else if ((temp.x <= 4.5f && temp.x > -4.26f && temp.z == -4.5f) || (temp.x == 4.5f && temp.z == -4.5f))
             {
                 currDirection = "left";
                 split = false;
             }
-            else if (temp.z < 4.26f && temp.z >= -4.5f && temp.x == -4.26f)
+            else if ((temp.z < 4.26f && temp.z >= -4.5f && temp.x == -4.26f) || (temp.x == -4.3f && temp.z == -4.5f))
             {
                 currDirection = "up";
                 split = false;
@@ -96,7 +102,8 @@ public class PlayerMovement : MonoBehaviour
         }
         m_ASLObject.SendAndSetClaim(() =>
         {
-            m_ASLObject.SendAndSetWorldPosition(temp);
+            temp += offset;
+            m_ASLObject.SendAndSetLocalPosition(temp);
         });
     }
 

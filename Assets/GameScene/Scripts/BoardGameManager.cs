@@ -87,7 +87,7 @@ public class BoardGameManager : MonoBehaviour
         groupLobbyCanvas.SetActive(false);
         teacherUI.SetActive(true);
     }
-    private int getPlayerGroup()
+    public int getPlayerGroup()
     {
         //for (int i = 0; i < playerGrouping.playersGrid.transform.childCount; i++)
         //{
@@ -139,7 +139,7 @@ public class BoardGameManager : MonoBehaviour
     private void setupGroupWorlds()
     {
         Debug.Log("setupGroupWorlds");
-        int numOfGroups = (playerGrouping.playersGrid.transform.childCount) / playerGrouping.groupLimit + 1;
+        int numOfGroups = (int)Mathf.Ceil((playerGrouping.playersGrid.transform.childCount) / playerGrouping.groupLimit);
         for (int i = 1; i <= numOfGroups; i++)
         {
             createGroupWorld(i);
@@ -149,7 +149,7 @@ public class BoardGameManager : MonoBehaviour
 
     public GameObject getGroupWorld(int groupNum)
     {
-        if (groupNum < 1 || groupNum >= studentUI.transform.childCount)
+        if (groupNum < 1 || groupNum > studentUI.transform.childCount)
             return null;
         return studentUI.transform.GetChild(groupNum - 1).gameObject;
     }

@@ -6,10 +6,14 @@ using ASL;
 public class BoardTiles : MonoBehaviour
 {
     private static Dictionary<float, List<GameObject>> map;
+    private BoardGameManager bgm;
+    private PlayerGrouping pGroup;
 
     // Start is called before the first frame update
     void Start()
     {
+        pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
+        bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
         map = new Dictionary<float, List<GameObject>>();
 
         // set up board from the top left map[row.col]
@@ -119,10 +123,23 @@ public class BoardTiles : MonoBehaviour
 
             // spawn in player
             Vector3 pos = getCoordinate(row + col);
-            // pos = new Vector3(3.04f, 0, 2.07f);
-            ASLHelper.InstantiateASLObject("Player" + (GameLiftManager.GetInstance().m_PeerId - 1) + "Piece", pos, Quaternion.identity);
-            // map[row + col] = "CREATED PLAYER PIECE";
-        } else
+            Vector3 pieceAdjustment = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("PlaneBottom").transform.localPosition;
+            PlayerMovement.offset = pieceAdjustment;
+            pos += pieceAdjustment;
+
+            int playerNumber = 0;
+            for (int i = 1; i <= pGroup.m_playerGroups[bgm.getPlayerGroup() - 1].Count; i++)
+            {
+                if (pGroup.m_playerGroups[bgm.getPlayerGroup() - 1][i - 1] == GameLiftManager.GetInstance().m_PeerId)
+                {
+                    playerNumber = i;
+                }
+            }
+
+            ASLHelper.InstantiateASLObject("Player" + playerNumber + "Piece", pos, Quaternion.identity,
+                                           bgm.getGroupWorld(bgm.getPlayerGroup()).GetComponent<ASLObject>().m_Id);
+        }
+        else
         {
             Debug.Log("HOST");
         }
