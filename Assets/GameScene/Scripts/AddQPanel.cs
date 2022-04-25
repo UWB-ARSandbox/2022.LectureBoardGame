@@ -13,6 +13,7 @@ public class AddQPanel : MonoBehaviour
     public InputField AInput;
     public Button CancelButton;
     public TeacherButton button;
+    public Scroll content;
 
     // Start is called before the first frame update
     void Start()
@@ -39,17 +40,27 @@ public class AddQPanel : MonoBehaviour
         answer = AInput.text;
         if(button!=null){
             button.setQA(question, answer);
+        } else {
+            GameObject item = content.newQ(question, answer);
         }
         QInput.text = AInput.text = "";
-        gameObject.SetActive(false);
+        close();
     }
 
     void publish(){
+        if(button==null){
+            GameObject item = content.newQ(question, answer);
+            button = item.GetComponent<TeacherButton>();
+        }
         button.published = true;
+        //Yellow - Color (255,214,0)
+        button.gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
         save();
     }
 
     void close(){
+        publishButton.SetActive(true);
+        saveButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 }

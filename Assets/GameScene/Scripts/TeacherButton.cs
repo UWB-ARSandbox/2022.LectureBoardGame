@@ -10,6 +10,8 @@ public class TeacherButton : MonoBehaviour
     string answer;
     public bool published = false;
     public GameObject editPanel;
+    private Text q2;
+    private Text stats;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class TeacherButton : MonoBehaviour
         }
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(OpenPanel);
+        q2 = gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        stats = gameObject.transform.GetChild(1).gameObject.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -29,7 +33,10 @@ public class TeacherButton : MonoBehaviour
     public void setQA(string q, string a){
         question = q;
         answer = a;
-        this.GetComponentInChildren<Text>().text = question;
+        if(q2==null){
+            q2 = gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        }
+        q2.text = question;
     }
 
     void OpenPanel(){
