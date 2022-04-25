@@ -47,7 +47,7 @@ public class DiceRoll : MonoBehaviour
                     playerNumber = i;
                 }
             }
-            pm = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Player" + playerNumber + "Piece(Clone)").GetComponent<PlayerMovement>();
+            pm = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + playerNumber + "Piece(Clone)").GetComponent<PlayerMovement>();
         }
     }
 

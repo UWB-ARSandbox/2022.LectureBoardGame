@@ -39,6 +39,7 @@ ScriptsOnlyBuild:
     - Scroll
     - Selfgrader
     - SendNewQuestion
+    - TileNode
     - teacherUI
     Google.XR.ARCoreExtensions.dll:
     - Google.XR.ARCoreExtensions.ARCoreExtensions
@@ -440,15 +441,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9368}
     - Class: 114
-      Script: {instanceID: 32788}
+      Script: {instanceID: 196626}
     - Class: 114
-      Script: {instanceID: 32790}
+      Script: {instanceID: 200772}
     - Class: 114
-      Script: {instanceID: 32792}
+      Script: {instanceID: 200774}
     - Class: 114
-      Script: {instanceID: 34928}
+      Script: {instanceID: 200776}
     - Class: 114
-      Script: {instanceID: 34934}
+      Script: {instanceID: 200778}
+    - Class: 114
+      Script: {instanceID: 200780}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -3736,7 +3739,7 @@ ScriptsOnlyBuild:
     className: ScrollTexture
   - hash:
       serializedVersion: 2
-      Hash: 59fcb2a9897150db2f9c327cfc1ea763
+      Hash: 617f3f6f206dc5fff9ca20df14697a3f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -4202,6 +4205,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
     className: ClippingPlane
+  - hash:
+      serializedVersion: 2
+      Hash: b20c5679d7202ef23ead657e0b97b988
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TileNode
   platform: 19
   scenePathNames:
   - Assets/GameScene/BoardGame2.unity
