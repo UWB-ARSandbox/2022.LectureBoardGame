@@ -10,7 +10,6 @@ public class teacherUI : MonoBehaviour
     public Button newQ;
     private bool isHost = false;
     public GameObject addQ;
-    public Button exitQ;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,6 @@ public class teacherUI : MonoBehaviour
         {
             newQ.onClick.AddListener(newQuestion);
             endGame.onClick.AddListener(quit);
-            exitQ.onClick.AddListener(closeq);
         } else {
             gameObject.SetActive(false);
         }
@@ -37,10 +35,14 @@ public class teacherUI : MonoBehaviour
     }
 
     void newQuestion(){
+        addQ.GetComponent<AddQPanel>().button=null;
+        addQ.GetComponent<AddQPanel>().updateQA("","");
+        GameObject save = GameObject.Find("Canvas").transform.Find("AddQ").Find("Save").gameObject;
+        GameObject publish = GameObject.Find("Canvas").transform.Find("AddQ").Find("Publish").gameObject;
+        if(!publish.activeSelf){
+            save.SetActive(true);
+            publish.SetActive(true);
+        }
         addQ.SetActive(true);
-    }
-
-    void closeq(){
-        addQ.SetActive(false);
     }
 }
