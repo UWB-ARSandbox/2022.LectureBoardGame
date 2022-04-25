@@ -139,7 +139,7 @@ public class BoardGameManager : MonoBehaviour
     private void setupGroupWorlds()
     {
         Debug.Log("setupGroupWorlds");
-        int numOfGroups = (int)Mathf.Ceil((playerGrouping.playersGrid.transform.childCount) / playerGrouping.groupLimit);
+        int numOfGroups = (int)Mathf.Ceil((playerGrouping.playersGrid.transform.childCount) / (float)playerGrouping.groupLimit);
         for (int i = 1; i <= numOfGroups; i++)
         {
             createGroupWorld(i);
@@ -191,13 +191,12 @@ public class BoardGameManager : MonoBehaviour
                 Debug.Log("BoardGameManager studentFloatFunction case 1");
                 BoardGameManager bgManager = BoardGameManager.GetInstance();
                 int index1 = 0;
-                for (int i = 0; i < bgManager.playerGrouping.m_playerGroups.Count; i++)
-                //foreach (List<int> subList in bgManager.playerGrouping.m_playerGroups)
+                foreach (List<int> subList in bgManager.playerGrouping.m_playerGroups)
                 {
                     GameObject gameWorld = bgManager.studentUI.transform.GetChild(index1++).gameObject;
                     GameObject playerPanels = gameWorld.transform.Find("Canvas").Find("PlayerPanels").gameObject;
                     int index2 = 0;
-                    foreach (int playerID in bgManager.playerGrouping.m_playerGroups[i])
+                    foreach (int playerID in subList)
                     {
                         if (index2 == 4)
                         {
