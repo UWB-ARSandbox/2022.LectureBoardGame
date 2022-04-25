@@ -10,7 +10,7 @@ public class CameraManipulation : MonoBehaviour
     private Vector3 click;
     public float movespeed = .015f;
     public float rotatespeed = .1f;
-    public int zoomspeed = 7;
+    public int zoomspeed = 1;
     private float cameraY;
 
     public enum LookAtCompute
@@ -95,9 +95,9 @@ public class CameraManipulation : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
             var input = Input.GetAxis("Mouse ScrollWheel");
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x + (transform.forward.x * zoomspeed * input), -5f, 5f),
-                Mathf.Clamp(transform.position.y + (transform.forward.y * zoomspeed * input), 1f, 20f),
-                Mathf.Clamp(transform.position.z + + (transform.forward.z * zoomspeed * input), -5f, 5f));
+            transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x + (transform.forward.x * zoomspeed * input), -5f, 5f),
+                Mathf.Clamp(transform.localPosition.y + (transform.forward.y * zoomspeed * input), 1f, 20f),
+                Mathf.Clamp(transform.localPosition.z + (transform.forward.z * zoomspeed * input), -5f, 5f));
         }
 
 
