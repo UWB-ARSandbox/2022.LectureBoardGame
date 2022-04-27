@@ -6,13 +6,18 @@ using ASL;
 
 public class SendNewQuestion : MonoBehaviour
 {
-    public Text question;
-    public Text answer;
+    public InputField question;
+    public InputField answer;
+    public GameObject studentUI;
 
     // Start is called before the first frame update
     private void Start()
     {
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(readQuestion);
+        if (GameLiftManager.GetInstance().m_PeerId != 1){
+            GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").gameObject;
+            //.Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
+        }
     }
 
     private void readQuestion(string _id, float[] _f)
@@ -46,19 +51,23 @@ public class SendNewQuestion : MonoBehaviour
         {
             Debug.Log(GameLiftManager.GetInstance().m_PeerId + "Received Question: " + printQuestion);
             Debug.Log(GameLiftManager.GetInstance().m_PeerId + "Received Answer: " + printAnswer);
+            if(studentUI==null){
+                GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").gameObject;
+            }
+            studentUI.GetComponent<Scroll>().createButton(printQuestion, printAnswer);
         }
     }
 
-    public void sendQuestion()
+    public void sendQuestion(string q, string a)
     {
         //question = GameObject.Find("");
         gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
         {
             // one additional float length is for question and answer separator (negative value)
-            float[] sendValue = new float[question.text.Length + 1 + answer.text.Length];
+            float[] sendValue = new float[q.Length + 1 + a.Length];
             int index = 0;
             // register question
-            foreach (char c in question.text)
+            foreach (char c in q)
             {
                 sendValue[index] = c;
                 index++;
@@ -69,7 +78,7 @@ public class SendNewQuestion : MonoBehaviour
             index++;
 
             // register answer
-            foreach (char c in answer.text)
+            foreach (char c in a)
             {
                 sendValue[index] = c;
                 index++;

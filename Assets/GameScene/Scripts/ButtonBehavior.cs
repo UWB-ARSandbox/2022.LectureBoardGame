@@ -16,6 +16,8 @@ public class ButtonBehavior : MonoBehaviour
     public Text answerTxt;
     public GameObject sg;
     public bool answered = false;
+
+    private GameObject newMark;
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -27,6 +29,7 @@ public class ButtonBehavior : MonoBehaviour
         question2 = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("QuestionText").GetComponent<Text>();
         answerTxt = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("TeacherAnswer").GetComponent<Text>();
         sg = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
+        newMark = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -42,6 +45,9 @@ public class ButtonBehavior : MonoBehaviour
     }
 
     void OpenQ(){
+        if(newMark.activeSelf){
+            newMark.SetActive(false);
+        }
         if(answered && sg!=null){
             GameObject correct = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Correct").gameObject;
             GameObject incorrect = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Incorrect").gameObject;

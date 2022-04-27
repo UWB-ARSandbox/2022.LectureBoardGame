@@ -54,7 +54,9 @@ public class AddQPanel : MonoBehaviour
         }
         button.published = true;
         //Yellow - Color (255,214,0)
-        button.gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
+        button.gameObject.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
+        GameObject DataSend = GameObject.Find("DataSend");
+        DataSend.GetComponent<SendNewQuestion>().sendQuestion(QInput.text, AInput.text);
         save();
     }
 

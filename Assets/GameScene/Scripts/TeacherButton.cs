@@ -12,6 +12,12 @@ public class TeacherButton : MonoBehaviour
     public GameObject editPanel;
     private Text q2;
     private Text stats;
+    //Int for the stat text
+    //Format: Correct/Answered/Students
+    int Correct;
+    int Answered;
+    int Students;
+
     // Start is called before the first frame update
     void Start()
     {

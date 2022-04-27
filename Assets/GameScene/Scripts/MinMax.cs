@@ -53,6 +53,9 @@ public class MinMax : MonoBehaviour
         for (int i=0;i<grandchild.gameObject.transform.childCount; i++){
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(120,30);
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().position -= new Vector3(180,0,0);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(20,30);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetComponent<RectTransform>().position -= new Vector3(40,0,0);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = "!";
         }
     }
 
@@ -67,6 +70,9 @@ public class MinMax : MonoBehaviour
         for (int i=0;i<grandchild.gameObject.transform.childCount; i++){
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(450,30);
             grandchild.gameObject.transform.GetChild(i).GetComponent<RectTransform>().position += new Vector3(180,0,0);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(80,30);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetComponent<RectTransform>().position += new Vector3(40,0,0);
+            grandchild.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = "NEW!";
         }
     }
 }

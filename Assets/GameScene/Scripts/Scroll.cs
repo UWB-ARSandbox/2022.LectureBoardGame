@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using ASL;
 
 public class Scroll : MonoBehaviour
@@ -13,11 +14,15 @@ public class Scroll : MonoBehaviour
     ASLpanel m_ASLObject;
     public static bool imported;
     public GameObject prefabButton;
+    public GameObject min;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         m_ASLObject = gameObject.GetComponent<ASLpanel>();
+        if(min==null){
+            min = GameObject.Find("Minimize");
+        }
         //button = GameObject.Find("Button");
         yield return new WaitForSeconds(1);
         /*if(qa!=null){
@@ -33,6 +38,7 @@ public class Scroll : MonoBehaviour
         {
             buttonSetup();
         }
+        GameObject.Find("DataSend").GetComponent<SendNewQuestion>().studentUI = gameObject;
     }
 
     public void buttonSetup()
@@ -79,7 +85,7 @@ public class Scroll : MonoBehaviour
         }
     }
 
-    void createButton(string q, string a)
+    public void createButton(string q, string a)
     {
         GameObject go = gameObject;
         //Get pos of last button and size of button
@@ -100,6 +106,12 @@ public class Scroll : MonoBehaviour
             newButton = Instantiate(prefabButton) as GameObject;
             newButton.transform.SetParent(rectTransform.transform, false);
             newButton.GetComponent<RectTransform>().position = pos;
+            if(!min.activeSelf){
+                newButton.transform.GetComponent<RectTransform>().sizeDelta = size;
+                newButton.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(20,30);
+                newButton.transform.GetChild(1).GetComponent<RectTransform>().position -= new Vector3(40,0,0);
+                newButton.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "!";
+            }
         } else {
             Vector3 pos = new Vector3(180,-20,0);
             newButton = Instantiate(prefabButton) as GameObject;

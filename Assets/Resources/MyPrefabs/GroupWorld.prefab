@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2141662918530518636}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9236796
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5267,7 +5267,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2141662918513909910}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9236796
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6095,8 +6095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fd220b80d169b41989b667cc609ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question: {fileID: 2141662919246092199}
-  answer: {fileID: 2141662917791554888}
+  question: {fileID: 0}
+  answer: {fileID: 0}
+  studentUI: {fileID: 0}
 --- !u!114 &2141662918780506062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6585,7 +6586,6 @@ MonoBehaviour:
   endGame: {fileID: 2141662917464039771}
   newQ: {fileID: 2141662917200226610}
   addQ: {fileID: 2141662917409714024}
-  exitQ: {fileID: 2141662918488539596}
 --- !u!1 &2141662919022541933
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,7 +7474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.49928, y: -0.0000024258645}
+  m_AnchoredPosition: {x: -241.49928, y: 0.0018590749}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2141662919273637083
@@ -7491,6 +7491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qa: {fileID: 2141662918162176691}
   prefabButton: {fileID: 0}
+  min: {fileID: 0}
 --- !u!114 &2141662919273637082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7629,7 +7630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.49928, y: -0.0000024258645}
+  m_AnchoredPosition: {x: -241.49928, y: 0.0018590749}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2141662919323490465
@@ -7646,6 +7647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qa: {fileID: 2141662918162176691}
   prefabButton: {fileID: 431922397654964108, guid: 134203c35cda98844b7f64feb6b5e2f9, type: 3}
+  min: {fileID: 2141662917230066432}
 --- !u!114 &2141662919323490466
 MonoBehaviour:
   m_ObjectHideFlags: 0
