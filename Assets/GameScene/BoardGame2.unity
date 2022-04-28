@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1697329222}
   m_HandleRect: {fileID: 1697329221}
   m_Direction: 2
-  m_Value: 0.50000024
+  m_Value: 0.50000006
   m_Size: 0.5937589
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2572,7 +2572,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 382465961}
   m_HandleRect: {fileID: 382465960}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3237,6 +3237,7 @@ GameObject:
   - component: {fileID: 1531940717}
   - component: {fileID: 1531940716}
   - component: {fileID: 1531940715}
+  - component: {fileID: 1531940718}
   m_Layer: 0
   m_Name: DataSend
   m_TagString: Untagged
@@ -3258,6 +3259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: {fileID: 1687747894}
   answer: {fileID: 530866311}
+  studentUI: {fileID: 0}
 --- !u!114 &1531940716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3284,6 +3286,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1531940718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531940714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4fafe098744a2469d4eec278fb7efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550614200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,7 +3974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.50002, y: -0.000008096988}
+  m_AnchoredPosition: {x: -241.50002, y: 0.000015258789}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1797716122
@@ -3977,6 +3991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qa: {fileID: 0}
   prefabButton: {fileID: 6160655372507731876, guid: 6dc4b6ce8aa5e82488e8980a10b77050, type: 3}
+  min: {fileID: 0}
 --- !u!1 &1804662691
 GameObject:
   m_ObjectHideFlags: 0

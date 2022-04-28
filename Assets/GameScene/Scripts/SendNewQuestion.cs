@@ -11,9 +11,13 @@ public class SendNewQuestion : MonoBehaviour
     public GameObject studentUI;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(readQuestion);
+    }
+
+    public void setDataSend()
+    {
         if (GameLiftManager.GetInstance().m_PeerId != 1){
             GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").gameObject;
             //.Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;

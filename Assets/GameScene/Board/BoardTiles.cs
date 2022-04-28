@@ -7,6 +7,7 @@ public class BoardTiles : MonoBehaviour
 {
     private BoardGameManager bgm;
     private PlayerGrouping pGroup;
+    private int playerNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class BoardTiles : MonoBehaviour
             Vector3 spawnTile = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").GetChild(randomTile).transform.localPosition;
             PlayerMovement.currentTile = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").GetChild(randomTile).gameObject.GetComponent<TileNode>();
 
-            int playerNumber = 0;
+            playerNumber = 0;
             for (int i = 1; i <= pGroup.m_playerGroups[bgm.getPlayerGroup() - 1].Count; i++)
             {
                 if (pGroup.m_playerGroups[bgm.getPlayerGroup() - 1][i - 1] == GameLiftManager.GetInstance().m_PeerId)
@@ -37,6 +38,16 @@ public class BoardTiles : MonoBehaviour
 
             ASLHelper.InstantiateASLObject("Player" + playerNumber + "Piece", spawnTile, Quaternion.identity,
                                            bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").GetComponent<ASLObject>().m_Id);
+            // Invoke("setName", 1);
         }
+    }
+
+    void setName()
+    {
+        bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + playerNumber + "Piece(Clone)").GetComponent<ASLObject>().SendAndSetClaim(() =>
+        {
+            bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + playerNumber + "Piece(Clone)").
+                Find("NameDisplay").GetComponent<TextMesh>().text = GameLiftManager.GetInstance().m_Username;
+        });
     }
 }

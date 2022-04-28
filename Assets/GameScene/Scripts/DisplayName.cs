@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using ASL;
 
 public class DisplayName : MonoBehaviour
 {
@@ -7,17 +8,20 @@ public class DisplayName : MonoBehaviour
     // 2 - Put the prefab under the object who will have the name displayed
 
     private TextMesh textToDisplay;
+    private PlayerGrouping pGroup;
+    private BoardGameManager bgm;
 
     // Use this for initialization
     void Start()
     {
         textToDisplay = gameObject.GetComponent<TextMesh>();
+        pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
+        bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        textToDisplay.text = ((string)transform.parent.name).Replace("(Clone)", "");
+        textToDisplay.text = ((string)transform.parent.name).Replace("Piece(Clone)", "");
     }
 
     void LateUpdate()

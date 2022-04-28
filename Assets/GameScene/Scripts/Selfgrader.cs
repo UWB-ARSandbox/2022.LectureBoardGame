@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ASL;
 
 public class Selfgrader : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Selfgrader : MonoBehaviour
     public Text questionTxt;
     public Text teacherAnswer;
     public Text studentAnswer;
+    public MarkAnswer ma;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,17 @@ public class Selfgrader : MonoBehaviour
         btn.onClick.AddListener(markCorrect);
         Button btn2 = incorrect.GetComponent<Button>();
         btn2.onClick.AddListener(markIncorrect);
+
+        ma = GameObject.Find("DataSend").GetComponent<MarkAnswer>();
+        gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(sendResult);
+    }
+
+    private void sendResult(string _id, float[] _f)
+    {
+        foreach (float f in _f)
+        {
+            Debug.Log(f);
+        }
     }
 
     // Update is called once per frame
@@ -51,12 +64,18 @@ public class Selfgrader : MonoBehaviour
         qButton.GetComponent<Image>().color = correct.image.color;
         qButton.GetComponent<ButtonBehavior>().answered = true;
         DiceRoll.movePoints++;
+
+        ma.markCorrect(questionTxt.text);
+
         gameObject.SetActive(false);
     }
 
     void markIncorrect(){
         qButton.GetComponent<Image>().color = incorrect.image.color;
         qButton.GetComponent<ButtonBehavior>().answered = true;
+
+        ma.markIncorrect(questionTxt.text);
+
         gameObject.SetActive(false);
     }
 }
