@@ -6,6 +6,11 @@ TagManager:
   tags:
   - MatchInfo
   - AvailableMatches
+  - StarTile
+  - DropTile
+  - FightTile
+  - QuestionTile
+  - NormalTile
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class Selfgrader : MonoBehaviour
     public Text teacherAnswer;
     public Text studentAnswer;
     public MarkAnswer ma;
+    private PlayerData playerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,57 +25,56 @@ public class Selfgrader : MonoBehaviour
         Button btn2 = incorrect.GetComponent<Button>();
         btn2.onClick.AddListener(markIncorrect);
 
-        ma = GameObject.Find("DataSend").GetComponent<MarkAnswer>();
-        gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(sendResult);
-    }
+        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
 
-    private void sendResult(string _id, float[] _f)
-    {
-        foreach (float f in _f)
-        {
-            Debug.Log(f);
-        }
+        ma = GameObject.Find("DataSend").GetComponent<MarkAnswer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void setText(string q, string ta, string submit){
+    public void setText(string q, string ta, string submit)
+    {
         question = q;
         teacher = ta;
         student = submit;
     }
 
-    public void setText(string q, string a){
+    public void setText(string q, string a)
+    {
         question = q;
         teacher = a;
         questionTxt.text = q;
         teacherAnswer.text = a;
     }
 
-    public void studentSubmit(string a){
+    public void studentSubmit(string a)
+    {
         student = "Your Answer: " + a;
         studentAnswer.text = "Your Answer: " + a;
     }
 
-    void markCorrect(){
+    void markCorrect()
+    {
         qButton.GetComponent<Image>().color = correct.image.color;
         qButton.GetComponent<ButtonBehavior>().answered = true;
         DiceRoll.movePoints++;
 
-        ma.markCorrect(questionTxt.text);
+        playerData.sendData();
+        ma.mark(questionTxt.text, true);
 
         gameObject.SetActive(false);
     }
 
-    void markIncorrect(){
+    void markIncorrect()
+    {
         qButton.GetComponent<Image>().color = incorrect.image.color;
         qButton.GetComponent<ButtonBehavior>().answered = true;
 
-        ma.markIncorrect(questionTxt.text);
+        ma.mark(questionTxt.text, false);
 
         gameObject.SetActive(false);
     }

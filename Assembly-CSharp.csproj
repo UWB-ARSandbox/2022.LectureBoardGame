@@ -126,6 +126,7 @@
     <Compile Include="Assets\ASL\ASL_Scripts\UI_Support\ASLSliderWithEcho.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\AR\InstantiateARIfConnected.cs" />
     <Compile Include="Assets\GameScene\Scripts\TeacherButton.cs" />
+    <Compile Include="Assets\GameScene\Scripts\MarkAnswer.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\SetCallback\Scripts\SetCallback_Example.cs" />
     <Compile Include="Assets\Demo\AutonomousObjectDemo\Scripts\AutonomousObjectTest.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_150_ASLObjects_Support.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="Assets\ASL\ASL_Scripts\MixedRealityToolkit\InstantiateMRTKIfConnected.cs" />
     <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
     <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
-    <Compile Include="Assets\GameScene\Scripts\MarkAnswer.cs" />
+    <Compile Include="Assets\GameScene\Scripts\PlayerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />

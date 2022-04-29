@@ -14,6 +14,8 @@ public class DiceRoll : MonoBehaviour
     public static int movePoints;
     private BoardGameManager bgm;
     private PlayerGrouping pGroup;
+    public static int starCount;
+    private PlayerData playerData;
 
     private Vector3 originalPos;
 
@@ -31,6 +33,7 @@ public class DiceRoll : MonoBehaviour
         movePoints = 0;
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
+        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
 
         originalPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
@@ -58,6 +61,7 @@ public class DiceRoll : MonoBehaviour
         {
             canRoll = false;
             movePoints--;
+            playerData.sendData();
             Invoke("tempMethodEnableRoll", 5);
             DiceView.SetActive(true);
             DiceDetector.SetActive(true);

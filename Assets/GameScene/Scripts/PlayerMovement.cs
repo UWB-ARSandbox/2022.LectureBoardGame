@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public string currDirection;
     private BoardGameManager bgm;
     public static TileNode currentTile;
+    private PlayerData playerData;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
+        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
     }
 
     public void diceMove()
@@ -27,11 +29,26 @@ public class PlayerMovement : MonoBehaviour
             if (i == 0 && currentTile.split != null)
             {
                 currentTile = currentTile.split;
-            } else
+            }
+            else
             {
                 currentTile = currentTile.next;
             }
         }
+
+        if (currentTile.tag == "StarTile")
+        {
+            DiceRoll.starCount++;
+        }
+        else if (currentTile.tag == "DropTile")
+        {
+            if (DiceRoll.starCount > 0)
+            {
+                DiceRoll.starCount--;
+            }
+        }
+        playerData.sendData();
+
         m_ASLObject.SendAndSetClaim(() =>
         {
             m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);

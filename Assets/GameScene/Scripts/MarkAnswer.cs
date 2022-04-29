@@ -46,11 +46,10 @@ public class MarkAnswer : MonoBehaviour
             // TRANSFER DATA TO TEACHER UI
         }
     }
-    public void markCorrect(string questionTxt)
+    public void mark(string questionTxt, bool isCorrect)
     {
         gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
         {
-            Debug.Log("SENDING CORRECT");
             float[] sendValue = new float[questionTxt.Length + 2];
             int index = 0;
             foreach (char c in questionTxt)
@@ -63,32 +62,15 @@ public class MarkAnswer : MonoBehaviour
             sendValue[index] = -1;
             index++;
 
-            // register as correct
-            sendValue[index] = 1;
-
-            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
-        });
-    }
-
-    public void markIncorrect(string questionTxt)
-    {
-        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
-        {
-            Debug.Log("SENDING INCORRECT");
-            float[] sendValue = new float[questionTxt.Length + 1];
-            int index = 0;
-            foreach (char c in questionTxt)
+            // register as correct/incorrect
+            if (isCorrect)
             {
-                sendValue[index] = c;
-                index++;
+                sendValue[index] = 1;
             }
-
-            // register separator
-            sendValue[index] = -1;
-            index++;
-
-            // register as incorrect
-            sendValue[index] = 0;
+            else
+            {
+                sendValue[index] = 0;
+            }
 
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });
