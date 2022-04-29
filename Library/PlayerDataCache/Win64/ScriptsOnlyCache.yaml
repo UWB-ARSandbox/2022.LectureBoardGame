@@ -141,15 +141,17 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 1650}
+    - Class: 114
       Script: {instanceID: 1652}
     - Class: 114
       Script: {instanceID: 1654}
     - Class: 114
-      Script: {instanceID: 1656}
+      Script: {instanceID: 1658}
     - Class: 114
       Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 1662}
+      Script: {instanceID: 1664}
     - Class: 114
       Script: {instanceID: 1666}
     - Class: 114
@@ -157,15 +159,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1670}
     - Class: 114
-      Script: {instanceID: 1672}
+      Script: {instanceID: 1674}
     - Class: 114
-      Script: {instanceID: 1676}
+      Script: {instanceID: 1678}
     - Class: 114
-      Script: {instanceID: 1680}
+      Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 1688}
-    - Class: 114
-      Script: {instanceID: 4210}
+      Script: {instanceID: 4208}
     - Class: 114
       Script: {instanceID: 7144}
     - Class: 114
@@ -210,15 +210,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 1650}
+    - Class: 114
       Script: {instanceID: 1652}
     - Class: 114
       Script: {instanceID: 1654}
     - Class: 114
-      Script: {instanceID: 1656}
+      Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1660}
-    - Class: 114
-      Script: {instanceID: 1688}
+      Script: {instanceID: 1686}
     - Class: 114
       Script: {instanceID: 7284}
     - Class: 115
@@ -287,6 +287,8 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 1650}
+    - Class: 114
       Script: {instanceID: 1652}
     - Class: 114
       Script: {instanceID: 1654}
@@ -297,9 +299,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 1662}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1666}
+      Script: {instanceID: 1668}
     - Class: 114
       Script: {instanceID: 1670}
     - Class: 114
@@ -309,7 +311,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1676}
     - Class: 114
-      Script: {instanceID: 1678}
+      Script: {instanceID: 1680}
     - Class: 114
       Script: {instanceID: 1682}
     - Class: 114
@@ -317,63 +319,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 1688}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 1722}
+      Script: {instanceID: 1786}
     - Class: 114
-      Script: {instanceID: 1788}
+      Script: {instanceID: 1844}
     - Class: 114
-      Script: {instanceID: 1846}
+      Script: {instanceID: 1942}
     - Class: 114
-      Script: {instanceID: 1944}
+      Script: {instanceID: 1974}
     - Class: 114
-      Script: {instanceID: 1976}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 2446}
     - Class: 114
-      Script: {instanceID: 2448}
+      Script: {instanceID: 2766}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2784}
     - Class: 114
-      Script: {instanceID: 2786}
+      Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 3074}
     - Class: 114
-      Script: {instanceID: 3076}
+      Script: {instanceID: 3262}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3460}
     - Class: 114
-      Script: {instanceID: 3462}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 3492}
+      Script: {instanceID: 3510}
     - Class: 114
-      Script: {instanceID: 3512}
+      Script: {instanceID: 3712}
     - Class: 114
-      Script: {instanceID: 3714}
+      Script: {instanceID: 3764}
     - Class: 114
-      Script: {instanceID: 3766}
+      Script: {instanceID: 3942}
     - Class: 114
-      Script: {instanceID: 3944}
+      Script: {instanceID: 4186}
     - Class: 114
       Script: {instanceID: 4188}
     - Class: 114
-      Script: {instanceID: 4190}
+      Script: {instanceID: 4216}
     - Class: 114
-      Script: {instanceID: 4218}
+      Script: {instanceID: 4268}
     - Class: 114
-      Script: {instanceID: 4270}
+      Script: {instanceID: 4376}
     - Class: 114
-      Script: {instanceID: 4378}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 4638}
+      Script: {instanceID: 4712}
     - Class: 114
-      Script: {instanceID: 4714}
+      Script: {instanceID: 4782}
     - Class: 114
-      Script: {instanceID: 4784}
+      Script: {instanceID: 4858}
     - Class: 114
       Script: {instanceID: 4860}
     - Class: 114
-      Script: {instanceID: 4862}
+      Script: {instanceID: 4994}
     - Class: 114
       Script: {instanceID: 5018}
     - Class: 114
@@ -453,17 +455,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9378}
     - Class: 114
-      Script: {instanceID: 31540}
+      Script: {instanceID: 31602}
     - Class: 114
-      Script: {instanceID: 35760}
+      Script: {instanceID: 31604}
     - Class: 114
-      Script: {instanceID: 35762}
+      Script: {instanceID: 31606}
     - Class: 114
-      Script: {instanceID: 35764}
+      Script: {instanceID: 31608}
     - Class: 114
-      Script: {instanceID: 39984}
-    - Class: 114
-      Script: {instanceID: 39990}
+      Script: {instanceID: 31610}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -2219,6 +2219,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Experimental.SpatialAwareness
     className: SurfaceMeshesToPlanes
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerData
   - hash:
       serializedVersion: 2
       Hash: 1bc03a501323d00d0037a6b76d25a3ba
@@ -4241,15 +4247,9 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
     className: ClippingPlane
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerData
   platform: 19
   scenePathNames:
   - Assets/GameScene/BoardGame2.unity
   - Assets/ASL/ASL_Scenes/ASL_LobbyScene.unity
   - Assets/ASL/ASL_Scenes/ASL_SceneLoader.unity
-  playerPath: C:/Users/younk/Desktop/2022.LectureBoardGame.exe
+  playerPath: C:/Users/younk/Desktop/Demo/2022.LectureBoardGame.exe
