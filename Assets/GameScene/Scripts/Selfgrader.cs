@@ -25,9 +25,9 @@ public class Selfgrader : MonoBehaviour
         Button btn2 = incorrect.GetComponent<Button>();
         btn2.onClick.AddListener(markIncorrect);
 
-        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
+        playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
 
-        ma = GameObject.Find("DataSend").GetComponent<MarkAnswer>();
+        ma = GameObject.Find("AnswerManager").GetComponent<MarkAnswer>();
     }
 
     // Update is called once per frame

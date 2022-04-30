@@ -53,8 +53,8 @@ public class SendNewQuestion : MonoBehaviour
         // DO SOMETHING WITH THE CREATED QUESTION AND ANSWER HERE
         if (GameLiftManager.GetInstance().m_PeerId != 1)
         {
-            Debug.Log(GameLiftManager.GetInstance().m_PeerId + "Received Question: " + printQuestion);
-            Debug.Log(GameLiftManager.GetInstance().m_PeerId + "Received Answer: " + printAnswer);
+            Debug.Log(GameLiftManager.GetInstance().m_PeerId + " Received Question: " + printQuestion);
+            Debug.Log(GameLiftManager.GetInstance().m_PeerId + " Received Answer: " + printAnswer);
             if(studentUI==null){
                 GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").gameObject;
             }

@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using ASL;
+using System;
 
 public class MarkAnswer : MonoBehaviour
 {
+    private GameObject teacherUI;
+
     void Start()
     {
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(sendResult);
+    }
+
+    void Update()
+    {
+        if (GameLiftManager.GetInstance().m_PeerId == 1 && GameObject.Find("TeacherUI") != null)
+            teacherUI = GameObject.Find("TeacherUI").transform.Find("Canvas").Find("InGame").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
     }
 
     public void sendResult(string _id, float[] _f)
@@ -44,6 +54,36 @@ public class MarkAnswer : MonoBehaviour
             Debug.Log(question + "   " + correct);
 
             // TRANSFER DATA TO TEACHER UI
+            foreach (Transform btn in teacherUI.transform)
+            {
+                if (question == ("Question: " + btn.Find("Text").GetComponent<Text>().text))
+                {
+                    string stat = btn.Find("Stats").GetComponent<Text>().text;
+                    string[] values = stat.Split('/');
+                    int[] numbers = Array.ConvertAll(values, int.Parse);
+
+                    int answers = numbers[0] + 1;
+                    int corrects = numbers[1];
+                    int incorrects = numbers[2];
+                    if (correct)
+                    {
+                        corrects = numbers[1] + 1;
+                    }
+                    else
+                    {
+                        incorrects = numbers[2] + 1;
+                    }
+
+                    Debug.Log(stat);
+                    Debug.Log(answers);
+                    Debug.Log(corrects);
+                    Debug.Log(incorrects);
+
+                    stat = answers + "/" + corrects + "/" + incorrects;
+                    Debug.Log(stat);
+                    btn.Find("Stats").GetComponent<Text>().text = stat;
+                }
+            }
         }
     }
     public void mark(string questionTxt, bool isCorrect)

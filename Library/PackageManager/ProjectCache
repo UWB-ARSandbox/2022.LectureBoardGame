@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637867602635028660
+      ticks: 637868861331660875
     m_Hash: 3906533786
   m_LockFileStatus:
     m_FilePath: C:/Users/younk/Documents/2022.LectureBoardGame/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637867602635028660
+      ticks: 637868861331660875
     m_Hash: 2617988024
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -25,7 +25,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.23.0
       source: 6
-      resolvedPath: C:\Users\younk\Documents\2022.LectureBoardGame\Library\PackageCache\com.google.ar.core.arfoundation.extensions@06923bd95e81-1651163442143
+      resolvedPath: C:\Users\younk\Documents\2022.LectureBoardGame\Library\PackageCache\com.google.ar.core.arfoundation.extensions@06923bd95e81-1651289305940
       assetPath: Packages/com.google.ar.core.arfoundation.extensions
       name: com.google.ar.core.arfoundation.extensions
       displayName: ARCore Extensions
@@ -4383,7 +4383,7 @@ m_PackageAssets:
       m_ContentTrackingEnabled: 1
       m_ModificationDate:
         serializedVersion: 2
-        ticks: 637867602421431272
+        ticks: 637868861059401193
       m_Hash: 2302134662
 m_ProjectPath: C:/Users/younk/Documents/2022.LectureBoardGame/Packages
 m_EditorVersion: 2020.3.20f1 (41c4e627c95f)

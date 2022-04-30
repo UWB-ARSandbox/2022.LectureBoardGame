@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
-        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
+        playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
     }
 
     public void diceMove()

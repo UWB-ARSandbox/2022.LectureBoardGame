@@ -33,7 +33,7 @@ public class DiceRoll : MonoBehaviour
         movePoints = 0;
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
-        playerData = GameObject.Find("DataSend").GetComponent<PlayerData>();
+        playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
 
         originalPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
