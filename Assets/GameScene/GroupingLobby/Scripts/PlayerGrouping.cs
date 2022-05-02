@@ -53,7 +53,7 @@ public class PlayerGrouping : MonoBehaviour
             StartCoroutine(startPlayerGame());
         } else
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             populatePlayers();
         }
     }
@@ -319,6 +319,9 @@ public class PlayerGrouping : MonoBehaviour
                         group = new List<int>();
                     }
                 }
+                break;
+            case 3: //end game
+                BoardGameManager.GetInstance().endGameUIHelper();
                 break;
             default:
                 Debug.Log("PlayerGrouping MyFloatFunction default1 case");

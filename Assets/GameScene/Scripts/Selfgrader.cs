@@ -66,6 +66,7 @@ public class Selfgrader : MonoBehaviour
         }
         
         DiceRoll.movePoints++;
+        DiceRoll.starCount += 5;
 
         playerData.sendData();
 

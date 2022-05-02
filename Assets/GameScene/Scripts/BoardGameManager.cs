@@ -20,11 +20,14 @@ public class BoardGameManager : MonoBehaviour
     private GameObject groupLobbyCanvas;
     private GameObject studentUI;
     private GameObject teacherUI;
+    private GameObject endGameUI;
     private PlayerGrouping playerGrouping;
     private GameObject camLight;
+    private GameObject playerDataManager;
     [SerializeField] private int currId;
     [SerializeField] private int m_groupWorldSpacing = 75;
     public bool m_SendFloat = false;
+    public int hostID;
 
 
     // Start is called before the first frame update
@@ -35,13 +38,17 @@ public class BoardGameManager : MonoBehaviour
         groupLobbyCanvas = groupLobby.transform.Find("Canvas").gameObject;
         studentUI = GameObject.Find("StudentUI");
         teacherUI = GameObject.Find("TeacherUI");
+        endGameUI = GameObject.Find("EndGameUI");
         playerGrouping = this.gameObject.GetComponent<PlayerGrouping>();
         camLight = GameObject.Find("camLight");
+        playerDataManager = GameObject.Find("PlayerDataManager");
+        playerDataManager.SetActive(false);
         studentUI.SetActive(false);
         teacherUI.SetActive(false);
+        endGameUI.SetActive(false);
         currId = GameLiftManager.GetInstance().m_PeerId;
         studentUI.GetComponent<ASLObject>()._LocallySetFloatCallback(studentFloatFunction);
-
+        hostID = GameLiftManager.GetInstance().GetLowestPeerId();
     }
 
     // Update is called once per frame
@@ -71,6 +78,20 @@ public class BoardGameManager : MonoBehaviour
         }
     }
     //Called by host
+    public void endGame()
+    {
+        Debug.Log("host endGame");
+        ASLObject thisASL = GetComponent<ASL.ASLObject>();
+        float[] m_MyFloats = new float[4];
+        m_MyFloats[0] = 3;
+        //Claim the object
+        thisASL.SendAndSetClaim(() =>
+        {
+            Debug.Log("BoardGameManager Floats sent: 3 0 0 0");
+            thisASL.SendFloatArray(m_MyFloats);
+        });
+    }
+    //Called by host
     public void startGame()
     {
         Debug.Log("host startGame");
@@ -83,6 +104,7 @@ public class BoardGameManager : MonoBehaviour
             //Send and then set (once received - NOT here) the tag
             groupLobby.GetComponent<ASL.ASLObject>().SendAndSetTag("Finish");
         });
+        playerDataManager.SetActive(true);
         studentUI.SetActive(false);
         groupLobbyCanvas.SetActive(false);
         teacherUI.SetActive(true);
@@ -113,6 +135,7 @@ public class BoardGameManager : MonoBehaviour
     public void playerStartGame()
     {
         Debug.Log("playerStartGame");
+        playerDataManager.SetActive(true);
         groupLobbyCanvas.SetActive(false);
         int id = GameLiftManager.GetInstance().m_PeerId;
         if (id != 1)
@@ -235,5 +258,12 @@ public class BoardGameManager : MonoBehaviour
             Debug.LogError("BoardGameManager not initialized.");
         }
         return null;
+    }
+    public void endGameUIHelper()
+    {
+        studentUI.SetActive(false);
+        teacherUI.SetActive(false);
+        endGameUI.SetActive(true);
+        camLight.SetActive(true);
     }
 }
