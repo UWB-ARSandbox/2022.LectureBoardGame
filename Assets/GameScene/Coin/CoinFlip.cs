@@ -27,7 +27,7 @@ public class CoinFlip : MonoBehaviour
         good = true;
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
-
+        canFlip = false;
         Invoke("findPlayer", 1);
     }
 
@@ -54,7 +54,7 @@ public class CoinFlip : MonoBehaviour
         float dirX = Random.Range(0, 5000);
         float dirY = Random.Range(0, 5000);
         float dirZ = Random.Range(0, 5000);
-        float upForce = Random.Range(200, 500);
+        float upForce = 600;
         transform.position = originalPos;
         transform.rotation = Quaternion.identity;
         rb.AddForce(transform.up * upForce);
@@ -64,7 +64,7 @@ public class CoinFlip : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && canFlip)
+        if (canFlip)
         {
             canFlip = false;
             CoinView.SetActive(true);
