@@ -44,6 +44,14 @@ public class ButtonBehavior : MonoBehaviour
         buttontxt = "Question: " + q; 
     }
 
+    public string getQ(){
+        return buttontxt;
+    }
+
+    public string getA(){
+        return answer;
+    }
+
     void OpenQ(){
         if(newMark.activeSelf){
             newMark.SetActive(false);
@@ -67,7 +75,7 @@ public class ButtonBehavior : MonoBehaviour
             questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
             bool isActive = questionPanel.activeSelf;
             sg.GetComponent<Selfgrader>().qButton = GetComponent<Button>();
-            sg.GetComponent<Selfgrader>().setText(buttontxt, "Answer: "+answer);  
+            sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);  
             if(isActive){
                 string q = question.text;
                 if (buttontxt == q){

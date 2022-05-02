@@ -59,22 +59,26 @@ public class Selfgrader : MonoBehaviour
 
     void markCorrect()
     {
-        qButton.GetComponent<Image>().color = correct.image.color;
-        qButton.GetComponent<ButtonBehavior>().answered = true;
+        if(qButton!=null){
+            qButton.GetComponent<Image>().color = correct.image.color;
+            qButton.GetComponent<ButtonBehavior>().answered = true;
+            ma.mark(questionTxt.text, true);
+        }
+        
         DiceRoll.movePoints++;
 
         playerData.sendData();
-        ma.mark(questionTxt.text, true);
 
         gameObject.SetActive(false);
     }
 
     void markIncorrect()
     {
-        qButton.GetComponent<Image>().color = incorrect.image.color;
-        qButton.GetComponent<ButtonBehavior>().answered = true;
-
-        ma.mark(questionTxt.text, false);
+        if(qButton!=null){
+            qButton.GetComponent<Image>().color = incorrect.image.color;
+            qButton.GetComponent<ButtonBehavior>().answered = true;
+            ma.mark(questionTxt.text, false);
+        }
 
         gameObject.SetActive(false);
     }

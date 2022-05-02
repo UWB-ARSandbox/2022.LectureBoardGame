@@ -56,7 +56,7 @@ public class SendNewQuestion : MonoBehaviour
             Debug.Log(GameLiftManager.GetInstance().m_PeerId + " Received Question: " + printQuestion);
             Debug.Log(GameLiftManager.GetInstance().m_PeerId + " Received Answer: " + printAnswer);
             if(studentUI==null){
-                GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").gameObject;
+                GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
             }
             studentUI.GetComponent<Scroll>().createButton(printQuestion, printAnswer);
         }

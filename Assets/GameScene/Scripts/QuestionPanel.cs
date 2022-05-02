@@ -9,12 +9,15 @@ public class QuestionPanel : MonoBehaviour
     public InputField userInput;
     public Button submitButton;
     public GameObject selfgrade;
+    public Button closeButton;
 
     // Start is called before the first frame update
     void Start()
     {
         Button btn = submitButton.GetComponent<Button>();
         btn.onClick.AddListener(checkAnswer);
+        Button btn2 = closeButton.GetComponent<Button>();
+        btn2.onClick.AddListener(close);
         selfgrade = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
     }
 
@@ -34,7 +37,14 @@ public class QuestionPanel : MonoBehaviour
             selfgrade.SetActive(!isActive);
             selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);
             userInput.text = "";
-            gameObject.SetActive(false);
+            close();
         }
+    }
+
+    void close(){
+        if(!closeButton.gameObject.activeSelf){
+            closeButton.gameObject.SetActive(true);
+        }
+        gameObject.SetActive(false);
     }
 }

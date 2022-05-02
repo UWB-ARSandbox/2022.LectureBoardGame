@@ -15,10 +15,12 @@ public class Scroll : MonoBehaviour
     public static bool imported;
     public GameObject prefabButton;
     public GameObject min;
+    private bool isHost = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        isHost = GameLiftManager.GetInstance().m_PeerId == 1;
         m_ASLObject = gameObject.GetComponent<ASLpanel>();
         if(min==null){
             min = GameObject.Find("Minimize");
@@ -47,7 +49,13 @@ public class Scroll : MonoBehaviour
         string a = ManageCSV.grid[1, number];
         while (q != "")
         {
-            createButton(q, a);
+            if(isHost){
+                GameObject newButton = newQ(q, a);
+                newButton.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
+                newButton.GetComponent<TeacherButton>().published = true;
+            } else {
+                createButton(q, a);
+            }
             q = ManageCSV.grid[0, number];
             a = ManageCSV.grid[1, number];
         }
