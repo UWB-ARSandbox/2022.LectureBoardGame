@@ -107,6 +107,7 @@
     <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\ASLSupport\ASLParticleListBuilder.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_ButtonManager.cs" />
     <Compile Include="Assets\Demo\OnCollisionExit\Scripts\Demo_ChangeColorOnCollision.cs" />
+    <Compile Include="Assets\GameScene\Scripts\PlayerData.cs" />
     <Compile Include="Assets\GameScene\Scripts\SendNewQuestion.cs" />
     <Compile Include="Assets\Demo\Scripts\ASL_AutonomousObject.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\Send2DTexture\Scripts\Send2DTexture_Example.cs" />
@@ -182,7 +183,8 @@
     <Compile Include="Assets\ASL\ASL_Scripts\MixedRealityToolkit\InstantiateMRTKIfConnected.cs" />
     <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
     <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
-    <Compile Include="Assets\GameScene\Scripts\PlayerData.cs" />
+    <Compile Include="Assets\GameScene\Coin\CoinFlip.cs" />
+    <Compile Include="Assets\GameScene\Coin\DetectCoinSide.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />

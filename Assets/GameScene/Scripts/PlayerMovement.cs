@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject questions;
     public GameObject qPanel;
     public GameObject sg;
+    public CoinFlip coin;
+    private PlayerGrouping pGroup;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,17 @@ public class PlayerMovement : MonoBehaviour
         questions = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
         qPanel = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("Question").gameObject;
         sg = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("Selfgrade").gameObject;
+
+        pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
+        int playerNumber = 0;
+        for (int i = 1; i <= pGroup.m_playerGroups[bgm.getPlayerGroup() - 1].Count; i++)
+        {
+            if (pGroup.m_playerGroups[bgm.getPlayerGroup() - 1][i - 1] == GameLiftManager.GetInstance().m_PeerId)
+            {
+                playerNumber = i;
+            }
+        }
+        coin = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Coin").gameObject.GetComponent<CoinFlip>();
     }
 
     void Update(){
@@ -50,6 +63,18 @@ public class PlayerMovement : MonoBehaviour
         qPanel.SetActive(true);
         qPanel.transform.GetChild(2).gameObject.SetActive(false);
         sg.GetComponent<Selfgrader>().setText(q, "Teacher's Answer: "+a); 
+    }
+
+    public void fight(bool win)
+    {
+        if (win)
+        {
+            Debug.Log("WON THE FIGHT!");
+            DiceRoll.starCount++;
+        } else
+        {
+            Debug.Log("LOST THE FIGHT...");
+        }
     }
 
     public void diceMove()
@@ -78,6 +103,10 @@ public class PlayerMovement : MonoBehaviour
             }
         } else if (currentTile.tag == "QuestionTile"){
             QTile();
+        } else if (currentTile.tag == "FightTile")
+        {
+            CoinFlip.canFlip = true;
+            Debug.Log("CAN FLIP COIN");
         }
         playerData.sendData();
 
