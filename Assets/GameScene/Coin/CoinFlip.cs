@@ -51,10 +51,10 @@ public class CoinFlip : MonoBehaviour
     {
         CoinView.SetActive(true);
         rb.velocity = Vector3.zero;
-        float dirX = Random.Range(0, 5000);
-        float dirY = Random.Range(0, 5000);
-        float dirZ = Random.Range(0, 5000);
-        float upForce = 600;
+        float dirX = Random.Range(2000, 10000);
+        float dirY = Random.Range(2000, 10000);
+        float dirZ = Random.Range(2000, 10000);
+        float upForce = Random.Range(500, 1000);
         transform.position = originalPos;
         transform.rotation = Quaternion.identity;
         rb.AddForce(transform.up * upForce);
@@ -69,7 +69,6 @@ public class CoinFlip : MonoBehaviour
             canFlip = false;
             CoinView.SetActive(true);
             CoinDetector.SetActive(true);
-            Invoke("coinOff", 5);
             Flip();
         }
     }

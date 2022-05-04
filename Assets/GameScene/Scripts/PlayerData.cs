@@ -11,20 +11,20 @@ public class PlayerData : MonoBehaviour
     private int playerNumber;
 
     private GameObject player1;
-    private int p1Stars;
-    private int p1MovePoints;
+    public int p1Stars;
+    public int p1MovePoints;
 
     private GameObject player2;
-    private int p2Stars;
-    private int p2MovePoints;
+    public int p2Stars;
+    public int p2MovePoints;
 
     private GameObject player3;
-    private int p3Stars;
-    private int p3MovePoints;
+    public int p3Stars;
+    public int p3MovePoints;
 
     private GameObject player4;
-    private int p4Stars;
-    private int p4MovePoints;
+    public int p4Stars;
+    public int p4MovePoints;
 
     // Start is called before the first frame update
     void Start()

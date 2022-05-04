@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject sg;
     public CoinFlip coin;
     private PlayerGrouping pGroup;
+    private PlayerData pd;
+    private int playerNumber;
+    private GameObject fNotify;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
         sg = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("Selfgrade").gameObject;
 
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
-        int playerNumber = 0;
+        coin = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Coin").gameObject.GetComponent<CoinFlip>();
+        pd = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
         for (int i = 1; i <= pGroup.m_playerGroups[bgm.getPlayerGroup() - 1].Count; i++)
         {
             if (pGroup.m_playerGroups[bgm.getPlayerGroup() - 1][i - 1] == GameLiftManager.GetInstance().m_PeerId)
@@ -39,14 +43,16 @@ public class PlayerMovement : MonoBehaviour
                 playerNumber = i;
             }
         }
-        coin = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Coin").gameObject.GetComponent<CoinFlip>();
+        fNotify = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("FightNotification").gameObject;
+        fNotify.SetActive(false);
+
+        gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
     }
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.V)){
             QTile();
         }
-
     }
     void QTile(){
         int children = questions.transform.childCount;
@@ -65,15 +71,134 @@ public class PlayerMovement : MonoBehaviour
         sg.GetComponent<Selfgrader>().setText(q, "Teacher's Answer: "+a); 
     }
 
+    
+
     public void fight(bool win)
     {
         if (win)
         {
             Debug.Log("WON THE FIGHT!");
-            DiceRoll.starCount++;
+            Transform world = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane");
+            if (world.childCount >= 72)
+            {
+                int victimNum = Random.Range(70, world.childCount);
+                while (victimNum - 69 == playerNumber)
+                {
+                    victimNum = Random.Range(70, world.childCount);
+                }
+
+                Debug.Log("Stealing from player " + (victimNum - 69));
+                switch (victimNum - 69)
+                {
+                    case 1:
+                        if (pd.p1Stars > 0)
+                        {
+                            Debug.Log("STEALING");
+                            DiceRoll.starCount++;
+                            playerData.sendData();
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from player " + 1;
+                            fNotify.SetActive(true);
+                            steal(1);
+                        }
+                        else
+                        {
+                            Debug.Log("No stars to be stolen");
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from player " + 1 + ", but no stars to be stolen";
+                            fNotify.SetActive(true);
+                        }
+                        break;
+
+                    case 2:
+                        if (pd.p2Stars > 0)
+                        {
+                            Debug.Log("STEALING");
+                            DiceRoll.starCount++;
+                            playerData.sendData();
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from player " + 2;
+                            fNotify.SetActive(true);
+                            steal(2);
+                        }
+                        else
+                        {
+                            Debug.Log("No stars to be stolen");
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from player " + 2 + ", but no stars to be stolen";
+                            fNotify.SetActive(true);
+                        }
+                        break;
+
+                    case 3:
+                        if (pd.p3Stars > 0)
+                        {
+                            Debug.Log("STEALING");
+                            DiceRoll.starCount++;
+                            playerData.sendData();
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from player " + 3;
+                            fNotify.SetActive(true);
+                            steal(3);
+                        }
+                        else
+                        {
+                            Debug.Log("No stars to be stolen");
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from player " + 3 + ", but no stars to be stolen";
+                            fNotify.SetActive(true);
+                        }
+                        break;
+
+                    case 4:
+                        if (pd.p4Stars > 0)
+                        {
+                            Debug.Log("STEALING");
+                            DiceRoll.starCount++;
+                            playerData.sendData();
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from player " + 4;
+                            fNotify.SetActive(true);
+                            steal(4);
+                        }
+                        else
+                        {
+                            Debug.Log("No stars to be stolen");
+                            fNotify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from player " + 4 + ", but no stars to be stolen";
+                            fNotify.SetActive(true);
+                        }
+                        break;
+                }
+            } else
+            {
+                fNotify.transform.Find("Text").GetComponent<Text>().text = "No players to steal from";
+                fNotify.SetActive(true);
+                Debug.Log("No players to steal from...");
+            }
         } else
         {
+            fNotify.transform.Find("Text").GetComponent<Text>().text = "You lost";
+            fNotify.SetActive(true);
             Debug.Log("LOST THE FIGHT...");
+        }
+    }
+
+    private void steal(int victim)
+    {
+        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+        {
+            float[] sendValue = new float[3];
+            sendValue[0] = bgm.getPlayerGroup();
+            sendValue[1] = victim;
+            sendValue[2] = playerNumber;
+
+            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
+        });
+    }
+
+    private void gettingRobbed(string _id, float[] _f)
+    {
+        Debug.Log("GETTING ROBBED");
+        if (_f[0] == bgm.getPlayerGroup() && _f[1] == playerNumber)
+        {
+            fNotify.transform.Find("Text").GetComponent<Text>().text = "Player " + _f[2] + " has stolen a star!";
+            fNotify.SetActive(true);
+            Debug.Log("GOT ROBBEDDD");
+            DiceRoll.starCount--;
+            playerData.sendData();
         }
     }
 
@@ -106,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
         } else if (currentTile.tag == "FightTile")
         {
             CoinFlip.canFlip = true;
-            Debug.Log("CAN FLIP COIN");
+            Debug.Log("FLIPPING");
         }
         playerData.sendData();
 
