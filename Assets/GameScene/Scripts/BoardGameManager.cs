@@ -120,7 +120,7 @@ public class BoardGameManager : MonoBehaviour
         //return -1;
         return playerGrouping.getPlayerGroup(GameLiftManager.GetInstance().m_PeerId);
     }
-    private int getPlayerGroup(int id)
+    public int getPlayerGroup(int id)
     {
         //for (int i = 0; i < playerGrouping.playersGrid.transform.childCount; i++)
         //{

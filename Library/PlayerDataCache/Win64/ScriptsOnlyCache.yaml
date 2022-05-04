@@ -467,15 +467,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9384}
     - Class: 114
-      Script: {instanceID: 32998}
+      Script: {instanceID: 31724}
     - Class: 114
-      Script: {instanceID: 33004}
+      Script: {instanceID: 31726}
     - Class: 114
-      Script: {instanceID: 33194}
+      Script: {instanceID: 31728}
     - Class: 114
-      Script: {instanceID: 36718}
+      Script: {instanceID: 35596}
     - Class: 114
-      Script: {instanceID: 36722}
+      Script: {instanceID: 35598}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
