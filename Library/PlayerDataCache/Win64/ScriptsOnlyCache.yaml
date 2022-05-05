@@ -467,15 +467,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9384}
     - Class: 114
-      Script: {instanceID: 31724}
+      Script: {instanceID: 32900}
     - Class: 114
-      Script: {instanceID: 31726}
+      Script: {instanceID: 32906}
     - Class: 114
-      Script: {instanceID: 31728}
+      Script: {instanceID: 33096}
     - Class: 114
-      Script: {instanceID: 35596}
+      Script: {instanceID: 36620}
     - Class: 114
-      Script: {instanceID: 35598}
+      Script: {instanceID: 36624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -3055,7 +3055,7 @@ ScriptsOnlyBuild:
     className: TapToPlace
   - hash:
       serializedVersion: 2
-      Hash: 5192d3587517e608af76850d2ac65c59
+      Hash: 692e51d479a0e5fe5dbf6240a1942b07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Selfgrader
@@ -4099,7 +4099,7 @@ ScriptsOnlyBuild:
     className: ASLParticleSystem
   - hash:
       serializedVersion: 2
-      Hash: 1eb53f416b643176489f36f35dd516b2
+      Hash: 46fded60ff257be60274cc945686f00e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonBehavior
@@ -4282,4 +4282,4 @@ ScriptsOnlyBuild:
   - Assets/GameScene/BoardGame2.unity
   - Assets/ASL/ASL_Scenes/ASL_LobbyScene.unity
   - Assets/ASL/ASL_Scenes/ASL_SceneLoader.unity
-  playerPath: C:/Users/younk/Desktop/Demo/Board Quiz.exe
+  playerPath: C:/Users/uzuma/Documents/capstone/test2/Board Quiz.exe

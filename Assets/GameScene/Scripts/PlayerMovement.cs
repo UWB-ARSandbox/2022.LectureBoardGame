@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         qPanel.GetComponent<QuestionPanel>().setAnswer(a);
         qPanel.SetActive(true);
         qPanel.transform.GetChild(2).gameObject.SetActive(false);
+        sg.GetComponent<Selfgrader>().qButton = null;
         sg.GetComponent<Selfgrader>().setText(q, "Teacher's Answer: "+a); 
     }
 

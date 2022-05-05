@@ -15,9 +15,11 @@ public class ButtonBehavior : MonoBehaviour
     public Text question2;
     public Text answerTxt;
     public GameObject sg;
+    public bool submitted = false;
     public bool answered = false;
 
     private GameObject newMark;
+    private string studentAnswer;
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -52,17 +54,25 @@ public class ButtonBehavior : MonoBehaviour
         return answer;
     }
 
+    public void setStudentAnswer(string s){
+        studentAnswer = s;
+    }
+
     void OpenQ(){
+        bool isActive;
         if(newMark.activeSelf){
             newMark.SetActive(false);
         }
-        if(answered && sg!=null){
+        if(answered && sg!=null && sg.GetComponent<Selfgrader>().graded){
+            isActive = sg.activeSelf;
             GameObject correct = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Correct").gameObject;
             GameObject incorrect = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Incorrect").gameObject;
             if(questionPanel!=null){
                 questionPanel.SetActive(false);
             }
-            if(!sg.activeSelf){
+            correct.SetActive(false);
+            incorrect.SetActive(false);
+            /*if(!sg.activeSelf){
                 sg.SetActive(true);
                 correct.SetActive(false);
                 incorrect.SetActive(false);
@@ -70,12 +80,28 @@ public class ButtonBehavior : MonoBehaviour
                 correct.SetActive(true);
                 incorrect.SetActive(true);
                 sg.SetActive(false);
+            }*/
+            if(sg.activeSelf){
+                string q = question2.text;
+                if (buttontxt == q){
+                    correct.SetActive(true);
+                    incorrect.SetActive(true);
+                    sg.SetActive(false); 
+                } else {
+                    sg.GetComponent<Selfgrader>().setText(buttontxt, answer, studentAnswer);
+                }
+            } else {
+                sg.GetComponent<Selfgrader>().setText(buttontxt, answer, studentAnswer);
+                sg.SetActive(true);
             }
-        } else if (questionPanel != null && !sg.activeSelf) {  
+        } else if (questionPanel != null && (!sg.activeSelf || sg.GetComponent<Selfgrader>().graded)) { 
+            if(sg.activeSelf){
+                sg.SetActive(false);
+            } 
             questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
-            bool isActive = questionPanel.activeSelf;
+            isActive = questionPanel.activeSelf;
             sg.GetComponent<Selfgrader>().qButton = GetComponent<Button>();
-            sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);  
+            sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);
             if(isActive){
                 string q = question.text;
                 if (buttontxt == q){

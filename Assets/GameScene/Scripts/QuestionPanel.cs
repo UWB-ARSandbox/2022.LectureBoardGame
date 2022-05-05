@@ -37,6 +37,7 @@ public class QuestionPanel : MonoBehaviour
             selfgrade.SetActive(!isActive);
             selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);
             userInput.text = "";
+            selfgrade.GetComponent<Selfgrader>().activeButtons();
             close();
         }
     }

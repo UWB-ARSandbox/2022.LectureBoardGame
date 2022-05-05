@@ -12,11 +12,13 @@ public class Selfgrader : MonoBehaviour
     public Button qButton;
     public Button correct;
     public Button incorrect;
+    public Button closeButton;
     public Text questionTxt;
     public Text teacherAnswer;
     public Text studentAnswer;
     public MarkAnswer ma;
     private PlayerData playerData;
+    public bool graded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class Selfgrader : MonoBehaviour
         btn.onClick.AddListener(markCorrect);
         Button btn2 = incorrect.GetComponent<Button>();
         btn2.onClick.AddListener(markIncorrect);
+        Button btn3 = closeButton.GetComponent<Button>();
+        btn3.onClick.AddListener(close);
 
         playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
 
@@ -41,6 +45,9 @@ public class Selfgrader : MonoBehaviour
         question = q;
         teacher = ta;
         student = submit;
+        questionTxt.text = q;
+        teacherAnswer.text = "Teacher's Answer: "+ ta;
+        studentAnswer.text = "Your Answer: " + submit;
     }
 
     public void setText(string q, string a)
@@ -53,8 +60,18 @@ public class Selfgrader : MonoBehaviour
 
     public void studentSubmit(string a)
     {
+        graded = false;
+        closeButton.gameObject.SetActive(false);
         student = "Your Answer: " + a;
         studentAnswer.text = "Your Answer: " + a;
+        if(qButton!=null){
+            qButton.GetComponent<ButtonBehavior>().setStudentAnswer(a);
+        }
+    }
+
+    public void activeButtons(){
+        correct.gameObject.SetActive(true);
+        incorrect.gameObject.SetActive(true);
     }
 
     void markCorrect()
@@ -63,13 +80,12 @@ public class Selfgrader : MonoBehaviour
             qButton.GetComponent<Image>().color = correct.image.color;
             qButton.GetComponent<ButtonBehavior>().answered = true;
             ma.mark(questionTxt.text, true);
+            graded = true;
         }
-        
+        playerData.sendData();
         DiceRoll.movePoints++;
         DiceRoll.starCount += 5;
-
-        playerData.sendData();
-
+        closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -79,8 +95,18 @@ public class Selfgrader : MonoBehaviour
             qButton.GetComponent<Image>().color = incorrect.image.color;
             qButton.GetComponent<ButtonBehavior>().answered = true;
             ma.mark(questionTxt.text, false);
+            graded = true;
         }
+        closeButton.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+    }
 
+    void close(){
+        if(!closeButton.gameObject.activeSelf){
+            closeButton.gameObject.SetActive(true);
+        }
+        correct.gameObject.SetActive(true);
+        incorrect.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 }
