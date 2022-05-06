@@ -116,6 +116,7 @@
     <Compile Include="Assets\Demo\StressTest\Scripts\StressTest_AutonomousObjects.cs" />
     <Compile Include="Assets\GameScene\Dice\DiceRoll.cs" />
     <Compile Include="Assets\Demo\OnTriggerEnter\Scripts\Demo_OnTriggerEnterColor.cs" />
+    <Compile Include="Assets\GameScene\Scripts\MenuBehavior.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\VideoStream\Scripts\VideoStream_Example.cs" />
     <Compile Include="Assets\GameScene\Scripts\QuestionPanel.cs" />
     <Compile Include="Assets\GameScene\Board\TileNode.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ASL_StressTests\Scripts\StressTest_FightOverFiveObjectsController.cs" />
     <Compile Include="Assets\GameScene\GroupingLobby\Scripts\GroupColoring.cs" />
     <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_PatrolRoute.cs" />
+    <Compile Include="Assets\GameScene\Coin\DetectCoinSide.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\UI_Support\ASLSliderWithEcho.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\AR\InstantiateARIfConnected.cs" />
     <Compile Include="Assets\GameScene\Scripts\TeacherButton.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Assets\GameScene\Board\BoardTiles.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\ASLHelper.cs" />
     <Compile Include="Assets\Demo\StressTest\Scripts\StressTest_CollisionCounter.cs" />
+    <Compile Include="Assets\GameScene\Coin\CoinFlip.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ColorObject\Scripts\ColorObject_Example.cs" />
     <Compile Include="Assets\GameScene\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\Visualization\Frustum\StretchCylinder.cs" />
@@ -183,8 +186,6 @@
     <Compile Include="Assets\ASL\ASL_Scripts\MixedRealityToolkit\InstantiateMRTKIfConnected.cs" />
     <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
     <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
-    <Compile Include="Assets\GameScene\Coin\CoinFlip.cs" />
-    <Compile Include="Assets\GameScene\Coin\DetectCoinSide.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />

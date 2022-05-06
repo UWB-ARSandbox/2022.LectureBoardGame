@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2141662918530518636}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9486959
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7639,7 +7639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.49928, y: 0.0007320414}
+  m_AnchoredPosition: {x: -241.49928, y: 0.000019648003}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2141662919323490465
@@ -12154,6 +12154,10 @@ PrefabInstance:
     - target: {fileID: 1452929581620697255, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452929581620697255, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1650054687206104576, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_AnchorMax.y

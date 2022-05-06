@@ -50,6 +50,7 @@ public class PlayerGrouping : MonoBehaviour
             GameObject.Find("AddBlankButton").SetActive(false);
             GameObject.Find("UploadButton").SetActive(false);
             GameObject.Find("StartButton").SetActive(false);
+            GameObject.Find("HelpButton").SetActive(false);
             StartCoroutine(startPlayerGame());
         } else
         {
