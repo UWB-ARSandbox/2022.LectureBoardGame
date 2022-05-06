@@ -100,6 +100,13 @@ public class Scroll : MonoBehaviour
             newButton = Instantiate(prefabButton) as GameObject;
             newButton.GetComponent<RectTransform>().position = pos;
             newButton.transform.SetParent(go.transform, false);
+            if(!min.activeSelf){
+                newButton.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(120,30);
+                newButton.GetComponent<RectTransform>().localPosition -= new Vector3(180,0,0);
+                newButton.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(20,30);
+                newButton.transform.GetChild(1).GetComponent<RectTransform>().position -= new Vector3(40,0,0);
+                newButton.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "!";
+            }
         }
         newButton.GetComponent<ButtonBehavior>().setQA(q, a);
         number++;

@@ -10,7 +10,7 @@ public class CameraManipulation : MonoBehaviour
     private Vector3 click;
     public float movespeed = .015f;
     public float rotatespeed = .1f;
-    public int zoomspeed = 1;
+    public int zoomspeed = 7;
     private float cameraY;
 
     public enum LookAtCompute
@@ -19,8 +19,8 @@ public class CameraManipulation : MonoBehaviour
         TransformLookAt = 1
     };
 
-    public GameObject LookAt;
-    private Transform LookAtPosition = null;
+    //public GameObject LookAt;
+    //private Transform LookAtPosition = null;
     public LookAtCompute ComputeMode = LookAtCompute.QuatLookRotation;
     Vector3 delta = Vector3.zero;
     Vector3 mouseDownPos = Vector3.zero;
@@ -29,9 +29,9 @@ public class CameraManipulation : MonoBehaviour
 
     void Start()
     {
-        Debug.Assert(LookAt != null);
-        LookAtPosition = LookAt.transform;
-        LookAt.GetComponent<Renderer>().enabled = false;
+        //Debug.Assert(LookAt != null);
+        //LookAtPosition = LookAt.transform;
+        //LookAt.GetComponent<Renderer>().enabled = false;
         //first.GetComponentInChildren<Text>().text = "Enter the word \"Yes\"";
         //first.setQA("Enter the word \"Yes\"", "Yes");
     }
@@ -46,7 +46,7 @@ public class CameraManipulation : MonoBehaviour
             Application.Quit();
         }
 
-        switch (ComputeMode)
+        /*switch (ComputeMode)
         {
             case LookAtCompute.QuatLookRotation:
                 // Viewing vector is from transform.localPosition to the lookat position
@@ -59,9 +59,9 @@ public class CameraManipulation : MonoBehaviour
             case LookAtCompute.TransformLookAt:
                 transform.LookAt(LookAtPosition);
                 break;
-        }
+        }*/
 
-        transform.LookAt(LookAtPosition);
+        //transform.LookAt(LookAtPosition);
         // Mouse Button 1/right click: rotates camera
         // Mouse button 2/Scroll button: moves camera
         if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
@@ -76,17 +76,17 @@ public class CameraManipulation : MonoBehaviour
             mouseDownPos = Input.mousePosition;
             if (Input.GetMouseButton(1))
             {
-                ProcesssTumble(delta);
+                //ProcesssTumble(delta);
             }
             else if(Input.GetMouseButton(2))
             {
                 Vector3 d = delta.x * movespeed * transform.right + delta.y * movespeed * transform.up;
                 transform.localPosition += d;
                 transform.localPosition = new Vector3(
-                    Mathf.Clamp(transform.localPosition.x, -5f, 5f), cameraY, Mathf.Clamp(transform.localPosition.z, -5f, 5f));
-                LookAtPosition.localPosition += d;
-                LookAtPosition.transform.localPosition = new Vector3(
-                    Mathf.Clamp(LookAtPosition.transform.localPosition.x, -5f, 5f), 0, Mathf.Clamp(LookAtPosition.transform.localPosition.z, -5f, 5f));
+                    Mathf.Clamp(transform.localPosition.x, -9f, 2f), cameraY, Mathf.Clamp(transform.localPosition.z, -2f, 9f));
+                //LookAtPosition.localPosition += d;
+                //LookAtPosition.transform.localPosition = new Vector3(
+                    //Mathf.Clamp(LookAtPosition.transform.localPosition.x, -5f, 5f), 0, Mathf.Clamp(LookAtPosition.transform.localPosition.z, -5f, 5f));
             }
         }
 
@@ -95,16 +95,16 @@ public class CameraManipulation : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
             var input = Input.GetAxis("Mouse ScrollWheel");
-            transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x + (transform.forward.x * zoomspeed * input), -5f, 5f),
+            transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x + (transform.forward.x * zoomspeed * input), -9f, 2f),
                 Mathf.Clamp(transform.localPosition.y + (transform.forward.y * zoomspeed * input), 1f, 20f),
-                Mathf.Clamp(transform.localPosition.z + (transform.forward.z * zoomspeed * input), -5f, 5f));
+                Mathf.Clamp(transform.localPosition.z + (transform.forward.z * zoomspeed * input), -2f, 9f));
         }
 
 
     }
 
     float Direction = 1.0f;
-    public void ProcesssTumble(Vector3 delta)
+    /*public void ProcesssTumble(Vector3 delta)
     {
         Quaternion q = Quaternion.AngleAxis(-delta.x * rotatespeed * Direction, transform.up);
         Matrix4x4 r = Matrix4x4.Rotate(q);
@@ -122,6 +122,6 @@ public class CameraManipulation : MonoBehaviour
             transform.localPosition = newCameraPos;
 
         transform.LookAt(LookAtPosition);
-    }
+    }*/
 
 }

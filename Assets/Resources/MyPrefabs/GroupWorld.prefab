@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2141662918530518636}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.97747993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6419,7 +6419,6 @@ MonoBehaviour:
   movespeed: 0.015
   rotatespeed: 0.1
   zoomspeed: 7
-  LookAt: {fileID: 2141662919069569278}
   ComputeMode: 1
   first: {fileID: 0}
 --- !u!1 &2141662918986885087
@@ -6785,7 +6784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2141662919069569266
 Transform:
   m_ObjectHideFlags: 0
@@ -7639,7 +7638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.49928, y: 0.000019648003}
+  m_AnchoredPosition: {x: -241.49928, y: 0.0007381623}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2141662919323490465
@@ -12151,19 +12150,47 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 70743294509701029, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1452929581620697255, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1452929581620697255, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1650054687206104576, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2145373533891873760, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145373533891873760, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145373533891873760, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.8333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145643985661358038, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145643985661358038, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2183675164975863093, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2560401202048101699, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -12269,7 +12296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5349234152537711324, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6868171531788307368, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12299,6 +12326,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8473544898624025800, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 2141662918914096881}
     - target: {fileID: 8534291176832328849, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_Text
       value: 'Answer questions to gain move points and stars.
@@ -12316,6 +12347,10 @@ PrefabInstance:
         The player with the most
         stars at the end wins!'
       objectReference: {fileID: 0}
+    - target: {fileID: 8629558637821115009, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 2141662918914096881}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
 --- !u!224 &8735058779780995455 stripped
