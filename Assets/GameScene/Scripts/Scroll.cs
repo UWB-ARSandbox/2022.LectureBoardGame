@@ -36,8 +36,9 @@ public class Scroll : MonoBehaviour
                 a = ManageCSV.grid[1,number];
             } 
         }*/
-        if (true/*imported*/)
+        if (imported)
         {
+            Debug.Log("IMPORTED");
             buttonSetup();
         }
         GameObject.Find("DataSend").GetComponent<SendNewQuestion>().studentUI = gameObject;
@@ -51,8 +52,8 @@ public class Scroll : MonoBehaviour
         {
             if(isHost){
                 GameObject newButton = newQ(q, a);
-                newButton.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
-                newButton.GetComponent<TeacherButton>().published = true;
+                // newButton.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
+                newButton.GetComponent<TeacherButton>().published = false;
             } else {
                 createButton(q, a);
             }
@@ -64,33 +65,7 @@ public class Scroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            string q = ManageCSV.grid[0, number];
-            string a = ManageCSV.grid[1, number];
-            if (q != "")
-            {
-                /*
-                GameObject go = GameObject.Find("Content");
-                //Get pos of last button and size of button
-                int i = go.transform.childCount-1;
-                var rectTransform = go.transform.GetChild(i).GetComponent<RectTransform>();
-                Vector3 pos = rectTransform.position;
-                Vector2 size = rectTransform.sizeDelta;
-                //Change size of "content"
-                rectTransform = go.GetComponent<RectTransform>();
-                rectTransform.sizeDelta += new Vector2(0, size.y);
-                pos -= new Vector3(0,size.y, 0); 
-                //create new button
-                GameObject newButton = Instantiate(button) as GameObject;
-                newButton.transform.SetParent(rectTransform.transform, false);
-                newButton.GetComponent<RectTransform>().position = pos;
-                newButton.GetComponent<ButtonBehavior>().setQA(q, a);
-                number++;*/
-                createButton(q, a);
-            }
 
-        }
     }
 
     public void createButton(string q, string a)
