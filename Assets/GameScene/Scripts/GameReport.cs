@@ -152,16 +152,16 @@ public class GameReport : MonoBehaviour
         }
         if (formattingNeeded)
         {
-            arg = '"' + arg;
+            arg = "\"" + arg;
             //if there a " make it ""
             for (int i = 1; i < arg.Length; i++)
             {
                 if (arg[i] == '"')
                 {   //Add ", skip next i
-                    arg.Insert(i++, "\"");
+                    arg = arg.Insert(i++, "\"");
                 }
             }
-            arg += '"';
+            arg += "\"";
         }
         return arg;
     }
