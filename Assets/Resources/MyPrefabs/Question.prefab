@@ -810,6 +810,7 @@ MonoBehaviour:
   userInput: {fileID: 2345725245605440437}
   submitButton: {fileID: 2345725245882000323}
   selfgrade: {fileID: 0}
+  closeButton: {fileID: 0}
 --- !u!1 &2345725246562202036
 GameObject:
   m_ObjectHideFlags: 0

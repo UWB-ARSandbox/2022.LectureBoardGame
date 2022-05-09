@@ -26,24 +26,42 @@ public class SendNewQuestion : MonoBehaviour
 
     private void readQuestion(string _id, float[] _f)
     {
+        string floats = "SendNewQuestion - Floats received: ";
+        for (int i = 0; i < _f.Length; i++)
+        {
+            floats += _f[i].ToString();
+            if (_f.Length - 1 != i)
+            {
+                floats += ", ";
+            }
+        }
+        Debug.Log(floats);
+
         string printQuestion = "";
         string printAnswer = "";
-        bool next = false;
+        int questionIndex = -1;
+        int separatorCount = 0;
         foreach (float f in _f)
         {
             if (f == -1)
             {
-                next = true;
+                separatorCount++;
             }
             else
             {
-                if (!next)
+                switch (separatorCount)
                 {
-                    printQuestion += System.Convert.ToChar((int)f);
-                }
-                else
-                {
-                    printAnswer += System.Convert.ToChar((int)f);
+                    case 0:
+                        printQuestion += System.Convert.ToChar((int)f);
+                        break;
+                    case 1:
+                        printAnswer += System.Convert.ToChar((int)f);
+                        break;
+                    case 2:
+                        questionIndex = (int)f;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -58,17 +76,18 @@ public class SendNewQuestion : MonoBehaviour
             if(studentUI==null){
                 GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
             }
-            studentUI.GetComponent<Scroll>().createButton(printQuestion, printAnswer);
+            studentUI.GetComponent<Scroll>().createButton(printQuestion, printAnswer, questionIndex);
         }
     }
 
-    public void sendQuestion(string q, string a)
+    public void sendQuestion(string q, string a, int questionIndex)
     {
         //question = GameObject.Find("");
         gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
         {
             // one additional float length is for question and answer separator (negative value)
-            float[] sendValue = new float[q.Length + 1 + a.Length];
+            // +2 -> negative separator and questionIndex for GameReport
+            float[] sendValue = new float[q.Length + 1 + a.Length + 2];
             int index = 0;
             // register question
             foreach (char c in q)
@@ -87,6 +106,14 @@ public class SendNewQuestion : MonoBehaviour
                 sendValue[index] = c;
                 index++;
             }
+
+            // register separator
+            sendValue[index] = -1;
+            index++;
+
+            //register question index for GameReport
+            sendValue[index] = questionIndex;
+            index++;
 
             // send float array
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);

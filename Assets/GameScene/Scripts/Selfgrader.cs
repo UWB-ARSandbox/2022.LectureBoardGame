@@ -17,8 +17,10 @@ public class Selfgrader : MonoBehaviour
     public Text teacherAnswer;
     public Text studentAnswer;
     public MarkAnswer ma;
+    public StudentStats stats;
     private PlayerData playerData;
     public bool graded = false;
+    public int questionIndex = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,6 @@ public class Selfgrader : MonoBehaviour
         btn3.onClick.AddListener(close);
 
         playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
-
         ma = GameObject.Find("AnswerManager").GetComponent<MarkAnswer>();
     }
 
@@ -64,7 +65,9 @@ public class Selfgrader : MonoBehaviour
         closeButton.gameObject.SetActive(false);
         student = "Your Answer: " + a;
         studentAnswer.text = "Your Answer: " + a;
-        if(qButton!=null){
+        stats.incrementNumAnswered();
+        stats.sendAnswer(GameLiftManager.GetInstance().m_PeerId, questionIndex, a);
+        if (qButton!=null){
             qButton.GetComponent<ButtonBehavior>().setStudentAnswer(a);
         }
     }
@@ -82,9 +85,11 @@ public class Selfgrader : MonoBehaviour
             ma.mark(questionTxt.text, true);
             graded = true;
         }
-        playerData.sendData();
         DiceRoll.movePoints++;
         DiceRoll.starCount += 5;
+        stats.incrementNumCorrect();
+        stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, 1);
+        playerData.sendData();
         closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
@@ -97,6 +102,7 @@ public class Selfgrader : MonoBehaviour
             ma.mark(questionTxt.text, false);
             graded = true;
         }
+        stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, -1);
         closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

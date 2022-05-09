@@ -1018,6 +1018,7 @@ MonoBehaviour:
   AInput: {fileID: 9191377361938108842}
   CancelButton: {fileID: 9191377360996465718}
   button: {fileID: 0}
+  content: {fileID: 0}
 --- !u!1 &9191377362143232466
 GameObject:
   m_ObjectHideFlags: 0

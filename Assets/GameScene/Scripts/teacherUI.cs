@@ -10,6 +10,8 @@ public class teacherUI : MonoBehaviour
     public Button newQ;
     private bool isHost = false;
     public GameObject addQ;
+    public Text questionsPosted;
+    private int qPosted = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +46,10 @@ public class teacherUI : MonoBehaviour
             publish.SetActive(true);
         }
         addQ.SetActive(true);
+    }
+
+    public void incrementQuestionsPosted()
+    {
+        questionsPosted.text = "Questions Posted: " + (++qPosted);
     }
 }

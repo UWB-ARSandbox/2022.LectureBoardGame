@@ -10,6 +10,7 @@ public class TeacherButton : MonoBehaviour
     string answer;
     public bool published = false;
     public GameObject editPanel;
+    public GameObject studentAnswersPanel;
     private Text q2;
     private Text stats;
     //Int for the stat text
@@ -17,12 +18,17 @@ public class TeacherButton : MonoBehaviour
     int Correct;
     int Answered;
     int Students;
+    //For GameReport's reportData list
+    public int questionIndex = -1;
+    private GameReport gameReport;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(editPanel==null){
-            editPanel = GameObject.Find("Canvas").transform.Find("AddQ").gameObject;
+        gameReport = GameObject.Find("GameReport").GetComponent<GameReport>();
+        if (studentAnswersPanel == null)
+        {
+            studentAnswersPanel = GameObject.Find("Canvas").transform.Find("StudentAnswersPanel").gameObject;
         }
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(OpenPanel);
@@ -36,30 +42,51 @@ public class TeacherButton : MonoBehaviour
         
     }
 
-    public void setQA(string q, string a){
+    public void setUp(bool inGame, int qIndex) //qIndex only set if not ingame
+    {
+        if (inGame)
+        {
+            if (editPanel==null){
+                editPanel = GameObject.Find("Canvas").transform.Find("AddQ").gameObject;
+            }
+        } else
+        {
+            questionIndex = qIndex;
+        }
+    }
+
+    public void setQA(string q, string a)
+    {
         question = q;
         answer = a;
-        if(q2==null){
+        if (q2==null){
             q2 = gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         }
         q2.text = question;
     }
 
     void OpenPanel(){
-        bool open = editPanel.activeSelf;
-        if(open){
-            //string text = editPanel.GetComponent<script>().question;
-            //if (text != question){
-                //change question and answer
-            //} else {
-                //editPanel.SetActive(false);
-            //}
-            editPanel.SetActive(false);
-        } else {
-            editPanel.GetComponent<AddQPanel>().updateQA(question,answer);
-            editPanel.GetComponent<AddQPanel>().button = this;
-            checkPublished();
-            editPanel.SetActive(true);
+        if (published)
+        {
+            studentAnswersPanel.SetActive(true);
+            studentAnswersPanel.GetComponent<StudentAnswersPanel>().loadPanel(questionIndex);
+        } else
+        {
+            bool open = editPanel.activeSelf;
+            if(open){
+                //string text = editPanel.GetComponent<script>().question;
+                //if (text != question){
+                    //change question and answer
+                //} else {
+                    //editPanel.SetActive(false);
+                //}
+                editPanel.SetActive(false);
+            } else {
+                editPanel.GetComponent<AddQPanel>().updateQA(question,answer);
+                editPanel.GetComponent<AddQPanel>().button = this;
+                //checkPublished();
+                editPanel.SetActive(true);
+            }
         }
     }
 
@@ -70,5 +97,10 @@ public class TeacherButton : MonoBehaviour
             save.SetActive(false);
             publish.SetActive(false);
         }
+    }
+
+    public void updateGameReportStats(int numAnswers, int numCorrect, int numIncorrect)
+    {
+        gameReport.updateStats(questionIndex, numAnswers, numCorrect, numIncorrect);
     }
 }

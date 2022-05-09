@@ -14,6 +14,7 @@ public class AddQPanel : MonoBehaviour
     public Button CancelButton;
     public TeacherButton button;
     public Scroll content;
+    public teacherUI teachUI;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +41,10 @@ public class AddQPanel : MonoBehaviour
         answer = AInput.text;
         if(button!=null){
             button.setQA(question, answer);
+            GameReport.setTeacherQA(question, answer, button.questionIndex);
         } else {
             GameObject item = content.newQ(question, answer);
+            button = item.GetComponent<TeacherButton>();
         }
         QInput.text = AInput.text = "";
         close();
@@ -56,7 +59,8 @@ public class AddQPanel : MonoBehaviour
         //Yellow - Color (255,214,0)
         button.gameObject.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
         GameObject DataSend = GameObject.Find("DataSend");
-        DataSend.GetComponent<SendNewQuestion>().sendQuestion(QInput.text, AInput.text);
+        DataSend.GetComponent<SendNewQuestion>().sendQuestion(QInput.text, AInput.text, button.questionIndex);
+        teachUI.incrementQuestionsPosted();
         save();
     }
 

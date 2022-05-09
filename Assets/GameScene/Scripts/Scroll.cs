@@ -16,10 +16,13 @@ public class Scroll : MonoBehaviour
     public GameObject prefabButton;
     public GameObject min;
     private bool isHost = false;
+    private GameReport gameReport;
+    public StudentStats studentStats;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        gameReport = GameObject.Find("GameReport").GetComponent<GameReport>();
         isHost = GameLiftManager.GetInstance().m_PeerId == 1;
         m_ASLObject = gameObject.GetComponent<ASLpanel>();
         if(min==null){
@@ -55,7 +58,7 @@ public class Scroll : MonoBehaviour
                 // newButton.GetComponent<Image>().color = new Color32(157, 241, 146, 255);
                 newButton.GetComponent<TeacherButton>().published = false;
             } else {
-                createButton(q, a);
+                createButton(q, a, number - 1);
             }
             q = ManageCSV.grid[0, number];
             a = ManageCSV.grid[1, number];
@@ -68,7 +71,7 @@ public class Scroll : MonoBehaviour
 
     }
 
-    public void createButton(string q, string a)
+    public void createButton(string q, string a, int questionIndex)
     {
         GameObject go = gameObject;
         //Get pos of last button and size of button
@@ -108,7 +111,11 @@ public class Scroll : MonoBehaviour
                 newButton.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "!";
             }
         }
-        newButton.GetComponent<ButtonBehavior>().setQA(q, a);
+        ButtonBehavior buttonBehavior = newButton.GetComponent<ButtonBehavior>();
+        buttonBehavior.setQA(q, a);
+        studentStats.updateNumQuestions();
+        buttonBehavior.questionIndex = questionIndex;
+        gameReport.createStudentData(GameLiftManager.GetInstance().m_PeerId, GameLiftManager.GetInstance().m_Username, q, a, questionIndex);
         number++;
     }
 
@@ -140,7 +147,10 @@ public class Scroll : MonoBehaviour
             newButton.GetComponent<RectTransform>().position = pos;
             newButton.transform.SetParent(go.transform, false);
         }
-        newButton.GetComponent<TeacherButton>().setQA(q, a);
+        TeacherButton teacherButton = newButton.GetComponent<TeacherButton>();
+        teacherButton.questionIndex = gameReport.createTeacherData(q, a);
+        teacherButton.setUp(true, -1);
+        teacherButton.setQA(q, a);
         number++;
         return newButton;
     }

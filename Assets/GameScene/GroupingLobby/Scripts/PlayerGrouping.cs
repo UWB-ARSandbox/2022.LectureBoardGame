@@ -32,7 +32,7 @@ public class PlayerGrouping : MonoBehaviour
     /// <summary>Bool that toggles when we send the floats, gets set to false after we send to save bandwidth</summary>
     public bool m_SendFloat = false;
     private ASLObject thisASL;
-    private SortedList<int, int> m_players = new SortedList<int, int>();
+    public SortedList<int, int> m_players = new SortedList<int, int>(); //K,V = id,groupNum
     public List<List<int>> m_playerGroups = new List<List<int>>();
 
     // Start is called before the first frame update

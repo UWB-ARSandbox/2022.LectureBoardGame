@@ -83,6 +83,8 @@ public class MarkAnswer : MonoBehaviour
                     stat = corrects + "/" + answers + "/" + manager.playerCount;
                     Debug.Log(stat);
                     btn.Find("Stats").GetComponent<Text>().text = stat;
+                    TeacherButton teacherBtn = btn.GetComponent<TeacherButton>();
+                    teacherBtn.updateGameReportStats(answers, corrects, incorrects);
                 }
             }
         }

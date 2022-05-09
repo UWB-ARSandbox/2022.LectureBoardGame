@@ -24,6 +24,7 @@ public class BoardGameManager : MonoBehaviour
     private PlayerGrouping playerGrouping;
     private GameObject camLight;
     private GameObject playerDataManager;
+    private GameReport gameReport;
     [SerializeField] private int currId;
     [SerializeField] private int m_groupWorldSpacing = 75;
     public bool m_SendFloat = false;
@@ -42,6 +43,7 @@ public class BoardGameManager : MonoBehaviour
         playerGrouping = this.gameObject.GetComponent<PlayerGrouping>();
         camLight = GameObject.Find("camLight");
         playerDataManager = GameObject.Find("PlayerDataManager");
+        gameReport = GameObject.Find("GameReport").GetComponent<GameReport>();
         playerDataManager.SetActive(false);
         studentUI.SetActive(false);
         teacherUI.SetActive(false);
@@ -261,7 +263,16 @@ public class BoardGameManager : MonoBehaviour
     }
     public void endGameUIHelper()
     {
-        studentUI.SetActive(false);
+        endGameUI.GetComponent<EndGameUI>().endGameSetUp();
+        //studentUI.SetActive(false);
+        if (GameLiftManager.GetInstance().m_PeerId != hostID)
+        {
+            GameObject gw = getGroupWorld(getPlayerGroup());
+            foreach (Transform child in gw.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
         teacherUI.SetActive(false);
         endGameUI.SetActive(true);
         camLight.SetActive(true);

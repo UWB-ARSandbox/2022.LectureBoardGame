@@ -20,6 +20,9 @@ public class ButtonBehavior : MonoBehaviour
 
     private GameObject newMark;
     private string studentAnswer;
+    //For GameReport's reportData list
+    public int questionIndex = -1;
+    
     void Start()
     {
         Button btn = GetComponent<Button>();
@@ -40,10 +43,11 @@ public class ButtonBehavior : MonoBehaviour
         
     }
 
-    public void setQA(string q, string a){
+    public void setQA(string q, string a)
+    {
         this.GetComponentInChildren<Text>().text = q;
         answer = a;
-        buttontxt = "Question: " + q; 
+        buttontxt = "Question: " + q;
     }
 
     public string getQ(){
@@ -102,7 +106,8 @@ public class ButtonBehavior : MonoBehaviour
             isActive = questionPanel.activeSelf;
             sg.GetComponent<Selfgrader>().qButton = GetComponent<Button>();
             sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);
-            if(isActive){
+            sg.GetComponent<Selfgrader>().questionIndex = questionIndex;
+            if (isActive){
                 string q = question.text;
                 if (buttontxt == q){
                     questionPanel.SetActive(!isActive); 
