@@ -28,7 +28,7 @@ public class BoardGameManager : MonoBehaviour
     [SerializeField] private int currId;
     [SerializeField] private int m_groupWorldSpacing = 75;
     public bool m_SendFloat = false;
-    public int hostID;
+    public static int hostID;
 
 
     // Start is called before the first frame update

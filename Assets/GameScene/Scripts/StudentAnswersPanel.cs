@@ -46,7 +46,7 @@ public class StudentAnswersPanel : MonoBehaviour
             if (kvp.Value.selfGrade != 0)
                 addStudentAnswer(kvp.Value.username, kvp.Value.myAnswer, kvp.Value.selfGrade);
         }
-        titleText.text = "Player Answers (" + listContent.transform.childCount + ")";
+        titleText.text = "Student Answers (" + listContent.transform.childCount + ")";
     }
 
     public void loadPanel_noLabel(int questionIndex) //end game UI teacher use
@@ -58,7 +58,7 @@ public class StudentAnswersPanel : MonoBehaviour
         {
             addStudentAnswer(kvp.Value.username, kvp.Value.myAnswer, kvp.Value.selfGrade);
         }
-        titleText.text = "Player Answers (" + listContent.transform.childCount + ")";
+        titleText.text = "Student Answers (" + listContent.transform.childCount + ")";
     }
 
     private void setQA(string q, string a)

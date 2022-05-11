@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using SimpleFileBrowser;
 using ASL;
 
 public class GameReport : MonoBehaviour
@@ -10,8 +11,6 @@ public class GameReport : MonoBehaviour
     private PlayerGrouping playerGrouping;
     private EndGameUI endGameBehavior;
     private static bool isHost = false;
-    private string filepath;
-    private string filename;
     public static List<TeacherData> reportData;
     public static Dictionary<int,StudentData> studentReportData; //Key=questionIndex
 
@@ -58,15 +57,12 @@ public class GameReport : MonoBehaviour
     {
         playerGrouping = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         GetComponent<ASL.ASLObject>()._LocallySetFloatCallback(MyFloatFunction);
-        isHost = GameLiftManager.GetInstance().m_PeerId == 1;
-        filepath = "C:\\Users\\kuoch\\Downloads\\"; //temp
+        isHost = GameLiftManager.GetInstance().m_PeerId == BoardGameManager.hostID;
         if (isHost)
         {
-            filename = "Teacher_GameReport_" + DateTime.Today.ToString("MM-dd-yy") + ".csv";
             reportData = new List<TeacherData>();
         } else
         {
-            filename = GameLiftManager.GetInstance().m_Username + "_GameReport_"+ DateTime.Today.ToString("MM-dd-yy") + ".csv";
             studentReportData = new Dictionary<int, StudentData>();
         }
 
@@ -80,36 +76,55 @@ public class GameReport : MonoBehaviour
 
     public void downloadReport()
     {
+        SimpleFileBrowser.FileBrowser.ShowLoadDialog((filepath) => { downloadReportHelper(filepath[0] + "\\"); }, null, FileBrowser.PickMode.Folders,
+            false, null, null, "Select Folder", "Select"); //select folder from file explorer, then call downloadReportHelper
+    }
+
+    private void downloadReportHelper(string filepath)
+    {
         if (!isHost)
         {
-            studentReport();
+            string username = GameLiftManager.GetInstance().m_Username;
+            string filename = username + "_GameReport_" + DateTime.Today.ToString("MM-dd-yy") + ".csv";
+            int i = 0;
+            while (File.Exists(filepath + filename))
+            {
+                filename = username + "_GameReport_" + DateTime.Today.ToString("MM-dd-yy") + " (" + (++i) + ").csv";
+            }
+            studentReport(filepath + filename);
         }
         else
         {
-            teacherReport();
+            string filename = "Teacher_GameReport_" + DateTime.Today.ToString("MM-dd-yy") + ".csv";
+            int i = 0;
+            while (File.Exists(filepath + filename))
+            {
+                filename = "Teacher_GameReport_" + DateTime.Today.ToString("MM-dd-yy") + " (" + (++i) + ").csv";
+            }
+            teacherReport(filepath + filename);
         }
     }
 
-    public void studentReport()
+    private void studentReport(string filepath)
     {
         int numColumns = 4;
         //Include statistics? Correct Questions Percentage
         string tableHeader = "Correct,Answered,Questions,";
-        addRecord(tableHeader, filepath + filename);
+        addRecord(tableHeader, filepath);
         string line = endGameBehavior.stuStats.numCorrect + "," + endGameBehavior.stuStats.numAnswered + "," + endGameBehavior.stuStats.numQuestions + ",";
-        addRecord(line, filepath + filename);
-        addRecord(",,,,", filepath + filename);
+        addRecord(line, filepath);
+        addRecord(",,,,", filepath);
         tableHeader = "Question,Answer,MyAnswer,SelfGrade";
-        addRecord(tableHeader, filepath + filename);
+        addRecord(tableHeader, filepath);
         foreach (var kvp in studentReportData)
         {
             line = csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," + 
                 csvFormatString(kvp.Value.myAnswer) + "," + (kvp.Value.selfGrade == 1 ? "Correct" : "Incorrect");
-            addRecord(line, filepath + filename);
+            addRecord(line, filepath);
         }
     }
 
-    public void teacherReport()
+    private void teacherReport(string filepath)
     {
         int numColumns = 6 + playerGrouping.playerCount;
         string tableHeader = "Question,Answer,Answered,NoAnswered,Correct,Incorrect";
@@ -117,7 +132,7 @@ public class GameReport : MonoBehaviour
         {
             tableHeader += "," + csvFormatString(GameLiftManager.GetInstance().m_Players[player.Key]);
         }
-        addRecord(tableHeader, filepath + filename);
+        addRecord(tableHeader, filepath);
         foreach (TeacherData qaData in reportData)
         {
             string line = csvFormatString(qaData.question) + "," + csvFormatString(qaData.answer) + "," +
@@ -127,7 +142,7 @@ public class GameReport : MonoBehaviour
                 line += "," + csvFormatString((qaData.studentAnswers[player.Key].selfGrade == 1 ? "Correct: ":"Incorrect: ") + 
                     ": " + qaData.studentAnswers[player.Key].myAnswer);
             }
-            addRecord(line, filepath + filename);
+            addRecord(line, filepath);
         }
     }
 
@@ -274,7 +289,8 @@ public class GameReport : MonoBehaviour
                 if (isHost)
                 {
                     updateStudentAnswer((int)_myFloats[1], (int)_myFloats[2], response);
-                } else
+                }
+                else if (GameLiftManager.GetInstance().m_PeerId == (int)_myFloats[1])
                 {
                     studentReportData[(int)_myFloats[2]].myAnswer = response;
                 }
@@ -283,7 +299,7 @@ public class GameReport : MonoBehaviour
                 if (isHost)
                 {
                     updateStudentGrade((int)_myFloats[1], (int)_myFloats[2], (int)_myFloats[3]);
-                } else
+                } else if (GameLiftManager.GetInstance().m_PeerId == (int)_myFloats[1])
                 {
                     studentReportData[(int)_myFloats[2]].selfGrade = (int)_myFloats[3];
                 }

@@ -1310,7 +1310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Players
+  m_Text: Student Answers
 --- !u!222 &313678119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4558,7 +4558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player Answer
+  m_Text: Student Answer
 --- !u!222 &701235145
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6446,7 +6446,6 @@ MonoBehaviour:
   currId: 0
   m_groupWorldSpacing: 75
   m_SendFloat: 0
-  hostID: 0
 --- !u!114 &1087887624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7308,7 +7307,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 382465960}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.8666667
+  m_Size: 0.9178239
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10765,7 +10764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.50002, y: 21.221533}
+  m_AnchoredPosition: {x: -241.50002, y: 0.024966849}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1797716122
