@@ -4564,8 +4564,8 @@ RectTransform:
   - {fileID: 2141662918601395800}
   - {fileID: 2141662917447892298}
   - {fileID: 5910573245287676674}
-  - {fileID: 6134153455949357916}
   - {fileID: 2349168589924743768}
+  - {fileID: 6134153455949357916}
   m_Father: {fileID: 4938473483300664509}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7661,7 +7661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.49928, y: -0.0000031684117}
+  m_AnchoredPosition: {x: -241.49928, y: 0.000008752114}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2141662919323490465
@@ -7795,7 +7795,7 @@ GameObject:
   - component: {fileID: 7255000695211590120}
   - component: {fileID: 4728498120603875024}
   m_Layer: 5
-  m_Name: FightNotification
+  m_Name: Notification
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7815,7 +7815,7 @@ RectTransform:
   - {fileID: 350941508569915338}
   - {fileID: 1600432552267675785}
   m_Father: {fileID: 2141662918326631473}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7843,7 +7843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.35208264, b: 0.26610893, a: 1}
+  m_Color: {r: 0.26666665, g: 0.8666667, b: 0.775764, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8007,7 +8007,7 @@ GameObject:
   - component: {fileID: 3789531013166206096}
   m_Layer: 0
   m_Name: Tile (19)
-  m_TagString: NormalTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8322,7 +8322,7 @@ GameObject:
   - component: {fileID: 4180802140584846558}
   m_Layer: 0
   m_Name: Tile (11)
-  m_TagString: NormalTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9707,7 +9707,7 @@ GameObject:
   - component: {fileID: 4597139734705558647}
   m_Layer: 0
   m_Name: Tile (45)
-  m_TagString: NormalTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10382,7 +10382,7 @@ GameObject:
   - component: {fileID: 4631319482749440312}
   m_Layer: 0
   m_Name: Tile (30)
-  m_TagString: NormalTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11586,7 +11586,7 @@ RectTransform:
   m_Children:
   - {fileID: 8083644050862697486}
   m_Father: {fileID: 2141662918326631473}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12308,14 +12308,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6c6e58ec5b13cb4e9e4c4307c9123fc, type: 3}
---- !u!1 &1259282495649483233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6c6e58ec5b13cb4e9e4c4307c9123fc, type: 3}
-  m_PrefabInstance: {fileID: 2141662918889125040}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1887587062043792219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6c6e58ec5b13cb4e9e4c4307c9123fc, type: 3}
+  m_PrefabInstance: {fileID: 2141662918889125040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1259282495649483233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6c6e58ec5b13cb4e9e4c4307c9123fc, type: 3}
   m_PrefabInstance: {fileID: 2141662918889125040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6255778686243360927
