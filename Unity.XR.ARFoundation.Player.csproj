@@ -111,8 +111,8 @@
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARSessionState.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARBackgroundRendererFeature.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AssemblyInfo.cs" />
-     <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARRaycastUpdatedEventArgs.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARPlaneMeshGenerators.cs" />
+     <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARRaycastUpdatedEventArgs.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\MeshQueue.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\ARSessionOrigin.cs" />
      <Compile Include="Library\PackageCache\com.unity.xr.arfoundation@4.2.0-pre.4\Runtime\AR\HelpUrls.cs" />

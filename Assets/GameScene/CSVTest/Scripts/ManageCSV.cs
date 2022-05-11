@@ -4,6 +4,7 @@ using Unity;
 using UnityEditor;
 using System;
 using ASL;
+using System.Text.RegularExpressions;
 
 public class ManageCSV : MonoBehaviour
 {
@@ -30,15 +31,8 @@ public class ManageCSV : MonoBehaviour
 
         aSLObject = gameObject.GetComponent<ASLObject>();
 
-        //gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(setCSVCounts);
-
         // grid = getCSVGrid(csvFile.text);
         grid = getCSVGrid(csvFile2.text);
-        if (isHost)
-        {
-            Debug.Log("Host");
-            //grid = getCSVGrid(csvFile.text);
-        }
     }
 
     /// <summary>
@@ -78,10 +72,20 @@ public class ManageCSV : MonoBehaviour
         string[,] outputGrid = new string[totalColumns + 1, lines.Length + 1];
         for (int y = 0; y < lines.Length; y++)
         {
-            string[] row = lines[y].Split(',');
-            for (int x = 0; x < row.Length; x++)
+            string Test = lines[y];
+            Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+            String[] Fields = CSVParser.Split(Test);
+            int x = 0;
+            foreach (string f in Fields)
             {
-                outputGrid[x, y] = row[x];
+                string st = f;
+                if (st.Length > 0 && st[0] == '\"')
+                {
+                    st = st.Substring(1, st.Length - 2);
+                    st = st.Replace("\"\"", "\"");
+                }
+                outputGrid[x, y] = st;
+                x++;
                 yLength = Mathf.Max(yLength, y);
             }
         }
@@ -94,28 +98,6 @@ public class ManageCSV : MonoBehaviour
         Debug.Log("setting Values");
         grid[(int)_f[0], (int)_f[1]] = (Int32.Parse(grid[(int)_f[0], (int)_f[1]]) + 1).ToString();
         updateCSV();
-    }
-
-    public void sendingCorrect(int qNum)
-    {
-        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
-        {
-            float[] sendValue = new float[2];
-            sendValue[0] = 4f;
-            sendValue[1] = qNum;
-            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
-        });
-    }
-
-    public void sendingIncorrect(int qNum)
-    {
-        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
-        {
-            float[] sendValue = new float[2];
-            sendValue[0] = 5f;
-            sendValue[1] = qNum;
-            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
-        });
     }
 
     public void addCSVRow(string question, string answer)
