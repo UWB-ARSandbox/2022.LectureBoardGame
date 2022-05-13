@@ -6,7 +6,7 @@ using ASL;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // private Animator anim;
+    private Animator anim;
     ASLObject m_ASLObject;
     public string currDirection;
     private BoardGameManager bgm;
@@ -20,11 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private PlayerData pd;
     private int playerNumber;
     private GameObject notify;
+    public float speed = 1f;
+    private bool start = true;
+
+    private Vector3 startPos;
+    private int counter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
@@ -47,13 +52,38 @@ public class PlayerMovement : MonoBehaviour
         notify.SetActive(false);
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
+        startPos = transform.localPosition;
     }
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.V)){
             QTile();
         }
+
+        if(transform.localPosition!=currentTile.transform.localPosition&&!start){
+            var step =  speed * Time.deltaTime; // calculate distance to move
+            animation();
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition,currentTile.transform.localPosition, step);
+            m_ASLObject.SendAndSetClaim(() =>
+            {
+                m_ASLObject.SendAndSetLocalPosition(transform.localPosition);
+            });
+            if(transform.localPosition==currentTile.transform.localPosition){
+                anim.SetInteger("movement", 0);
+            }
+        }
+
     }
+
+    void animation(){
+        if(transform.localPosition.z == -4.26 || transform.localPosition.z == 4.5){
+            anim.SetInteger("movement", 2);
+        } else if (transform.localPosition.x == 4.26 || transform.localPosition.x == -4.5){
+            anim.SetInteger("movement", 1);
+        }
+    }
+
+
     void QTile(){
         int children = questions.transform.childCount;
         Debug.Log(children + " number of questions");
@@ -214,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void diceMove()
     {
+        start = false;
         for (int i = 0; i < DiceRoll.DiceNumber; i++)
         {
             if (i == 0 && currentTile.split != null)
@@ -249,10 +280,10 @@ public class PlayerMovement : MonoBehaviour
         }
         playerData.sendData();
 
-        m_ASLObject.SendAndSetClaim(() =>
-        {
-            m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);
-        });
+        //m_ASLObject.SendAndSetClaim(() =>
+        //{
+            //m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);
+        //});
     }
 
     void teleporting()

@@ -65,9 +65,9 @@ public class Selfgrader : MonoBehaviour
         closeButton.gameObject.SetActive(false);
         student = "Your Answer: " + a;
         studentAnswer.text = "Your Answer: " + a;
-        stats.incrementNumAnswered();
-        stats.sendAnswer(GameLiftManager.GetInstance().m_PeerId, questionIndex, a);
         if (qButton!=null){
+            stats.incrementNumAnswered();
+            stats.sendAnswer(GameLiftManager.GetInstance().m_PeerId, questionIndex, a);
             qButton.GetComponent<ButtonBehavior>().setStudentAnswer(a);
         }
     }
@@ -84,14 +84,15 @@ public class Selfgrader : MonoBehaviour
             qButton.GetComponent<ButtonBehavior>().answered = true;
             ma.mark(questionTxt.text, true);
             graded = true;
+
+            stats.incrementNumCorrect();
+            stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, 1);
         }
         DiceRoll.movePoints++;
         DiceRoll.starCount += 5;
-        stats.incrementNumCorrect();
-        stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, 1);
-        playerData.sendData();
         closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        playerData.sendData();
     }
 
     void markIncorrect()
@@ -101,8 +102,9 @@ public class Selfgrader : MonoBehaviour
             qButton.GetComponent<ButtonBehavior>().answered = true;
             ma.mark(questionTxt.text, false);
             graded = true;
+
+            stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, -1);
         }
-        stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, -1);
         closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

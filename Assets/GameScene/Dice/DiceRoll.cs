@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using ASL;
 
 public class DiceRoll : MonoBehaviour
@@ -16,6 +17,7 @@ public class DiceRoll : MonoBehaviour
     private PlayerGrouping pGroup;
     public static int starCount;
     private PlayerData playerData;
+    public InputField inputField;
 
     private Vector3 originalPos;
 
@@ -57,7 +59,7 @@ public class DiceRoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canRoll && movePoints > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && canRoll && movePoints > 0 && !inputField.isFocused)
         {
             canRoll = false;
             movePoints--;
