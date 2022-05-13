@@ -1,14 +1,8 @@
-//Used for help debug GameLift packet issues and other misc. GameLift potential problems.
-#define ASL_DEBUG
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using Aws.GameLift.Realtime.Event;
-//using Aws.GameLift.Realtime;
-//using Aws.GameLift.Realtime.Command;
-//using Aws.GameLift.Realtime.Types;
 using ASL;
 using UnityEngine.UI;
 
@@ -16,9 +10,6 @@ using UnityEngine.UI;
 public class PlayerGrouping : MonoBehaviour
 {
     private GameObject playerListText;
-    //public GameObject groupNameText;
-    //public GameObject playerNameBox;
-    //public GameObject blankImage;
     public GameObject playersGrid;
     public GameObject groupNumList;
     public Scrollbar listScroll;
@@ -52,7 +43,8 @@ public class PlayerGrouping : MonoBehaviour
             GameObject.Find("StartButton").SetActive(false);
             GameObject.Find("HelpButton").SetActive(false);
             StartCoroutine(startPlayerGame());
-        } else
+        }
+        else
         {
             yield return new WaitForSeconds(1f);
             populatePlayers();
@@ -160,7 +152,7 @@ public class PlayerGrouping : MonoBehaviour
             addGroup();
             m_SendFloat = true;
         }
-        ASLHelper.InstantiateASLObject("blankName", new Vector3(0,0,0), Quaternion.identity, playersGrid.GetComponent<ASLObject>().m_Id);
+        ASLHelper.InstantiateASLObject("blankName", new Vector3(0, 0, 0), Quaternion.identity, playersGrid.GetComponent<ASLObject>().m_Id);
         Debug.Log("add blank playersGrid.GetComponent<ASLObject>().m_Id = " + playersGrid.GetComponent<ASLObject>().m_Id);
     }
 
@@ -181,7 +173,7 @@ public class PlayerGrouping : MonoBehaviour
     //        newPlayer.name = "" + id;
     //        newPlayer.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = name;
     //    }
-        
+
     //}
 
     private void addGroup()
@@ -210,7 +202,7 @@ public class PlayerGrouping : MonoBehaviour
 
     private IEnumerator startPlayerGame()
     {
-        while(groupLobby.tag != "Finish")
+        while (groupLobby.tag != "Finish")
         {
             yield return null;
         }
@@ -219,8 +211,31 @@ public class PlayerGrouping : MonoBehaviour
 
     public void cancel()
     {
-        GameLiftManager.GetInstance().DisconnectFromServer();
-        SceneManager.LoadScene("ASL_LobbyScene");
+        if (GameLiftManager.GetInstance().m_PeerId == 1 && !EndGameUI.ended)
+        {
+            float[] m_MyFloats = new float[2];
+            m_MyFloats[0] = 4;
+            m_MyFloats[1] = 0;
+            thisASL.SendAndSetClaim(() =>
+            {
+                string floats = "PlayerGrouping Floats sent: ";
+                for (int i = 0; i < m_MyFloats.Length; i++)
+                {
+                    floats += m_MyFloats[i].ToString();
+                    if (m_MyFloats.Length - 1 != i)
+                    {
+                        floats += ", ";
+                    }
+                }
+                Debug.Log(floats);
+                thisASL.SendFloatArray(m_MyFloats);
+            });
+        }
+        else
+        {
+            GameLiftManager.GetInstance().DisconnectFromServer();
+            SceneManager.LoadScene("ASL_LobbyScene");
+        }
     }
 
     public void addPlayerGroups(int id, int group)
@@ -304,7 +319,8 @@ public class PlayerGrouping : MonoBehaviour
                     {
                         m_players[Int16.Parse(player.name)] = i / groupLimit + 1;
                         group.Add(Int16.Parse(player.name));
-                    } else
+                    }
+                    else
                     {
                         group.Add(0);
                     }
@@ -323,6 +339,10 @@ public class PlayerGrouping : MonoBehaviour
                 break;
             case 3: //end game
                 BoardGameManager.GetInstance().endGameUIHelper();
+                break;
+            case 4: //cancel
+                GameLiftManager.GetInstance().DisconnectFromServer();
+                SceneManager.LoadScene("ASL_LobbyScene");
                 break;
             default:
                 Debug.Log("PlayerGrouping MyFloatFunction default1 case");

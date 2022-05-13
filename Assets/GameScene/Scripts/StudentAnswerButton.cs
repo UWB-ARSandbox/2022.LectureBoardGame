@@ -49,15 +49,16 @@ public class StudentAnswerButton : MonoBehaviour
         transform.GetChild(0).gameObject.GetComponent<Text>().text = username;
     }
 
-    public void setup(string question, string answer, string studentAns, int selfGrade, EndGameUI endGameUI)
+    public void setup(int questionIndex, string question, string answer, string studentAns, int selfGrade, EndGameUI endGameUI)
     {
         studentAnswer = studentAns;
         this.selfGrade = selfGrade;
         this.endGameUI = endGameUI;
         this.question = question;
         this.answer = answer;
+        this.questionIndex = questionIndex;
         GetComponent<Image>().color = color;
-        transform.GetChild(0).gameObject.GetComponent<Text>().text = question;
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = (questionIndex + 1).ToString();
     }
 
     public void setText()

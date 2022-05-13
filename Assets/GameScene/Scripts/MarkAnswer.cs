@@ -18,7 +18,7 @@ public class MarkAnswer : MonoBehaviour
     void Update()
     {
         if (GameLiftManager.GetInstance().m_PeerId == 1 && GameObject.Find("TeacherUI") != null)
-            teacherUI = GameObject.Find("TeacherUI").transform.Find("Canvas").Find("InGame").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
+            teacherUI = GameObject.Find("TeacherUI").transform.Find("Canvas").Find("TabPages").Find("InGame").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
     }
 
     public void sendResult(string _id, float[] _f)

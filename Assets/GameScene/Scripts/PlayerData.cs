@@ -8,6 +8,7 @@ public class PlayerData : MonoBehaviour
 {
     private PlayerGrouping pGroup;
     private BoardGameManager bgm;
+    private GameReport gameReport;
     private int playerNumber;
 
     private GameObject player1;
@@ -31,6 +32,7 @@ public class PlayerData : MonoBehaviour
     {
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
+        gameReport = GameObject.Find("GameReport").GetComponent<GameReport>();
         playerNumber = 0;
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(readData);
@@ -117,6 +119,15 @@ public class PlayerData : MonoBehaviour
             sendValue[3] = DiceRoll.movePoints;
 
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
+        });
+        gameReport.GetComponent<ASLObject>().SendAndSetClaim(() =>
+        {
+            float[] sendValue = new float[3];
+            sendValue[0] = 3;
+            sendValue[1] = GameLiftManager.GetInstance().m_PeerId;
+            sendValue[2] = DiceRoll.starCount;
+
+            gameReport.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });
     }
 }

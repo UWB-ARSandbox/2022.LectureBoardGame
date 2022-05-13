@@ -20,10 +20,13 @@ public class EndGameUI : MonoBehaviour
     public GameObject studentListButton; //used by student, show QA A
     public GameObject teacherListButton; //used by teacher, show QA and player list
     //public GameObject playerListButton; //used by teacher, show student's A
+    public StarRankingPanel starRankPanel_s;
+    public GameObject starRankButton;
 
     private GameReport gameReport;
     public StudentStats stuStats; //student only
     private PlayerGrouping playerGrouping;
+    public static bool ended = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,17 +45,25 @@ public class EndGameUI : MonoBehaviour
 
     public void endGameSetUp()
     {
-        if (GameLiftManager.GetInstance().m_PeerId != 1)
+        if (!ended)
         {
-            Debug.Log("id: " + GameLiftManager.GetInstance().m_PeerId);
-            Debug.Log("endgame setup player group" + BoardGameManager.GetInstance().getPlayerGroup());
-            stuStats = BoardGameManager.GetInstance().getGroupWorld(BoardGameManager.GetInstance().getPlayerGroup()).GetComponent<StudentStats>();
-            studentStats.text = "Stats: " + stuStats.numCorrect + "/" + stuStats.numAnswered + "/" + stuStats.numQuestions;
-            loadStudentButtons();
-        } else
-        {
-            studentStats.gameObject.SetActive(false);
-            loadTeacherButtons();
+            ended = true;
+            if (GameLiftManager.GetInstance().m_PeerId != 1)
+            {
+                Debug.Log("id: " + GameLiftManager.GetInstance().m_PeerId);
+                Debug.Log("endgame setup player group" + BoardGameManager.GetInstance().getPlayerGroup());
+                stuStats = BoardGameManager.GetInstance().getGroupWorld(BoardGameManager.GetInstance().getPlayerGroup()).GetComponent<StudentStats>();
+                studentStats.text = "Stats: " + stuStats.numCorrect + "/" + stuStats.numAnswered + "/" + stuStats.numQuestions;
+                starRankPanel_s.gameObject.SetActive(true);
+                starRankPanel_s.groupRankSetUp(BoardGameManager.GetInstance().getPlayerGroup());
+                starRankPanel_s.gameObject.SetActive(false);
+                loadStudentButtons();
+            } else
+            {
+                studentStats.gameObject.SetActive(false);
+                starRankButton.SetActive(false);
+                loadTeacherButtons();
+            }
         }
     }
 
@@ -62,7 +73,7 @@ public class EndGameUI : MonoBehaviour
         foreach (KeyValuePair<int, GameReport.StudentData> kvp in GameReport.studentReportData)
         {
             GameObject newQ = GameObject.Instantiate(studentListButton);
-            newQ.GetComponent<StudentAnswerButton>().setup(kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
+            newQ.GetComponent<StudentAnswerButton>().setup(kvp.Key + 1,kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
                 kvp.Value.selfGrade, this);
             newQ.transform.parent = listContent.transform;
             newQ.SetActive(true);
@@ -77,7 +88,7 @@ public class EndGameUI : MonoBehaviour
         {
             GameObject newQ = GameObject.Instantiate(teacherListButton);
             TeacherButton tb = newQ.GetComponent<TeacherButton>();
-            tb.setUp(false, index++);
+            tb.setUp(false, index++, true);
             tb.setQA(data.question, data.answer);
             //tb.studentAnswersPanel = playerAnswersPanel;
             tb.published = true;

@@ -39,8 +39,8 @@ public class teacherUI : MonoBehaviour
     void newQuestion(){
         addQ.GetComponent<AddQPanel>().button=null;
         addQ.GetComponent<AddQPanel>().updateQA("","");
-        GameObject save = GameObject.Find("Canvas").transform.Find("AddQ").Find("Save").gameObject;
-        GameObject publish = GameObject.Find("Canvas").transform.Find("AddQ").Find("Publish").gameObject;
+        GameObject save = addQ.transform.Find("Save").gameObject;
+        GameObject publish = addQ.transform.Find("Publish").gameObject;
         if(!publish.activeSelf){
             save.SetActive(true);
             publish.SetActive(true);

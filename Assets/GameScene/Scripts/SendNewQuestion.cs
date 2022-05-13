@@ -66,7 +66,7 @@ public class SendNewQuestion : MonoBehaviour
             }
         }
 
-
+        GameReport.qPosted++;
 
         // DO SOMETHING WITH THE CREATED QUESTION AND ANSWER HERE
         if (GameLiftManager.GetInstance().m_PeerId != 1)

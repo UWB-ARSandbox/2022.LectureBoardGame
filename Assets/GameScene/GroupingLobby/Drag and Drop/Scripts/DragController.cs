@@ -52,17 +52,24 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        currentPosition = currentTransform.position;
-        mainContent = currentTransform.parent.gameObject;
-        totalChild = mainContent.transform.childCount;
+        if (GameLiftManager.GetInstance().m_PeerId == 1)
+        {
+            currentPosition = currentTransform.position;
+            mainContent = currentTransform.parent.gameObject;
+            totalChild = mainContent.transform.childCount;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (isVertical && isHorizontal) {
+        if (GameLiftManager.GetInstance().m_PeerId != 1)
+            return;
+        if (isVertical && isHorizontal)
+        {
             currentTransform.position =
                         new Vector3(eventData.position.x, eventData.position.y, currentTransform.position.z);
-        } else if (isHorizontal)
+        }
+        else if (isHorizontal)
         {
             currentTransform.position =
                         new Vector3(eventData.position.x, currentTransform.position.y, currentTransform.position.z);
@@ -71,7 +78,8 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         {
             currentTransform.position =
                         new Vector3(currentTransform.position.x, eventData.position.y, currentTransform.position.z);
-        } else
+        }
+        else
         { //if neither vert or horiz, then no drag
             return;
         }
@@ -126,6 +134,8 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (GameLiftManager.GetInstance().m_PeerId != 1)
+            return;
         currentTransform.position = currentPosition;
     }
 

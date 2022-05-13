@@ -149,7 +149,7 @@ public class Scroll : MonoBehaviour
         }
         TeacherButton teacherButton = newButton.GetComponent<TeacherButton>();
         teacherButton.questionIndex = gameReport.createTeacherData(q, a);
-        teacherButton.setUp(true, -1);
+        teacherButton.setUp(true, -1, false);
         teacherButton.setQA(q, a);
         number++;
         return newButton;

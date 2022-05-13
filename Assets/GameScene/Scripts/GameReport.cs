@@ -13,8 +13,14 @@ public class GameReport : MonoBehaviour
     private static bool isHost = false;
     public static List<TeacherData> reportData;
     public static Dictionary<int,StudentData> studentReportData; //Key=questionIndex
-
-
+    public static Dictionary<int, StudentStat> studentStats; //Key=id
+    public static int qPosted = 0;
+    public class StudentStat
+    {
+        public int numCorrect = 0;
+        public int numAnswered = 0;
+        public int stars = 0;
+    }
     //Store one data for one line in student csv
     public class StudentData
     {
@@ -58,6 +64,12 @@ public class GameReport : MonoBehaviour
         playerGrouping = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         GetComponent<ASL.ASLObject>()._LocallySetFloatCallback(MyFloatFunction);
         isHost = GameLiftManager.GetInstance().m_PeerId == BoardGameManager.hostID;
+        studentStats = new Dictionary<int, StudentStat>();
+        foreach (KeyValuePair<int, string> player in GameLiftManager.GetInstance().m_Players)
+        {
+            if (player.Key != 1)
+                studentStats.Add(player.Key, new StudentStat());
+        }
         if (isHost)
         {
             reportData = new List<TeacherData>();
@@ -210,7 +222,7 @@ public class GameReport : MonoBehaviour
         reportData[questionIndex].answer = answer;
     }
 
-    public void updateStats(int questionIndex, int numAnswers, int numCorrect, int numIncorrect)
+    public void updateStats(int questionIndex, int numAnswers, int numCorrect, int numIncorrect) //question stats
     {
         if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
         reportData[questionIndex].updateStats(numAnswers.ToString(), (playerGrouping.playerCount - numAnswers).ToString(),
@@ -242,26 +254,32 @@ public class GameReport : MonoBehaviour
 
     public static void updateStudentAnswer(int id, int questionIndex, string studentResponse)
     {
-        if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
         if (isHost)
         {
+            if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
             reportData[questionIndex].studentAnswers[id].myAnswer = studentResponse;
+            studentStats[id].numAnswered++;
         }
-        else
+        else if (GameLiftManager.GetInstance().m_PeerId == id)
         {
             studentReportData[questionIndex].myAnswer = studentResponse;
+            studentStats[id].numAnswered++;
         }
     }
     public static void updateStudentGrade(int id, int questionIndex, int selfGrade)
     {
-        if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
         if (isHost)
         {
+            if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
             reportData[questionIndex].studentAnswers[id].selfGrade = selfGrade;
+            if (selfGrade == 1)
+                studentStats[id].numCorrect++;
         }
-        else
+        else if (GameLiftManager.GetInstance().m_PeerId == id)
         {
             studentReportData[questionIndex].selfGrade = selfGrade;
+            if (selfGrade == 1)
+                studentStats[id].numCorrect++;
         }
     }
 
@@ -286,23 +304,13 @@ public class GameReport : MonoBehaviour
                 {
                     response += System.Convert.ToChar((int)_myFloats[i]);
                 }
-                if (isHost)
-                {
-                    updateStudentAnswer((int)_myFloats[1], (int)_myFloats[2], response);
-                }
-                else if (GameLiftManager.GetInstance().m_PeerId == (int)_myFloats[1])
-                {
-                    studentReportData[(int)_myFloats[2]].myAnswer = response;
-                }
+                updateStudentAnswer((int)_myFloats[1], (int)_myFloats[2], response);
                 break;
             case 2: //send student self grade: 2, id, questionIndex, correct/incorrect
-                if (isHost)
-                {
-                    updateStudentGrade((int)_myFloats[1], (int)_myFloats[2], (int)_myFloats[3]);
-                } else if (GameLiftManager.GetInstance().m_PeerId == (int)_myFloats[1])
-                {
-                    studentReportData[(int)_myFloats[2]].selfGrade = (int)_myFloats[3];
-                }
+                updateStudentGrade((int)_myFloats[1], (int)_myFloats[2], (int)_myFloats[3]);
+                break;
+            case 3: //send player stars: 3, id, stars
+                studentStats[(int)_myFloats[1]].stars = (int)_myFloats[2];
                 break;
             default:
                 Debug.Log("DownloadableReport Float function Default");
