@@ -6,7 +6,7 @@ using ASL;
 
 public class teacherUI : MonoBehaviour
 {
-    public Button endGame;
+    //public Button endGame;
     public Button newQ;
     private bool isHost = false;
     public GameObject addQ;
@@ -19,7 +19,7 @@ public class teacherUI : MonoBehaviour
         if (isHost)
         {
             newQ.onClick.AddListener(newQuestion);
-            endGame.onClick.AddListener(quit);
+            //endGame.onClick.AddListener(quit);
         } else {
             gameObject.SetActive(false);
         }
@@ -30,10 +30,6 @@ public class teacherUI : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void quit(){
-
     }
 
     void newQuestion(){

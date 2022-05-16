@@ -680,7 +680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.50002, y: 0.0004137611}
+  m_AnchoredPosition: {x: -241.50002, y: 0.00010882388}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &193863117
@@ -695,10 +695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24338a2202560d488db05a69b62688e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qa: {fileID: 0}
+  qa: {fileID: 1877008994}
   prefabButton: {fileID: 6160655372507731876, guid: 6dc4b6ce8aa5e82488e8980a10b77050, type: 3}
   min: {fileID: 0}
   studentStats: {fileID: 0}
+  notification: {fileID: 0}
 --- !u!1 &230475819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,7 +3792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b53debbee652a4594a929c4556bef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGame: {fileID: 0}
   newQ: {fileID: 294784852}
   addQ: {fileID: 1070402848}
   questionsPosted: {fileID: 120774849}
@@ -6893,7 +6893,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1267106478}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999326
+  m_Size: 0.9945408
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11252,7 +11252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 87.483}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1686938317

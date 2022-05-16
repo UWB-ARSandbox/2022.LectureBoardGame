@@ -56,9 +56,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.V)){
-            QTile();
-        }
+        //if(Input.GetKeyDown(KeyCode.V)){
+        //    QTile();
+        //}
 
         if(transform.localPosition!=currentTile.transform.localPosition&&!start){
             var step =  speed * Time.deltaTime; // calculate distance to move

@@ -18,6 +18,7 @@ public class Scroll : MonoBehaviour
     private bool isHost = false;
     private GameReport gameReport;
     public StudentStats studentStats;
+    public SoundManagerScript notification;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -45,6 +46,9 @@ public class Scroll : MonoBehaviour
             buttonSetup();
         }
         GameObject.Find("DataSend").GetComponent<SendNewQuestion>().studentUI = gameObject;
+        if(!isHost){
+            notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
+        }
     }
 
     public void buttonSetup()
@@ -71,6 +75,7 @@ public class Scroll : MonoBehaviour
 
     }
 
+    //For studentUI
     public void createButton(string q, string a, int questionIndex)
     {
         GameObject go = gameObject;
@@ -117,9 +122,12 @@ public class Scroll : MonoBehaviour
         buttonBehavior.questionIndex = questionIndex;
         gameReport.createStudentData(GameLiftManager.GetInstance().m_PeerId, GameLiftManager.GetInstance().m_Username, q, a, questionIndex);
         number++;
+        if(notification!=null){
+            notification.playSound();
+        }
     }
 
-
+    //For TeacherUI when they make a new question
     public GameObject newQ(string q, string a)
     {
         GameObject go = gameObject;
