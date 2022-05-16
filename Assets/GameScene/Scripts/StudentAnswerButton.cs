@@ -58,7 +58,7 @@ public class StudentAnswerButton : MonoBehaviour
         this.answer = answer;
         this.questionIndex = questionIndex;
         GetComponent<Image>().color = color;
-        transform.GetChild(0).gameObject.GetComponent<Text>().text = (questionIndex + 1).ToString();
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = "Q" + (questionIndex + 1).ToString();
     }
 
     public void setText()

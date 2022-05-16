@@ -110,6 +110,7 @@ public class BoardGameManager : MonoBehaviour
         studentUI.SetActive(false);
         groupLobbyCanvas.SetActive(false);
         teacherUI.SetActive(true);
+        Scroll.startGame = true;
     }
     public int getPlayerGroup()
     {

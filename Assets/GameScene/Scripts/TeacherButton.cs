@@ -66,7 +66,7 @@ public class TeacherButton : MonoBehaviour
         }
         if (byQuestionNum)
         {
-            q2.text = (questionIndex + 1).ToString();
+            q2.text = "Q" + (questionIndex + 1).ToString();
         }
         else {
             q2.text = question;

@@ -13,6 +13,7 @@ public class Scroll : MonoBehaviour
     private static int number = 1;
     ASLpanel m_ASLObject;
     public static bool imported;
+    public static bool startGame = false;
     public GameObject prefabButton;
     public GameObject min;
     private bool isHost = false;
@@ -40,11 +41,6 @@ public class Scroll : MonoBehaviour
                 a = ManageCSV.grid[1,number];
             } 
         }*/
-        if (imported)
-        {
-            Debug.Log("IMPORTED");
-            buttonSetup();
-        }
         GameObject.Find("DataSend").GetComponent<SendNewQuestion>().studentUI = gameObject;
         if(!isHost){
             notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
@@ -72,7 +68,12 @@ public class Scroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (startGame && imported)
+        {
+            startGame = false;
+            Debug.Log("IMPORTED");
+            buttonSetup();
+        }
     }
 
     //For studentUI
