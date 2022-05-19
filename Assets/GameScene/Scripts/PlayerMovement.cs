@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public string currDirection;
     private BoardGameManager bgm;
     public static TileNode currentTile;
+    public TileNode pastTile;
     private PlayerData playerData;
     public GameObject questions;
     public GameObject qPanel;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 startPos;
     private int counter = 0;
+    public SoundManagerScript notification;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
         startPos = transform.localPosition;
+        notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
     }
 
     void Update(){
@@ -65,7 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.localPosition!=currentTile.transform.localPosition&&!start){
             var step =  speed * Time.deltaTime; // calculate distance to move
-            animation();
+            if(pastTile!=null){
+                animation();
+            }
             transform.localPosition = Vector3.MoveTowards(transform.localPosition,currentTile.transform.localPosition, step);
             m_ASLObject.SendAndSetClaim(() =>
             {
@@ -79,9 +84,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void animation(){
-        if(transform.localPosition.z == -4.26 || transform.localPosition.z == 4.5){
+        if(pastTile.transform.localPosition.z == -4.26 || pastTile.transform.localPosition.z == 4.5 || 
+            ((pastTile.transform.localPosition.z==-2.07||pastTile.transform.localPosition.z==2.31)&&(pastTile.transform.localPosition.x != 4.26 || pastTile.transform.localPosition.x != -4.5))){
+            //Horizontal: Left and Right
             anim.SetInteger("movement", 2);
-        } else if (transform.localPosition.x == 4.26 || transform.localPosition.x == -4.5){
+        } else if (pastTile.transform.localPosition.x == 4.26 || pastTile.transform.localPosition.x == -4.5 || 
+            ((pastTile.transform.localPosition.x==2.07||pastTile.transform.localPosition.x==-2.31)&&(pastTile.transform.localPosition.z != -4.26 || pastTile.transform.localPosition.z != 4.5))){
+            //Vertical: Up and Down
             anim.SetInteger("movement", 1);
         }
     }
@@ -265,6 +274,8 @@ public class PlayerMovement : MonoBehaviour
             notifyClose.SetActive(true);
             Debug.Log("LOST THE FIGHT...");
         }
+        //unsure if we want to use different audios if they win or lose
+        notification.tileNotification();
     }
 
     private void steal(int victim)
@@ -289,6 +300,8 @@ public class PlayerMovement : MonoBehaviour
             notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
             notify.SetActive(true);
             notifyClose.SetActive(true);
+            //Not sure if being robbed and losing stars due to tile should be the same sound
+            notification.tileNotification();
             Debug.Log("GOT ROBBEDDD");
             if (DiceRoll.starCount < 4)
             {
@@ -304,6 +317,7 @@ public class PlayerMovement : MonoBehaviour
     public void diceMove()
     {
         start = false;
+        pastTile = currentTile;
         for (int i = 0; i < DiceRoll.DiceNumber; i++)
         {
             if (i == 0 && currentTile.split != null)
@@ -319,14 +333,17 @@ public class PlayerMovement : MonoBehaviour
         if (currentTile.tag == "StarTile")
         {
             DiceRoll.starCount += 2;
+            notification.getStars();
         }
         else if (currentTile.tag == "DropTile")
         {
             if (DiceRoll.starCount > 0)
             {
                 DiceRoll.starCount--;
+                notification.dropStars();
             }
         } else if (currentTile.tag == "QuestionTile"){
+            notification.tileNotification();
             QTile();
         } else if (currentTile.tag == "FightTile")
         {
@@ -336,6 +353,7 @@ public class PlayerMovement : MonoBehaviour
             notify.transform.Find("Text").GetComponent<Text>().text = "Teleporting to a random location!";
             notify.SetActive(true);
             notifyClose.SetActive(true);
+            notification.tileNotification();
             Invoke("teleporting", 1.5f);
         }
         playerData.sendData();

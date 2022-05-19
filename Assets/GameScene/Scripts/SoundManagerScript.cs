@@ -6,7 +6,14 @@ public class SoundManagerScript : MonoBehaviour
 {
 
     public AudioClip notiSound;
+    public AudioClip winStars;
+    public AudioClip loseStars;
+    public AudioClip tileSound;
     public AudioSource audioSrc;
+    public float questionVolume = 1f;
+    public float tileVolume = 1f;
+    public bool questionToggle = true;
+    public bool eventToggle = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +25,37 @@ public class SoundManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V)){
-            playSound();
-        }
+    }
+
+    public void changeQuestion(){
+        questionToggle = !questionToggle;
+    }
+
+    public void changeEvent(){
+        eventToggle = !eventToggle;
     }
 
     public void playSound(){
-        audioSrc.PlayOneShot(notiSound);
+        if(questionToggle){
+            audioSrc.PlayOneShot(notiSound, questionVolume);
+        }
+    }
+
+    public void tileNotification(){
+        if(eventToggle){
+            audioSrc.PlayOneShot(tileSound, tileVolume);
+        }
+    }
+
+    public void getStars(){
+        if(eventToggle){
+            audioSrc.PlayOneShot(winStars, tileVolume);
+        }
+    }
+
+    public void dropStars(){
+        if(eventToggle){
+            audioSrc.PlayOneShot(loseStars, tileVolume);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class SliderWithEcho : MonoBehaviour {
     public Text TheLabel = null;
     public CameraManipulation camera = null;
     private bool zoom = false;
+    public SoundManagerScript notification;
 
     public delegate void SliderCallbackDelegate(float v);      // defined a new data type
     private SliderCallbackDelegate mCallBack = null;           // private instance of the data type
@@ -23,6 +24,7 @@ public class SliderWithEcho : MonoBehaviour {
 
         TheSlider.onValueChanged.AddListener(SliderValueChange);
         zoom = TheSlider.wholeNumbers;
+        notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
     }
 
     public void SetSliderListener(SliderCallbackDelegate listener)
@@ -37,8 +39,14 @@ public class SliderWithEcho : MonoBehaviour {
             TheEcho.text = v.ToString("0");
             camera.zoomspeed = (int)v;
         } else {
-            TheEcho.text = v.ToString("0.0000");
-            camera.movespeed = v;
+            TheEcho.text = v.ToString("0.000");
+            if(gameObject.name=="MovementSpeed"){
+                camera.movespeed = v;
+            } else if(gameObject.name =="EventNoti"){
+                notification.tileVolume = v;
+            } else if (gameObject.name=="QuestionNoti"){
+                notification.questionVolume = v;
+            }
         }
         // Debug.Log("SliderValueChange: " + v);
         if (mCallBack != null)

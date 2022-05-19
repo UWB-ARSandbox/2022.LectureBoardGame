@@ -127,6 +127,7 @@
      <Compile Include="Assets\ASL\ASL_Scripts\UI_Support\ASLSliderWithEcho.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\AR\InstantiateARIfConnected.cs" />
      <Compile Include="Assets\GameScene\Scripts\StarRankingPanel.cs" />
+     <Compile Include="Assets\GameScene\Scripts\SoundManagerScript.cs" />
      <Compile Include="Assets\GameScene\Scripts\TeacherButton.cs" />
      <Compile Include="Assets\GameScene\Scripts\MarkAnswer.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\SetCallback\Scripts\SetCallback_Example.cs" />
