@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerData pd;
     private int playerNumber;
     private GameObject notify;
+    private GameObject notifyClose;
     public float speed = 1f;
     private bool start = true;
 
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         }
         notify = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("Notification").gameObject;
         notify.SetActive(false);
+        notifyClose = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("NotificationCloseButton").gameObject;
+        notifyClose.SetActive(false);
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
         startPos = transform.localPosition;
@@ -130,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player1Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from " + playerName;
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                             steal(1);
                         }
                         else
@@ -138,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                         }
                         break;
 
@@ -150,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player2Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from " + playerName;
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                             steal(2);
                         }
                         else
@@ -158,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                         }
                         break;
 
@@ -170,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player3Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from " + playerName;
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                             steal(3);
                         }
                         else
@@ -178,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                         }
                         break;
 
@@ -190,6 +199,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole a star from " + playerName;
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                             steal(4);
                         }
                         else
@@ -198,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notifyClose.SetActive(true);
                         }
                         break;
                 }
@@ -205,12 +216,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 notify.transform.Find("Text").GetComponent<Text>().text = "No players to steal from";
                 notify.SetActive(true);
+                notifyClose.SetActive(true);
                 Debug.Log("No players to steal from...");
             }
         } else
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "You lost";
             notify.SetActive(true);
+            notifyClose.SetActive(true);
             Debug.Log("LOST THE FIGHT...");
         }
     }
@@ -236,6 +249,7 @@ public class PlayerMovement : MonoBehaviour
             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + _f[2] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
             notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen a star!";
             notify.SetActive(true);
+            notifyClose.SetActive(true);
             Debug.Log("GOT ROBBEDDD");
             DiceRoll.starCount--;
             playerData.sendData();
@@ -276,6 +290,7 @@ public class PlayerMovement : MonoBehaviour
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "Teleporting to a random location!";
             notify.SetActive(true);
+            notifyClose.SetActive(true);
             Invoke("teleporting", 1.5f);
         }
         playerData.sendData();
