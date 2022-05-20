@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject notifyClose;
     public float speed = 1f;
     private bool start = true;
+    private GameObject eventLog;
 
     private Vector3 startPos;
     private int counter = 0;
@@ -55,6 +56,9 @@ public class PlayerMovement : MonoBehaviour
         notify.SetActive(false);
         notifyClose = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("NotificationCloseButton").gameObject;
         notifyClose.SetActive(false);
+
+        eventLog = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("EventLog").Find("LogPanel").Find("Scroll View").Find("Viewport").Find("Content").Find("Text").gameObject;
+        bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("EventLog").Find("LogPanel").gameObject.SetActive(false);
 
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
         startPos = transform.localPosition;
@@ -152,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
                             steal(1);
                         }
                         else
@@ -161,6 +167,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
                         }
                         break;
 
@@ -184,6 +192,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
                             steal(2);
                         }
                         else
@@ -193,6 +203,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
                         }
                         break;
 
@@ -216,6 +228,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
                             steal(3);
                         }
                         else
@@ -225,6 +239,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
                         }
                         break;
 
@@ -248,6 +264,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
                             steal(4);
                         }
                         else
@@ -257,6 +275,8 @@ public class PlayerMovement : MonoBehaviour
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
                             notifyClose.SetActive(true);
+
+                            eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
                         }
                         break;
                 }
@@ -265,6 +285,7 @@ public class PlayerMovement : MonoBehaviour
                 notify.transform.Find("Text").GetComponent<Text>().text = "No players to steal from";
                 notify.SetActive(true);
                 notifyClose.SetActive(true);
+                eventLog.GetComponent<Text>().text += "\nTried to steal, but no players to steal from";
                 Debug.Log("No players to steal from...");
             }
         } else
@@ -272,6 +293,7 @@ public class PlayerMovement : MonoBehaviour
             notify.transform.Find("Text").GetComponent<Text>().text = "Failed to steal...";
             notify.SetActive(true);
             notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\nTried to steal, but failed";
             Debug.Log("LOST THE FIGHT...");
         }
         //unsure if we want to use different audios if they win or lose
@@ -300,6 +322,7 @@ public class PlayerMovement : MonoBehaviour
             notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
             notify.SetActive(true);
             notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\n" + playerName + " has stolen 4 stars";
             //Not sure if being robbed and losing stars due to tile should be the same sound
             notification.tileNotification();
             Debug.Log("GOT ROBBEDDD");
@@ -337,6 +360,7 @@ public class PlayerMovement : MonoBehaviour
             notify.transform.Find("Text").GetComponent<Text>().text = "Got 2 stars!";
             notify.SetActive(true);
             notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\nGained 2 stars";
         }
         else if (currentTile.tag == "DropTile")
         {
@@ -347,10 +371,12 @@ public class PlayerMovement : MonoBehaviour
                 notify.transform.Find("Text").GetComponent<Text>().text = "Lost a star...";
                 notify.SetActive(true);
                 notifyClose.SetActive(true);
+                eventLog.GetComponent<Text>().text += "\nLost a star";
             }
         } else if (currentTile.tag == "QuestionTile"){
             notification.tileNotification();
             QTile();
+            eventLog.GetComponent<Text>().text += "\nLanded on question tile";
         } else if (currentTile.tag == "FightTile")
         {
             CoinFlip.canFlip = true;
@@ -360,6 +386,7 @@ public class PlayerMovement : MonoBehaviour
             notify.SetActive(true);
             notifyClose.SetActive(true);
             notification.tileNotification();
+            eventLog.GetComponent<Text>().text += "\nTeleported to new location";
             Invoke("teleporting", 1.5f);
         }
         playerData.sendData();
