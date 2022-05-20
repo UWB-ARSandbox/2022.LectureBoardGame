@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
             }
         } else
         {
-            notify.transform.Find("Text").GetComponent<Text>().text = "You lost";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Failed to steal...";
             notify.SetActive(true);
             notifyClose.SetActive(true);
             Debug.Log("LOST THE FIGHT...");
@@ -334,6 +334,9 @@ public class PlayerMovement : MonoBehaviour
         {
             DiceRoll.starCount += 2;
             notification.getStars();
+            notify.transform.Find("Text").GetComponent<Text>().text = "Got 2 stars!";
+            notify.SetActive(true);
+            notifyClose.SetActive(true);
         }
         else if (currentTile.tag == "DropTile")
         {
@@ -341,6 +344,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 DiceRoll.starCount--;
                 notification.dropStars();
+                notify.transform.Find("Text").GetComponent<Text>().text = "Lost a star...";
+                notify.SetActive(true);
+                notifyClose.SetActive(true);
             }
         } else if (currentTile.tag == "QuestionTile"){
             notification.tileNotification();
