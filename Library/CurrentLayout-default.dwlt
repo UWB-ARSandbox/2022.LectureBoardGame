@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1368
     height: 830
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 8}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 74
+  controlID: 104
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -94,14 +94,14 @@ MonoBehaviour:
     y: 483
     width: 1090
     height: 297
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 13}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,10 +123,10 @@ MonoBehaviour:
     y: 0
     width: 1090
     height: 780
-  m_MinSize: {x: 403, y: 492}
-  m_MaxSize: {x: 10001, y: 14042}
+  m_MinSize: {x: 403, y: 342}
+  m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
-  controlID: 73
+  controlID: 103
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,10 +148,10 @@ MonoBehaviour:
     y: 30
     width: 1368
     height: 780
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 679, y: 342}
+  m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 72
+  controlID: 102
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -379,21 +379,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/MyPrefabs
+    - Assets/GameScene/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/MyPrefabs
+  - Assets/GameScene/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\younk\Documents\2022.LectureBoardGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 50780000
-    m_LastClickedID: 30800
+    scrollPos: {x: 0, y: 116}
+    m_SelectedIDs: 48780000
+    m_LastClickedID: 30792
     m_ExpandedIDs: 000000002c7800002e78000030780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -447,8 +447,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: c4ba0000
+    m_LastClickedInstanceID: 47812
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000623c000000000000
     m_RenameOverlay:
@@ -474,7 +474,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 71}
+    m_ScrollPosition: {x: 0, y: 35.5}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 201
@@ -545,7 +545,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 12bff2ff40bff2ff16c4f2ff22c4f2ff6c36f3ff6c37f3ffb838f3ffd638f3ffde38f3ff2e39f3ff8c3af3ffb63af3ffb03ff3ffbe3ff3ff0452f3ff3052f3ff2a57f3ff3857f3ff5273f3ff7673f3ff7078f3ff7e78f3ff8e8bf3ffae8df3ff8893f3ffe093f3ff3e95f3ff6895f3ff3e9af3ff4a9af3ffbecef3ffc2cef3ffe2d0f3ffa8d2f3ffbcd6f3ff14d7f3ff68d8f3ff92d8f3ff8cddf3ff9addf3ffa442f4ffd443f4fffc43f4fff648f4ff0449f4ff0849f4ff884af4ffb64af4ff8c4ff4ff984ff4ff9c4ff4ff2c1df5ff4c1ff5ff2625f5ff7e25f5ffda26f5ff0427f5ffda2bf5ffe62bf5ffae96f8ffb896f8ffc296f8ffcc96f8ffd096f8fff098f8ffca9ef8ff229ff8ff6ea0f8ff9ea0f8ff74a5f8ff80a5f8ff0a1cfaff1823faff2223faff2c23faff3023faff5025faff2a2bfaff822bfaff2051faff2a51faff3451faff3851faff5853faff3259faff8a59faffa26bfaffac6bfaffb66bfaffba6bfaffda6dfaffb473faff0c74faffd274faff6c8efaff768efaff808efaff848efaffa490faff7e96faffce96faff4898faff7098faff7c98faff8098faff8c98faffbc37fdffe837fdffbe3cfdffca3cfdffce3cfdff4efbffff5c8702004297020040980200829d0200a8b3020020ec02004c950300121d0500de140600bc5b06007e0e0700
+      m_ExpandedIDs: 0c99ffff3499ffff2e9effff3c9effff4efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 411.25418, y: 298.93124, z: 55.08338}
     speed: 2
-    m_Value: {x: 772, y: 429, z: 0}
+    m_Value: {x: 411.25418, y: 298.93124, z: 55.08338}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -656,11 +656,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.0059977416, y: 0.0012055666, z: -0.0000013945745, w: 0.99999267}
     speed: 2
-    m_Value: {x: 0.01649805, y: 0.0062981923, z: -0.00010847251, w: 0.99984413}
+    m_Value: {x: 0.0059976736, y: 0.001205553, z: -0.0000013945587, w: 0.99998134}
   m_Size:
     m_Target: 581.4386
     speed: 2
-    m_Value: 627.9217
+    m_Value: 581.4386
   m_Ortho:
     m_Target: 0
     speed: 2

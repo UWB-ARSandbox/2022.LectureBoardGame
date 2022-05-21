@@ -26,7 +26,7 @@ public class MarkAnswer : MonoBehaviour
         Debug.Log("RECEIVED BY " + GameLiftManager.GetInstance().m_PeerId);
         if (GameLiftManager.GetInstance().m_PeerId == 1)
         {
-            string question = "";
+            /*string question = "";
             bool correct = false;
             bool next = false;
             foreach (float f in _f)
@@ -52,10 +52,40 @@ public class MarkAnswer : MonoBehaviour
                 }
             }
 
-            Debug.Log(question + "   " + correct);
+            Debug.Log(question + "   " + correct);*/
 
             // TRANSFER DATA TO TEACHER UI
-            foreach (Transform btn in teacherUI.transform)
+            Transform btn = teacherUI.transform.GetChild((int)_f[0]);
+
+            string stat = btn.Find("Stats").GetComponent<Text>().text;
+            string[] values = stat.Split('/');
+            int[] numbers = Array.ConvertAll(values, int.Parse);
+
+            int answers = numbers[1] + 1;
+            int corrects = numbers[0];
+            int incorrects = numbers[2];
+            if (_f[1] == 1)
+            {
+                corrects = numbers[0] + 1;
+            }
+            else
+            {
+                incorrects = numbers[2] + 1;
+            }
+
+            Debug.Log(stat);
+            Debug.Log(answers);
+            Debug.Log(corrects);
+            Debug.Log(incorrects);
+
+            stat = corrects + "/" + answers + "/" + manager.playerCount;
+            Debug.Log(stat);
+            btn.Find("Stats").GetComponent<Text>().text = stat;
+            TeacherButton teacherBtn = btn.GetComponent<TeacherButton>();
+            teacherBtn.updateGameReportStats(answers, corrects, incorrects);
+
+
+            /*foreach (Transform btn in teacherUI.transform)
             {
                 if (question == ("Question: " + btn.Find("Text").GetComponent<Text>().text))
                 {
@@ -86,14 +116,26 @@ public class MarkAnswer : MonoBehaviour
                     TeacherButton teacherBtn = btn.GetComponent<TeacherButton>();
                     teacherBtn.updateGameReportStats(answers, corrects, incorrects);
                 }
-            }
+            }*/
         }
     }
-    public void mark(string questionTxt, bool isCorrect)
+    public void mark(int questionIndex, bool isCorrect)
     {
         gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
         {
-            float[] sendValue = new float[questionTxt.Length + 2];
+            float[] sendValue = new float[2];
+            sendValue[0] = questionIndex;
+            if (isCorrect)
+            {
+                sendValue[1] = 1;
+            }
+            else
+            {
+                sendValue[1] = 0;
+            }
+
+
+            /*float[] sendValue = new float[questionTxt.Length + 2];
             int index = 0;
             foreach (char c in questionTxt)
             {
@@ -113,7 +155,7 @@ public class MarkAnswer : MonoBehaviour
             else
             {
                 sendValue[index] = 0;
-            }
+            }*/
 
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });

@@ -82,7 +82,7 @@ public class Selfgrader : MonoBehaviour
         if(qButton!=null){
             qButton.GetComponent<Image>().color = correct.image.color;
             qButton.GetComponent<ButtonBehavior>().answered = true;
-            ma.mark(questionTxt.text, true);
+            ma.mark(questionIndex, true);
             graded = true;
 
             stats.incrementNumCorrect();
@@ -100,7 +100,7 @@ public class Selfgrader : MonoBehaviour
         if(qButton!=null){
             qButton.GetComponent<Image>().color = incorrect.image.color;
             qButton.GetComponent<ButtonBehavior>().answered = true;
-            ma.mark(questionTxt.text, false);
+            ma.mark(questionIndex, false);
             graded = true;
 
             stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, -1);

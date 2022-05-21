@@ -128,7 +128,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEditor.UI.dll:
-    - UnityEditor.UI.TextEditor
+    - UnityEditor.UI.ImageEditor
     UnityEngine.SpatialTracking.dll:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
     UnityEngine.UI.dll:
@@ -557,15 +557,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9430}
     - Class: 114
-      Script: {instanceID: 98864}
+      Script: {instanceID: 51516}
     - Class: 114
-      Script: {instanceID: 98870}
+      Script: {instanceID: 51518}
     - Class: 114
-      Script: {instanceID: 99014}
+      Script: {instanceID: 51520}
     - Class: 114
-      Script: {instanceID: 100196}
+      Script: {instanceID: 51522}
     - Class: 114
-      Script: {instanceID: 100200}
+      Script: {instanceID: 51524}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
