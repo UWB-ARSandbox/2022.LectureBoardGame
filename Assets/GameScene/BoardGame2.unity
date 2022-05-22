@@ -680,7 +680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.50002, y: 0.0002563415}
+  m_AnchoredPosition: {x: -241.50002, y: -0.0000038146973}
   m_SizeDelta: {x: 124, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &193863117
@@ -700,6 +700,7 @@ MonoBehaviour:
   min: {fileID: 0}
   studentStats: {fileID: 0}
   notification: {fileID: 0}
+  StudentPanel: {fileID: 0}
 --- !u!1 &230475819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345632557}
   - component: {fileID: 345632558}
+  - component: {fileID: 345632559}
   m_Layer: 0
   m_Name: GroupingLobby
   m_TagString: Untagged
@@ -1698,6 +1700,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c58412da33e154692db87cbf8c6ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &345632559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345632556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068d333841c527441bbdb84bf51978aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 1325604562}
 --- !u!1 &347860895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6893,7 +6908,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1267106478}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.8666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

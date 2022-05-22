@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public string currDirection;
     private BoardGameManager bgm;
     public static TileNode currentTile;
-    public TileNode pastTile;
     private PlayerData playerData;
     public GameObject questions;
     public GameObject qPanel;
@@ -72,9 +71,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.localPosition!=currentTile.transform.localPosition&&!start){
             var step =  speed * Time.deltaTime; // calculate distance to move
-            if(pastTile!=null){
-                animation();
-            }
             transform.localPosition = Vector3.MoveTowards(transform.localPosition,currentTile.transform.localPosition, step);
             m_ASLObject.SendAndSetClaim(() =>
             {
@@ -85,18 +81,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-    }
-
-    void animation(){
-        if(pastTile.transform.localPosition.z == -4.26 || pastTile.transform.localPosition.z == 4.5 || 
-            ((pastTile.transform.localPosition.z==-2.07||pastTile.transform.localPosition.z==2.31)&&(pastTile.transform.localPosition.x != 4.26 || pastTile.transform.localPosition.x != -4.5))){
-            //Horizontal: Left and Right
-            anim.SetInteger("movement", 2);
-        } else if (pastTile.transform.localPosition.x == 4.26 || pastTile.transform.localPosition.x == -4.5 || 
-            ((pastTile.transform.localPosition.x==2.07||pastTile.transform.localPosition.x==-2.31)&&(pastTile.transform.localPosition.z != -4.26 || pastTile.transform.localPosition.z != 4.5))){
-            //Vertical: Up and Down
-            anim.SetInteger("movement", 1);
-        }
     }
 
 
@@ -340,7 +324,7 @@ public class PlayerMovement : MonoBehaviour
     public void diceMove()
     {
         start = false;
-        pastTile = currentTile;
+        anim.SetInteger("movement", currentTile.animation);
         for (int i = 0; i < DiceRoll.DiceNumber; i++)
         {
             if (i == 0 && currentTile.split != null)

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 5818993351340006669}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &170366112464113951
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 1402126729645081295}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &257789782433741036
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 2737059005584870105}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &432848460770552142
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6052090875341749159}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &579520849027106909
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7835031787536834146}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &612995294284944119
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8392314767692303163}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &721234730762077156
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4597139734705558647}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &752566744075133876
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3789531013166206096}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &774407233619693963
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7030474769534980125}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &1077612083745595987
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4180802140584846558}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &1079057716321791023
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3307499675178049809}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &1126113710838023499
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 2534071233153622707}
   split: {fileID: 0}
+  animation: 1
 --- !u!54 &2141662918889125045
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -833,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6859193733851586854}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &1481287630018600535
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8468441764558837237}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &1513846479100195691
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3030488253756375938}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &1565595502741601957
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6825025032745795126}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &1635455208940747253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7728875668046832296}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &1778616196100804158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 5256702691931290978}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &2043884490680552058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 1842872537513390263}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &2125840933686883865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4103541207088911102}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &2125939885460684038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4597139734705558647}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &2141662917200226608
 GameObject:
   m_ObjectHideFlags: 0
@@ -7783,6 +7804,7 @@ MonoBehaviour:
   min: {fileID: 0}
   studentStats: {fileID: 0}
   notification: {fileID: 0}
+  StudentPanel: {fileID: 0}
 --- !u!114 &2141662919273637082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7941,6 +7963,7 @@ MonoBehaviour:
   min: {fileID: 2141662917230066432}
   studentStats: {fileID: 6968323153736952743}
   notification: {fileID: 0}
+  StudentPanel: {fileID: 2141662918223548258}
 --- !u!114 &2141662919323490466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8165,6 +8188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3781054898761658626}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &2499755621563033274
 GameObject:
   m_ObjectHideFlags: 0
@@ -8210,6 +8234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 2232335120629898552}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &2567989073766840696
 GameObject:
   m_ObjectHideFlags: 0
@@ -8255,6 +8280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 269198781753957073}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &2649863630666346625
 GameObject:
   m_ObjectHideFlags: 0
@@ -8300,6 +8326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4674114219352442881}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &2816145387699409254
 GameObject:
   m_ObjectHideFlags: 0
@@ -8345,6 +8372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8249276958039873471}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &2889853963539490105
 GameObject:
   m_ObjectHideFlags: 0
@@ -8390,6 +8418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 2575245278808954874}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &3037461226869810418
 GameObject:
   m_ObjectHideFlags: 0
@@ -8435,6 +8464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3909128752214116808}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &3290976672877182883
 GameObject:
   m_ObjectHideFlags: 0
@@ -8480,6 +8510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8098157393415655081}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &3333244238179085183
 GameObject:
   m_ObjectHideFlags: 0
@@ -8525,6 +8556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 1457305008559757264}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &3386543820452090805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8570,6 +8602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7320503229528000732}
   split: {fileID: 8939264370840477224}
+  animation: 2
 --- !u!1 &3445835780209026039
 GameObject:
   m_ObjectHideFlags: 0
@@ -8694,6 +8727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6402695664512750886}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &3578291889734781595
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,6 +8849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7457243897845550640}
   split: {fileID: 6449538517460437967}
+  animation: 2
 --- !u!1 &3681359837789626073
 GameObject:
   m_ObjectHideFlags: 0
@@ -8860,6 +8895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6413929269997300353}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &3752867562024460751
 GameObject:
   m_ObjectHideFlags: 0
@@ -9275,6 +9311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4006736121842338044}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &4030765333717543112
 GameObject:
   m_ObjectHideFlags: 0
@@ -9320,6 +9357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 5951439273704247934}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &4107666880586414870
 GameObject:
   m_ObjectHideFlags: 0
@@ -9444,6 +9482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7850776338713567239}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &4380083072111366206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9489,6 +9528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8042390596748316760}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &4413945724266275715
 GameObject:
   m_ObjectHideFlags: 0
@@ -9613,6 +9653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6637651643577815485}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &4595421706642652745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9658,6 +9699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3319506820108047459}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &4653625594790164964
 GameObject:
   m_ObjectHideFlags: 0
@@ -9784,6 +9826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3811803760970398002}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &4861785203665569380
 GameObject:
   m_ObjectHideFlags: 0
@@ -9908,6 +9951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 9097877544578433573}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &5006081404291766421
 GameObject:
   m_ObjectHideFlags: 0
@@ -10087,6 +10131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8035806343400891495}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &5145691256156916829
 GameObject:
   m_ObjectHideFlags: 0
@@ -10132,6 +10177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8962767110989830475}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &5181594072089388195
 GameObject:
   m_ObjectHideFlags: 0
@@ -10326,6 +10372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6000028278366827853}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &5445301247032693832
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,6 +10536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6941580650474892676}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &5487306837778357811
 GameObject:
   m_ObjectHideFlags: 0
@@ -10534,6 +10582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3567587446737362280}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &5577235877121280284
 GameObject:
   m_ObjectHideFlags: 0
@@ -10579,6 +10628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7345396607541057549}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &5599075219464814520
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,6 +10674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 5938067259917138234}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &5654451082543828723
 GameObject:
   m_ObjectHideFlags: 0
@@ -10669,6 +10720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 1181226558900385516}
   split: {fileID: 0}
+  animation: 2
 --- !u!114 &7395932951931422608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10726,6 +10778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7271895190420541969}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &5833598895230274634
 GameObject:
   m_ObjectHideFlags: 0
@@ -10850,6 +10903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7777635772896826846}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &6051008153882878620
 GameObject:
   m_ObjectHideFlags: 0
@@ -11263,6 +11317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 9207705875098673019}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &6709259930310077520
 GameObject:
   m_ObjectHideFlags: 0
@@ -11445,6 +11500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6518611039040741793}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &6935186439516096752
 GameObject:
   m_ObjectHideFlags: 0
@@ -11490,6 +11546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 2205409631575291493}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &6964714792363971285
 GameObject:
   m_ObjectHideFlags: 0
@@ -11535,6 +11592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3054575688038006916}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &7000086254160365247
 GameObject:
   m_ObjectHideFlags: 0
@@ -11580,6 +11638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7341707582618796707}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &7137036261958352428
 GameObject:
   m_ObjectHideFlags: 0
@@ -11625,6 +11684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 3428917088715893471}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &7166096814231426678
 GameObject:
   m_ObjectHideFlags: 0
@@ -11670,6 +11730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4103541207088911102}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &7168491004978830459
 GameObject:
   m_ObjectHideFlags: 0
@@ -12418,6 +12479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4631319482749440312}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &8152929272740164722
 GameObject:
   m_ObjectHideFlags: 0
@@ -12542,6 +12604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 6618267696196845191}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &8243263720201798279
 GameObject:
   m_ObjectHideFlags: 0
@@ -12721,6 +12784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4039890417271314313}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &8492790656352967061
 GameObject:
   m_ObjectHideFlags: 0
@@ -12845,6 +12909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8209588457596532596}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &8632628225551011846
 GameObject:
   m_ObjectHideFlags: 0
@@ -13074,6 +13139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 1405416824290189468}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &8833329035472456231
 GameObject:
   m_ObjectHideFlags: 0
@@ -13119,6 +13185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 9203585630686328637}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &8867661067251916542
 GameObject:
   m_ObjectHideFlags: 0
@@ -13243,6 +13310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 8939974833601918951}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &9017569724839301127
 GameObject:
   m_ObjectHideFlags: 0
@@ -13288,6 +13356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 4515003982400157103}
   split: {fileID: 0}
+  animation: 2
 --- !u!1 &9027320450743769587
 GameObject:
   m_ObjectHideFlags: 0
@@ -13333,6 +13402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 7722488833773025944}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &9038189791780283170
 GameObject:
   m_ObjectHideFlags: 0
@@ -13457,6 +13527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 28545095489149655}
   split: {fileID: 0}
+  animation: 1
 --- !u!1 &9120173864518340004
 GameObject:
   m_ObjectHideFlags: 0
@@ -13489,10 +13560,10 @@ RectTransform:
   m_Father: {fileID: 1540376904278178575}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 478.8133, y: 32}
+  m_SizeDelta: {x: 478.8133, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2934889921115536779
 CanvasRenderer:
@@ -13583,6 +13654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 657611728786736430}
   split: {fileID: 0}
+  animation: 1
 --- !u!1001 &1698008561962874282
 PrefabInstance:
   m_ObjectHideFlags: 0

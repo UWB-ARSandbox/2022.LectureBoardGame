@@ -21,6 +21,10 @@ public class Scroll : MonoBehaviour
     public StudentStats studentStats;
     public SoundManagerScript notification;
 
+    public GameObject StudentPanel;
+    private Color32 green = new Color32(53, 159, 76, 100);
+    private Color32 red = new Color32(255, 8, 0, 100);
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -123,9 +127,19 @@ public class Scroll : MonoBehaviour
         buttonBehavior.questionIndex = questionIndex;
         gameReport.createStudentData(GameLiftManager.GetInstance().m_PeerId, GameLiftManager.GetInstance().m_Username, q, a, questionIndex);
         number++;
+        StudentPanel.GetComponent<Image>().color = red;
         if(notification!=null){
             notification.playSound();
         }
+        StartCoroutine(UIcolorreset());
+    }
+
+    IEnumerator UIcolorreset()
+    {
+        //yield on a new YieldInstruction that waits for 2 seconds.
+        yield return new WaitForSeconds(2);
+
+        StudentPanel.GetComponent<Image>().color = green;
     }
 
     //For TeacherUI when they make a new question
