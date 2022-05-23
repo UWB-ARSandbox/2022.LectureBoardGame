@@ -20,8 +20,10 @@ public class EndGameUI : MonoBehaviour
     public GameObject studentListButton; //used by student, show QA A
     public GameObject teacherListButton; //used by teacher, show QA and player list
     //public GameObject playerListButton; //used by teacher, show student's A
-    public StarRankingPanel starRankPanel_s;
+    public StarRankingPanel starRankPanel_s; //student
     public GameObject starRankButton;
+    public GameObject  starRankPanel_t; //teacher
+    public GameObject teacherOnly; //make star rank panels's parent
 
     private GameReport gameReport;
     public StudentStats stuStats; //student only
@@ -61,21 +63,22 @@ public class EndGameUI : MonoBehaviour
             } else
             {
                 studentStats.gameObject.SetActive(false);
-                starRankButton.SetActive(false);
+                starRankPanel_t.transform.SetParent(teacherOnly.transform);
+                starRankPanel_t.SetActive(false);
                 loadTeacherButtons();
             }
+            starRankButton.GetComponent<Button>().onClick.AddListener(rankButton);
         }
     }
-
     public void loadStudentButtons()
     {
         Debug.Log("Student End Game");
         foreach (KeyValuePair<int, GameReport.StudentData> kvp in GameReport.studentReportData)
         {
             GameObject newQ = GameObject.Instantiate(studentListButton);
-            newQ.GetComponent<StudentAnswerButton>().setup(kvp.Key + 1,kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
+            newQ.GetComponent<StudentAnswerButton>().setup(kvp.Key, kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
                 kvp.Value.selfGrade, this);
-            newQ.transform.parent = listContent.transform;
+            newQ.transform.SetParent(listContent.transform);
             newQ.SetActive(true);
         }
     }
@@ -98,6 +101,30 @@ public class EndGameUI : MonoBehaviour
         }
     }
 
+    public void rankButton()
+    {
+        if (GameLiftManager.GetInstance().m_PeerId != 1)
+        {
+            if (starRankPanel_s.gameObject.activeSelf)
+            {
+                starRankPanel_s.gameObject.SetActive(false);
+            }
+            else
+            {
+                starRankPanel_s.gameObject.SetActive(true);
+            }
+        } else
+        {
+            if (starRankPanel_t.activeSelf)
+            {
+                starRankPanel_t.SetActive(false);
+            }
+            else
+            {
+                starRankPanel_t.SetActive(true);
+            }
+        }
+    }
     //public void teacherButtonBehavior()
     //{
     //    playerAnswersPanel.SetActive(true);

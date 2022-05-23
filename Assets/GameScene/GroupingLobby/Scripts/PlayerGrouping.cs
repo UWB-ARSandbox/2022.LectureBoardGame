@@ -319,6 +319,7 @@ public class PlayerGrouping : MonoBehaviour
                     {
                         m_players[Int16.Parse(player.name)] = i / groupLimit + 1;
                         group.Add(Int16.Parse(player.name));
+                        Debug.Log("id:"+ player.name + "; GroupNum:" + m_players[Int16.Parse(player.name)]);
                     }
                     else
                     {

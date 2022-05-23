@@ -10,23 +10,29 @@ public class StudentAnswersPanel : MonoBehaviour
     public Text studentAnswerText;
     public Text titleText;
     public Image saBackground; //student answer
+    private bool forQuestionList; //else, for student list
 
-    private Color32 red;
-    private Color32 green;
+    //private Color32 red;
+    //private Color32 green;
     private Color32 defaultColor;
 
     public GameObject listContent;
     public GameObject studentListButton;
-
     //private GameReport gameReport;
+
+    //for student answer list
     public int questionIndex;
+
+    //for question list
+    public int studentId;
+    public string username;
 
     // Start is called before the first frame update
     void Start()
     {
         //gameReport = GameObject.Find("GameReport").GetComponent<GameReport>();
-        red = new Color32(255, 138, 146, 255);
-        green = new Color32(198, 255, 138, 255);
+        //red = new Color32(255, 138, 146, 255);
+        //green = new Color32(198, 255, 138, 255);
         defaultColor = saBackground.color;
     }
 
@@ -38,6 +44,7 @@ public class StudentAnswersPanel : MonoBehaviour
 
     public void loadPanel(int questionIndex) //teacher UI use
     {
+        forQuestionList = false;
         this.questionIndex = questionIndex;
         GameReport.TeacherData data = GameReport.reportData[questionIndex];
         setQA(data.question, data.answer);
@@ -49,19 +56,37 @@ public class StudentAnswersPanel : MonoBehaviour
         titleText.text = "Student Answers (" + listContent.transform.childCount + ")";
     }
 
-    public void loadPanel_noLabel(int questionIndex) //end game UI teacher use
+    public void loadPanel(int id, string username) //teacher UI use
     {
-        this.questionIndex = questionIndex;
-        GameReport.TeacherData data = GameReport.reportData[questionIndex];
-        setQA(data.question, data.answer);
-        foreach (KeyValuePair<int, GameReport.StudentData> kvp in data.studentAnswers)
+        forQuestionList = true;
+        studentId = id;
+        this.username = username;
+        int qIndex = 0;
+        foreach (GameReport.TeacherData teachData in GameReport.reportData)
         {
-            addStudentAnswer(kvp.Value.username, kvp.Value.myAnswer, kvp.Value.selfGrade);
+            GameReport.StudentData stuData = teachData.studentAnswers[id];
+            GameObject newStudent = GameObject.Instantiate(studentListButton);
+            newStudent.GetComponent<StudentAnswerButton>().setup(id, username, qIndex++, teachData.question, teachData.answer, 
+                stuData.myAnswer, stuData.selfGrade, this);
+            newStudent.transform.parent = listContent.transform;
+            newStudent.SetActive(true);
         }
-        titleText.text = "Student Answers (" + listContent.transform.childCount + ")";
+        titleText.text = "Question List (" + listContent.transform.childCount + ") - " + username;
     }
+    //int id, string username, int questionIndex, string question, string answer, string studentAns, int selfGrade, StudentAnswersPanel sa
+    //public void loadPanel_noLabel(int questionIndex) //end game UI teacher use
+    //{
+    //    this.questionIndex = questionIndex;
+    //    GameReport.TeacherData data = GameReport.reportData[questionIndex];
+    //    setQA(data.question, data.answer);
+    //    foreach (KeyValuePair<int, GameReport.StudentData> kvp in data.studentAnswers)
+    //    {
+    //        addStudentAnswer(kvp.Value.username, kvp.Value.myAnswer, kvp.Value.selfGrade);
+    //    }
+    //    titleText.text = "Student Answers (" + listContent.transform.childCount + ")";
+    //}
 
-    private void setQA(string q, string a)
+    public void setQA(string q, string a)
     {
         questionText.text = "Q: " + q;
         teacherAnswerText.text = "A: " + a;

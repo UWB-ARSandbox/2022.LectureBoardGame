@@ -10,6 +10,8 @@ public class GameReport : MonoBehaviour
 {
     private PlayerGrouping playerGrouping;
     private EndGameUI endGameBehavior;
+    //public static StarRankingPanel starRanking; //teacher UI only
+    public StarRankingPanel groupRanking; //student use
     private static bool isHost = false;
     public static List<TeacherData> reportData;
     public static Dictionary<int,StudentData> studentReportData; //Key=questionIndex
@@ -39,10 +41,10 @@ public class GameReport : MonoBehaviour
     {
         public string question;
         public string answer;
-        public string numAnswered;
-        public string notAnswered;
-        public string numCorrect;
-        public string numIncorrect;
+        public string numAnswered = "0";
+        public string notAnswered = "0";
+        public string numCorrect = "0";
+        public string numIncorrect = "0";
         //Key=student's peer id, val=student data for this qa
         public Dictionary<int, StudentData> studentAnswers = new Dictionary<int, StudentData>();
 
@@ -119,27 +121,70 @@ public class GameReport : MonoBehaviour
 
     private void studentReport(string filepath)
     {
-        int numColumns = 4;
-        //Include statistics? Correct Questions Percentage
-        string tableHeader = "Correct,Answered,Questions,";
+        int numColumns = 4; //for QA section
+        //only add if positive
+        int addedCommas = groupRanking.rankingContent.transform.childCount + 1 - numColumns;
+        //Star ranking section
+        string tableHeader = "Ranking,";
+        string line = "Stars,";
+        for (int i = 0; i < groupRanking.rankingContent.transform.childCount; i++)
+        {
+            StarRankingButton player = groupRanking.rankingContent.transform.GetChild(i).GetComponent<StarRankingButton>();
+            tableHeader += player.ranking + ": " + player.username + ",";
+            line += player.stars + ",";
+        }
+        if (addedCommas < 0)
+        {
+            for (int i = 0; i > addedCommas; i--) {
+                tableHeader += ",";
+                line += ",";
+            }
+        }
         addRecord(tableHeader, filepath);
-        string line = endGameBehavior.stuStats.numCorrect + "," + endGameBehavior.stuStats.numAnswered + "," + endGameBehavior.stuStats.numQuestions + ",";
         addRecord(line, filepath);
-        addRecord(",,,,", filepath);
+        line = ",,,,";
+        if (addedCommas > 0)
+        {
+            for (int i = 0; i < addedCommas; i++) { line += ","; }
+        }
+        addRecord(line, filepath);
+        //Statistics section
+        tableHeader = "Correct,Answered,Questions,";
+        addRecord(tableHeader, filepath);
+        line = endGameBehavior.stuStats.numCorrect + "," + endGameBehavior.stuStats.numAnswered + "," + endGameBehavior.stuStats.numQuestions + ",";
+        if (addedCommas > 0)
+        {
+            for (int i = 0; i < addedCommas; i++) { line += ","; }
+        }
+        addRecord(line, filepath);
+        line = ",,,,";
+        if (addedCommas > 0)
+        {
+            for (int i = 0; i < addedCommas; i++) { line += ","; }
+        }
+        addRecord(line, filepath);
+        //QA section
         tableHeader = "Question,Answer,MyAnswer,SelfGrade";
         addRecord(tableHeader, filepath);
         foreach (var kvp in studentReportData)
         {
             line = csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," + 
                 csvFormatString(kvp.Value.myAnswer) + "," + (kvp.Value.selfGrade == 1 ? "Correct" : "Incorrect");
+            if (addedCommas > 0)
+            {
+                for (int i = 0; i < addedCommas; i++) { line += ","; }
+            }
             addRecord(line, filepath);
         }
+        
     }
 
     private void teacherReport(string filepath)
     {
         int numColumns = 6 + playerGrouping.playerCount;
-        string tableHeader = "Question,Answer,Answered,NoAnswered,Correct,Incorrect";
+        string tableHeader = "";
+        string line = "";
+        tableHeader = "Question,Answer,Answered,NoAnswered,Correct,Incorrect";
         foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
         {
             tableHeader += "," + csvFormatString(GameLiftManager.GetInstance().m_Players[player.Key]);
@@ -147,7 +192,7 @@ public class GameReport : MonoBehaviour
         addRecord(tableHeader, filepath);
         foreach (TeacherData qaData in reportData)
         {
-            string line = csvFormatString(qaData.question) + "," + csvFormatString(qaData.answer) + "," +
+            line = csvFormatString(qaData.question) + "," + csvFormatString(qaData.answer) + "," +
                 qaData.numAnswered + "," + qaData.notAnswered + "," + qaData.numCorrect + "," + qaData.numIncorrect;
             foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
             { //KeyValuePair<int, StudentData> kvp in qaData.studentAnswers
@@ -259,6 +304,7 @@ public class GameReport : MonoBehaviour
             if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
             reportData[questionIndex].studentAnswers[id].myAnswer = studentResponse;
             studentStats[id].numAnswered++;
+            BoardGameManager.GetInstance().starRanking.updatePlayerStats(id);
         }
         else if (GameLiftManager.GetInstance().m_PeerId == id)
         {
@@ -273,7 +319,10 @@ public class GameReport : MonoBehaviour
             if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
             reportData[questionIndex].studentAnswers[id].selfGrade = selfGrade;
             if (selfGrade == 1)
+            {
                 studentStats[id].numCorrect++;
+                BoardGameManager.GetInstance().starRanking.updatePlayerStats(id);
+            }
         }
         else if (GameLiftManager.GetInstance().m_PeerId == id)
         {
@@ -311,6 +360,8 @@ public class GameReport : MonoBehaviour
                 break;
             case 3: //send player stars: 3, id, stars
                 studentStats[(int)_myFloats[1]].stars = (int)_myFloats[2];
+                if (isHost)
+                    BoardGameManager.GetInstance().starRanking.updatePlayerStar((int)_myFloats[1], (int)_myFloats[2]);
                 break;
             default:
                 Debug.Log("DownloadableReport Float function Default");

@@ -6,8 +6,6 @@ using ASL;
 
 public class StarRankingButton : MonoBehaviour
 {
-    private Color32 lightBlue;
-    private Color32 white;
     public bool forRankingList; //false--for Player List
     private StarRankingPanel rankPanel;
 
@@ -17,18 +15,27 @@ public class StarRankingButton : MonoBehaviour
     public int ranking;
     public int stars;
 
+    private bool makeYellow = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        lightBlue = new Color32(181, 236, 255, 255);
-        white = new Color32(255, 255, 255, 255);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        while (makeYellow)
+        {
+            StarRankingButton player = rankPanel.GetStarRankButton(peerId, true);
+            if (player != null)
+            {
+                Debug.Log("selectPlayer no color ERROR");
+                player.GetComponent<Image>().color = Color.yellow;
+            }
+            makeYellow = false;
+        }
     }
 
     public void setup(string username, int id, bool forRankingList, StarRankingPanel starRankPanel)
@@ -43,7 +50,7 @@ public class StarRankingButton : MonoBehaviour
         if (GameLiftManager.GetInstance().m_PeerId == id)
         {
             GetComponent<Image>().color = Color.yellow;
-        }
+        } 
     }
     
     public void setRank(int rank) //star ranking button
@@ -55,12 +62,54 @@ public class StarRankingButton : MonoBehaviour
     public void setStars() //star ranking button
     {
         stars = GameReport.studentStats[peerId].stars;
-        transform.GetChild(1).gameObject.GetComponent<Text>().text = stars.ToString();
+        if (forRankingList)
+        {
+            transform.GetChild(1).gameObject.GetComponent<Text>().text = stars.ToString();
+        }
     }
 
     public void setStat() //player list button
     {
         transform.GetChild(1).gameObject.GetComponent<Text>().text = GameReport.studentStats[peerId].numCorrect + "/" + 
             GameReport.studentStats[peerId].numAnswered + "/" + GameReport.qPosted;
+    }
+
+    public void selectPlayer() //teacher UI
+    {
+        if (forRankingList)
+        {
+            StarRankingButton player = rankPanel.GetStarRankButton(peerId, false);
+            if (player != null)
+            {
+                if (rankPanel.selectedPlayer != null)
+                {
+                    rankPanel.selectedPlayer.GetComponent<Image>().color = Color.white;
+                    rankPanel.GetStarRankButton(rankPanel.selectedPlayer.peerId, true).GetComponent<Image>().color = Color.white;
+                }
+                rankPanel.selectedPlayer = player;
+                player.GetComponent<Image>().color = Color.yellow;
+                GetComponent<Image>().color = Color.yellow;
+            }
+        } else
+        {
+            if (rankPanel.selectedPlayer != null)
+            {
+                rankPanel.selectedPlayer.GetComponent<Image>().color = Color.white;
+            }
+            if (groupNum <= 0)
+            {
+                groupNum = BoardGameManager.GetInstance().getPlayerGroup(peerId);
+            }
+            rankPanel.groupRankSetUp(groupNum);
+            rankPanel.selectedPlayer = this;
+            GetComponent<Image>().color = Color.yellow;
+            makeYellow = true;
+            StarRankingButton player = rankPanel.GetStarRankButton(peerId, true);
+            if (player != null)
+            {
+                Debug.Log("selectPlayer no color ERROR");
+                player.GetComponent<Image>().color = Color.yellow;
+            }
+        }
     }
 }

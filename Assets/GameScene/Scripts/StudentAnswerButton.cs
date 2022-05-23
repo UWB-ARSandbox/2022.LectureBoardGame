@@ -10,15 +10,17 @@ public class StudentAnswerButton : MonoBehaviour
     private StudentAnswersPanel saPanel;
     private EndGameUI endGameUI;
     private Color32 color;
-    //only for student use
+    private Color32 red;
+    private Color32 green;
+    private Color32 badColor;
+    public bool forQuestionList; //else, for student list
+    //only for student end game and teacher player list tab
     private string question;
     private string answer;
     public int questionIndex;
     private int selfGrade;
-
-    private Color32 red;
-    private Color32 green;
-    private Color32 badColor;
+    //only for teacher question list tab
+    public int studentId;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,7 @@ public class StudentAnswerButton : MonoBehaviour
             GetComponent<Image>().color = getColor(selfGrade);
         }
     }
-
+    //for teacher UI question list tab; list of student answers
     public void setup(string username, string answer, int selfGrade, StudentAnswersPanel sa)
     {
         studentName = username;
@@ -47,8 +49,9 @@ public class StudentAnswerButton : MonoBehaviour
         saPanel = sa;
         GetComponent<Image>().color = color;
         transform.GetChild(0).gameObject.GetComponent<Text>().text = username;
+        forQuestionList = false;
     }
-
+    //for student end game UI
     public void setup(int questionIndex, string question, string answer, string studentAns, int selfGrade, EndGameUI endGameUI)
     {
         studentAnswer = studentAns;
@@ -59,14 +62,38 @@ public class StudentAnswerButton : MonoBehaviour
         this.questionIndex = questionIndex;
         GetComponent<Image>().color = color;
         transform.GetChild(0).gameObject.GetComponent<Text>().text = "Q" + (questionIndex + 1).ToString();
+        forQuestionList = true;
+    }
+    //for teacher UI player list tab; list of questions
+    public void setup(int id, string username, int questionIndex, string question, string answer, string studentAns, int selfGrade, StudentAnswersPanel sa)
+    {
+        studentName = username;
+        studentAnswer = studentAns;
+        this.selfGrade = selfGrade;
+        this.endGameUI = endGameUI;
+        this.question = question;
+        this.answer = answer;
+        this.questionIndex = questionIndex;
+        saPanel = sa;
+        GetComponent<Image>().color = color;
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = "Q" + (questionIndex + 1).ToString();
+        forQuestionList = true;
     }
 
     public void setText()
     {
         if (saPanel != null) //teacher use
         {
-            saPanel.saBackground.color = getColor(selfGrade);
-            saPanel.studentAnswerText.text = studentName + ": " + studentAnswer;
+            if (forQuestionList)
+            {
+                saPanel.setQA(question, answer);
+                saPanel.saBackground.color = getColor(selfGrade);
+                saPanel.studentAnswerText.text = studentName + ": " + studentAnswer;
+            } else
+            {
+                saPanel.saBackground.color = getColor(selfGrade);
+                saPanel.studentAnswerText.text = studentName + ": " + studentAnswer;
+            }
         }
         else if (endGameUI != null) //student use
         {

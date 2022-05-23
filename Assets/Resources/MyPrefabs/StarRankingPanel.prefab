@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Content: {fileID: 187983119647670793}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -871,7 +871,7 @@ MonoBehaviour:
   playerButton: {fileID: 0}
   studentQPanel: {fileID: 0}
   playerListContent: {fileID: 0}
-  peerId: 0
+  selectedPlayer: {fileID: 0}
 --- !u!1 &5247392528912021101
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class BoardGameManager : MonoBehaviour
     private GameObject camLight;
     private GameObject playerDataManager;
     private GameReport gameReport;
+    public StarRankingPanel starRanking;
     [SerializeField] private int currId;
     [SerializeField] private int m_groupWorldSpacing = 75;
     public bool m_SendFloat = false;
@@ -106,6 +107,7 @@ public class BoardGameManager : MonoBehaviour
             //Send and then set (once received - NOT here) the tag
             groupLobby.GetComponent<ASL.ASLObject>().SendAndSetTag("Finish");
         });
+        starRanking.teacherUISetUp();
         playerDataManager.SetActive(true);
         studentUI.SetActive(false);
         groupLobbyCanvas.SetActive(false);
