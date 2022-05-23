@@ -114,6 +114,7 @@
      <Compile Include="Assets\GameScene\Dice\DiceRoll.cs" />
      <Compile Include="Assets\Demo\OnTriggerEnter\Scripts\Demo_OnTriggerEnterColor.cs" />
      <Compile Include="Assets\GameScene\Scripts\MenuBehavior.cs" />
+     <Compile Include="Assets\GameScene\Scripts\SendAnimation.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\VideoStream\Scripts\VideoStream_Example.cs" />
      <Compile Include="Assets\GameScene\Scripts\QuestionPanel.cs" />
      <Compile Include="Assets\GameScene\Board\TileNode.cs" />
@@ -189,6 +190,7 @@
      <Compile Include="Assets\ASL\ASL_Scripts\MixedRealityToolkit\InstantiateMRTKIfConnected.cs" />
      <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
      <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
+     <Compile Include="Assets\GameScene\Scripts\delayStart.cs" />
      <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\ASL\MRTK\StandardAssets\Shaders\Text3DShader.shader" />
      <None Include="Assets\ASL\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

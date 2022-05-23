@@ -78,6 +78,12 @@ public class PlayerMovement : MonoBehaviour
             });
             if(transform.localPosition==currentTile.transform.localPosition){
                 anim.SetInteger("movement", 0);
+                gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+                {
+                    float[] sendValue = new float[1];
+                    sendValue[0] = (float) 0;
+                    gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
+                });
             }
         }
 
@@ -297,27 +303,34 @@ public class PlayerMovement : MonoBehaviour
         });
     }
 
+    //Also used to send animation info
     private void gettingRobbed(string _id, float[] _f)
     {
-        Debug.Log("GETTING ROBBED");
-        if (_f[0] == bgm.getPlayerGroup() && _f[1] == playerNumber)
-        {
-            string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + _f[2] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
-            notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
-            notify.SetActive(true);
-            notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\n" + playerName + " has stolen 4 stars";
-            //Not sure if being robbed and losing stars due to tile should be the same sound
-            notification.tileNotification();
-            Debug.Log("GOT ROBBEDDD");
-            if (DiceRoll.starCount < 4)
+
+        //test
+        if(_f.Length==1){
+            anim.SetInteger("movement", (int)_f[0]);
+        } else {
+            Debug.Log("GETTING ROBBED");
+            if (_f[0] == bgm.getPlayerGroup() && _f[1] == playerNumber)
             {
-                DiceRoll.starCount = 0;
-            } else
-            {
-                DiceRoll.starCount -= 4;
+                string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + _f[2] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
+                notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
+                notify.SetActive(true);
+                notifyClose.SetActive(true);
+                eventLog.GetComponent<Text>().text += "\n" + playerName + " has stolen 4 stars";
+                //Not sure if being robbed and losing stars due to tile should be the same sound
+                notification.tileNotification();
+                Debug.Log("GOT ROBBEDDD");
+                if (DiceRoll.starCount < 4)
+                {
+                    DiceRoll.starCount = 0;
+                } else
+                {
+                    DiceRoll.starCount -= 4;
+                }
+                playerData.sendData();
             }
-            playerData.sendData();
         }
     }
 
@@ -325,6 +338,13 @@ public class PlayerMovement : MonoBehaviour
     {
         start = false;
         anim.SetInteger("movement", currentTile.animation);
+        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+        {
+            float[] sendValue = new float[1];
+            sendValue[0] = (float) currentTile.animation;
+            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
+        });
+        
         for (int i = 0; i < DiceRoll.DiceNumber; i++)
         {
             if (i == 0 && currentTile.split != null)
