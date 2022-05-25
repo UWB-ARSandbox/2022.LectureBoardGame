@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8042390596748316760}
   m_Layer: 0
   m_Name: Tile (38)
-  m_TagString: NormalTile
+  m_TagString: QuestionTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 8035806343400891495}
   m_Layer: 0
   m_Name: Tile (9)
-  m_TagString: QuestionTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 8098157393415655081}
   m_Layer: 0
   m_Name: Tile (56)
-  m_TagString: NormalTile
+  m_TagString: StarTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6941580650474892676}
   m_Layer: 0
   m_Name: Tile (23)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 7777635772896826846}
   m_Layer: 0
   m_Name: Tile (26)
-  m_TagString: NormalTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 1402126729645081295}
   m_Layer: 0
   m_Name: Tile (10)
-  m_TagString: NormalTile
+  m_TagString: QuestionTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 1405416824290189468}
   m_Layer: 0
   m_Name: Tile (34)
-  m_TagString: DropTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 6402695664512750886}
   m_Layer: 0
   m_Name: Tile (12)
-  m_TagString: NormalTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 3319506820108047459}
   m_Layer: 0
   m_Name: Tile (55)
-  m_TagString: StarTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 7030474769534980125}
   m_Layer: 0
   m_Name: Tile (27)
-  m_TagString: FightTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 6518611039040741793}
   m_Layer: 0
   m_Name: Tile (36)
-  m_TagString: QuestionTile
+  m_TagString: DropTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 4674114219352442881}
   m_Layer: 0
   m_Name: Tile (20)
-  m_TagString: FightTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 1842872537513390263}
   m_Layer: 0
   m_Name: Tile (44)
-  m_TagString: NormalTile
+  m_TagString: StarTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8155,7 +8155,7 @@ GameObject:
   - component: {fileID: 8939974833601918951}
   m_Layer: 0
   m_Name: Tile (67)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8293,7 +8293,7 @@ GameObject:
   - component: {fileID: 3789531013166206096}
   m_Layer: 0
   m_Name: Tile (19)
-  m_TagString: TeleportTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8385,7 +8385,7 @@ GameObject:
   - component: {fileID: 7722488833773025944}
   m_Layer: 0
   m_Name: Tile (61)
-  m_TagString: NormalTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8431,7 +8431,7 @@ GameObject:
   - component: {fileID: 2737059005584870105}
   m_Layer: 0
   m_Name: Tile (54)
-  m_TagString: StarTile
+  m_TagString: QuestionTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8477,7 +8477,7 @@ GameObject:
   - component: {fileID: 3054575688038006916}
   m_Layer: 0
   m_Name: Tile (58)
-  m_TagString: FightTile
+  m_TagString: QuestionTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8523,7 +8523,7 @@ GameObject:
   - component: {fileID: 7320503229528000732}
   m_Layer: 0
   m_Name: Tile (40)
-  m_TagString: NormalTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8694,7 +8694,7 @@ GameObject:
   - component: {fileID: 4180802140584846558}
   m_Layer: 0
   m_Name: Tile (11)
-  m_TagString: TeleportTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8862,7 +8862,7 @@ GameObject:
   - component: {fileID: 9097877544578433573}
   m_Layer: 0
   m_Name: Tile (52)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9324,7 +9324,7 @@ GameObject:
   - component: {fileID: 7341707582618796707}
   m_Layer: 0
   m_Name: Tile (6)
-  m_TagString: NormalTile
+  m_TagString: StarTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9620,7 +9620,7 @@ GameObject:
   - component: {fileID: 9203585630686328637}
   m_Layer: 0
   m_Name: Tile (17)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10098,7 +10098,7 @@ GameObject:
   - component: {fileID: 3567587446737362280}
   m_Layer: 0
   m_Name: Tile (8)
-  m_TagString: NormalTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10144,7 +10144,7 @@ GameObject:
   - component: {fileID: 1457305008559757264}
   m_Layer: 0
   m_Name: Tile (41)
-  m_TagString: FightTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10339,7 +10339,7 @@ GameObject:
   - component: {fileID: 8468441764558837237}
   m_Layer: 0
   m_Name: Tile (57)
-  m_TagString: NormalTile
+  m_TagString: StarTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10503,7 +10503,7 @@ GameObject:
   - component: {fileID: 3428917088715893471}
   m_Layer: 0
   m_Name: Tile (22)
-  m_TagString: DropTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10549,7 +10549,7 @@ GameObject:
   - component: {fileID: 5951439273704247934}
   m_Layer: 0
   m_Name: Tile (7)
-  m_TagString: FightTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10595,7 +10595,7 @@ GameObject:
   - component: {fileID: 4597139734705558647}
   m_Layer: 0
   m_Name: Tile (45)
-  m_TagString: TeleportTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10641,7 +10641,7 @@ GameObject:
   - component: {fileID: 6618267696196845191}
   m_Layer: 0
   m_Name: Tile (47)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10745,7 +10745,7 @@ GameObject:
   - component: {fileID: 2205409631575291493}
   m_Layer: 0
   m_Name: Tile (31)
-  m_TagString: FightTile
+  m_TagString: NormalTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11284,7 +11284,7 @@ GameObject:
   - component: {fileID: 3811803760970398002}
   m_Layer: 0
   m_Name: Tile (65)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11467,7 +11467,7 @@ GameObject:
   - component: {fileID: 3307499675178049809}
   m_Layer: 0
   m_Name: Tile (35)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11559,7 +11559,7 @@ GameObject:
   - component: {fileID: 8392314767692303163}
   m_Layer: 0
   m_Name: Tile (60)
-  m_TagString: NormalTile
+  m_TagString: FightTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11605,7 +11605,7 @@ GameObject:
   - component: {fileID: 8249276958039873471}
   m_Layer: 0
   m_Name: Tile (5)
-  m_TagString: StarTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12446,7 +12446,7 @@ GameObject:
   - component: {fileID: 4039890417271314313}
   m_Layer: 0
   m_Name: Tile (29)
-  m_TagString: StarTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12571,7 +12571,7 @@ GameObject:
   - component: {fileID: 7345396607541057549}
   m_Layer: 0
   m_Name: Tile (46)
-  m_TagString: StarTile
+  m_TagString: TeleportTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12751,7 +12751,7 @@ GameObject:
   - component: {fileID: 6825025032745795126}
   m_Layer: 0
   m_Name: Tile (28)
-  m_TagString: NormalTile
+  m_TagString: StarTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12876,7 +12876,7 @@ GameObject:
   - component: {fileID: 3030488253756375938}
   m_Layer: 0
   m_Name: Tile (49)
-  m_TagString: NormalTile
+  m_TagString: DiceTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13369,7 +13369,7 @@ GameObject:
   - component: {fileID: 6000028278366827853}
   m_Layer: 0
   m_Name: Tile (59)
-  m_TagString: FightTile
+  m_TagString: QuestionTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13494,7 +13494,7 @@ GameObject:
   - component: {fileID: 8962767110989830475}
   m_Layer: 0
   m_Name: Tile (42)
-  m_TagString: QuestionTile
+  m_TagString: DropTile
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

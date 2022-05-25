@@ -12,6 +12,7 @@ TagManager:
   - QuestionTile
   - NormalTile
   - TeleportTile
+  - DiceTile
   layers:
   - Default
   - TransparentFX

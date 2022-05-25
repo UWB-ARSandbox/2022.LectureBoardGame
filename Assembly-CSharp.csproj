@@ -114,7 +114,6 @@
      <Compile Include="Assets\GameScene\Dice\DiceRoll.cs" />
      <Compile Include="Assets\Demo\OnTriggerEnter\Scripts\Demo_OnTriggerEnterColor.cs" />
      <Compile Include="Assets\GameScene\Scripts\MenuBehavior.cs" />
-     <Compile Include="Assets\GameScene\Scripts\SendAnimation.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\VideoStream\Scripts\VideoStream_Example.cs" />
      <Compile Include="Assets\GameScene\Scripts\QuestionPanel.cs" />
      <Compile Include="Assets\GameScene\Board\TileNode.cs" />
