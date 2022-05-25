@@ -36,6 +36,7 @@ ScriptsOnlyBuild:
     - MenuBehavior
     - MinMax
     - MovingObject
+    - NotificationTimer
     - Platformer_Coin
     - Platformer_Player
     - PlayerData
@@ -121,10 +122,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -208,9 +207,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4216}
     - Class: 114
-      Script: {instanceID: 7178}
+      Script: {instanceID: 7180}
     - Class: 114
-      Script: {instanceID: 7902}
+      Script: {instanceID: 7904}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -462,113 +461,115 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5470}
     - Class: 114
-      Script: {instanceID: 5570}
+      Script: {instanceID: 5478}
     - Class: 114
-      Script: {instanceID: 5630}
+      Script: {instanceID: 5572}
     - Class: 114
-      Script: {instanceID: 5674}
+      Script: {instanceID: 5632}
     - Class: 114
-      Script: {instanceID: 5736}
+      Script: {instanceID: 5676}
     - Class: 114
-      Script: {instanceID: 5806}
+      Script: {instanceID: 5738}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 5808}
     - Class: 114
-      Script: {instanceID: 6022}
+      Script: {instanceID: 5884}
     - Class: 114
-      Script: {instanceID: 6032}
+      Script: {instanceID: 6024}
     - Class: 114
-      Script: {instanceID: 6218}
+      Script: {instanceID: 6034}
     - Class: 114
-      Script: {instanceID: 6246}
+      Script: {instanceID: 6220}
     - Class: 114
-      Script: {instanceID: 6286}
+      Script: {instanceID: 6248}
     - Class: 114
-      Script: {instanceID: 6398}
+      Script: {instanceID: 6288}
     - Class: 114
-      Script: {instanceID: 6488}
+      Script: {instanceID: 6400}
     - Class: 114
-      Script: {instanceID: 6524}
+      Script: {instanceID: 6490}
     - Class: 114
-      Script: {instanceID: 6638}
+      Script: {instanceID: 6526}
     - Class: 114
-      Script: {instanceID: 6666}
+      Script: {instanceID: 6640}
     - Class: 114
-      Script: {instanceID: 6786}
+      Script: {instanceID: 6668}
     - Class: 114
-      Script: {instanceID: 6836}
+      Script: {instanceID: 6788}
     - Class: 114
-      Script: {instanceID: 7178}
+      Script: {instanceID: 6838}
     - Class: 114
-      Script: {instanceID: 7196}
+      Script: {instanceID: 7180}
     - Class: 114
-      Script: {instanceID: 7246}
+      Script: {instanceID: 7198}
     - Class: 114
-      Script: {instanceID: 7436}
+      Script: {instanceID: 7248}
     - Class: 114
-      Script: {instanceID: 7518}
+      Script: {instanceID: 7438}
     - Class: 114
-      Script: {instanceID: 7656}
+      Script: {instanceID: 7520}
     - Class: 114
-      Script: {instanceID: 7668}
+      Script: {instanceID: 7658}
     - Class: 114
-      Script: {instanceID: 7742}
+      Script: {instanceID: 7670}
     - Class: 114
-      Script: {instanceID: 7834}
+      Script: {instanceID: 7744}
     - Class: 114
-      Script: {instanceID: 7920}
+      Script: {instanceID: 7836}
     - Class: 114
-      Script: {instanceID: 8070}
+      Script: {instanceID: 7922}
     - Class: 114
-      Script: {instanceID: 8210}
+      Script: {instanceID: 8072}
     - Class: 114
-      Script: {instanceID: 8238}
+      Script: {instanceID: 8212}
     - Class: 114
-      Script: {instanceID: 8334}
+      Script: {instanceID: 8240}
     - Class: 114
-      Script: {instanceID: 8384}
+      Script: {instanceID: 8336}
     - Class: 114
-      Script: {instanceID: 8434}
+      Script: {instanceID: 8386}
     - Class: 114
-      Script: {instanceID: 8438}
+      Script: {instanceID: 8436}
     - Class: 114
-      Script: {instanceID: 8466}
+      Script: {instanceID: 8440}
     - Class: 114
-      Script: {instanceID: 8528}
+      Script: {instanceID: 8468}
     - Class: 114
-      Script: {instanceID: 8584}
+      Script: {instanceID: 8530}
     - Class: 114
-      Script: {instanceID: 8734}
+      Script: {instanceID: 8586}
     - Class: 114
-      Script: {instanceID: 8854}
+      Script: {instanceID: 8736}
     - Class: 114
-      Script: {instanceID: 8950}
+      Script: {instanceID: 8856}
     - Class: 114
-      Script: {instanceID: 9130}
+      Script: {instanceID: 8952}
     - Class: 114
-      Script: {instanceID: 9180}
+      Script: {instanceID: 9132}
     - Class: 114
-      Script: {instanceID: 9206}
+      Script: {instanceID: 9182}
     - Class: 114
-      Script: {instanceID: 9264}
+      Script: {instanceID: 9208}
     - Class: 114
-      Script: {instanceID: 9292}
+      Script: {instanceID: 9266}
     - Class: 114
-      Script: {instanceID: 9416}
+      Script: {instanceID: 9294}
     - Class: 114
-      Script: {instanceID: 9430}
+      Script: {instanceID: 9418}
     - Class: 114
-      Script: {instanceID: 9530}
+      Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 36458}
+      Script: {instanceID: 9532}
     - Class: 114
-      Script: {instanceID: 36464}
+      Script: {instanceID: 44442}
     - Class: 114
-      Script: {instanceID: 36650}
+      Script: {instanceID: 44444}
     - Class: 114
-      Script: {instanceID: 41490}
+      Script: {instanceID: 44446}
     - Class: 114
-      Script: {instanceID: 41494}
+      Script: {instanceID: 44448}
+    - Class: 114
+      Script: {instanceID: 44450}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -2590,6 +2591,12 @@ ScriptsOnlyBuild:
     className: MenuBehavior
   - hash:
       serializedVersion: 2
+      Hash: 338e30c3980961195062b3b22dd0a7b2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NotificationTimer
+  - hash:
+      serializedVersion: 2
       Hash: a4f60cfdb0cb5d0e545d9ed11665bf13
     assemblyName: Microsoft.MixedReality.Toolkit.Examples.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos.EyeTracking.Logging
@@ -4502,15 +4509,9 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
     className: ClippingPlane
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SendAnimation
   platform: 19
   scenePathNames:
   - Assets/GameScene/BoardGame2.unity
   - Assets/ASL/ASL_Scenes/ASL_LobbyScene.unity
   - Assets/ASL/ASL_Scenes/ASL_SceneLoader.unity
-  playerPath: C:/Users/uzuma/Documents/capstone/help/Board Quiz.exe
+  playerPath: C:/Users/uzuma/Documents/capstone/test2/Board Quiz.exe

@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
         notify = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("Notification").gameObject;
         notify.SetActive(false);
+        notify.GetComponent<NotificationTimer>().enabled = false;
         notifyClose = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("NotificationCloseButton").gameObject;
         notifyClose.SetActive(false);
 
@@ -145,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player1Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
@@ -156,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player1Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
@@ -181,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player2Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
@@ -192,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player2Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
@@ -217,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player3Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
@@ -228,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player3Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
@@ -253,6 +260,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Stole " + stolenStars + " star(s) from " + playerName;
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nStole " + stolenStars + " star(s) from " + playerName;
@@ -264,6 +272,7 @@ public class PlayerMovement : MonoBehaviour
                             string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player4Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                             notify.transform.Find("Text").GetComponent<Text>().text = "Tried to steal from " + playerName + ", but no stars to be stolen";
                             notify.SetActive(true);
+                            notify.GetComponent<NotificationTimer>().enabled = true;
                             notifyClose.SetActive(true);
 
                             eventLog.GetComponent<Text>().text += "\nTried to steal from " + playerName + ", but no stars to be stolen";
@@ -274,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 notify.transform.Find("Text").GetComponent<Text>().text = "No players to steal from";
                 notify.SetActive(true);
+                notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
                 eventLog.GetComponent<Text>().text += "\nTried to steal, but no players to steal from";
                 Debug.Log("No players to steal from...");
@@ -282,6 +292,7 @@ public class PlayerMovement : MonoBehaviour
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "Failed to steal...";
             notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
             eventLog.GetComponent<Text>().text += "\nTried to steal, but failed";
             Debug.Log("LOST THE FIGHT...");
@@ -317,6 +328,7 @@ public class PlayerMovement : MonoBehaviour
                 string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + _f[2] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                 notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
                 notify.SetActive(true);
+                notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
                 eventLog.GetComponent<Text>().text += "\n" + playerName + " has stolen 4 stars";
                 //Not sure if being robbed and losing stars due to tile should be the same sound
@@ -363,6 +375,7 @@ public class PlayerMovement : MonoBehaviour
             notification.getStars();
             notify.transform.Find("Text").GetComponent<Text>().text = "Got 2 stars!";
             notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
             eventLog.GetComponent<Text>().text += "\nGained 2 stars";
         }
@@ -374,6 +387,7 @@ public class PlayerMovement : MonoBehaviour
                 notification.dropStars();
                 notify.transform.Find("Text").GetComponent<Text>().text = "Lost a star...";
                 notify.SetActive(true);
+                notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
                 eventLog.GetComponent<Text>().text += "\nLost a star";
             }
@@ -388,6 +402,7 @@ public class PlayerMovement : MonoBehaviour
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "Teleporting to a random location!";
             notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
             notification.tileNotification();
             eventLog.GetComponent<Text>().text += "\nTeleported to new location";

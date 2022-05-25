@@ -155,7 +155,7 @@ public class Scroll : MonoBehaviour
             Vector2 size = rectTransform.sizeDelta;
             //Change size of "content"
             rectTransform = go.GetComponent<RectTransform>();
-            //rectTransform.sizeDelta += new Vector2(0, size.y*2);
+            rectTransform.sizeDelta += new Vector2(0, size.y);
             //m_ASLObject.increaseScale(new Vector2(0,size.y));
             pos -= new Vector3(0, size.y, 0);
             //size += new Vector2(0,size.y);
@@ -165,7 +165,7 @@ public class Scroll : MonoBehaviour
             newButton.transform.SetParent(rectTransform.transform, false);
             newButton.GetComponent<RectTransform>().position = pos;
         } else {
-            Vector3 pos = new Vector3(180,0,0);
+            Vector3 pos = new Vector3(180,-20,0);
             newButton = Instantiate(prefabButton) as GameObject;
             newButton.GetComponent<RectTransform>().position = pos;
             newButton.transform.SetParent(go.transform, false);
