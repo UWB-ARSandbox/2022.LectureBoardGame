@@ -462,6 +462,15 @@ public class PlayerMovement : MonoBehaviour
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
             eventLog.GetComponent<Text>().text += "\nGained a Move Point";
+        } else if (currentTile.tag == "NormalTile")
+        {
+            // SHOW OPTION TO RENT IT OUT FOR 3 STARS
+        } else if (currentTile.tag == "RentedTile")
+        {
+            // LOSE 6 STARS
+            
+
+            // MAKE currentTile.tag = "NormalTile"
         }
         playerData.sendData();
 
