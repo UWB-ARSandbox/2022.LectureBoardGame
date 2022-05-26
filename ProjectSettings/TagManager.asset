@@ -13,6 +13,7 @@ TagManager:
   - NormalTile
   - TeleportTile
   - DiceTile
+  - SplitTile
   layers:
   - Default
   - TransparentFX

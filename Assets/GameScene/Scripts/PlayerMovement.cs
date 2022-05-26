@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f;
     private bool start = true;
     private GameObject eventLog;
+    private GameObject buttonsPanel;
+    private GameObject splitButton;
+    private GameObject straightButton;
+    private int moved;
 
     private Vector3 startPos;
     private int counter = 0;
@@ -60,9 +64,40 @@ public class PlayerMovement : MonoBehaviour
         eventLog = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("EventLog").Find("LogPanel").Find("Scroll View").Find("Viewport").Find("Content").Find("Text").gameObject;
         bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("EventLog").Find("LogPanel").gameObject.SetActive(false);
 
+        buttonsPanel = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("ButtonsPanel").gameObject;
+        buttonsPanel.SetActive(false);
+
+        splitButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("SplitButton").gameObject;
+        Button btn = splitButton.GetComponent<Button>();
+        btn.onClick.AddListener(SplitPath);
+        splitButton.SetActive(false);
+
+        straightButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("StraightButton").gameObject;
+        Button btn2 = straightButton.GetComponent<Button>();
+        btn2.onClick.AddListener(StraightPath);
+        straightButton.SetActive(false);
+
+        moved = 0;
+
         gameObject.GetComponent<ASLObject>()._LocallySetFloatCallback(gettingRobbed);
         startPos = transform.localPosition;
         notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
+    }
+
+    private void SplitPath()
+    {
+        currentTile = currentTile.split;
+        moved++;
+        Debug.Log("Taking Split Path");
+        diceMove();
+    }
+
+    private void StraightPath()
+    {
+        currentTile = currentTile.next;
+        moved++;
+        Debug.Log("Taking Straight Path");
+        diceMove();
     }
 
     void Update(){
@@ -346,6 +381,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void showOptions()
+    {
+        buttonsPanel.SetActive(true);
+        splitButton.SetActive(true);
+        straightButton.SetActive(true);
+    }
+
     public void diceMove()
     {
         start = false;
@@ -356,15 +398,20 @@ public class PlayerMovement : MonoBehaviour
             sendValue[0] = (float) currentTile.animation;
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });
-        
-        for (int i = 0; i < DiceRoll.DiceNumber; i++)
+
+        int needToMove = DiceRoll.DiceNumber - moved;
+        for (int i = 0; i < needToMove; i++)
         {
-            if (i == 0 && currentTile.split != null)
+            if (currentTile.tag == "SplitTile")
             {
-                currentTile = currentTile.split;
+                showOptions();
+                moved = i;
+                break;
+                // currentTile = currentTile.split;
             }
             else
             {
+                moved = 0;
                 currentTile = currentTile.next;
             }
         }
@@ -407,6 +454,14 @@ public class PlayerMovement : MonoBehaviour
             notification.tileNotification();
             eventLog.GetComponent<Text>().text += "\nTeleported to new location";
             Invoke("teleporting", 1.5f);
+        } else if (currentTile.tag == "DiceTile")
+        {
+            DiceRoll.movePoints++;
+            notify.transform.Find("Text").GetComponent<Text>().text = "Got 1 Move Point!";
+            notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
+            notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\nGained a Move Point";
         }
         playerData.sendData();
 
