@@ -17,7 +17,6 @@ public class StarRankingPanel : MonoBehaviour
     public GameObject studentQPanel;
     public GameObject playerListContent;
     public StarRankingButton selectedPlayer; //selected from player list (overall ranking)
-    //public Dictionary<int, int> playerRankIndex = new Dictionary<int, int>(); //Key=id,Val=index
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +35,11 @@ public class StarRankingPanel : MonoBehaviour
     //should be called once
     public void teacherUISetUp() //fill player list
     {
-        int i = 0;
         foreach (KeyValuePair<int, int> player in pGroup.m_players)
         {
             if (player.Key > BoardGameManager.hostID)
             {
                 addPlayerButton(GameLiftManager.GetInstance().m_Players[player.Key], player.Key, false);
-                //playerRankIndex.Add(player.Key, i++);
             }
         }
         //select first player on the list
@@ -87,14 +84,14 @@ public class StarRankingPanel : MonoBehaviour
             newStudent.transform.parent = rankingContent.transform;
             newStudent.SetActive(true);
             rankPlayer(newStudent, true);
-        } else
+        }
+        else
         {
             GameObject newStudent = GameObject.Instantiate(playerButton);
             newStudent.GetComponent<StarRankingButton>().setup(username, id, forRankingList, this);
             newStudent.GetComponent<StarRankingButton>().setRank(1);
             newStudent.transform.parent = playerListContent.transform;
             newStudent.SetActive(true);
-            //rankPlayer(newStudent, true);
         }
     }
 
@@ -104,7 +101,8 @@ public class StarRankingPanel : MonoBehaviour
         if (forRankingList)
         {
             listContent = rankingContent;
-        } else
+        }
+        else
         {
             listContent = playerListContent;
         }
@@ -122,15 +120,15 @@ public class StarRankingPanel : MonoBehaviour
         int prevStars = -1;
         int prevRank = 0;
         //re-rank players after the order change
-        for (int i = 0 ; i < listContent.transform.childCount; i++)
+        for (int i = 0; i < listContent.transform.childCount; i++)
         {
             StarRankingButton curr = listContent.transform.GetChild(i).gameObject.GetComponent<StarRankingButton>();
-            //playerRankIndex[curr.peerId] = i;
             int currStars = GameReport.studentStats[curr.peerId].stars;
             if (currStars == prevStars)
             {
                 curr.setRank(prevRank);
-            } else
+            }
+            else
             {
                 curr.setRank(i + 1);
                 prevRank = i + 1;
@@ -145,37 +143,16 @@ public class StarRankingPanel : MonoBehaviour
         if (forRankingList)
         {
             listContent = rankingContent;
-        } else
+        }
+        else
         {
             listContent = playerListContent;
-            //if (playerRankIndex[id] == null)
-            //{
-            //    Debug.Log("StarRankingPanel GetStarRankButton: playerRankIndex null");
-            //    for (int i = 0; i < listContent.transform.childCount; i++)
-            //    {
-            //        StarRankingButton curr = listContent.transform.GetChild(i).gameObject.GetComponent<StarRankingButton>();
-            //        if (curr.peerId == id)
-            //        {
-            //            playerRankIndex[id] = i;
-            //            return curr;
-            //        }
-            //    }
-            //    return null;
-            //}
-            //Debug.Log("StarRankingPanel GetStarRankButton: id=" + id + "; playerRankIndex[id]=" + playerRankIndex[id]);
-            //StarRankingButton player = listContent.transform.GetChild(playerRankIndex[id]).gameObject.GetComponent<StarRankingButton>();
-            //if (player.peerId == id) //double check (if reranked)
-            //{
-            //    return player;
-            //}
         }
         for (int i = 0; i < listContent.transform.childCount; i++)
         {
             StarRankingButton player = listContent.transform.GetChild(i).gameObject.GetComponent<StarRankingButton>();
             if (player.peerId == id)
             {
-                //if (!forRankingList)
-                //    playerRankIndex[id] = i;
                 return player;
             }
         }

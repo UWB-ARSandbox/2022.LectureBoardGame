@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: John Doe
+  m_Text: 
 --- !u!1 &8798931900080907003
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d32002542644c4b89144d03306cb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendFloat: 0
+  m_MyFloats:
+  - 0
+  - 0
+  - 0
+  - 0
   currentTransform: {fileID: 6260546046622783113}
   isVertical: 1
   isHorizontal: 1

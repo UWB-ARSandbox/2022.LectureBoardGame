@@ -35,6 +35,7 @@ public class MultiPublish : MonoBehaviour
                 set = button.GetComponent<TeacherButton>().getQA();
                 DataSend.GetComponent<SendNewQuestion>().sendQuestion(set[0], set[1], button.GetComponent<TeacherButton>().questionIndex);
                 teachUI.incrementQuestionsPosted();
+                button.transform.GetChild(2).gameObject.GetComponent<Toggle>().isOn = false;
                 button.transform.GetChild(2).gameObject.SetActive(false);
             }
         }

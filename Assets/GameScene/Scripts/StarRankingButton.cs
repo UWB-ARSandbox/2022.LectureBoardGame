@@ -6,7 +6,7 @@ using ASL;
 
 public class StarRankingButton : MonoBehaviour
 {
-    public bool forRankingList; //false--for Player List
+    public bool forGroupRanking; //false--for overal ranking List
     private StarRankingPanel rankPanel;
 
     public string username;
@@ -38,31 +38,38 @@ public class StarRankingButton : MonoBehaviour
         }
     }
 
-    public void setup(string username, int id, bool forRankingList, StarRankingPanel starRankPanel)
+    public void setup(string username, int id, bool forGroupRanking, StarRankingPanel starRankPanel)
     {
         this.username = username;
         peerId = id;
         groupNum = BoardGameManager.GetInstance().getPlayerGroup(id);
-        this.forRankingList = forRankingList;
+        this.forGroupRanking = forGroupRanking;
         rankPanel = starRankPanel;
         setStars();
         transform.GetChild(0).gameObject.GetComponent<Text>().text = username;
         if (GameLiftManager.GetInstance().m_PeerId == id)
         {
             GetComponent<Image>().color = Color.yellow;
-        } 
+        }
     }
-    
+
     public void setRank(int rank) //star ranking button
     {
         ranking = rank;
         transform.GetChild(0).gameObject.GetComponent<Text>().text = rank + ". " + username;
+        //if (forGroupRanking)
+        //{
+        //    GameReport.updatePlayerGroupRank(peerId, rank);
+        //} else
+        //{
+        //    GameReport.updatePlayerOverallRank(peerId, rank);
+        //}
     }
 
     public void setStars() //star ranking button
     {
         stars = GameReport.studentStats[peerId].stars;
-        if (forRankingList)
+        if (forGroupRanking)
         {
             transform.GetChild(1).gameObject.GetComponent<Text>().text = stars.ToString();
         }
@@ -70,13 +77,13 @@ public class StarRankingButton : MonoBehaviour
 
     public void setStat() //player list button
     {
-        transform.GetChild(1).gameObject.GetComponent<Text>().text = GameReport.studentStats[peerId].numCorrect + "/" + 
+        transform.GetChild(1).gameObject.GetComponent<Text>().text = GameReport.studentStats[peerId].numCorrect + "/" +
             GameReport.studentStats[peerId].numAnswered + "/" + GameReport.qPosted;
     }
 
     public void selectPlayer() //teacher UI
     {
-        if (forRankingList)
+        if (forGroupRanking)
         {
             StarRankingButton player = rankPanel.GetStarRankButton(peerId, false);
             if (player != null)
@@ -90,7 +97,8 @@ public class StarRankingButton : MonoBehaviour
                 player.GetComponent<Image>().color = Color.yellow;
                 GetComponent<Image>().color = Color.yellow;
             }
-        } else
+        }
+        else
         {
             if (rankPanel.selectedPlayer != null)
             {

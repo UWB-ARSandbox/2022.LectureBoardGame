@@ -2,32 +2,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using SimpleFileBrowser;
 using ASL;
+using System.Linq;
 
 public class GameReport : MonoBehaviour
 {
     private PlayerGrouping playerGrouping;
     private EndGameUI endGameBehavior;
-    //public static StarRankingPanel starRanking; //teacher UI only
+    private StarRankingPanel overallRankingPanel;
     public StarRankingPanel groupRanking; //student use
     private static bool isHost = false;
     public static List<TeacherData> reportData;
-    public static Dictionary<int,StudentData> studentReportData; //Key=questionIndex
-    public static Dictionary<int, StudentStat> studentStats; //Key=id
+    public static Dictionary<int, StudentData> studentReportData; //Key=questionIndex
+    public static Dictionary<int, StudentStat> studentStats = new Dictionary<int, StudentStat>(); //Key=id
     public static int qPosted = 0;
+    private List<KeyValuePair<int, int>> overallRankingList;
+    private List<List<KeyValuePair<int, int>>> groupRankingList;
+
     public class StudentStat
     {
         public int numCorrect = 0;
         public int numAnswered = 0;
         public int stars = 0;
+        //public int groupRank = 1;
+        //public int overallRank = 1;
     }
     //Store one data for one line in student csv
     public class StudentData
     {
-        public string myAnswer;
-        public int selfGrade; //Correct=1 or Incorrect=-1
+        public string myAnswer = "";
+        public int selfGrade = 0; //Correct=1 or Incorrect=-1
         //For student report
         public string question;
         public string answer;
@@ -66,16 +73,20 @@ public class GameReport : MonoBehaviour
         playerGrouping = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         GetComponent<ASL.ASLObject>()._LocallySetFloatCallback(MyFloatFunction);
         isHost = GameLiftManager.GetInstance().m_PeerId == BoardGameManager.hostID;
-        studentStats = new Dictionary<int, StudentStat>();
-        foreach (KeyValuePair<int, string> player in GameLiftManager.GetInstance().m_Players)
+        overallRankingPanel = BoardGameManager.GetInstance().starRanking;
+        //Initialize studentStats
+        foreach (var player in GameLiftManager.GetInstance().m_Players)
         {
-            if (player.Key != 1)
+            if (player.Key > 1)
+            {
                 studentStats.Add(player.Key, new StudentStat());
+            }
         }
         if (isHost)
         {
             reportData = new List<TeacherData>();
-        } else
+        }
+        else
         {
             studentReportData = new Dictionary<int, StudentData>();
         }
@@ -85,7 +96,7 @@ public class GameReport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     public void downloadReport()
@@ -121,11 +132,11 @@ public class GameReport : MonoBehaviour
 
     private void studentReport(string filepath)
     {
-        int numColumns = 4; //for QA section
+        int numColumns = 5; //for QA section
         //only add if positive
         int addedCommas = groupRanking.rankingContent.transform.childCount + 1 - numColumns;
         //Star ranking section
-        string tableHeader = "Ranking,";
+        string tableHeader = "Group " + playerGrouping.getPlayerGroup(GameLiftManager.GetInstance().m_PeerId) + " Ranking,";
         string line = "Stars,";
         for (int i = 0; i < groupRanking.rankingContent.transform.childCount; i++)
         {
@@ -135,14 +146,15 @@ public class GameReport : MonoBehaviour
         }
         if (addedCommas < 0)
         {
-            for (int i = 0; i > addedCommas; i--) {
+            for (int i = 0; i > addedCommas; i--)
+            {
                 tableHeader += ",";
                 line += ",";
             }
         }
         addRecord(tableHeader, filepath);
         addRecord(line, filepath);
-        line = ",,,,";
+        line = ",,,,,";
         if (addedCommas > 0)
         {
             for (int i = 0; i < addedCommas; i++) { line += ","; }
@@ -157,50 +169,135 @@ public class GameReport : MonoBehaviour
             for (int i = 0; i < addedCommas; i++) { line += ","; }
         }
         addRecord(line, filepath);
-        line = ",,,,";
+        line = ",,,,,";
         if (addedCommas > 0)
         {
             for (int i = 0; i < addedCommas; i++) { line += ","; }
         }
         addRecord(line, filepath);
         //QA section
-        tableHeader = "Question,Answer,MyAnswer,SelfGrade";
+        tableHeader = "Q Number,Question,Answer,MyAnswer,SelfGrade";
         addRecord(tableHeader, filepath);
         foreach (var kvp in studentReportData)
         {
-            line = csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," + 
-                csvFormatString(kvp.Value.myAnswer) + "," + (kvp.Value.selfGrade == 1 ? "Correct" : "Incorrect");
+            line = (kvp.Value.questionIndex + 1) + "," + csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," +
+                csvFormatString(kvp.Value.myAnswer) + ",";
+            if (kvp.Value.selfGrade == 1)
+                line += "Correct";
+            else if (kvp.Value.selfGrade == -1)
+                line += "Incorrect";
+            else
+                line += "Ungraded";
             if (addedCommas > 0)
             {
                 for (int i = 0; i < addedCommas; i++) { line += ","; }
             }
             addRecord(line, filepath);
         }
-        
+
     }
 
     private void teacherReport(string filepath)
     {
-        int numColumns = 6 + playerGrouping.playerCount;
+        int numColumns = 7 + playerGrouping.playerCount;
         string tableHeader = "";
         string line = "";
-        tableHeader = "Question,Answer,Answered,NoAnswered,Correct,Incorrect";
+        starReport(filepath, numColumns);
+        tableHeader = "Q Number,Question,Answer,Answered,NoAnswered,Correct,Incorrect";
         foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
         {
-            tableHeader += "," + csvFormatString(GameLiftManager.GetInstance().m_Players[player.Key]);
+            tableHeader += "," + csvFormatString(getUsername(player.Key));
         }
         addRecord(tableHeader, filepath);
+        int questionIndex = 0;
         foreach (TeacherData qaData in reportData)
         {
-            line = csvFormatString(qaData.question) + "," + csvFormatString(qaData.answer) + "," +
+            line = (++questionIndex) + "," + csvFormatString(qaData.question) + "," + csvFormatString(qaData.answer) + "," +
                 qaData.numAnswered + "," + qaData.notAnswered + "," + qaData.numCorrect + "," + qaData.numIncorrect;
             foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
             { //KeyValuePair<int, StudentData> kvp in qaData.studentAnswers
-                line += "," + csvFormatString((qaData.studentAnswers[player.Key].selfGrade == 1 ? "Correct: ":"Incorrect: ") + 
-                    ": " + qaData.studentAnswers[player.Key].myAnswer);
+                string selfGrade = "";
+                if (qaData.studentAnswers[player.Key].selfGrade == 1)
+                    selfGrade += "Correct: : ";
+                else if (qaData.studentAnswers[player.Key].selfGrade == -1)
+                    selfGrade += "Incorrect: : ";
+                else
+                    selfGrade += "Ungraded: : ";
+                line += "," + csvFormatString(selfGrade + qaData.studentAnswers[player.Key].myAnswer);
             }
             addRecord(line, filepath);
         }
+    }
+
+    private void starReport(string filePath, int numColumns) //teacher only
+    {
+        setUpGroupRankingList();
+        setUpOverallRankingList();
+        for (int i = 0; i < playerGrouping.m_playerGroups.Count; i++)
+        {
+            starReportGroup(filePath, numColumns, i + 1);
+        }
+        starReportOverall(filePath, numColumns);
+    }
+
+    private void starReportGroup(string filepath, int numColumns, int groupNum) //teacher only
+    {
+        if (groupNum < 1)
+            return;
+        int addedCommas = groupRankingList.Count + 1 - numColumns;
+        //Star ranking section
+        string tableHeader = "Group " + groupNum + " Ranking,";
+        string line = "Stars,";
+        foreach (var kvp in groupRankingList[groupNum - 1])
+        {
+            tableHeader += kvp.Value + ". " + getUsername(kvp.Key) + ",";
+            line += studentStats[kvp.Key].stars + ",";
+        }
+        if (addedCommas < 0)
+        {
+            for (int i = 0; i > addedCommas; i--)
+            {
+                tableHeader += ",";
+                line += ",";
+            }
+        }
+        addRecord(tableHeader, filepath);
+        addRecord(line, filepath);
+        line = "";
+        if (addedCommas > 0)
+        {
+            for (int i = 0; i < addedCommas + numColumns; i++) { line += ","; }
+        }
+        addRecord(line, filepath);
+    }
+
+    private void starReportOverall(string filepath, int numColumns) //teacher only
+    {
+        int addedCommas = overallRankingList.Count + 1 - numColumns;
+        //Star ranking section
+        string tableHeader = "Overall Ranking,";
+        string line = "Stars,";
+        foreach (var kvp in overallRankingList)
+        {
+            tableHeader += kvp.Value + ". " + getUsername(kvp.Key) + ",";
+            line += studentStats[kvp.Key].stars + ",";
+        }
+        if (addedCommas < 0)
+        {
+            for (int i = 0; i > addedCommas; i--)
+            {
+                tableHeader += ",";
+                line += ",";
+            }
+        }
+        addRecord(tableHeader, filepath);
+        addRecord(line, filepath);
+        line = "";
+        if (addedCommas > 0)
+        {
+            for (int i = 0; i < addedCommas + numColumns; i++) { line += ","; }
+        }
+        addRecord(line, filepath);
     }
 
     public static void addRecord(string csvLine, string filepath)
@@ -238,20 +335,41 @@ public class GameReport : MonoBehaviour
         return arg;
     }
 
+    public static string getUsername(int id)
+    {
+        if (GameLiftManager.GetInstance().m_Players[id] != null)
+        {
+            return GameLiftManager.GetInstance().m_Players[id];
+        }
+        if (GameReport.reportData.Count > 0)
+        {
+            return GameReport.reportData[0].studentAnswers[id].username;
+        }
+        string username = "";
+        foreach (Transform child in GameObject.Find("GameManager").GetComponent<PlayerGrouping>().playersGrid.transform)
+        {
+            if (child.name == id.ToString())
+            {
+                username = child.GetChild(0).GetComponent<Text>().text;
+            }
+        }
+        return username;
+    }
+
     //only teacher should call this
     public int createTeacherData(string question, string answer)
     {
         TeacherData newQA = new TeacherData();
         newQA.question = question;
         newQA.answer = answer;
-        var players = GameLiftManager.GetInstance().m_Players;
+        var players = playerGrouping.m_players;
         foreach (var player in players)
         {
-            if (player.Key != 1)
+            if (player.Key > BoardGameManager.hostID)
             {
                 StudentData studentData = new StudentData();
                 studentData.peerID = player.Key;
-                studentData.username = player.Value;
+                studentData.username = getUsername(player.Key);
                 //studentData.question = question;
                 //studentData.answer = answer;
                 studentData.questionIndex = reportData.Count;
@@ -297,6 +415,72 @@ public class GameReport : MonoBehaviour
         return -1;
     }
 
+    public void setUpOverallRankingList()
+    {
+        overallRankingList = new List<KeyValuePair<int, int>>();
+        foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
+        {
+            if (player.Key > BoardGameManager.hostID)
+            {
+                rankingListInsert(ref overallRankingList, player.Key);
+            }
+        }
+        rerankList(ref overallRankingList);
+    }
+
+    public void setUpGroupRankingList()
+    {
+        groupRankingList = new List<List<KeyValuePair<int, int>>>();
+        foreach (List<int> group in playerGrouping.m_playerGroups)
+        {
+            List<KeyValuePair<int, int>> newGroup = new List<KeyValuePair<int, int>>();
+            foreach (int playerID in group)
+            {
+                if (playerID > BoardGameManager.hostID)
+                {
+                    rankingListInsert(ref newGroup, playerID);
+                }
+            }
+            rerankList(ref newGroup);
+            groupRankingList.Add(newGroup);
+        }
+
+    }
+
+    private void rerankList(ref List<KeyValuePair<int, int>> players)
+    {
+        int prevStars = -1;
+        int prevRank = 0;
+        for (int i = 0; i < players.Count; i++)
+        {
+            int currStars = studentStats[players[i].Key].stars;
+            if (currStars == prevStars)
+            {
+                players[i] = new KeyValuePair<int, int>(players[i].Key, prevRank);
+            }
+            else
+            {
+                players[i] = new KeyValuePair<int, int>(players[i].Key, prevRank = i + 1);
+            }
+            prevStars = currStars;
+        }
+    }
+
+    private void rankingListInsert(ref List<KeyValuePair<int, int>> players, int playerID)
+    {
+        if (players == null)
+            return;
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (studentStats[playerID].stars >= studentStats[players[i].Key].stars)
+            {
+                players.Insert(i, new KeyValuePair<int, int>(playerID, 0));
+                return;
+            }
+        }
+        players.Add(new KeyValuePair<int, int>(playerID, 0));
+    }
+
     public static void updateStudentAnswer(int id, int questionIndex, string studentResponse)
     {
         if (isHost)
@@ -304,7 +488,7 @@ public class GameReport : MonoBehaviour
             if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
             reportData[questionIndex].studentAnswers[id].myAnswer = studentResponse;
             studentStats[id].numAnswered++;
-            BoardGameManager.GetInstance().starRanking.updatePlayerStats(id);
+            GameObject.Find("GameReport").GetComponent<GameReport>().overallRankingPanel.updatePlayerStats(id);
         }
         else if (GameLiftManager.GetInstance().m_PeerId == id)
         {
@@ -321,7 +505,7 @@ public class GameReport : MonoBehaviour
             if (selfGrade == 1)
             {
                 studentStats[id].numCorrect++;
-                BoardGameManager.GetInstance().starRanking.updatePlayerStats(id);
+                GameObject.Find("GameReport").GetComponent<GameReport>().overallRankingPanel.updatePlayerStats(id);
             }
         }
         else if (GameLiftManager.GetInstance().m_PeerId == id)
@@ -331,6 +515,52 @@ public class GameReport : MonoBehaviour
                 studentStats[id].numCorrect++;
         }
     }
+
+    //public static void updatePlayerGroupRank(int id, int rank)
+    //{
+    //    ASLObject thisASL = GameObject.Find("GameReport").GetComponent<ASLObject>();
+    //    float[] m_MyFloats = new float[3];
+    //    m_MyFloats[0] = 4;
+    //    m_MyFloats[1] = id;
+    //    m_MyFloats[2] = rank;
+    //    thisASL.SendAndSetClaim(() =>
+    //    {
+    //        string floats = "BoardGameManager Floats sent: ";
+    //        for (int i = 0; i < m_MyFloats.Length; i++)
+    //        {
+    //            floats += m_MyFloats[i].ToString();
+    //            if (m_MyFloats.Length - 1 != i)
+    //            {
+    //                floats += ", ";
+    //            }
+    //        }
+    //        Debug.Log(floats);
+    //        thisASL.SendFloatArray(m_MyFloats);
+    //    });
+    //}
+
+    //public static void updatePlayerOverallRank(int id, int rank)
+    //{
+    //    ASLObject thisASL = GameObject.Find("GameReport").GetComponent<ASLObject>();
+    //    float[] m_MyFloats = new float[3];
+    //    m_MyFloats[0] = 5;
+    //    m_MyFloats[1] = id;
+    //    m_MyFloats[2] = rank;
+    //    thisASL.SendAndSetClaim(() =>
+    //    {
+    //        string floats = "BoardGameManager Floats sent: ";
+    //        for (int i = 0; i < m_MyFloats.Length; i++)
+    //        {
+    //            floats += m_MyFloats[i].ToString();
+    //            if (m_MyFloats.Length - 1 != i)
+    //            {
+    //                floats += ", ";
+    //            }
+    //        }
+    //        Debug.Log(floats);
+    //        thisASL.SendFloatArray(m_MyFloats);
+    //    });
+    //}
 
     public static void MyFloatFunction(string _id, float[] _myFloats)
     {
@@ -361,8 +591,14 @@ public class GameReport : MonoBehaviour
             case 3: //send player stars: 3, id, stars
                 studentStats[(int)_myFloats[1]].stars = (int)_myFloats[2];
                 if (isHost)
-                    BoardGameManager.GetInstance().starRanking.updatePlayerStar((int)_myFloats[1], (int)_myFloats[2]);
+                    GameObject.Find("GameReport").GetComponent<GameReport>().overallRankingPanel.updatePlayerStar((int)_myFloats[1], (int)_myFloats[2]);
                 break;
+            //case 4: //send player group rank: 4, id, rank
+            //    studentStats[(int)_myFloats[1]].groupRank = (int)_myFloats[2];
+            //    break;
+            //case 5: //send player overall rank: 5, id, rank
+            //    studentStats[(int)_myFloats[1]].overallRank = (int)_myFloats[2];
+            //    break;
             default:
                 Debug.Log("DownloadableReport Float function Default");
                 break;
