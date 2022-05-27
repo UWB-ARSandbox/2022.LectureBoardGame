@@ -206,7 +206,7 @@ public class GameReport : MonoBehaviour
         tableHeader = "Q Number,Question,Answer,Answered,NoAnswered,Correct,Incorrect";
         foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
         {
-            tableHeader += "," + csvFormatString(getUsername(player.Key));
+            tableHeader += "," + csvFormatString(getUsername(player.Key)) + ": : " + studentStats[player.Key].numCorrect + "/" + studentStats[player.Key].numAnswered + "/" + qPosted;
         }
         addRecord(tableHeader, filepath);
         int questionIndex = 0;
@@ -277,10 +277,12 @@ public class GameReport : MonoBehaviour
         //Star ranking section
         string tableHeader = "Overall Ranking,";
         string line = "Stars,";
+        string statsLine = "Correct|Answered|Questions,";
         foreach (var kvp in overallRankingList)
         {
             tableHeader += kvp.Value + ". " + getUsername(kvp.Key) + ",";
             line += studentStats[kvp.Key].stars + ",";
+            statsLine += studentStats[kvp.Key].numCorrect + "|" + studentStats[kvp.Key].numAnswered + "|" + qPosted + ",";
         }
         if (addedCommas < 0)
         {
@@ -288,10 +290,12 @@ public class GameReport : MonoBehaviour
             {
                 tableHeader += ",";
                 line += ",";
+                statsLine += ",";
             }
         }
         addRecord(tableHeader, filepath);
         addRecord(line, filepath);
+        addRecord(statsLine, filepath);
         line = "";
         if (addedCommas > 0)
         {
