@@ -165,7 +165,7 @@ public class Scroll : MonoBehaviour
             newButton.transform.SetParent(rectTransform.transform, false);
             newButton.GetComponent<RectTransform>().position = pos;
         } else {
-            Vector3 pos = new Vector3(180,-20,0);
+            Vector3 pos = new Vector3(195,-20,0);
             newButton = Instantiate(prefabButton) as GameObject;
             newButton.GetComponent<RectTransform>().position = pos;
             newButton.transform.SetParent(go.transform, false);

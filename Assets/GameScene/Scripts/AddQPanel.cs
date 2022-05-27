@@ -61,6 +61,7 @@ public class AddQPanel : MonoBehaviour
         GameObject DataSend = GameObject.Find("DataSend");
         DataSend.GetComponent<SendNewQuestion>().sendQuestion(QInput.text, AInput.text, button.questionIndex);
         teachUI.incrementQuestionsPosted();
+        button.transform.GetChild(2).gameObject.SetActive(false);
         save();
     }
 

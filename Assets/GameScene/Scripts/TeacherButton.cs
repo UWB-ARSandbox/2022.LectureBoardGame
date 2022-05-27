@@ -73,6 +73,13 @@ public class TeacherButton : MonoBehaviour
         }
     }
 
+    public string[] getQA(){
+        string[] set = new string[2];
+        set[0] = question;
+        set[1] = answer;
+        return set;
+    }
+
     void OpenPanel(){
         if (published)
         {
