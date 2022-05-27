@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject straightButton;
     private int moved;
     private bool splitting;
+    private GameObject rental;
 
     private Vector3 startPos;
     private int counter = 0;
@@ -70,14 +71,12 @@ public class PlayerMovement : MonoBehaviour
         buttonsPanel.SetActive(false);
 
         splitButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("SplitButton").gameObject;
-        /*Button btn = splitButton.GetComponent<Button>();
-        btn.onClick.AddListener(SplitPath);*/
         splitButton.SetActive(false);
 
         straightButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("StraightButton").gameObject;
-        /*Button btn2 = straightButton.GetComponent<Button>();
-        btn2.onClick.AddListener(StraightPath);*/
         straightButton.SetActive(false);
+
+        rental = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("Rental").gameObject;
 
         moved = 0;
 
@@ -108,10 +107,13 @@ public class PlayerMovement : MonoBehaviour
         diceMove();
     }
 
+
+
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.V)){
-            CoinFlip.canFlip = true;
+        /*if (Input.GetKeyDown(KeyCode.V))
+        {
+            DiceRoll.movePoints++;
         }*/
 
         if (transform.localPosition != currentTile.transform.localPosition && !start)
@@ -407,6 +409,42 @@ public class PlayerMovement : MonoBehaviour
         straightButton.SetActive(true);
     }
 
+    private void displayRental()
+    {
+        rental.SetActive(true);
+    }
+
+    public void renting()
+    {
+        if (DiceRoll.starCount >= 2)
+        {
+            DiceRoll.starCount -= 2;
+            // SET currentTile TAG AS RentedTile
+            currentTile.gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+            {
+                //Send and then set (once received - NOT here) the tag
+                currentTile.gameObject.GetComponent<ASLObject>().SendAndSetTag("RentedTile");
+            });
+
+            // MARK currentTile WITH PREFAB
+            ASLHelper.InstantiateASLObject("RentedMark" + playerNumber, new Vector3(0, 0.0001f, 0), Quaternion.Euler(90f, 0, 0), currentTile.gameObject.GetComponent<ASLObject>().m_Id);
+
+            notify.transform.Find("Text").GetComponent<Text>().text = "Spent 2 stars on a tile rental.";
+            notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
+            notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\nSpent 2 stars on a tile rental";
+        } else
+        {
+            notify.transform.Find("Text").GetComponent<Text>().text = "Not enough stars to rent out the tile";
+            notify.SetActive(true);
+            notify.GetComponent<NotificationTimer>().enabled = true;
+            notifyClose.SetActive(true);
+            eventLog.GetComponent<Text>().text += "\nFailed rental due to lack of stars";
+        }
+        playerData.sendData();
+    }
+
     public void diceMove()
     {
         start = false;
@@ -503,24 +541,29 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (currentTile.tag == "NormalTile")
         {
-            // SHOW OPTION TO RENT IT OUT FOR 3 STARS
-
-            // SET currentTile TAG AS RentedTile
-            currentTile.gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
-            {
-                //Send and then set (once received - NOT here) the tag
-                currentTile.gameObject.GetComponent<ASLObject>().SendAndSetTag("RentedTile");
-            });
-
-            // MARK currentTile WITH PREFAB
-            ASLHelper.InstantiateASLObject("RentedMark", new Vector3(0, 0.0001f, 0), Quaternion.Euler(90f, 0, 0), currentTile.gameObject.GetComponent<ASLObject>().m_Id);
+            // SHOW OPTION TO RENT IT OUT FOR 2 STARS
+            displayRental();
         }
         else if (currentTile.tag == "RentedTile")
         {
-            // LOSE 6 STARS
-
+            Debug.Log("LANDED ON RENTED TILE");
+            // LOSE 4 STARS
+            if (currentTile.transform.Find("RentedMark" + playerNumber + "(Clone)") == null)
+            {
+                DiceRoll.starCount -= 4;
+                if (DiceRoll.starCount < 0)
+                {
+                    DiceRoll.starCount = 0;
+                }
+                notify.transform.Find("Text").GetComponent<Text>().text = "Landed on a rented space and lost 4 stars!";
+                notify.SetActive(true);
+                notify.GetComponent<NotificationTimer>().enabled = true;
+                notifyClose.SetActive(true);
+                eventLog.GetComponent<Text>().text += "\nLanded on a rented tile and lost 4 stars.";
+            }
         }
         playerData.sendData();
+
         /*Debug.Log(currentTile.ToString());
         m_ASLObject.SendAndSetClaim(() =>
         {

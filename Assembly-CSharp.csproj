@@ -164,6 +164,7 @@
     <Compile Include="Assets\ASL\ASL_Scripts\VideoStream\TextureScaler.cs" />
     <Compile Include="Assets\GameScene\GroupingLobby\Scripts\PlayerGrouping.cs" />
     <Compile Include="Assets\GameScene\CSVTest\Scripts\ManageCSV.cs" />
+    <Compile Include="Assets\GameScene\Scripts\Redirecting.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARObjectSync\Scripts\ARObjectSync_Example.cs" />
     <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_Collider.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARMeshFromPlane\Scripts\ARMeshFromPlane_Example.cs" />
@@ -198,7 +199,7 @@
     <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
     <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
     <Compile Include="Assets\GameScene\Scripts\delayStart.cs" />
-    <Compile Include="Assets\GameScene\Scripts\Redirecting.cs" />
+    <Compile Include="Assets\GameScene\Scripts\Renting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />
