@@ -6457,6 +6457,11 @@ MonoBehaviour:
   groupLimit: 4
   gameScene: studentgame
   m_SendFloat: 0
+  cancelButton: {fileID: 1492309010}
+  addBlankButton: {fileID: 1942456177}
+  uploadButton: {fileID: 1879500191}
+  startButton: {fileID: 1325604562}
+  helpButton: {fileID: 1737690764}
 --- !u!114 &1087887625
 MonoBehaviour:
   m_ObjectHideFlags: 0

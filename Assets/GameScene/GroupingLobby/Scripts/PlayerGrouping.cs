@@ -26,6 +26,12 @@ public class PlayerGrouping : MonoBehaviour
     public SortedList<int, int> m_players = new SortedList<int, int>(); //K,V = id,groupNum
     public List<List<int>> m_playerGroups = new List<List<int>>();
 
+    public GameObject cancelButton;
+    public GameObject addBlankButton;
+    public GameObject uploadButton;
+    public GameObject startButton;
+    public GameObject helpButton;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -35,13 +41,13 @@ public class PlayerGrouping : MonoBehaviour
         playerListText.GetComponent<UnityEngine.UI.Text>().text = "Player List (" + (GameLiftManager.GetInstance().m_Players.Count - 1) + ")";
         listScroll.value = 1;
         thisASL._LocallySetFloatCallback(MyFloatFunction);
-        if (GameLiftManager.GetInstance().m_PeerId != 1)
+        if (GameLiftManager.GetInstance().m_PeerId != GameLiftManager.GetInstance().GetLowestPeerId())
         {
-            GameObject.Find("CancelButton").SetActive(true);
-            GameObject.Find("AddBlankButton").SetActive(false);
-            GameObject.Find("UploadButton").SetActive(false);
-            GameObject.Find("StartButton").SetActive(false);
-            GameObject.Find("HelpButton").SetActive(false);
+            //cancelButton.SetActive(true);
+            addBlankButton.SetActive(false);
+            uploadButton.SetActive(false);
+            startButton.SetActive(false);
+            helpButton.SetActive(false);
             StartCoroutine(startPlayerGame());
         }
         else
@@ -233,8 +239,9 @@ public class PlayerGrouping : MonoBehaviour
         }
         else
         {
-            GameLiftManager.GetInstance().DisconnectFromServer();
-            SceneManager.LoadScene("ASL_LobbyScene");
+            //GameLiftManager.GetInstance().DisconnectFromServer();
+            //SceneManager.LoadScene("ASL_LobbyScene");
+            Application.Quit();
         }
     }
 
@@ -342,8 +349,9 @@ public class PlayerGrouping : MonoBehaviour
                 BoardGameManager.GetInstance().endGameUIHelper();
                 break;
             case 4: //cancel
-                GameLiftManager.GetInstance().DisconnectFromServer();
-                SceneManager.LoadScene("ASL_LobbyScene");
+                //GameLiftManager.GetInstance().DisconnectFromServer();
+                //SceneManager.LoadScene("ASL_LobbyScene");
+                Application.Quit();
                 break;
             default:
                 Debug.Log("PlayerGrouping MyFloatFunction default1 case");
