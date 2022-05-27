@@ -74,6 +74,7 @@
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\VideoStream\Scripts\UI_Controls\MobileCanvasController.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\GameLift\GameLiftManager_GameController.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARRaycast\Scripts\ARRaycast_Example.cs" />
+    <Compile Include="Assets\GameScene\Scripts\MultiPublish.cs" />
     <Compile Include="Assets\GameScene\Scripts\CloseQPanel.cs" />
     <Compile Include="Assets\ASL\ASL_Scripts\AR\DeactivateARCameraOnPC.cs" />
     <Compile Include="Assets\ASL\ASL_Tutorials\Simple\Frustum\Scripts\ARCameraController.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Assets\SimpleCollisionDemo\Scripts\ObjectWithCollider.cs" />
     <Compile Include="Assets\Demo\OnCollisionEnter\Scripts\Demo_CollideCreateSphere.cs" />
     <Compile Include="Assets\GameScene\Scripts\delayStart.cs" />
+    <Compile Include="Assets\GameScene\Scripts\Redirecting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ASL\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -14,6 +14,7 @@ TagManager:
   - TeleportTile
   - DiceTile
   - SplitTile
+  - RentedTile
   layers:
   - Default
   - TransparentFX

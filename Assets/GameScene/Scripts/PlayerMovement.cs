@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject splitButton;
     private GameObject straightButton;
     private int moved;
+    private bool splitting;
 
     private Vector3 startPos;
     private int counter = 0;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        splitting = false;
         anim = GetComponent<Animator>();
         m_ASLObject = gameObject.GetComponent<ASLObject>();
         Debug.Assert(m_ASLObject != null);
@@ -68,13 +70,13 @@ public class PlayerMovement : MonoBehaviour
         buttonsPanel.SetActive(false);
 
         splitButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("SplitButton").gameObject;
-        Button btn = splitButton.GetComponent<Button>();
-        btn.onClick.AddListener(SplitPath);
+        /*Button btn = splitButton.GetComponent<Button>();
+        btn.onClick.AddListener(SplitPath);*/
         splitButton.SetActive(false);
 
         straightButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("StraightButton").gameObject;
-        Button btn2 = straightButton.GetComponent<Button>();
-        btn2.onClick.AddListener(StraightPath);
+        /*Button btn2 = straightButton.GetComponent<Button>();
+        btn2.onClick.AddListener(StraightPath);*/
         straightButton.SetActive(false);
 
         moved = 0;
@@ -84,40 +86,49 @@ public class PlayerMovement : MonoBehaviour
         notification = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
     }
 
-    private void SplitPath()
+    public void SplitPath()
     {
+        buttonsPanel.SetActive(false);
+        splitButton.SetActive(false);
+        straightButton.SetActive(false);
         currentTile = currentTile.split;
         moved++;
-        Debug.Log("Taking Split Path");
+        Debug.Log(gameObject.ToString() + " Taking Split Path");
         diceMove();
     }
 
-    private void StraightPath()
+    public void StraightPath()
     {
+        buttonsPanel.SetActive(false);
+        splitButton.SetActive(false);
+        straightButton.SetActive(false);
         currentTile = currentTile.next;
         moved++;
-        Debug.Log("Taking Straight Path");
+        Debug.Log(gameObject.ToString() + " Taking Straight Path");
         diceMove();
     }
 
-    void Update(){
+    void Update()
+    {
         /*if(Input.GetKeyDown(KeyCode.V)){
             CoinFlip.canFlip = true;
         }*/
 
-        if (transform.localPosition!=currentTile.transform.localPosition&&!start){
-            var step =  speed * Time.deltaTime; // calculate distance to move
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition,currentTile.transform.localPosition, step);
+        if (transform.localPosition != currentTile.transform.localPosition && !start)
+        {
+            var step = speed * Time.deltaTime; // calculate distance to move
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, currentTile.transform.localPosition, step);
             m_ASLObject.SendAndSetClaim(() =>
             {
                 m_ASLObject.SendAndSetLocalPosition(transform.localPosition);
             });
-            if(transform.localPosition==currentTile.transform.localPosition){
+            if (transform.localPosition == currentTile.transform.localPosition)
+            {
                 anim.SetInteger("movement", 0);
                 gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
                 {
                     float[] sendValue = new float[1];
-                    sendValue[0] = (float) 0;
+                    sendValue[0] = (float)0;
                     gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
                 });
             }
@@ -126,25 +137,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void QTile(){
+    void QTile()
+    {
         int children = questions.transform.childCount;
         Debug.Log(children + " number of questions");
         //Random pick a number and get Q and A info from question
         int pick = Random.Range(0, children);
-        Debug.Log("Picked question #"+pick);
+        Debug.Log("Picked question #" + pick);
         //Uses question panel
         string q = questions.transform.GetChild(pick).gameObject.GetComponent<ButtonBehavior>().getQ();
         string a = questions.transform.GetChild(pick).gameObject.GetComponent<ButtonBehavior>().getA();
-        Debug.Log(q + "\nAnswer: "+ a);
+        Debug.Log(q + "\nAnswer: " + a);
         qPanel.transform.GetChild(0).GetComponent<Text>().text = q;
         qPanel.GetComponent<QuestionPanel>().setAnswer(a);
         qPanel.SetActive(true);
         qPanel.transform.GetChild(2).gameObject.SetActive(false);
         sg.GetComponent<Selfgrader>().qButton = null;
-        sg.GetComponent<Selfgrader>().setText(q, "Teacher's Answer: "+a); 
+        sg.GetComponent<Selfgrader>().setText(q, "Teacher's Answer: " + a);
     }
 
-    
+
 
     public void fight(bool win)
     {
@@ -172,7 +184,8 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 DiceRoll.starCount += pd.p1Stars;
                                 stolenStars = pd.p1Stars;
-                            } else
+                            }
+                            else
                             {
                                 DiceRoll.starCount += 4;
                                 stolenStars = 4;
@@ -314,7 +327,8 @@ public class PlayerMovement : MonoBehaviour
                         }
                         break;
                 }
-            } else
+            }
+            else
             {
                 notify.transform.Find("Text").GetComponent<Text>().text = "No players to steal from";
                 notify.SetActive(true);
@@ -323,7 +337,8 @@ public class PlayerMovement : MonoBehaviour
                 eventLog.GetComponent<Text>().text += "\nTried to steal, but no players to steal from";
                 Debug.Log("No players to steal from...");
             }
-        } else
+        }
+        else
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "Failed to steal...";
             notify.SetActive(true);
@@ -354,9 +369,12 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //test
-        if(_f.Length==1){
+        if (_f.Length == 1)
+        {
             anim.SetInteger("movement", (int)_f[0]);
-        } else {
+        }
+        else
+        {
             Debug.Log("GETTING ROBBED");
             if (_f[0] == bgm.getPlayerGroup() && _f[1] == playerNumber)
             {
@@ -372,7 +390,8 @@ public class PlayerMovement : MonoBehaviour
                 if (DiceRoll.starCount < 4)
                 {
                     DiceRoll.starCount = 0;
-                } else
+                }
+                else
                 {
                     DiceRoll.starCount -= 4;
                 }
@@ -395,19 +414,31 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
         {
             float[] sendValue = new float[1];
-            sendValue[0] = (float) currentTile.animation;
+            sendValue[0] = (float)currentTile.animation;
             gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });
 
-        int needToMove = DiceRoll.DiceNumber - moved;
+        // GENERAL PLAYERPIECE MOVEMENT
+        int needToMove = 0;
+        if (splitting)
+        {
+            needToMove = DiceRoll.DiceNumber - moved;
+            splitting = false;
+        }
+        else
+        {
+            needToMove = DiceRoll.DiceNumber;
+            moved = 0;
+        }
+        Debug.Log(needToMove);
         for (int i = 0; i < needToMove; i++)
         {
             if (currentTile.tag == "SplitTile")
             {
+                splitting = true;
                 showOptions();
                 moved = i;
                 break;
-                // currentTile = currentTile.split;
             }
             else
             {
@@ -416,6 +447,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
+        // DIFFERENT TILE INTERACTIONS
         if (currentTile.tag == "StarTile")
         {
             DiceRoll.starCount += 2;
@@ -438,14 +471,18 @@ public class PlayerMovement : MonoBehaviour
                 notifyClose.SetActive(true);
                 eventLog.GetComponent<Text>().text += "\nLost a star";
             }
-        } else if (currentTile.tag == "QuestionTile"){
+        }
+        else if (currentTile.tag == "QuestionTile")
+        {
             notification.tileNotification();
             QTile();
             eventLog.GetComponent<Text>().text += "\nLanded on question tile";
-        } else if (currentTile.tag == "FightTile")
+        }
+        else if (currentTile.tag == "FightTile")
         {
             CoinFlip.canFlip = true;
-        } else if (currentTile.tag == "TeleportTile")
+        }
+        else if (currentTile.tag == "TeleportTile")
         {
             notify.transform.Find("Text").GetComponent<Text>().text = "Teleporting to a random location!";
             notify.SetActive(true);
@@ -454,7 +491,8 @@ public class PlayerMovement : MonoBehaviour
             notification.tileNotification();
             eventLog.GetComponent<Text>().text += "\nTeleported to new location";
             Invoke("teleporting", 1.5f);
-        } else if (currentTile.tag == "DiceTile")
+        }
+        else if (currentTile.tag == "DiceTile")
         {
             DiceRoll.movePoints++;
             notify.transform.Find("Text").GetComponent<Text>().text = "Got 1 Move Point!";
@@ -462,22 +500,32 @@ public class PlayerMovement : MonoBehaviour
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
             eventLog.GetComponent<Text>().text += "\nGained a Move Point";
-        } else if (currentTile.tag == "NormalTile")
+        }
+        else if (currentTile.tag == "NormalTile")
         {
             // SHOW OPTION TO RENT IT OUT FOR 3 STARS
-        } else if (currentTile.tag == "RentedTile")
+
+            // SET currentTile TAG AS RentedTile
+            currentTile.gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+            {
+                //Send and then set (once received - NOT here) the tag
+                currentTile.gameObject.GetComponent<ASLObject>().SendAndSetTag("RentedTile");
+            });
+
+            // MARK currentTile WITH PREFAB
+            ASLHelper.InstantiateASLObject("RentedMark", new Vector3(0, 0.0001f, 0), Quaternion.Euler(90f, 0, 0), currentTile.gameObject.GetComponent<ASLObject>().m_Id);
+        }
+        else if (currentTile.tag == "RentedTile")
         {
             // LOSE 6 STARS
-            
 
-            // MAKE currentTile.tag = "NormalTile"
         }
         playerData.sendData();
-
-        //m_ASLObject.SendAndSetClaim(() =>
-        //{
-            //m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);
-        //});
+        /*Debug.Log(currentTile.ToString());
+        m_ASLObject.SendAndSetClaim(() =>
+        {
+            m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);
+        });*/
     }
 
     void teleporting()
