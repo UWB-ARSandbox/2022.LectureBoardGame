@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2993572907140038324}
   m_Layer: 0
   m_Name: Player3Piece
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,8 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315bf632d5364ef45b7e6afe460f0f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   currDirection: 
+  questions: {fileID: 0}
+  qPanel: {fileID: 0}
+  sg: {fileID: 0}
+  coin: {fileID: 0}
+  speed: 5
+  notification: {fileID: 0}
 --- !u!114 &2993572907140038324
 MonoBehaviour:
   m_ObjectHideFlags: 0

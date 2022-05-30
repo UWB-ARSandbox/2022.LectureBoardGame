@@ -14,10 +14,13 @@ public class CoinFlip : MonoBehaviour
     private PlayerGrouping pGroup;
     private PlayerMovement pm;
     public static bool canFlip;
+    private static int passByPlayerNum;
+    public static CoinFlip instance;
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         rb = GetComponent<Rigidbody>();
         CoinView = GameObject.Find("CoinView");
         CoinView.SetActive(false);
@@ -46,6 +49,24 @@ public class CoinFlip : MonoBehaviour
             pm = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + playerNumber + "Piece(Clone)").GetComponent<PlayerMovement>();
         }
     }
+    //passByPlayer is -1 if not pass-by steal; otherwise, it is the player number of the other player
+    public static void flipWhenReady(int passByPlayer)
+    {
+        CoinFlip.instance.StartCoroutine(CoinFlip.instance.flipWhenReadyHelper(passByPlayer));
+    }
+    
+    IEnumerator flipWhenReadyHelper(int passByPlayer)
+    {
+        while (canFlip)
+        {
+            yield return null;
+        }
+        canFlip = true;
+        passByPlayerNum = passByPlayer;
+        CoinView.SetActive(true);
+        CoinDetector.SetActive(true);
+        Flip();
+    }
 
     void Flip()
     {
@@ -64,18 +85,12 @@ public class CoinFlip : MonoBehaviour
 
     private void Update()
     {
-        if (canFlip)
-        {
-            canFlip = false;
-            CoinView.SetActive(true);
-            CoinDetector.SetActive(true);
-            Flip();
-        }
     }
 
     void coinOff()
     {
         CoinView.SetActive(false);
-        pm.fight(good);
+        canFlip = false;
+        pm.fight(good, passByPlayerNum);
     }
 }

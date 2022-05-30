@@ -173,8 +173,6 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
-        - 1.11.2
-        - 1.12.5
         - 1.13.5
         - 1.14.1
         - 1.14.4
@@ -204,7 +202,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.11.2
+        verified: 1.13.5
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -4437,4 +4435,4 @@ m_PackageAssets:
         ticks: 637839595674624834
       m_Hash: 2302134662
 m_ProjectPath: C:/Users/kuoch/Documents/GitHub/2022.LectureBoardGame/Packages
-m_EditorVersion: 2020.3.20f1 (41c4e627c95f)
+m_EditorVersion: 2020.3.22f1 (e1a7f79fd887)
