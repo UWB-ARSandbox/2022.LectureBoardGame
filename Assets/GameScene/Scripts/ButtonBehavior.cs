@@ -29,10 +29,14 @@ public class ButtonBehavior : MonoBehaviour
         btn.onClick.AddListener(OpenQ);
         buttontxt = "Question: " + this.GetComponentInChildren<Text>().text;
         //questionPanel = GameObject.Find("Question");
-        questionPanel = GameObject.Find("Canvas").transform.Find("Question").gameObject;
-        question = GameObject.Find("Canvas").transform.Find("Question").Find("QuestionText").GetComponent<Text>();
-        question2 = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("QuestionText").GetComponent<Text>();
-        answerTxt = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("TeacherAnswer").GetComponent<Text>();
+        if (questionPanel == null)
+            questionPanel = GameObject.Find("Canvas").transform.Find("Question").gameObject;
+        if (question == null)
+            question = GameObject.Find("Canvas").transform.Find("Question").Find("Q Scroll View").Find("Viewport").Find("Content").Find("QuestionText").GetComponent<Text>();
+        if (question2 == null)
+            question2 = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Q Scroll View").Find("Viewport").Find("Content").Find("QuestionText").GetComponent<Text>();
+        if (answerTxt == null)
+            answerTxt = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("TA Scroll View").Find("Viewport").Find("Content").Find("TeacherAnswer").GetComponent<Text>();
         sg = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
         newMark = gameObject.transform.GetChild(1).gameObject;
     }

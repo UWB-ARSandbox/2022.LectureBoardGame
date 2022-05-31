@@ -40,4 +40,17 @@ public class MultiPublish : MonoBehaviour
             }
         }
     }
+
+    public void selectAll()
+    {
+        for (int i = 0; i < content.transform.childCount; i++)
+        {
+            GameObject toggleObject = content.transform.GetChild(i).GetChild(2).gameObject;
+            if (toggleObject.activeSelf)
+            {
+                toggleObject.GetComponent<Toggle>().isOn = true;
+            }
+        }
+    }
+
 }

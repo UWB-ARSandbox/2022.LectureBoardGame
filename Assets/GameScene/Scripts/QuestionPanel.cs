@@ -18,7 +18,8 @@ public class QuestionPanel : MonoBehaviour
         btn.onClick.AddListener(checkAnswer);
         Button btn2 = closeButton.GetComponent<Button>();
         btn2.onClick.AddListener(close);
-        selfgrade = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
+        if (selfgrade == null)
+            selfgrade = GameObject.Find("Canvas").transform.Find("Selfgrade").gameObject;
     }
 
     // Update is called once per frame

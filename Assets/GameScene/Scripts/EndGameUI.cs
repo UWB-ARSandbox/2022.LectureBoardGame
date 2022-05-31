@@ -64,6 +64,7 @@ public class EndGameUI : MonoBehaviour
             {
                 studentStats.gameObject.SetActive(false);
                 starRankPanel_t.transform.SetParent(teacherOnly.transform);
+                starRankPanel_t.transform.Find("StudentQuestionsPanel").GetComponent<StudentAnswersPanel>().close();
                 starRankPanel_t.SetActive(false);
                 loadTeacherButtons();
             }

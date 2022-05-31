@@ -35,6 +35,7 @@ public class BoardTiles : MonoBehaviour
                     playerNumber = i;
                 }
             }
+            PlayerMovement.currentTile.AddPlayer(playerNumber);
 
             ASLHelper.InstantiateASLObject("Player" + playerNumber + "Piece", spawnTile, Quaternion.identity,
                                            bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").GetComponent<ASLObject>().m_Id);

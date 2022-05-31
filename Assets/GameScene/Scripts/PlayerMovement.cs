@@ -466,18 +466,14 @@ public class PlayerMovement : MonoBehaviour
         currentTile.RemovePlayer(playerNumber);
         foreach (int player in tile.players)
         {
-            Debug.Log("setCurrentTile 1");
             if (player == playerNumber)
             {
-                Debug.Log("setCurrentTile 2");
                 tile.RemovePlayer(player);
             } else
             {
-                Debug.Log("setCurrentTile 3");
                 CoinFlip.flipWhenReady(player);
             }
         }
-        Debug.Log("setCurrentTile 4");
         currentTile = tile;
         currentTile.AddPlayer(playerNumber);
     }
