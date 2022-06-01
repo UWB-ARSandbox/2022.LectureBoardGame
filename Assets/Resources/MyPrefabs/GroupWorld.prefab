@@ -406,7 +406,6 @@ MonoBehaviour:
   statsText: {fileID: 2397334068500020248}
   numCorrect: 0
   numAnswered: 0
-  numQuestions: 0
 --- !u!1 &429413378555961662
 GameObject:
   m_ObjectHideFlags: 0
@@ -15545,6 +15544,62 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6712386130296746779}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: tileNotification
+      objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundManagerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 439457851589341758, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6712386130296746779}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: playSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundManagerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 508253401252539701, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1452929581620697255, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
@@ -15761,6 +15816,10 @@ PrefabInstance:
 
         The player with the most
         stars at the end wins!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8577647930635235010, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629558637821115009, guid: 9af9724fcd5cf3548a7fd9cd693a6b03, type: 3}
       propertyPath: camera

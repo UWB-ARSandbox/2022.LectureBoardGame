@@ -20,6 +20,7 @@ public class Scroll : MonoBehaviour
     private GameReport gameReport;
     public StudentStats studentStats;
     public SoundManagerScript notification;
+    private bool soundOn = true;
 
     public GameObject StudentPanel;
     private Color32 green = new Color32(53, 159, 76, 100);
@@ -128,8 +129,10 @@ public class Scroll : MonoBehaviour
         gameReport.createStudentData(GameLiftManager.GetInstance().m_PeerId, GameLiftManager.GetInstance().m_Username, q, a, questionIndex);
         number++;
         StudentPanel.GetComponent<Image>().color = red;
-        if(notification!=null){
+        //SoundOn changed to false to prevent multiple notification sounds when questions are published all at once
+        if(notification!=null&&soundOn){
             notification.playSound();
+            soundOn = false;
         }
         StartCoroutine(UIcolorreset());
     }
@@ -140,6 +143,7 @@ public class Scroll : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         StudentPanel.GetComponent<Image>().color = green;
+        soundOn = true;
     }
 
     //For TeacherUI when they make a new question
@@ -165,7 +169,7 @@ public class Scroll : MonoBehaviour
             newButton.transform.SetParent(rectTransform.transform, false);
             newButton.GetComponent<RectTransform>().position = pos;
         } else {
-            Vector3 pos = new Vector3(195,-20,0);
+            Vector3 pos = new Vector3(210,-23,0);
             newButton = Instantiate(prefabButton) as GameObject;
             newButton.GetComponent<RectTransform>().position = pos;
             newButton.transform.SetParent(go.transform, false);

@@ -9,6 +9,7 @@ public class MultiPublish : MonoBehaviour
     private GameObject button;
     public teacherUI teachUI;
     private string[] set;
+    private bool all = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +44,20 @@ public class MultiPublish : MonoBehaviour
 
     public void selectAll()
     {
+        bool setToggle = true;
+        if(all){
+            setToggle = false;
+        }
+
         for (int i = 0; i < content.transform.childCount; i++)
         {
             GameObject toggleObject = content.transform.GetChild(i).GetChild(2).gameObject;
             if (toggleObject.activeSelf)
             {
-                toggleObject.GetComponent<Toggle>().isOn = true;
+                toggleObject.GetComponent<Toggle>().isOn = setToggle;
             }
         }
+        all=!all;
     }
 
 }

@@ -35,6 +35,7 @@ public class SoundManagerScript : MonoBehaviour
         eventToggle = !eventToggle;
     }
 
+    //When new question is posted
     public void playSound(){
         if(questionToggle){
             audioSrc.PlayOneShot(notiSound, questionVolume);
