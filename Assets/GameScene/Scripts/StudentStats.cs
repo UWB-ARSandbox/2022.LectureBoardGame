@@ -13,7 +13,6 @@ public class StudentStats : MonoBehaviour
 
     public int numCorrect = 0;
     public int numAnswered = 0;
-    public int numQuestions = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +40,13 @@ public class StudentStats : MonoBehaviour
     }
 
     public void updateNumQuestions()
-    {
-        numQuestions = qListContents.transform.childCount;
+    { //GameReport.qPosted should be updated
         updateUI();
     }
 
     private void updateUI()
     {
-        statsText.text = "Stats: " + numCorrect + "/" + numAnswered + "/" + numQuestions;
+        statsText.text = "Stats: " + numCorrect + "/" + numAnswered + "/" + GameReport.qPosted;
     }
     //student send to teacher
     public void sendAnswer(int id, int questionIndex, string studentResponse)

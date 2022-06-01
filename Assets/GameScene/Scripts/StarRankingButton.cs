@@ -97,6 +97,7 @@ public class StarRankingButton : MonoBehaviour
                 player.GetComponent<Image>().color = Color.yellow;
                 GetComponent<Image>().color = Color.yellow;
             }
+            rankPanel.openQuestionList();
         }
         else
         {

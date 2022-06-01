@@ -62,8 +62,9 @@ public class StudentAnswersPanel : MonoBehaviour
         studentId = id;
         this.username = username;
         int qIndex = 0;
-        foreach (GameReport.TeacherData teachData in GameReport.reportData)
+        foreach (int index in GameReport.postedQuestions)
         {
+            GameReport.TeacherData teachData = GameReport.reportData[index];
             GameReport.StudentData stuData = teachData.studentAnswers[id];
             GameObject newStudent = GameObject.Instantiate(studentListButton);
             newStudent.GetComponent<StudentAnswerButton>().setup(id, username, qIndex++, teachData.question, teachData.answer, 

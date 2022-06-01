@@ -52,7 +52,7 @@ public class StudentAnswerButton : MonoBehaviour
         forQuestionList = false;
     }
     //for student end game UI
-    public void setup(int questionIndex, string question, string answer, string studentAns, int selfGrade, EndGameUI endGameUI)
+    public void setup(int postedNumber, int questionIndex, string question, string answer, string studentAns, int selfGrade, EndGameUI endGameUI)
     {
         studentAnswer = studentAns;
         this.selfGrade = selfGrade;
@@ -61,7 +61,7 @@ public class StudentAnswerButton : MonoBehaviour
         this.answer = answer;
         this.questionIndex = questionIndex;
         GetComponent<Image>().color = color;
-        transform.GetChild(0).gameObject.GetComponent<Text>().text = "Q" + (questionIndex + 1).ToString();
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = "Q" + postedNumber.ToString();
         forQuestionList = true;
     }
     //for teacher UI player list tab; list of questions

@@ -15,12 +15,16 @@ public class GameReport : MonoBehaviour
     private StarRankingPanel overallRankingPanel;
     public StarRankingPanel groupRanking; //student use
     private static bool isHost = false;
-    public static List<TeacherData> reportData;
-    public static Dictionary<int, StudentData> studentReportData; //Key=questionIndex
+    public static List<TeacherData> reportData; //teacher use
+    public static Dictionary<int, StudentData> studentReportData; //Key=questionIndex; student use 
     public static Dictionary<int, StudentStat> studentStats = new Dictionary<int, StudentStat>(); //Key=id
     public static int qPosted = 0;
+    public static List<int> postedQuestions; //list of questionIndex; student and teacher both use
+
+    //Only up to date at end game
     private List<KeyValuePair<int, int>> overallRankingList;
     private List<List<KeyValuePair<int, int>>> groupRankingList;
+    public static List<int> unpostedQuestions; //list of questionIndex
 
     public class StudentStat
     {
@@ -38,6 +42,7 @@ public class GameReport : MonoBehaviour
         //For student report
         public string question;
         public string answer;
+        public int postedNumber = 0; //first posted question is 1
         //For teacher report
         public int questionIndex;
         public int peerID;
@@ -48,14 +53,16 @@ public class GameReport : MonoBehaviour
     {
         public string question;
         public string answer;
-        public string numAnswered = "0";
-        public string notAnswered = "0";
-        public string numCorrect = "0";
-        public string numIncorrect = "0";
+        public int numAnswered = 0;
+        public int notAnswered = 0;
+        public int numCorrect = 0;
+        public int numIncorrect = 0;
+        public int postedNumber = 0; //Not a key; 0 if question has not been posted
+        public int questionIndex = -1;
         //Key=student's peer id, val=student data for this qa
         public Dictionary<int, StudentData> studentAnswers = new Dictionary<int, StudentData>();
 
-        public void updateStats(string numAnswered, string notAnswered, string numCorrect, string numIncorrect)
+        public void updateStats(int numAnswered, int notAnswered, int numCorrect, int numIncorrect)
         {
             this.numAnswered = numAnswered;
             this.notAnswered = notAnswered;
@@ -74,6 +81,7 @@ public class GameReport : MonoBehaviour
         GetComponent<ASL.ASLObject>()._LocallySetFloatCallback(MyFloatFunction);
         isHost = GameLiftManager.GetInstance().m_PeerId == BoardGameManager.hostID;
         overallRankingPanel = BoardGameManager.GetInstance().starRanking;
+        postedQuestions = new List<int>();
         //Initialize studentStats
         foreach (var player in GameLiftManager.GetInstance().m_Players)
         {
@@ -90,7 +98,6 @@ public class GameReport : MonoBehaviour
         {
             studentReportData = new Dictionary<int, StudentData>();
         }
-
     }
 
     // Update is called once per frame
@@ -141,7 +148,7 @@ public class GameReport : MonoBehaviour
         for (int i = 0; i < groupRanking.rankingContent.transform.childCount; i++)
         {
             StarRankingButton player = groupRanking.rankingContent.transform.GetChild(i).GetComponent<StarRankingButton>();
-            tableHeader += player.ranking + ": " + player.username + ",";
+            tableHeader += player.ranking + ": " + csvFormatString(player.username) + ",";
             line += player.stars + ",";
         }
         if (addedCommas < 0)
@@ -163,7 +170,7 @@ public class GameReport : MonoBehaviour
         //Statistics section
         tableHeader = "Correct,Answered,Questions,";
         addRecord(tableHeader, filepath);
-        line = endGameBehavior.stuStats.numCorrect + "," + endGameBehavior.stuStats.numAnswered + "," + endGameBehavior.stuStats.numQuestions + ",";
+        line = endGameBehavior.stuStats.numCorrect + "," + endGameBehavior.stuStats.numAnswered + "," + qPosted + ",";
         if (addedCommas > 0)
         {
             for (int i = 0; i < addedCommas; i++) { line += ","; }
@@ -180,7 +187,7 @@ public class GameReport : MonoBehaviour
         addRecord(tableHeader, filepath);
         foreach (var kvp in studentReportData)
         {
-            line = (kvp.Value.questionIndex + 1) + "," + csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," +
+            line = "Q" + kvp.Value.postedNumber + "," + csvFormatString(kvp.Value.question) + "," + csvFormatString(kvp.Value.answer) + "," +
                 csvFormatString(kvp.Value.myAnswer) + ",";
             if (kvp.Value.selfGrade == 1)
                 line += "Correct";
@@ -196,8 +203,8 @@ public class GameReport : MonoBehaviour
         }
 
     }
-
-    private void teacherReport(string filepath)
+//old teacher report (flipped row and column)
+    private void teacherReport2(string filepath) 
     {
         int numColumns = 7 + playerGrouping.playerCount;
         string tableHeader = "";
@@ -229,6 +236,84 @@ public class GameReport : MonoBehaviour
         }
     }
 
+    private string getCommas(int numCommas)
+    {
+        string str = "";
+        for (int i = 0; i < numCommas; i++)
+        {
+            str += ",";
+        }
+        return str;
+    }
+
+    private void teacherReport(string filepath)
+    {
+        int numColumns = 4 + qPosted; //7 + playerGrouping.playerCount;
+
+        //star ranking section
+        starReport(filepath, numColumns);
+        addRecord(getCommas(numColumns), filepath);
+        addRecord(getCommas(numColumns), filepath);
+
+        //QA data section
+        string question = ",,,Question";
+        string answer = ",,,Answer";
+        string answered = ",,,Answered";
+        string noAnswered = ",,,NoAnswered";
+        string correct = ",,,Correct";
+        string incorrect = ",,,Incorrect";
+        string line = "Student,Correct,Answered,Questions";
+        foreach (int index in postedQuestions)
+        {
+            question += "," + csvFormatString(reportData[index].question);
+            answer += "," + csvFormatString(reportData[index].answer);
+            answered += "," + reportData[index].numAnswered;
+            noAnswered += "," + reportData[index].notAnswered;
+            correct += "," + reportData[index].numCorrect;
+            incorrect += "," + reportData[index].numIncorrect;
+            line += ",Q" + reportData[index].postedNumber;
+        }
+        addRecord(question, filepath);
+        addRecord(answer, filepath);
+        addRecord(answered, filepath);
+        addRecord(noAnswered, filepath);
+        addRecord(correct, filepath);
+        addRecord(incorrect, filepath);
+        addRecord(line, filepath);
+        foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
+        {
+            if (player.Key <= 1)
+            {
+                continue;
+            }
+            line = csvFormatString(getUsername(player.Key)) + "," + studentStats[player.Key].numCorrect + "," + studentStats[player.Key].numAnswered + "," + qPosted;
+            foreach (int index in postedQuestions)
+            {
+                TeacherData qaData = reportData[index];
+                string selfGrade = "";
+                if (qaData.studentAnswers[player.Key].selfGrade == 1)
+                    selfGrade += "Correct: : ";
+                else if (qaData.studentAnswers[player.Key].selfGrade == -1)
+                    selfGrade += "Incorrect: : ";
+                else
+                    selfGrade += "Ungraded: : ";
+                line += "," + selfGrade + csvFormatString(qaData.studentAnswers[player.Key].myAnswer);
+            }
+            addRecord(line, filepath);
+        }
+        addRecord(getCommas(numColumns), filepath);
+        addRecord(getCommas(numColumns), filepath);
+
+        //Unaswered question data section
+        string commas = getCommas(numColumns - 2);
+        addRecord("Unposted Question,Answer" + commas, filepath);
+        foreach (int index in unpostedQuestions)
+        {
+            line = csvFormatString(reportData[index].question) + "," + csvFormatString(reportData[index].answer) + commas;
+            addRecord(line, filepath);
+        }
+    }
+
     private void starReport(string filePath, int numColumns) //teacher only
     {
         setUpGroupRankingList();
@@ -236,8 +321,10 @@ public class GameReport : MonoBehaviour
         for (int i = 0; i < playerGrouping.m_playerGroups.Count; i++)
         {
             starReportGroup(filePath, numColumns, i + 1);
+            addRecord(getCommas(numColumns), filePath);
         }
-        starReportOverall(filePath, numColumns);
+        if (playerGrouping.m_playerGroups.Count > 1)
+            starReportOverall(filePath, numColumns);
     }
 
     private void starReportGroup(string filepath, int numColumns, int groupNum) //teacher only
@@ -246,11 +333,11 @@ public class GameReport : MonoBehaviour
             return;
         int addedCommas = groupRankingList.Count + 1 - numColumns;
         //Star ranking section
-        string tableHeader = "Group " + groupNum + " Ranking,";
-        string line = "Stars,";
+        string tableHeader = ",Group " + groupNum + " Ranking,";
+        string line = ",Stars,";
         foreach (var kvp in groupRankingList[groupNum - 1])
         {
-            tableHeader += kvp.Value + ". " + getUsername(kvp.Key) + ",";
+            tableHeader += kvp.Value + ". " + csvFormatString(getUsername(kvp.Key)) + ",";
             line += studentStats[kvp.Key].stars + ",";
         }
         if (addedCommas < 0)
@@ -262,12 +349,6 @@ public class GameReport : MonoBehaviour
             }
         }
         addRecord(tableHeader, filepath);
-        addRecord(line, filepath);
-        line = "";
-        if (addedCommas > 0)
-        {
-            for (int i = 0; i < addedCommas + numColumns; i++) { line += ","; }
-        }
         addRecord(line, filepath);
     }
 
@@ -275,14 +356,14 @@ public class GameReport : MonoBehaviour
     {
         int addedCommas = overallRankingList.Count + 1 - numColumns;
         //Star ranking section
-        string tableHeader = "Overall Ranking,";
-        string line = "Stars,";
-        string statsLine = "Correct|Answered|Questions,";
+        string tableHeader = ",Overall Ranking,";
+        string line = ",Stars,";
+        //string statsLine = "Correct|Answered|Questions,";
         foreach (var kvp in overallRankingList)
         {
-            tableHeader += kvp.Value + ". " + getUsername(kvp.Key) + ",";
+            tableHeader += kvp.Value + ". " + csvFormatString(getUsername(kvp.Key)) + ",";
             line += studentStats[kvp.Key].stars + ",";
-            statsLine += studentStats[kvp.Key].numCorrect + "|" + studentStats[kvp.Key].numAnswered + "|" + qPosted + ",";
+            //statsLine += studentStats[kvp.Key].numCorrect + "|" + studentStats[kvp.Key].numAnswered + "|" + qPosted + ",";
         }
         if (addedCommas < 0)
         {
@@ -290,18 +371,12 @@ public class GameReport : MonoBehaviour
             {
                 tableHeader += ",";
                 line += ",";
-                statsLine += ",";
+                //statsLine += ",";
             }
         }
         addRecord(tableHeader, filepath);
         addRecord(line, filepath);
-        addRecord(statsLine, filepath);
-        line = "";
-        if (addedCommas > 0)
-        {
-            for (int i = 0; i < addedCommas + numColumns; i++) { line += ","; }
-        }
-        addRecord(line, filepath);
+        //addRecord(statsLine, filepath);
     }
 
     public static void addRecord(string csvLine, string filepath)
@@ -366,6 +441,7 @@ public class GameReport : MonoBehaviour
         TeacherData newQA = new TeacherData();
         newQA.question = question;
         newQA.answer = answer;
+        newQA.questionIndex = reportData.Count;
         var players = playerGrouping.m_players;
         foreach (var player in players)
         {
@@ -388,12 +464,16 @@ public class GameReport : MonoBehaviour
         reportData[questionIndex].question = question;
         reportData[questionIndex].answer = answer;
     }
+    public static void updateQuestionPostedNumber(int questionIndex, int postedNumber)
+    {
+        reportData[questionIndex].postedNumber = postedNumber;
+    }
 
     public void updateStats(int questionIndex, int numAnswers, int numCorrect, int numIncorrect) //question stats
     {
         if (questionIndex >= reportData.Count || questionIndex < 0) { return; }
-        reportData[questionIndex].updateStats(numAnswers.ToString(), (playerGrouping.playerCount - numAnswers).ToString(),
-                numCorrect.ToString(), numIncorrect.ToString());
+        reportData[questionIndex].updateStats(numAnswers, (playerGrouping.playerCount - numAnswers),
+                numCorrect, numIncorrect);
     }
     //only student should call this
     public void createStudentData(int peerID, string username, string question, string answer, int questionIndex)
@@ -404,9 +484,10 @@ public class GameReport : MonoBehaviour
         newQA.peerID = peerID;
         newQA.username = username;
         newQA.questionIndex = questionIndex;
+        newQA.postedNumber = qPosted;
         studentReportData.Add(questionIndex, newQA);
     }
-
+    //teacher only
     private int findQuestionIndex(string q, string a)
     {
         for (int i = 0; i < reportData.Count; i++)
@@ -417,6 +498,30 @@ public class GameReport : MonoBehaviour
             }
         }
         return -1;
+    }
+    //teacher only
+    public static int findQuestionIndex(int postedNum)
+    {
+        for (int i = 0; i < reportData.Count; i++)
+        {
+            if (reportData[i].postedNumber == postedNum)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void setupUnpostedQuestionsList()
+    {
+        unpostedQuestions = new List<int>();
+        foreach (TeacherData data in reportData)
+        {
+            if (data.postedNumber < 1)
+            {
+                unpostedQuestions.Add(data.questionIndex);
+            }
+        }
     }
 
     public void setUpOverallRankingList()

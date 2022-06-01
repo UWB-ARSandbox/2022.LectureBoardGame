@@ -56,33 +56,35 @@ public class MarkAnswer : MonoBehaviour
 
             // TRANSFER DATA TO TEACHER UI
             Transform btn = teacherUI.transform.GetChild((int)_f[0]);
-
+            GameReport.TeacherData qData = GameReport.reportData[(int)_f[0]];
             string stat = btn.Find("Stats").GetComponent<Text>().text;
-            string[] values = stat.Split('/');
-            int[] numbers = Array.ConvertAll(values, int.Parse);
-
-            int answers = numbers[1] + 1;
-            int corrects = numbers[0];
-            int incorrects = numbers[2];
+            //string[] values = stat.Split('/');
+            //int[] numbers = Array.ConvertAll(values, int.Parse);
+            //int answers = numbers[1] + 1;
+            //int corrects = numbers[0];
+            //int incorrects = numbers[2] - corrects;
+            qData.numAnswered++;
             if (_f[1] == 1)
             {
-                corrects = numbers[0] + 1;
+                //corrects = numbers[0] + 1;
+                qData.numCorrect++;
             }
             else
             {
-                incorrects = numbers[2] + 1;
+                //incorrects = numbers[2] + 1;
+                qData.numIncorrect++;
             }
 
-            Debug.Log(stat);
-            Debug.Log(answers);
-            Debug.Log(corrects);
-            Debug.Log(incorrects);
+            //Debug.Log(stat);
+            //Debug.Log(answers);
+            //Debug.Log(corrects);
+            //Debug.Log(incorrects);
 
-            stat = corrects + "/" + answers + "/" + manager.playerCount;
+            stat = qData.numCorrect + "/" + qData.numAnswered + "/" + manager.playerCount;
             Debug.Log(stat);
             btn.Find("Stats").GetComponent<Text>().text = stat;
-            TeacherButton teacherBtn = btn.GetComponent<TeacherButton>();
-            teacherBtn.updateGameReportStats(answers, corrects, incorrects);
+            //TeacherButton teacherBtn = btn.GetComponent<TeacherButton>();
+            //teacherBtn.updateGameReportStats(answers, corrects, incorrects);
 
 
             /*foreach (Transform btn in teacherUI.transform)

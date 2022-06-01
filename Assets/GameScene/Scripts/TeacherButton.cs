@@ -21,7 +21,6 @@ public class TeacherButton : MonoBehaviour
     //For GameReport's reportData list
     public int questionIndex = -1;
     private GameReport gameReport;
-    public bool byQuestionNum = false; //True: Button text is question number; False: Use Question
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +42,14 @@ public class TeacherButton : MonoBehaviour
         
     }
 
-    public void setUp(bool inGame, int qIndex, bool byQuestionNum) //qIndex only set if not ingame
+    public void setUp(bool inGame, int qIndex)
     {
-        this.byQuestionNum = byQuestionNum;
+        questionIndex = qIndex;
         if (inGame)
         {
             if (editPanel==null){
                 editPanel = GameObject.Find("Canvas").transform.Find("AddQ").gameObject;
             }
-        } else
-        {
-            questionIndex = qIndex;
         }
     }
 
@@ -64,12 +60,24 @@ public class TeacherButton : MonoBehaviour
         if (q2==null){
             q2 = gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         }
-        if (byQuestionNum)
+        q2.text = question;
+    }
+    //for end game
+    public void setQA(string q, string a, int number, bool posted)
+    {
+        question = q;
+        answer = a;
+        if (q2 == null)
         {
-            q2.text = "Q" + (questionIndex + 1).ToString();
+            q2 = gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         }
-        else {
-            q2.text = question;
+        if (posted)
+        {
+            q2.text = "Q" + number.ToString();
+        }
+        else
+        {
+            q2.text = "X" + number.ToString();
         }
     }
 

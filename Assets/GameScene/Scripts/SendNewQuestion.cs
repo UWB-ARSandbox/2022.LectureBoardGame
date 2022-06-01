@@ -67,6 +67,7 @@ public class SendNewQuestion : MonoBehaviour
         }
 
         GameReport.qPosted++;
+        GameReport.postedQuestions.Add(questionIndex);
 
         // DO SOMETHING WITH THE CREATED QUESTION AND ANSWER HERE
         if (GameLiftManager.GetInstance().m_PeerId != 1)
@@ -77,6 +78,9 @@ public class SendNewQuestion : MonoBehaviour
                 GameObject studentUI = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
             }
             studentUI.GetComponent<Scroll>().createButton(printQuestion, printAnswer, questionIndex);
+        } else
+        {
+            GameReport.updateQuestionPostedNumber(questionIndex, GameReport.qPosted);
         }
     }
 

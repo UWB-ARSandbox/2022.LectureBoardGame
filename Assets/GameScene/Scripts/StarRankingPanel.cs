@@ -50,11 +50,17 @@ public class StarRankingPanel : MonoBehaviour
     public void groupRankSetUp(int groupNum)
     {
         //if (selectedPlayer != null && selectedPlayer.groupNum != groupNum) {
-        clearGroupRanking();
         if (groupNum <= 0)
         {
             Debug.Log("StarRankingPanel groupRankSetUp: ERROR groupNum <= 0");
             return;
+        }
+        if (rankingContent.transform.childCount > 0)
+        { //clear it
+            for (int i = 0; i < rankingContent.transform.childCount; i++)
+            {
+                Destroy(rankingContent.transform.GetChild(i).gameObject);
+            }
         }
         title.text = "Group " + groupNum + " Star Ranking";
         List<int> group = pGroup.m_playerGroups[groupNum - 1];
@@ -64,41 +70,31 @@ public class StarRankingPanel : MonoBehaviour
                 addPlayerButton(GameLiftManager.GetInstance().m_Players[playerID], playerID, true);
         }
     }
-    public void clearGroupRanking()
-    {
-        if (rankingContent.transform.childCount > 0)
-        { //clear it
-            for (int i = 0; i < rankingContent.transform.childCount; i++)
-            {
-                Destroy(rankingContent.transform.GetChild(i).gameObject);
-            }
-        }
-    }
 
-    public void addPlayerButton(string username, int id, bool forRankingList)
+    public void addPlayerButton(string username, int id, bool forGroupRanking)
     {
-        if (forRankingList)
+        if (forGroupRanking)
         {
             GameObject newStudent = GameObject.Instantiate(starRankButton);
-            newStudent.GetComponent<StarRankingButton>().setup(username, id, forRankingList, this);
+            newStudent.GetComponent<StarRankingButton>().setup(username, id, forGroupRanking, this);
             newStudent.transform.parent = rankingContent.transform;
             newStudent.SetActive(true);
-            rankPlayer(newStudent, true);
+            rankPlayer(newStudent, forGroupRanking);
         }
         else
         {
             GameObject newStudent = GameObject.Instantiate(playerButton);
-            newStudent.GetComponent<StarRankingButton>().setup(username, id, forRankingList, this);
+            newStudent.GetComponent<StarRankingButton>().setup(username, id, forGroupRanking, this);
             newStudent.GetComponent<StarRankingButton>().setRank(1);
             newStudent.transform.parent = playerListContent.transform;
             newStudent.SetActive(true);
         }
     }
 
-    public void rankPlayer(GameObject player, bool forRankingList)
+    public void rankPlayer(GameObject player, bool forGroupRanking)
     {
         GameObject listContent;
-        if (forRankingList)
+        if (forGroupRanking)
         {
             listContent = rankingContent;
         }
@@ -132,8 +128,8 @@ public class StarRankingPanel : MonoBehaviour
             {
                 curr.setRank(i + 1);
                 prevRank = i + 1;
+                prevStars = currStars;
             }
-            prevStars = currStars;
         }
     }
 

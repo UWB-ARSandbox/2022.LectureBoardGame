@@ -11,6 +11,7 @@ public class EndGameUI : MonoBehaviour
     public Text studentAnswerText;
     public Image saBackground; //student answer
     public Text studentStats;
+    public Text questionsPosted; //teacher only
     public GameObject playerAnswersPanel;
 
     private Color32 red;
@@ -22,8 +23,9 @@ public class EndGameUI : MonoBehaviour
     //public GameObject playerListButton; //used by teacher, show student's A
     public StarRankingPanel starRankPanel_s; //student
     public GameObject starRankButton;
-    public GameObject  starRankPanel_t; //teacher
+    public GameObject starRankPanel_t; //teacher
     public GameObject teacherOnly; //make star rank panels's parent
+    public GameObject studentOnly;
 
     private GameReport gameReport;
     public StudentStats stuStats; //student only
@@ -52,17 +54,18 @@ public class EndGameUI : MonoBehaviour
             ended = true;
             if (GameLiftManager.GetInstance().m_PeerId != 1)
             {
-                Debug.Log("id: " + GameLiftManager.GetInstance().m_PeerId);
-                Debug.Log("endgame setup player group" + BoardGameManager.GetInstance().getPlayerGroup());
+                teacherOnly.SetActive(false);
                 stuStats = BoardGameManager.GetInstance().getGroupWorld(BoardGameManager.GetInstance().getPlayerGroup()).GetComponent<StudentStats>();
-                studentStats.text = "Stats: " + stuStats.numCorrect + "/" + stuStats.numAnswered + "/" + stuStats.numQuestions;
+                studentStats.text = "Stats: " + stuStats.numCorrect + "/" + stuStats.numAnswered + "/" + GameReport.qPosted;
                 starRankPanel_s.gameObject.SetActive(true);
                 starRankPanel_s.groupRankSetUp(BoardGameManager.GetInstance().getPlayerGroup());
                 starRankPanel_s.gameObject.SetActive(false);
                 loadStudentButtons();
             } else
             {
-                studentStats.gameObject.SetActive(false);
+                GameReport.setupUnpostedQuestionsList();
+                studentOnly.SetActive(false);
+                questionsPosted.text = "Questions Posted: " + GameReport.qPosted + " / " + GameReport.reportData.Count;
                 starRankPanel_t.transform.SetParent(teacherOnly.transform);
                 starRankPanel_t.transform.Find("StudentQuestionsPanel").GetComponent<StudentAnswersPanel>().close();
                 starRankPanel_t.SetActive(false);
@@ -74,10 +77,11 @@ public class EndGameUI : MonoBehaviour
     public void loadStudentButtons()
     {
         Debug.Log("Student End Game");
+        int i = 0;
         foreach (KeyValuePair<int, GameReport.StudentData> kvp in GameReport.studentReportData)
         {
             GameObject newQ = GameObject.Instantiate(studentListButton);
-            newQ.GetComponent<StudentAnswerButton>().setup(kvp.Key, kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
+            newQ.GetComponent<StudentAnswerButton>().setup(++i, kvp.Key, kvp.Value.question, kvp.Value.answer, kvp.Value.myAnswer, 
                 kvp.Value.selfGrade, this);
             newQ.transform.SetParent(listContent.transform);
             newQ.SetActive(true);
@@ -87,16 +91,33 @@ public class EndGameUI : MonoBehaviour
     public void loadTeacherButtons()
     {
         Debug.Log("Teacher End Game");
-        int index = 0;
-        foreach (GameReport.TeacherData data in GameReport.reportData)
+        //Format Q1; list posted questions
+        int num = 0;
+        foreach (int index in GameReport.postedQuestions)
         {
+            GameReport.TeacherData qData = GameReport.reportData[index];
             GameObject newQ = GameObject.Instantiate(teacherListButton);
             TeacherButton tb = newQ.GetComponent<TeacherButton>();
-            tb.setUp(false, index++, true);
-            tb.setQA(data.question, data.answer);
+            tb.setUp(false, index);
+            tb.setQA(qData.question, qData.answer, ++num, true);
             //tb.studentAnswersPanel = playerAnswersPanel;
             tb.published = true;
-            newQ.transform.GetChild(1).gameObject.GetComponent<Text>().text = data.numCorrect + "/" + data.numAnswered + "/" + GameReport.reportData.Count;
+            newQ.transform.GetChild(1).gameObject.GetComponent<Text>().text = qData.numCorrect + "/" + qData.numAnswered + "/" + playerGrouping.playerCount;
+            newQ.transform.parent = listContent.transform;
+            newQ.SetActive(true);
+        }
+        num = 0;
+        //add the unposted questions
+        foreach (int index in GameReport.unpostedQuestions)
+        {
+            GameReport.TeacherData qData = GameReport.reportData[index];
+            GameObject newQ = GameObject.Instantiate(teacherListButton);
+            TeacherButton tb = newQ.GetComponent<TeacherButton>();
+            tb.setUp(false, qData.questionIndex);
+            tb.setQA(qData.question, qData.answer, ++num, false);
+            //tb.studentAnswersPanel = playerAnswersPanel;
+            tb.published = true;
+            newQ.transform.GetChild(1).gameObject.GetComponent<Text>().text = qData.numCorrect + "/" + qData.numAnswered + "/" + playerGrouping.playerCount;
             newQ.transform.parent = listContent.transform;
             newQ.SetActive(true);
         }

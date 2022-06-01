@@ -184,7 +184,6 @@
      <Compile Include="Assets\ASL\ASL_Tutorials\Simple\ARCloudAnchors\Scripts\ARCloudAnchor_Example.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\ARSupport\ARPointCloudManagerExtension.cs" />
      <Compile Include="Assets\Demo\Tutorials\Simple Platformer\Scripts\Platformer_Pit.cs" />
-     <Compile Include="Assets\GameScene\Scripts\SendData.cs" />
      <Compile Include="Assets\ASL\ASL_Scripts\ASLObject.cs" />
      <Compile Include="Assets\GameScene\Scripts\CameraManipulation.cs" />
      <Compile Include="Assets\ASL\ASL_Tutorials\Complex\ARPointCloudScanner\Scripts\ASLSupport\ASLParticleSystem.cs" />
