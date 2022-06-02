@@ -152,8 +152,8 @@ public class PlayerMovement : MonoBehaviour
         string q = questions.transform.GetChild(pick).gameObject.GetComponent<ButtonBehavior>().getQ();
         string a = questions.transform.GetChild(pick).gameObject.GetComponent<ButtonBehavior>().getA();
         Debug.Log(q + "\nAnswer: " + a);
-        qPanel.transform.GetChild(0).GetComponent<Text>().text = q;
-        qPanel.GetComponent<QuestionPanel>().setAnswer(a);
+        qPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = q;
+        qPanel.GetComponent<QuestionPanel>().chanceQuestion(a);
         qPanel.SetActive(true);
         qPanel.transform.GetChild(2).gameObject.SetActive(false);
         sg.GetComponent<Selfgrader>().qButton = null;
@@ -569,11 +569,11 @@ public class PlayerMovement : MonoBehaviour
         else if (currentTile.tag == "DiceTile")
         {
             DiceRoll.movePoints++;
-            notify.transform.Find("Text").GetComponent<Text>().text = "Got 1 Move Point!";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Got 1 dice!";
             notify.SetActive(true);
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\nGained a Move Point";
+            eventLog.GetComponent<Text>().text += "\nGained a dice";
         }
         else if (currentTile.tag == "NormalTile")
         {

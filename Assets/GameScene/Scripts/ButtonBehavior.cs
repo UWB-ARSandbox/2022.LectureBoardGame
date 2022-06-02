@@ -67,61 +67,54 @@ public class ButtonBehavior : MonoBehaviour
     }
 
     void OpenQ(){
-        bool isActive;
-        if(newMark.activeSelf){
-            newMark.SetActive(false);
-        }
-        if(answered && sg!=null && sg.GetComponent<Selfgrader>().graded){
-            isActive = sg.activeSelf;
-            GameObject correct = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Correct").gameObject;
-            GameObject incorrect = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Incorrect").gameObject;
-            if(questionPanel!=null){
-                questionPanel.SetActive(false);
+        if(!questionPanel.GetComponent<QuestionPanel>().getChance()){
+            bool isActive;
+            if(newMark.activeSelf){
+                newMark.SetActive(false);
             }
-            correct.SetActive(false);
-            incorrect.SetActive(false);
-            /*if(!sg.activeSelf){
-                sg.SetActive(true);
+            if(answered && sg!=null && sg.GetComponent<Selfgrader>().graded){
+                isActive = sg.activeSelf;
+                GameObject correct = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Correct").gameObject;
+                GameObject incorrect = GameObject.Find("Canvas").transform.Find("Selfgrade").Find("Incorrect").gameObject;
+                if(questionPanel!=null){
+                    questionPanel.SetActive(false);
+                }
                 correct.SetActive(false);
                 incorrect.SetActive(false);
-            } else {
-                correct.SetActive(true);
-                incorrect.SetActive(true);
-                sg.SetActive(false);
-            }*/
-            if(sg.activeSelf){
-                string q = question2.text;
-                if (buttontxt == q){
-                    correct.SetActive(true);
-                    incorrect.SetActive(true);
-                    sg.SetActive(false); 
+                if(sg.activeSelf){
+                    string q = question2.text;
+                    if (buttontxt == q){
+                        correct.SetActive(true);
+                        incorrect.SetActive(true);
+                        sg.SetActive(false); 
+                    } else {
+                        sg.GetComponent<Selfgrader>().setText(buttontxt, answer, studentAnswer);
+                    }
                 } else {
                     sg.GetComponent<Selfgrader>().setText(buttontxt, answer, studentAnswer);
+                    sg.SetActive(true);
                 }
-            } else {
-                sg.GetComponent<Selfgrader>().setText(buttontxt, answer, studentAnswer);
-                sg.SetActive(true);
-            }
-        } else if (questionPanel != null && (!sg.activeSelf || sg.GetComponent<Selfgrader>().graded)) { 
-            if(sg.activeSelf){
-                sg.SetActive(false);
-            } 
-            questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
-            isActive = questionPanel.activeSelf;
-            sg.GetComponent<Selfgrader>().qButton = GetComponent<Button>();
-            sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);
-            sg.GetComponent<Selfgrader>().questionIndex = questionIndex;
-            if (isActive){
-                string q = question.text;
-                if (buttontxt == q){
-                    questionPanel.SetActive(!isActive); 
+            } else if (questionPanel != null && (!sg.activeSelf || sg.GetComponent<Selfgrader>().graded)) { 
+                if(sg.activeSelf){
+                    sg.SetActive(false);
+                } 
+                questionPanel.GetComponent<QuestionPanel>().setAnswer(answer);
+                isActive = questionPanel.activeSelf;
+                sg.GetComponent<Selfgrader>().qButton = GetComponent<Button>();
+                sg.GetComponent<Selfgrader>().setText(buttontxt, "Teacher's Answer: "+answer);
+                sg.GetComponent<Selfgrader>().questionIndex = questionIndex;
+                if (isActive){
+                    string q = question.text;
+                    if (buttontxt == q){
+                        questionPanel.SetActive(!isActive); 
+                    } else {
+                        question.text = buttontxt;
+                    }
                 } else {
+                    questionPanel.SetActive(!isActive);
                     question.text = buttontxt;
-                }
-            } else {
-                questionPanel.SetActive(!isActive);
-                question.text = buttontxt;
-            }             
-        } 
+                }             
+            } 
+        }
     }
 }

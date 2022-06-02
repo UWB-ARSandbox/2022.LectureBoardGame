@@ -2377,7 +2377,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stars: 0
 
-    Move Pts: 0'
+    Dice: 0'
 --- !u!1 &1937949410170515000
 GameObject:
   m_ObjectHideFlags: 0
@@ -9512,7 +9512,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stars: 0
 
-    Move Pts: 0'
+    Dice: 0'
 --- !u!1 &4709639891418933631
 GameObject:
   m_ObjectHideFlags: 0
@@ -11904,7 +11904,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stars: 0
 
-    Move Pts: 0'
+    Dice: 0'
 --- !u!1 &6641712338885102338
 GameObject:
   m_ObjectHideFlags: 0
@@ -13151,7 +13151,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stars: 0
 
-    Move Pts: 0'
+    Dice: 0'
 --- !u!1 &7857473882188397943
 GameObject:
   m_ObjectHideFlags: 0

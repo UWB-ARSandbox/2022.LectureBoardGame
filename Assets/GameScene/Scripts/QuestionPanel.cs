@@ -10,6 +10,7 @@ public class QuestionPanel : MonoBehaviour
     public Button submitButton;
     public GameObject selfgrade;
     public Button closeButton;
+    private bool chanceQ = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,22 @@ public class QuestionPanel : MonoBehaviour
         
     }
 
+    public bool getChance(){
+        return chanceQ;
+    }
+
+    public void chanceQuestion(string a){
+        answer = a;
+        chanceQ = true;
+    }
+
     public void setAnswer(string a){
         answer = a;
     }
 
     void checkAnswer(){
         if (selfgrade != null) {
+            chanceQ = false;
             bool isActive = selfgrade.activeSelf;
             selfgrade.SetActive(!isActive);
             selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);

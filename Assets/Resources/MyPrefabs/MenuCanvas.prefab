@@ -6630,19 +6630,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Answer questions to gain move points and stars.
+  m_Text: 'Answer questions to gain dice and stars.
 
 
-    No need to wait
-    your turn. Hit spacebar to use a move point, it will roll a dice to decide how
-    many spaces you move.
+    No need to wait your turn.
+    Hit spacebar to use a dice, it will roll the dice to decide how many spaces you
+    move.
 
 
-    When you land on a special tile, the affect with
-    happen automatically.
+    When you land on a special tile, the affect with happen automatically.
 
 
-    The player with the most stars at the end wins!'
+    The
+    player with the most stars at the end wins!'
 --- !u!1 &7278913371207278736
 GameObject:
   m_ObjectHideFlags: 0
