@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         moved++;
         Debug.Log(gameObject.ToString() + " Taking Split Path");
         diceMove();
+        DiceRoll.canRoll = true;
     }
 
     public void StraightPath()
@@ -106,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
         moved++;
         Debug.Log(gameObject.ToString() + " Taking Straight Path");
         diceMove();
+        DiceRoll.canRoll = true;
     }
 
 
@@ -512,6 +514,7 @@ public class PlayerMovement : MonoBehaviour
                 splitting = true;
                 showOptions();
                 moved = i;
+                DiceRoll.canRoll = false;
                 break;
             }
             else
@@ -537,13 +540,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (DiceRoll.starCount > 0)
             {
-                DiceRoll.starCount--;
+                DiceRoll.starCount -= 4;
+                if (DiceRoll.starCount < 0)
+                {
+                    DiceRoll.starCount = 0;
+                }
                 notification.dropStars();
-                notify.transform.Find("Text").GetComponent<Text>().text = "Lost a star...";
+                notify.transform.Find("Text").GetComponent<Text>().text = "Lost 4 stars...";
                 notify.SetActive(true);
                 notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
-                eventLog.GetComponent<Text>().text += "\nLost a star";
+                eventLog.GetComponent<Text>().text += "\nLost 4 stars";
             }
         }
         else if (currentTile.tag == "QuestionTile")
