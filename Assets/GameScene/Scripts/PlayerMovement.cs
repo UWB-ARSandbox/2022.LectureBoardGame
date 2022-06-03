@@ -45,9 +45,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Assert(m_ASLObject != null);
         bgm = GameObject.Find("GameManager").GetComponent<BoardGameManager>();
         playerData = GameObject.Find("PlayerDataManager").GetComponent<PlayerData>();
-        questions = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
-        qPanel = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("Question").gameObject;
-        sg = GameObject.Find("StudentUI").transform.Find("GroupWorld(Clone)").Find("Canvas").Find("Selfgrade").gameObject;
+        GameObject world = this.transform.parent.parent.gameObject;
+        questions = world.transform.Find("Canvas").Find("StudentPanel").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
+        qPanel = world.transform.Find("Canvas").Find("Question").gameObject;
+        sg = world.transform.Find("Canvas").Find("Selfgrade").gameObject;
 
         pGroup = GameObject.Find("GameManager").GetComponent<PlayerGrouping>();
         coin = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Coin").gameObject.GetComponent<CoinFlip>();

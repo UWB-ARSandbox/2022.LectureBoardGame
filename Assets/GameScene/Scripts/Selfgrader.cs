@@ -21,6 +21,7 @@ public class Selfgrader : MonoBehaviour
     private PlayerData playerData;
     public bool graded = false;
     public int questionIndex = -1;
+    private Color32 normal = new Color32(61, 197, 212, 239);
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +93,7 @@ public class Selfgrader : MonoBehaviour
         DiceRoll.starCount += 5;
         closeButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        GetComponent<Image>().color = normal;
         playerData.sendData();
     }
 
@@ -106,6 +108,7 @@ public class Selfgrader : MonoBehaviour
             stats.sendGrade(GameLiftManager.GetInstance().m_PeerId, questionIndex, -1);
         }
         closeButton.gameObject.SetActive(true);
+        GetComponent<Image>().color = normal;
         gameObject.SetActive(false);
     }
 

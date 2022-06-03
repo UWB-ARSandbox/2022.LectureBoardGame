@@ -11,6 +11,8 @@ public class QuestionPanel : MonoBehaviour
     public GameObject selfgrade;
     public Button closeButton;
     private bool chanceQ = false;
+    private Color32 normal = new Color32(61, 197, 212, 239);
+    private Color32 special = new Color32(199, 101, 255, 239);
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,8 @@ public class QuestionPanel : MonoBehaviour
     public void chanceQuestion(string a){
         answer = a;
         chanceQ = true;
+        GetComponent<Image>().color = special;
+        selfgrade.GetComponent<Image>().color = special;
     }
 
     public void setAnswer(string a){
@@ -44,7 +48,11 @@ public class QuestionPanel : MonoBehaviour
 
     void checkAnswer(){
         if (selfgrade != null) {
-            chanceQ = false;
+            if(chanceQ){
+                chanceQ = false;
+                GetComponent<Image>().color = normal;
+            }
+            
             bool isActive = selfgrade.activeSelf;
             selfgrade.SetActive(!isActive);
             selfgrade.GetComponent<Selfgrader>().studentSubmit(userInput.text);
