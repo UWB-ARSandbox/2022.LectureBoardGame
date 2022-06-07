@@ -65,13 +65,13 @@ public class PlayerData : MonoBehaviour
                 }
 
                 if (player1 != null)
-                    player1.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p1Stars + "\nMove Pts: " + p1MovePoints;
+                    player1.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p1Stars + "\nDices: " + p1MovePoints;
                 if (player2 != null)
-                    player2.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p2Stars + "\nMove Pts: " + p2MovePoints;
+                    player2.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p2Stars + "\nDices: " + p2MovePoints;
                 if (player3 != null)
-                    player3.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p3Stars + "\nMove Pts: " + p3MovePoints;
+                    player3.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p3Stars + "\nDices: " + p3MovePoints;
                 if (player4 != null)
-                    player4.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p4Stars + "\nMove Pts: " + p4MovePoints;
+                    player4.transform.Find("playerPoints").GetComponent<Text>().text = "Stars: " + p4Stars + "\nDices: " + p4MovePoints;
             }
         }
     }

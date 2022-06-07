@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ASL;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -72,11 +73,11 @@ public class PlayerMovement : MonoBehaviour
         buttonsPanel = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("ButtonsPanel").gameObject;
         buttonsPanel.SetActive(false);
 
-        splitButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("SplitButton").gameObject;
-        splitButton.SetActive(false);
+        //splitButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("SplitButton").gameObject;
+        //splitButton.SetActive(false);
 
-        straightButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("StraightButton").gameObject;
-        straightButton.SetActive(false);
+        //straightButton = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("StraightButton").gameObject;
+        //straightButton.SetActive(false);
 
         rental = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Canvas").Find("Rental").gameObject;
 
@@ -90,8 +91,8 @@ public class PlayerMovement : MonoBehaviour
     public void SplitPath()
     {
         buttonsPanel.SetActive(false);
-        splitButton.SetActive(false);
-        straightButton.SetActive(false);
+        //splitButton.SetActive(false);
+        //straightButton.SetActive(false);
         setCurrentTile(currentTile.split);
         moved++;
         Debug.Log(gameObject.ToString() + " Taking Split Path");
@@ -102,8 +103,8 @@ public class PlayerMovement : MonoBehaviour
     public void StraightPath()
     {
         buttonsPanel.SetActive(false);
-        splitButton.SetActive(false);
-        straightButton.SetActive(false);
+        //splitButton.SetActive(false);
+        //straightButton.SetActive(false);
         setCurrentTile(currentTile.next);
         moved++;
         Debug.Log(gameObject.ToString() + " Taking Straight Path");
@@ -149,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         int children = questions.transform.childCount;
         Debug.Log(children + " number of questions");
         //Random pick a number and get Q and A info from question
-        int pick = Random.Range(0, children);
+        int pick = UnityEngine.Random.Range(0, children);
         Debug.Log("Picked question #" + pick);
         //Uses question panel
         string q = questions.transform.GetChild(pick).gameObject.GetComponent<ButtonBehavior>().getQ();
@@ -180,10 +181,10 @@ public class PlayerMovement : MonoBehaviour
                 Transform world = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane");
                 if (world.childCount >= 72)
                 {
-                    int victimNum = Random.Range(70, world.childCount);
+                    int victimNum = UnityEngine.Random.Range(70, world.childCount);
                     while (victimNum - 69 == playerNumber)
                     {
-                        victimNum = Random.Range(70, world.childCount);
+                        victimNum = UnityEngine.Random.Range(70, world.childCount);
                     }
 
                     Debug.Log("Stealing from player " + (victimNum - 69));
@@ -394,9 +395,9 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case 2: //Getting Robbed
                 Debug.Log("GETTING ROBBED");
-                if (_f[1] == bgm.getPlayerGroup() && _f[2] == playerNumber)
+                if ((int)_f[1] == bgm.getPlayerGroup() && (int)_f[2] == playerNumber)
                 {
-                    string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + _f[3] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
+                    string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + (int)_f[3] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
                     notify.transform.Find("Text").GetComponent<Text>().text = playerName + " has stolen 4 stars!";
                     notify.SetActive(true);
                     notify.GetComponent<NotificationTimer>().enabled = true;
@@ -416,6 +417,21 @@ public class PlayerMovement : MonoBehaviour
                     playerData.sendData();
                 }
                 break;
+            case 3: //Give stars: 3, group number, player number (the one getting stars), player number (the one giving stars), numStars
+                if ((int)_f[1] == bgm.getPlayerGroup() && (int)_f[2] == playerNumber)
+                {
+                    string playerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + (int)_f[3] + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
+                    notify.transform.Find("Text").GetComponent<Text>().text = playerName + " gave you 4 stars ^_^";
+                    notify.SetActive(true);
+                    notify.GetComponent<NotificationTimer>().enabled = true;
+                    notifyClose.SetActive(true);
+                    eventLog.GetComponent<Text>().text += "\n" + playerName + " gave you 4 stars ^_^";
+
+                    notification.tileNotification();
+                    DiceRoll.starCount += (int)_f[4];
+                    playerData.sendData();
+                }
+                break;
             default:
                 break;
         }
@@ -424,8 +440,9 @@ public class PlayerMovement : MonoBehaviour
     private void showOptions()
     {
         buttonsPanel.SetActive(true);
-        splitButton.SetActive(true);
-        straightButton.SetActive(true);
+        //splitButton.SetActive(true);
+        //straightButton.SetActive(true);
+        buttonsPanel.GetComponent<Redirecting>().stepsLeft.text = "Spaces to Move: " + (DiceRoll.DiceNumber - moved);
     }
 
     private void displayRental()
@@ -513,8 +530,8 @@ public class PlayerMovement : MonoBehaviour
             if (currentTile.tag == "SplitTile")
             {
                 splitting = true;
-                showOptions();
                 moved = i;
+                showOptions();
                 DiceRoll.canRoll = false;
                 break;
             }
@@ -599,11 +616,30 @@ public class PlayerMovement : MonoBehaviour
                 {
                     DiceRoll.starCount = 0;
                 }
-                notify.transform.Find("Text").GetComponent<Text>().text = "Landed on a trapped space and lost 4 stars!";
+                string message = "Landed on a rented tile";
+                for (int i = 1; i <= 4; i++)
+                {
+                    if (i == playerNumber)
+                        continue;
+                    GameObject rentMark = currentTile.transform.Find("RentedMark" + i + "(Clone)").gameObject;
+                    if (rentMark != null)
+                    {
+                        giveStars(i, 4);
+                        string tileOwnerName = bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").Find("Player" + i + "Piece(Clone)").Find("NameDisplay").GetComponent<TextMesh>().text;
+                        message += " and gave 4 stars to " + tileOwnerName;
+                        break;
+                    }
+                    if (i == 4)
+                    {
+                        Debug.Log("RentedTile: Could not find tile owner");
+                        message += " and lost 4 stars!";
+                    }
+                }
+                notify.transform.Find("Text").GetComponent<Text>().text = message;
                 notify.SetActive(true);
                 notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
-                eventLog.GetComponent<Text>().text += "\nLanded on a trapped tile and lost 4 stars.";
+                eventLog.GetComponent<Text>().text += "\n" + message;
             }
         }
         playerData.sendData();
@@ -617,11 +653,26 @@ public class PlayerMovement : MonoBehaviour
 
     void teleporting()
     {
-        int randomTile = Random.Range(0, 69);
+        int randomTile = UnityEngine.Random.Range(0, 69);
         setCurrentTile(bgm.getGroupWorld(bgm.getPlayerGroup()).transform.Find("Plane").GetChild(randomTile).GetComponent<TileNode>());
         m_ASLObject.SendAndSetClaim(() =>
         {
             m_ASLObject.SendAndSetLocalPosition(currentTile.transform.localPosition);
+        });
+    }
+
+    private void giveStars(int playerToGift, int numStars)
+    {
+        gameObject.GetComponent<ASLObject>().SendAndSetClaim(() =>
+        {
+            float[] sendValue = new float[5];
+            sendValue[0] = 3;
+            sendValue[1] = bgm.getPlayerGroup();
+            sendValue[2] = playerToGift;
+            sendValue[3] = playerNumber;
+            sendValue[4] = numStars;
+
+            gameObject.GetComponent<ASLObject>().SendFloatArray(sendValue);
         });
     }
 }

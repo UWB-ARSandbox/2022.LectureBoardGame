@@ -13,6 +13,7 @@ public class Redirecting : MonoBehaviour
     private BoardGameManager bgm;
     private int playerNumber;
     private GameObject player;
+    public Text stepsLeft;
 
     // Start is called before the first frame update
     void Start()
