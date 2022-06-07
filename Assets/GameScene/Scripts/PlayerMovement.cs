@@ -465,18 +465,18 @@ public class PlayerMovement : MonoBehaviour
             // MARK currentTile WITH PREFAB
             ASLHelper.InstantiateASLObject("RentedMark" + playerNumber, new Vector3(0, 0.0001f, 0), Quaternion.Euler(90f, 0, 0), currentTile.gameObject.GetComponent<ASLObject>().m_Id);
 
-            notify.transform.Find("Text").GetComponent<Text>().text = "Spent 2 stars on a tile trap.";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Spent 2 stars to rent a tile.";
             notify.SetActive(true);
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\nSpent 2 stars on a tile trap";
+            eventLog.GetComponent<Text>().text += "\nSpent 2 stars to rent a tile";
         } else
         {
-            notify.transform.Find("Text").GetComponent<Text>().text = "Not enough stars to trap the tile";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Not enough stars to rent the tile";
             notify.SetActive(true);
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\nFailed to trap due to lack of stars";
+            eventLog.GetComponent<Text>().text += "\nFailed to rent due to lack of stars";
         }
         playerData.sendData();
     }
@@ -607,7 +607,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (currentTile.tag == "RentedTile")
         {
-            Debug.Log("LANDED ON TRAPPED TILE");
+            Debug.Log("LANDED ON RENTED TILE");
             // LOSE 4 STARS
             if (currentTile.transform.Find("RentedMark" + playerNumber + "(Clone)") == null)
             {

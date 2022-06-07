@@ -8046,7 +8046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -262}
+  m_AnchoredPosition: {x: 0, y: 93.399994}
   m_SizeDelta: {x: 580, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6052034430549517449
@@ -9654,7 +9654,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50.11517}
-  m_SizeDelta: {x: 155.2617, y: 28.6044}
+  m_SizeDelta: {x: 209.219, y: 28.6044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6850002122492730627
 CanvasRenderer:
@@ -10384,7 +10384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Would you like to trap this tile for 2 stars?
+  m_Text: 'Would you like to rent this tile for 2 stars?
 
     If someone lands on
     your trapped space,
@@ -11708,7 +11708,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Trap for 2 stars
+  m_Text: Rent for 2 stars
 --- !u!1 &6373666972944012277
 GameObject:
   m_ObjectHideFlags: 0
@@ -12871,7 +12871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 273.8, y: -243.4}
+  m_AnchoredPosition: {x: 273.8, y: 112}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4111972049816272724
