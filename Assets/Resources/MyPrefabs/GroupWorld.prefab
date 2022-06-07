@@ -10342,12 +10342,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Would you like to rent this tile for 2 star?
+  m_Text: 'Would you like to trap this tile for 2 stars?
 
     If someone lands on
-    your rented space,
+    your trapped space,
 
-    you''ll gain 4 stars.'
+    they will lose 4 stars.'
 --- !u!1 &5181594072089388195
 GameObject:
   m_ObjectHideFlags: 0
@@ -11666,7 +11666,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rent for 2 stars
+  m_Text: Trap for 2 stars
 --- !u!1 &6373666972944012277
 GameObject:
   m_ObjectHideFlags: 0
@@ -14357,7 +14357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Don't Rent
+  m_Text: Don't Trap
 --- !u!1 &8745589929805471639
 GameObject:
   m_ObjectHideFlags: 0

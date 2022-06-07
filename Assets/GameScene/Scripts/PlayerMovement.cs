@@ -448,18 +448,18 @@ public class PlayerMovement : MonoBehaviour
             // MARK currentTile WITH PREFAB
             ASLHelper.InstantiateASLObject("RentedMark" + playerNumber, new Vector3(0, 0.0001f, 0), Quaternion.Euler(90f, 0, 0), currentTile.gameObject.GetComponent<ASLObject>().m_Id);
 
-            notify.transform.Find("Text").GetComponent<Text>().text = "Spent 2 stars on a tile rental.";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Spent 2 stars on a tile trap.";
             notify.SetActive(true);
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\nSpent 2 stars on a tile rental";
+            eventLog.GetComponent<Text>().text += "\nSpent 2 stars on a tile trap";
         } else
         {
-            notify.transform.Find("Text").GetComponent<Text>().text = "Not enough stars to rent out the tile";
+            notify.transform.Find("Text").GetComponent<Text>().text = "Not enough stars to trap the tile";
             notify.SetActive(true);
             notify.GetComponent<NotificationTimer>().enabled = true;
             notifyClose.SetActive(true);
-            eventLog.GetComponent<Text>().text += "\nFailed rental due to lack of stars";
+            eventLog.GetComponent<Text>().text += "\nFailed to trap due to lack of stars";
         }
         playerData.sendData();
     }
@@ -590,7 +590,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (currentTile.tag == "RentedTile")
         {
-            Debug.Log("LANDED ON RENTED TILE");
+            Debug.Log("LANDED ON TRAPPED TILE");
             // LOSE 4 STARS
             if (currentTile.transform.Find("RentedMark" + playerNumber + "(Clone)") == null)
             {
@@ -599,11 +599,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     DiceRoll.starCount = 0;
                 }
-                notify.transform.Find("Text").GetComponent<Text>().text = "Landed on a rented space and lost 4 stars!";
+                notify.transform.Find("Text").GetComponent<Text>().text = "Landed on a trapped space and lost 4 stars!";
                 notify.SetActive(true);
                 notify.GetComponent<NotificationTimer>().enabled = true;
                 notifyClose.SetActive(true);
-                eventLog.GetComponent<Text>().text += "\nLanded on a rented tile and lost 4 stars.";
+                eventLog.GetComponent<Text>().text += "\nLanded on a trapped tile and lost 4 stars.";
             }
         }
         playerData.sendData();
