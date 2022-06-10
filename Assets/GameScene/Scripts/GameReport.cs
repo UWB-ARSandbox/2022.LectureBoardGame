@@ -253,7 +253,6 @@ public class GameReport : MonoBehaviour
         //star ranking section
         starReport(filepath, numColumns);
         addRecord(getCommas(numColumns), filepath);
-        addRecord(getCommas(numColumns), filepath);
 
         //QA data section
         string answered = ",,,Answered";
@@ -333,8 +332,8 @@ public class GameReport : MonoBehaviour
             return;
         int addedCommas = groupRankingList.Count + 1 - numColumns;
         //Star ranking section
-        string tableHeader = ",Group " + groupNum + " Ranking,";
-        string line = ",Stars,";
+        string tableHeader = "Group " + groupNum + " Ranking,";
+        string line = "Stars,";
         foreach (var kvp in groupRankingList[groupNum - 1])
         {
             tableHeader += kvp.Value + ". " + csvFormatString(getUsername(kvp.Key)) + ",";
@@ -376,6 +375,7 @@ public class GameReport : MonoBehaviour
         }
         addRecord(tableHeader, filepath);
         addRecord(line, filepath);
+        addRecord(getCommas(numColumns), filepath);
         //addRecord(statsLine, filepath);
     }
 
