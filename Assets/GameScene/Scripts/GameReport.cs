@@ -256,29 +256,29 @@ public class GameReport : MonoBehaviour
         addRecord(getCommas(numColumns), filepath);
 
         //QA data section
-        string question = ",,,Question";
-        string answer = ",,,Answer";
         string answered = ",,,Answered";
         string noAnswered = ",,,NoAnswered";
         string correct = ",,,Correct";
         string incorrect = ",,,Incorrect";
+        string question = ",,,Question";
+        string answer = ",,,Answer";
         string line = "Student,Correct,Answered,Questions";
         foreach (int index in postedQuestions)
         {
-            question += "," + csvFormatString(reportData[index].question);
-            answer += "," + csvFormatString(reportData[index].answer);
             answered += "," + reportData[index].numAnswered;
             noAnswered += "," + reportData[index].notAnswered;
             correct += "," + reportData[index].numCorrect;
             incorrect += "," + reportData[index].numIncorrect;
+            question += "," + csvFormatString(reportData[index].question);
+            answer += "," + csvFormatString(reportData[index].answer);
             line += ",Q" + reportData[index].postedNumber;
         }
-        addRecord(question, filepath);
-        addRecord(answer, filepath);
         addRecord(answered, filepath);
         addRecord(noAnswered, filepath);
         addRecord(correct, filepath);
         addRecord(incorrect, filepath);
+        addRecord(question, filepath);
+        addRecord(answer, filepath);
         addRecord(line, filepath);
         foreach (KeyValuePair<int, int> player in playerGrouping.m_players)
         {
